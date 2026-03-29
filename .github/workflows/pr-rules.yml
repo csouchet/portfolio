@@ -1,4 +1,4 @@
-name: Verify if PR corresponds to Conventional Commits & labels
+name: PR checks & labels
 
 on:
   pull_request_target:
