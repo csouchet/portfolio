@@ -1,43 +1,77 @@
+enhancement:
+  - head-branch:
+      - '^feat/'
+
+bug:
+  - head-branch:
+      - '^fix/'
+
+refactor:
+  - head-branch:
+      - '^refactor/'
+
 # 🎨 UI / Components
 ui:
-  - "src/components/**"
-  - "src/layouts/**"
-  - "src/pages/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/components/**'
+          - 'src/layouts/**'
+          - 'src/pages/**'
 
 component:
-  - "src/components/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/components/**'
 
 # ✍️ Content & branding
 content:
-  - "content/**"
-  - "data/**"
-  - "**/*.md"
-  - "**/*.json"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'content/**'
+          - 'data/**'
+          - '**/*.md'
+          - '**/*.json'
 
 branding:
-  - "public/**"
-  - "assets/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'public/**'
+          - 'assets/**'
 
 # 📈 SEO / Analytics
 seo:
-  - "src/seo/**"
-  - "public/robots.txt"
-  - "public/sitemap.xml"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/seo/**'
+          - 'public/robots.txt'
+          - 'public/sitemap.xml'
 
 analytics:
-  - "src/lib/analytics/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/lib/analytics/**'
 
 # ⚙️ Tech / Infra
 ci-cd:
-  - ".github/**"
+  - head-branch:
+      - '^ci/'
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**/*'
 
 setup:
-  - "config/**"
-  - "*.config.*"
-  - "tsconfig.json"
-  - "next.config.*"
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'config/**'
+          - '*.config.*'
+          - 'tsconfig.json'
 
 # 📚 Documentation
 documentation:
-  - "docs/**"
-  - "README.md"
+  - head-branch:
+      - '^docs/'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'README.md'
+          - 'LICENSE'
+          - 'docs/**'
