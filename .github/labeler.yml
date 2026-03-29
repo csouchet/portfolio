@@ -1,72 +1,77 @@
 enhancement:
-  - head-branch: [ '^feat/' ] # Add 'enhancement' label to any PR where the head branch name starts with `feat/`
+  - head-branch:
+      - '^feat/'
 
 bug:
-  - head-branch: [ '^fix/' ] # Add 'bug' label to any PR where the head branch name starts with `fix/`
+  - head-branch:
+      - '^fix/'
 
 refactor:
-  - head-branch: [ '^refactor/' ] # Add 'refactor' label to any PR where the head branch name starts with `refactor/`
+  - head-branch:
+      - '^refactor/'
 
 # 🎨 UI / Components
 ui:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'src/components/**'
-      - 'src/layouts/**'
-      - 'src/pages/**'
+      - any-glob-to-any-file:
+          - 'src/components/**'
+          - 'src/layouts/**'
+          - 'src/pages/**'
 
 component:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'src/components/**'
+      - any-glob-to-any-file:
+          - 'src/components/**'
 
 # ✍️ Content & branding
 content:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'content/**'
-      - 'data/**'
-      - '**/*.md'
-      - '**/*.json'
+      - any-glob-to-any-file:
+          - 'content/**'
+          - 'data/**'
+          - '**/*.md'
+          - '**/*.json'
 
 branding:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'public/**'
-      - 'assets/**'
+      - any-glob-to-any-file:
+          - 'public/**'
+          - 'assets/**'
 
 # 📈 SEO / Analytics
 seo:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'src/seo/**'
-      - 'public/robots.txt'
-      - 'public/sitemap.xml'
+      - any-glob-to-any-file:
+          - 'src/seo/**'
+          - 'public/robots.txt'
+          - 'public/sitemap.xml'
 
 analytics:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'src/lib/analytics/**'
+      - any-glob-to-any-file:
+          - 'src/lib/analytics/**'
 
 # ⚙️ Tech / Infra
 ci-cd:
-  - head-branch: [ '^ci/' ] # Add 'ci-cd' label to any PR where the head branch name starts with `ci/`
+  - head-branch:
+      - '^ci/'
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/**/*' # Any change to files within '.github' folder or any subfolders
+      - any-glob-to-any-file:
+          - '.github/**/*'
 
 setup:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'config/**'
-      - '*.config.*'
-      - 'tsconfig.json'
+      - any-glob-to-any-file:
+          - 'config/**'
+          - '*.config.*'
+          - 'tsconfig.json'
 
 # 📚 Documentation
 documentation:
-  - head-branch: [ '^docs/' ] # Any PR where the head branch name starts with `docs/`
+  - head-branch:
+      - '^docs/'
   - changed-files:
-    - any-glob-to-any-file:
-      - 'README.md'
-      - 'LICENSE'
-      - "docs/**"
+      - any-glob-to-any-file:
+          - 'README.md'
+          - 'LICENSE'
+          - 'docs/**'
