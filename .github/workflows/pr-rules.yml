@@ -1,0 +1,24 @@
+name: Verify if PR corresponds to Conventional Commits & labels
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited]
+
+jobs:
+  validate-pr-title:
+    name: Validate Pull Request title format
+    runs-on: ubuntu-24.04 # https://github.com/actions/runner-images?tab=readme-ov-file#available-images
+
+    permissions:
+      pull-requests: write # to post comments
+
+    steps:
+      - name: Log PR title
+        env:
+          # according to https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "Pull Request title: $TITLE"
+
+      - name: Enforce Conventional Commit format
+        uses: jef/conventional-commits-pr-action@v1
