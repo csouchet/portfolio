@@ -1,43 +1,72 @@
+enhancement:
+  - head-branch: [ '^feat/' ] # Add 'enhancement' label to any PR where the head branch name starts with `feat/`
+
+bug:
+  - head-branch: [ '^fix/' ] # Add 'bug' label to any PR where the head branch name starts with `fix/`
+
+refactor:
+  - head-branch: [ '^refactor/' ] # Add 'refactor' label to any PR where the head branch name starts with `refactor/`
+
 # 🎨 UI / Components
 ui:
-  - "src/components/**"
-  - "src/layouts/**"
-  - "src/pages/**"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/components/**'
+      - 'src/layouts/**'
+      - 'src/pages/**'
 
 component:
-  - "src/components/**"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/components/**'
 
 # ✍️ Content & branding
 content:
-  - "content/**"
-  - "data/**"
-  - "**/*.md"
-  - "**/*.json"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'content/**'
+      - 'data/**'
+      - '**/*.md'
+      - '**/*.json'
 
 branding:
-  - "public/**"
-  - "assets/**"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'public/**'
+      - 'assets/**'
 
 # 📈 SEO / Analytics
 seo:
-  - "src/seo/**"
-  - "public/robots.txt"
-  - "public/sitemap.xml"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/seo/**'
+      - 'public/robots.txt'
+      - 'public/sitemap.xml'
 
 analytics:
-  - "src/lib/analytics/**"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/lib/analytics/**'
 
 # ⚙️ Tech / Infra
 ci-cd:
-  - ".github/**"
+  - head-branch: [ '^ci/' ] # Add 'ci-cd' label to any PR where the head branch name starts with `ci/`
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/**/*' # Any change to files within '.github' folder or any subfolders
 
 setup:
-  - "config/**"
-  - "*.config.*"
-  - "tsconfig.json"
-  - "next.config.*"
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'config/**'
+      - '*.config.*'
+      - 'tsconfig.json'
 
 # 📚 Documentation
 documentation:
-  - "docs/**"
-  - "README.md"
+  - head-branch: [ '^docs/' ] # Any PR where the head branch name starts with `docs/`
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'README.md'
+      - 'LICENSE'
+      - "docs/**"
