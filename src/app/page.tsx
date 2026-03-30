@@ -1,66 +1,100 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+'use client';
+
+import {
+  Container,
+  Stack,
+  Title,
+  Text,
+  Button,
+  SimpleGrid,
+  Card,
+} from '@mantine/core';
+import Link from 'next/link';
+
+import { HeroSection } from '@/components/HeroSection';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+    <main>
+      <HeroSection />
+      {/*      <ProjectsSection />
+      <AboutSection />
+      <ContactSection />*/}
+    </main>
+  );
+}
+
+function ProjectsSection() {
+  return (
+    <Container id="projects" size="lg" py="xl">
+      <Stack gap="xl">
+        <Stack gap="xs">
+          <Title order={2}>Projets</Title>
+          <Text c="dimmed">Une sélection de projets récents.</Text>
+        </Stack>
+
+        <SimpleGrid cols={{ base: 1, sm: 2 }}>
+          {[1, 2, 3].map(p => (
+            <Card
+              key={p}
+              padding="lg"
+              radius="md"
+              withBorder
+              style={{
+                transition: 'transform 0.2s ease',
+              }}
             >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              <Stack gap="xs">
+                <Title order={3}>Projet {p}</Title>
+                <Text size="sm" c="dimmed">
+                  Description courte du projet, technologies utilisées et
+                  enjeux.
+                </Text>
+              </Stack>
+            </Card>
+          ))}
+        </SimpleGrid>
+      </Stack>
+    </Container>
+  );
+}
+
+function AboutSection() {
+  return (
+    <Container size="sm" py="xl">
+      <Stack gap="md" style={{ textAlign: 'center' }}>
+        <Title order={2}>À propos</Title>
+
+        <Text c="dimmed">
+          Développeuse senior spécialisée en Java (Spring) et React /
+          TypeScript, je conçois des applications fiables, maintenables et
+          performantes.
+        </Text>
+
+        <Text c="dimmed">
+          En parallèle, je me forme à la céramique, avec une approche centrée
+          sur le geste, la matière et le détail — des valeurs que j’applique
+          aussi au code.
+        </Text>
+      </Stack>
+    </Container>
+  );
+}
+
+function ContactSection() {
+  return (
+    <Container size="sm" py="xl">
+      <Stack align="center" gap="md" style={{ textAlign: 'center' }}>
+        <Title order={2}>Travaillons ensemble</Title>
+
+        <Text c="dimmed">
+          Disponible pour des missions freelance ou des collaborations.
+        </Text>
+
+        <Button component={Link} href="/contact">
+          Me contacter
+        </Button>
+      </Stack>
+    </Container>
   );
 }
