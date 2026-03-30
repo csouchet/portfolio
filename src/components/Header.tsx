@@ -10,6 +10,7 @@ import {
   Burger,
   Drawer,
   Stack,
+  Box,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
@@ -67,23 +68,20 @@ export default function Header() {
   });
 
   return (
-    <>
+    <Box
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        backdropFilter: 'blur(12px)',
+        backgroundColor:
+          'light-dark(rgba(255,255,255,0.7), rgba(10,10,10,0.7))',
+        borderBottom: '1px solid var(--mantine-color-default-border)',
+        boxShadow: '0 1px 0 rgba(0,0,0,0.05)',
+      }}
+    >
       {/* Top bar */}
-      <Container
-        size="lg"
-        px="md"
-        py="xs"
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1000,
-          backdropFilter: 'blur(12px)',
-          backgroundColor:
-            'light-dark(rgba(255,255,255,0.7), rgba(10,10,10,0.7))',
-          borderBottom: '1px solid var(--mantine-color-default-border)',
-          boxShadow: '0 1px 0 rgba(0,0,0,0.05)',
-        }}
-      >
+      <Container size="lg" px="md" py="xs">
         <Group justify="space-between" align="center">
           {/* Logo */}
           <Text
@@ -131,6 +129,6 @@ export default function Header() {
           {links}
         </Stack>
       </Drawer>
-    </>
+    </Box>
   );
 }
