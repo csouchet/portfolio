@@ -4,14 +4,14 @@ import { Geist, Geist_Mono } from 'next/font/google';
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
-
 import {
   ColorSchemeScript,
   MantineProvider,
   mantineHtmlProps,
 } from '@mantine/core';
 
-import { theme } from '../theme';
+import { theme } from '@/theme';
+import { siteConfig } from '@/config/site';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -24,8 +24,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'My Mantine app',
-  description: 'I have followed setup instructions carefully',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
