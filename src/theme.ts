@@ -3,6 +3,8 @@
 import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
+  primaryColor: 'brand',
+
   colors: {
     brand: [
       '#eef2ff',
@@ -17,8 +19,6 @@ export const theme = createTheme({
       '#312e81',
     ],
   },
-
-  primaryColor: 'brand',
 
   fontFamily: 'system-ui, -apple-system, sans-serif',
 
@@ -35,26 +35,33 @@ export const theme = createTheme({
   headings: {
     fontWeight: '700',
     sizes: {
-      h1: { fontSize: '2rem', lineHeight: '1.2' },
-      h2: { fontSize: '1.6rem', lineHeight: '1.3' },
-      h3: { fontSize: '1.3rem', lineHeight: '1.4' },
+      h1: {
+        fontSize: 'clamp(2rem, 5vw, 3rem)',
+        lineHeight: '1.15',
+      },
+      h2: {
+        fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+        lineHeight: '1.2',
+      },
+      h3: {
+        fontSize: '1.25rem',
+        lineHeight: '1.3',
+      },
     },
   },
 
   components: {
-    /* Layout */
     Container: {
       defaultProps: {
         size: 'lg',
-        px: 'md', // ✔ mobile-first padding
+        px: 'md',
       },
     },
 
-    /* Typography */
     Text: {
       styles: {
         root: {
-          lineHeight: 1.5,
+          lineHeight: 1.6,
         },
       },
     },
@@ -62,23 +69,26 @@ export const theme = createTheme({
     Title: {
       styles: {
         root: {
-          letterSpacing: '-0.5px',
+          letterSpacing: '-0.02em',
         },
       },
     },
 
-    /* Buttons */
     Button: {
       defaultProps: {
         radius: 'xl',
       },
+      styles: {
+        root: {
+          fontWeight: 500,
+        },
+      },
     },
 
-    /* Links */
     Anchor: {
       styles: {
         root: {
-          textUnderlineOffset: '2px',
+          textUnderlineOffset: '3px',
         },
       },
     },
@@ -89,16 +99,16 @@ export const theme = createTheme({
       },
       styles: {
         root: {
-          transition: 'all 0.2s ease',
+          transition: 'transform 0.15s ease',
         },
       },
     },
   },
 
-  /* Tokens UX réutilisables */
   other: {
     layout: {
       textMaxWidth: '65ch',
+      sectionSpacing: 'clamp(3rem, 6vw, 6rem)',
     },
   },
 });
