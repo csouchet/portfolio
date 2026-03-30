@@ -8,13 +8,24 @@ import {
   useComputedColorScheme,
 } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
 
-  const computed = useComputedColorScheme('light', {
-    getInitialValueInEffect: true,
-  });
+  const computed = useComputedColorScheme('light');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Needed to avoid SSR hydration mismatch for color scheme
+    // If we want to avoid to use mounted, we need to use cookies
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <ActionIcon variant="subtle" size="lg" radius="xl" disabled />;
+  }
 
   const isDark = computed === 'dark';
 
@@ -37,20 +48,16 @@ export function ThemeToggle() {
           radius="xl"
           aria-label="Changer le thème"
           aria-pressed={isDark}
-          styles={theme => ({
+          styles={{
             root: {
               transition: 'transform 150ms ease, background-color 150ms ease',
 
-              // hover propre Mantine
               '&:hover': {
-                backgroundColor:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[5]
-                    : theme.colors.gray[1],
+                backgroundColor: 'var(--mantine-color-default-hover)',
                 transform: 'scale(1.05)',
               },
             },
-          })}
+          }}
         >
           <span
             style={{
