@@ -19,6 +19,8 @@ export function HeroSection() {
         minHeight: 'calc(100vh - 60px)',
         display: 'flex',
         alignItems: 'center',
+        background:
+          'radial-gradient(circle at 50% 30%, rgba(99,102,241,0.08), transparent 60%)',
       }}
     >
       <Container size="sm">
@@ -35,23 +37,41 @@ export function HeroSection() {
             transition: 'opacity 0.6s ease, transform 0.6s ease',
           }}
         >
-          <Title order={1}>{siteConfig.name}</Title>
+          <Title
+            order={1}
+            style={{
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {siteConfig.name}
+          </Title>
 
           <Text size="lg" c="dimmed">
             Ingénieure développeuse senior Java & React
-            <br />
-            <span
-              style={{
-                color: 'var(--mantine-color-text)',
-                fontWeight: 500,
-              }}
-            >
-              Des expériences fiables, accessibles et soigneusement conçues
+          </Text>
+
+          <Text
+            size="lg"
+            style={{
+              fontWeight: 500,
+            }}
+          >
+            Des expériences fiables, accessibles et{' '}
+            <span style={{ color: 'var(--mantine-color-blue-6)' }}>
+              soigneusement conçues
             </span>
           </Text>
 
-          <Stack gap="xs" align="center">
-            <Button component="a" href="#projects">
+          <Stack gap="sm" align="center">
+            <Button
+              component="a"
+              href="#projects"
+              size="md"
+              style={{
+                boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+              }}
+            >
               Voir mes projets
             </Button>
 
