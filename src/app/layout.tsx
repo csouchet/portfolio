@@ -12,6 +12,7 @@ import {
 
 import { theme } from '@/theme';
 import { siteConfig } from '@/config/site';
+import Header from '@/components/Header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -52,7 +53,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <Header />
+          <main>{children}</main>
+        </MantineProvider>
       </body>
     </html>
   );
