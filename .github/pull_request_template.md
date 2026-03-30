@@ -7,13 +7,51 @@ Example: feat(ui): add hero section
 
 <!-- Describe the purpose of this PR -->
 
-
 ---
 
 ## 📸 Screenshots (if applicable)
 
-<!-- Before / After -->
+### Mobile
 
+#### Light mode
+
+| Before | After |
+| ------ | ----- |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+
+#### Dark mode
+
+| Before | After |
+| ------ | ----- |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+
+### Desktop
+
+#### Light mode
+
+| Before | After |
+| ------ | ----- |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+
+#### Dark mode
+
+| Before | After |
+| ------ | ----- |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
+| Cell   | Cell  |
 
 ---
 
