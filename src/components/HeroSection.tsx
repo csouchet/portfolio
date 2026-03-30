@@ -8,7 +8,7 @@ export function HeroSection() {
     <Box
       component="section"
       style={{
-        minHeight: 'calc(100vh - 60px)',
+        minHeight: 'calc(100vh - 80px)',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -17,13 +17,13 @@ export function HeroSection() {
         background: `
           radial-gradient(
             circle at 50% 30%,
-            rgba(99,102,241,0.12),
+            rgba(99,102,241,0.14),
             transparent 60%
           ),
           linear-gradient(
             to bottom,
             transparent,
-            rgba(0,0,0,0.02)
+            rgba(0,0,0,0.03)
           )
         `,
       }}
@@ -31,7 +31,7 @@ export function HeroSection() {
       <Container size="sm">
         <Stack
           align="center"
-          gap="xl"
+          gap="lg"
           style={{
             textAlign: 'center',
             maxWidth: '65ch',
@@ -42,14 +42,14 @@ export function HeroSection() {
           <Title
             order={1}
             style={{
-              lineHeight: 1.05,
-              letterSpacing: '-0.04em',
+              lineHeight: 1.03,
+              letterSpacing: '-0.035em',
             }}
           >
             {siteConfig.name}
           </Title>
 
-          <Text size="lg" c="dimmed">
+          <Text size="lg" c="dimmed" style={{ opacity: 0.85 }}>
             Ingénieure développeuse senior Java & React
           </Text>
 
@@ -66,54 +66,67 @@ export function HeroSection() {
             </span>
           </Text>
 
-          {/* 🎯 CTA */}
           <Box style={{ position: 'relative' }}>
-            {/* glow */}
+            {/* Glow */}
             <Box
               style={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 180,
-                height: 180,
-                background: 'rgba(99,102,241,0.25)',
-                filter: 'blur(90px)',
+                transform: 'translate(-50%, -45%)',
+                width: 220,
+                height: 220,
+                background: 'rgba(99,102,241,0.14)',
+                filter: 'blur(140px)',
                 borderRadius: '50%',
                 zIndex: 0,
               }}
             />
 
-            <Button
-              component="a"
-              href="projects"
-              size="md"
-              radius="xl"
+            <Stack
+              align="center"
+              gap="xs"
               style={{
                 position: 'relative',
                 zIndex: 1,
-                background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
-                boxShadow: '0 10px 30px rgba(79,70,229,0.35)',
               }}
             >
-              Voir mes projets
-            </Button>
+              <Button
+                component="a"
+                href="/projects"
+                size="md"
+                radius="xl"
+                style={{
+                  background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+                  boxShadow: '0 10px 30px rgba(79,70,229,0.35)',
+                  transition: 'all 0.2s ease',
+                  cursor: 'pointer',
+                }}
+                styles={{
+                  root: {
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 14px 40px rgba(79,70,229,0.45)',
+                    },
+                    '&:focusVisible:not(:hover)': {
+                      outline: '2px solid var(--mantine-color-blue-5)',
+                      outlineOffset: '2px',
+                    },
+                  },
+                }}
+              >
+                Voir mes projets
+              </Button>
 
-            <Text
-              size="sm"
-              c="dimmed"
-              style={{
-                marginTop: 12,
-                opacity: 0.8,
-              }}
-            >
-              Disponible pour missions freelance
-            </Text>
+              <Text size="sm" c="dimmed" style={{ opacity: 0.8 }}>
+                Disponible pour missions freelance
+              </Text>
+            </Stack>
           </Box>
         </Stack>
       </Container>
 
-      {/* 🌿 bottom fade */}
+      {/* 🌿 Bottom fade */}
       <Box
         style={{
           position: 'absolute',
