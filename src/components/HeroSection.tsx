@@ -1,64 +1,66 @@
 'use client';
 
-import { Container, Title, Text, Button, Stack } from '@mantine/core';
+import { Container, Title, Text, Button, Stack, Box } from '@mantine/core';
+import { useEffect, useState } from 'react';
+import { siteConfig } from '@/config/site';
 
 export function HeroSection() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setVisible(true), 80);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <Container
-      size="sm"
+    <Box
+      component="section"
       style={{
-        minHeight: '100vh',
+        minHeight: 'calc(100vh - 60px)',
         display: 'flex',
         alignItems: 'center',
       }}
     >
-      <Stack
-        align="center"
-        gap="lg"
-        style={{
-          width: '100%',
-          textAlign: 'center',
-          maxWidth: '65ch',
-          margin: '0 auto',
-        }}
-      >
-        {/* Name */}
-        <Title
-          order={1}
+      <Container size="sm">
+        <Stack
+          align="center"
+          gap="lg"
           style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            lineHeight: 1.2,
-          }}
-        >
-          Céline Souchet
-        </Title>
+            textAlign: 'center',
+            maxWidth: '65ch',
+            margin: '0 auto',
 
-        {/* Tagline */}
-        <Text
-          size="lg"
-          c="dimmed"
-          style={{
-            lineHeight: 1.6,
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(24px)',
+            transition: 'opacity 0.6s ease, transform 0.6s ease',
           }}
         >
-          Frontend developer crafting clean, accessible and meaningful digital
-          experiences.
-        </Text>
+          <Title order={1}>{siteConfig.name}</Title>
 
-        {/* CTA */}
-        <Button
-          size="md"
-          radius="xl"
-          variant="filled"
-          component="a"
-          href="#projects"
-          style={{
-            marginTop: '0.5rem',
-          }}
-        >
-          View my work
-        </Button>
-      </Stack>
-    </Container>
+          <Text size="lg" c="dimmed">
+            Ingénieure développeuse senior Java & React
+            <br />
+            <span
+              style={{
+                color: 'var(--mantine-color-text)',
+                fontWeight: 500,
+              }}
+            >
+              Des expériences fiables, accessibles et soigneusement conçues
+            </span>
+          </Text>
+
+          <Stack gap="xs" align="center">
+            <Button component="a" href="#projects">
+              Voir mes projets
+            </Button>
+
+            <Text size="sm" c="dimmed">
+              Disponible pour missions freelance
+            </Text>
+          </Stack>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
