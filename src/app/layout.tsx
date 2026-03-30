@@ -45,18 +45,19 @@ export default function RootLayout({
       {...mantineHtmlProps}
     >
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
+
       <body>
-        <MantineProvider theme={theme}>
-          <Header />
-          <main>{children}</main>
-        </MantineProvider>
+      <MantineProvider theme={theme} defaultColorScheme="auto">
+        <Header />
+        <main>{children}</main>
+      </MantineProvider>
       </body>
     </html>
   );

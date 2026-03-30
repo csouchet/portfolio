@@ -14,6 +14,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 
 import { siteConfig } from '@/config/site';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -52,33 +53,36 @@ export default function Header() {
         px="md"
         py="xs"
         style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1000,
-          backgroundColor: 'white',
-          borderBottom: '1px solid var(--mantine-color-gray-3)',
+            position: 'sticky',
+            top: 0,
+            zIndex: 1000,
+            backgroundColor: 'var(--mantine-color-body)',
+            borderBottom: '1px solid var(--mantine-color-default-border)',
         }}
       >
-        <Group justify="space-between" align="center">
+          <Group justify="space-between" align="center">
           {/* Logo */}
-          <Text
-            component={Link}
-            href="/"
-            fw={700}
-            size="md"
-            style={{ textDecoration: 'none' }}
-          >
-            {siteConfig.name}
-          </Text>
+              <Text
+                  component={Link}
+                  href="/"
+                  fw={700}
+                  size="md"
+                  style={{ textDecoration: 'none' }}
+              >
+                  {siteConfig.name}
+              </Text>
 
-          {/* Desktop navigation */}
-          <Group gap="xl" visibleFrom="sm">
-            {links}
+              {/* Desktop navigation */}
+              <Group gap="xl" visibleFrom="sm">
+                  {links}
+              </Group>
+
+              <Group gap="sm">
+                  <ThemeToggle />
+                  {/* Mobile burger */}
+                  <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+              </Group>
           </Group>
-
-          {/* Mobile burger */}
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-        </Group>
       </Container>
 
       {/* Mobile menu */}
