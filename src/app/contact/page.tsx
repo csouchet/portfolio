@@ -1,3 +1,11 @@
+import ComingSoonPage from '@/components/ComingSoonPage';
+
 export default function Page() {
-  return <div>🛠️ Contact page — coming soon</div>;
+  return (
+    <ComingSoonPage
+      emoji="📬"
+      title="Contact bientôt disponible"
+      description="Un formulaire de contact sera ajouté prochainement."
+    />
+  );
 }

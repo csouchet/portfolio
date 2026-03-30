@@ -1,3 +1,11 @@
+import ComingSoonPage from '@/components/ComingSoonPage';
+
 export default function Page() {
-  return <div>🛠️ Articles page — coming soon</div>;
+  return (
+    <ComingSoonPage
+      emoji="✍️"
+      title="Articles à venir"
+      description="Je partagerai bientôt mes retours d’expérience."
+    />
+  );
 }
