@@ -3,5 +3,76 @@
 import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+  primaryColor: 'blue',
+
+  fontFamily: 'system-ui, -apple-system, sans-serif',
+
+  defaultRadius: 'md',
+
+  spacing: {
+    xs: '0.5rem',
+    sm: '0.75rem',
+    md: '1rem',
+    lg: '1.5rem',
+    xl: '2rem',
+  },
+
+  headings: {
+    fontWeight: '700',
+    sizes: {
+      h1: { fontSize: '2rem', lineHeight: '1.2' },
+      h2: { fontSize: '1.6rem', lineHeight: '1.3' },
+      h3: { fontSize: '1.3rem', lineHeight: '1.4' },
+    },
+  },
+
+  components: {
+    /* Layout */
+    Container: {
+      defaultProps: {
+        size: 'lg',
+        px: 'md', // ✔ mobile-first padding
+      },
+    },
+
+    /* Typography */
+    Text: {
+      styles: {
+        root: {
+          lineHeight: 1.5,
+        },
+      },
+    },
+
+    Title: {
+      styles: {
+        root: {
+          letterSpacing: '-0.5px',
+        },
+      },
+    },
+
+    /* Buttons */
+    Button: {
+      defaultProps: {
+        radius: 'xl',
+      },
+    },
+
+    /* Links */
+    Anchor: {
+      styles: {
+        root: {
+          textUnderlineOffset: '2px',
+        },
+      },
+    },
+  },
+
+  /* Tokens UX réutilisables */
+  other: {
+    layout: {
+      textMaxWidth: '65ch',
+    },
+  },
 });
