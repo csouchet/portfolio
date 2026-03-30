@@ -2,19 +2,6 @@
    ROOT (mobile-first)
 ========================= */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-/* Dark mode auto */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 /* =========================
    BASE LAYOUT
 ========================= */
@@ -29,8 +16,8 @@ body {
   display: flex;
   flex-direction: column;
 
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--mantine-color-body);
+  color: var(--mantine-color-text);
 
   font-family:
     system-ui,

@@ -3,7 +3,22 @@
 import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
-  primaryColor: 'blue',
+  colors: {
+    brand: [
+      '#eef2ff',
+      '#e0e7ff',
+      '#c7d2fe',
+      '#a5b4fc',
+      '#818cf8',
+      '#6366f1',
+      '#4f46e5',
+      '#4338ca',
+      '#3730a3',
+      '#312e81',
+    ],
+  },
+
+  primaryColor: 'brand',
 
   fontFamily: 'system-ui, -apple-system, sans-serif',
 
@@ -65,6 +80,12 @@ export const theme = createTheme({
         root: {
           textUnderlineOffset: '2px',
         },
+      },
+    },
+
+    ActionIcon: {
+      defaultProps: {
+        radius: 'xl',
       },
     },
   },

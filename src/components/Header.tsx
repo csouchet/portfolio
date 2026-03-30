@@ -36,11 +36,32 @@ export default function Header() {
         component={Link}
         href={link.href}
         onClick={close}
-        fw={isActive ? 600 : 400}
-        c={isActive ? 'blue.7' : 'dimmed'}
-        size="lg"
+        size="sm"
+        fw={500}
+        aria-current={isActive ? 'page' : undefined}
+        style={{
+          position: 'relative',
+          padding: '4px 0',
+          color: isActive
+            ? 'var(--mantine-color-text)'
+            : 'var(--mantine-color-dimmed)',
+        }}
       >
         {link.label}
+
+        {isActive && (
+          <span
+            style={{
+              position: 'absolute',
+              bottom: -6,
+              left: 0,
+              right: 0,
+              height: 2,
+              borderRadius: 999,
+              background: 'var(--mantine-color-blue-6)',
+            }}
+          />
+        )}
       </Anchor>
     );
   });
@@ -53,36 +74,44 @@ export default function Header() {
         px="md"
         py="xs"
         style={{
-            position: 'sticky',
-            top: 0,
-            zIndex: 1000,
-            backgroundColor: 'var(--mantine-color-body)',
-            borderBottom: '1px solid var(--mantine-color-default-border)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 1000,
+          backdropFilter: 'blur(10px)',
+          backgroundColor:
+            'light-dark(rgba(255,255,255,0.6), rgba(10,10,10,0.6))',
+          borderBottom: '1px solid var(--mantine-color-default-border)',
         }}
       >
-          <Group justify="space-between" align="center">
+        <Group justify="space-between" align="center">
           {/* Logo */}
-              <Text
-                  component={Link}
-                  href="/"
-                  fw={700}
-                  size="md"
-                  style={{ textDecoration: 'none' }}
-              >
-                  {siteConfig.name}
-              </Text>
+          <Text
+            component={Link}
+            href="/"
+            fw={700}
+            size="md"
+            style={{ textDecoration: 'none' }}
+          >
+            {siteConfig.name}
+          </Text>
 
-              {/* Desktop navigation */}
-              <Group gap="xl" visibleFrom="sm">
-                  {links}
-              </Group>
-
-              <Group gap="sm">
-                  <ThemeToggle />
-                  {/* Mobile burger */}
-                  <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-              </Group>
+          {/* Desktop navigation */}
+          <Group gap="xl" visibleFrom="sm">
+            {links}
           </Group>
+
+          <Group gap="sm">
+            <ThemeToggle />
+            {/* Mobile burger */}
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              hiddenFrom="sm"
+              size="sm"
+              aria-label="Toggle navigation"
+            />
+          </Group>
+        </Group>
       </Container>
 
       {/* Mobile menu */}
@@ -92,6 +121,10 @@ export default function Header() {
         title="Menu"
         padding="md"
         size="100%"
+        overlayProps={{
+          opacity: 0.55,
+          blur: 4,
+        }}
       >
         <Stack gap="lg" mt="md">
           {links}
