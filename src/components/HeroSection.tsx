@@ -22,8 +22,18 @@ export function HeroSection() {
         position: 'relative',
         overflow: 'hidden',
 
-        background:
-          'radial-gradient(circle at 50% 30%, rgba(99,102,241,0.10), transparent 60%)',
+        background: `
+  radial-gradient(
+    circle at 50% 30%,
+    rgba(99,102,241,0.12),
+    transparent 60%
+  ),
+  linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,0,0,0.02)
+  )
+`,
       }}
     >
       <Container size="sm">
@@ -40,23 +50,20 @@ export function HeroSection() {
             transition: 'opacity 0.7s ease, transform 0.7s ease',
           }}
         >
-          {/* 👤 NAME */}
           <Title
             order={1}
             style={{
               lineHeight: 1.05,
-              letterSpacing: '-0.035em',
+              letterSpacing: '-0.04em',
             }}
           >
             {siteConfig.name}
           </Title>
 
-          {/* 🧠 ROLE */}
           <Text size="lg" c="dimmed">
             Ingénieure développeuse senior Java & React
           </Text>
 
-          {/* ✨ VALUE PROP */}
           <Text
             size="lg"
             style={{
@@ -80,8 +87,10 @@ export function HeroSection() {
               component="a"
               href="#projects"
               size="md"
+              radius="xl"
               style={{
-                boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
+                background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+                boxShadow: '0 10px 30px rgba(79,70,229,0.35)',
                 transition: 'transform 0.15s ease, box-shadow 0.15s ease',
               }}
               onMouseEnter={e => {
@@ -98,7 +107,19 @@ export function HeroSection() {
               Voir mes projets
             </Button>
 
-            <Text size="sm" c="dimmed">
+            <Box
+              style={{
+                position: 'absolute',
+                width: 200,
+                height: 200,
+                background: 'rgba(99,102,241,0.15)',
+                filter: 'blur(80px)',
+                borderRadius: '50%',
+                zIndex: 0,
+              }}
+            />
+
+            <Text size="sm" c="dimmed" style={{ opacity: 0.8 }}>
               Disponible pour missions freelance
             </Text>
           </Stack>
