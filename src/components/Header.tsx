@@ -77,10 +77,11 @@ export default function Header() {
           position: 'sticky',
           top: 0,
           zIndex: 1000,
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(12px)',
           backgroundColor:
-            'light-dark(rgba(255,255,255,0.6), rgba(10,10,10,0.6))',
+            'light-dark(rgba(255,255,255,0.7), rgba(10,10,10,0.7))',
           borderBottom: '1px solid var(--mantine-color-default-border)',
+          boxShadow: '0 1px 0 rgba(0,0,0,0.05)',
         }}
       >
         <Group justify="space-between" align="center">

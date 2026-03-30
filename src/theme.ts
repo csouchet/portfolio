@@ -87,6 +87,11 @@ export const theme = createTheme({
       defaultProps: {
         radius: 'xl',
       },
+      styles: {
+        root: {
+          transition: 'all 0.2s ease',
+        },
+      },
     },
   },
 
