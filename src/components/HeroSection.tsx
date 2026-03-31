@@ -93,7 +93,7 @@ export function HeroSection() {
             >
               <Button
                 component="a"
-                href="/projects"
+                href="/contact"
                 size="md"
                 radius="xl"
                 style={{
@@ -115,7 +115,7 @@ export function HeroSection() {
                   },
                 }}
               >
-                Voir mes projets
+                Me contacter
               </Button>
 
               <Text size="sm" c="dimmed" style={{ opacity: 0.8 }}>
