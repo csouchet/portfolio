@@ -8,7 +8,7 @@ type Props = {
   description: string;
   children: ReactNode;
 
-  cta: {
+  cta?: {
     label: string;
     href: string;
   };
@@ -60,16 +60,18 @@ export function HomeSection({
           {children}
 
           {/* CTA */}
-          <Button
-            component="a"
-            href={cta.href}
-            variant="subtle"
-            size="md"
-            style={{ alignSelf: 'flex-start' }}
-            rightSection="→"
-          >
-            {cta.label}
-          </Button>
+          {cta && (
+            <Button
+              component="a"
+              href={cta.href}
+              variant="subtle"
+              size="md"
+              style={{ alignSelf: 'flex-start' }}
+              rightSection="→"
+            >
+              {cta.label}
+            </Button>
+          )}
         </Stack>
       </Container>
     </Box>
