@@ -28,12 +28,12 @@ export function FreelanceCTASection() {
         <Grid.Col span={{ base: 12, md: 5 }}>
           <Stack
             gap="sm"
-            p="lg"
+            p="xl"
             ml={{ md: 'auto' }}
             style={{
-              border: '1px solid var(--mantine-color-dark-4)',
+              border: '1px solid var(--mantine-color-dark-6)',
               borderRadius: '16px',
-              background: 'rgba(255, 255, 255, 0.02)',
+              background: 'rgba(255, 255, 255, 0.01)',
               backdropFilter: 'blur(6px)',
             }}
           >
@@ -67,7 +67,6 @@ export function FreelanceCTASection() {
               href="/contact"
               variant="light"
               radius="xl"
-              fullWidth
               styles={{
                 root: {
                   transition: 'transform 0.15s ease',
