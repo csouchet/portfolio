@@ -8,7 +8,7 @@ export function FreelanceCTASection() {
   return (
     <HomeSection
       title="Un projet en tête ?"
-      description="Je suis disponible pour de nouvelles collaborations à partir de mi-novembre."
+      description="Disponible pour de nouvelles collaborations."
       gradientPosition="left"
     >
       <Grid gutter="xl" align="center">
