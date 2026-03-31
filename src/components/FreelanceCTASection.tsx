@@ -6,14 +6,10 @@ import Link from 'next/link';
 
 export function FreelanceCTASection() {
   return (
-    <HomeSection
-      title="Un projet en tête ?"
-      description="Disponible pour de nouvelles collaborations."
-      gradientPosition="left"
-    >
+    <HomeSection title="Freelance" gradientPosition="left">
       <Grid gutter="xl" align="center">
         {/* LEFT — contenu */}
-        <Grid.Col span={{ base: 12, md: 7 }}>
+        <Grid.Col span={{ base: 12, md: 6 }}>
           <Stack gap="md">
             <Text size="md" maw="55ch">
               J’interviens sur des projets où la qualité d’exécution, la clarté
@@ -29,13 +25,15 @@ export function FreelanceCTASection() {
         </Grid.Col>
 
         {/* RIGHT — encart */}
-        <Grid.Col span={{ base: 12, md: 5 }}>
+        <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper
-            p="lg"
-            radius="md"
+            p="xl"
+            radius="lg"
             withBorder
             style={{
-              background: 'rgba(255,255,255,0.02)',
+              background:
+                'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.02))',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
             }}
           >
             <Stack gap="md">
@@ -55,15 +53,14 @@ export function FreelanceCTASection() {
                 </Badge>
 
                 <Text size="sm" c="dimmed">
-                  Missions freelance
+                  Freelance
                 </Text>
               </Group>
 
               <Button
                 component={Link}
                 href="/contact"
-                fullWidth
-                size="md"
+                size="lg"
                 radius="xl"
                 styles={{
                   root: {
@@ -74,7 +71,7 @@ export function FreelanceCTASection() {
                   },
                 }}
               >
-                Discuter de votre projet
+                Discuter
               </Button>
             </Stack>
           </Paper>

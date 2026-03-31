@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 
 type Props = {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
 
   cta?: {
@@ -51,9 +51,11 @@ export function HomeSection({
           <Stack gap={6}>
             <Title order={2}>{title}</Title>
 
-            <Text size="md" c={{ light: 'gray.6', dark: 'gray.4' }} lh={1.5}>
-              {description}
-            </Text>
+            {description && (
+              <Text size="md" c={{ light: 'gray.6', dark: 'gray.4' }} lh={1.5}>
+                {description}
+              </Text>
+            )}
           </Stack>
 
           {/* Content */}
