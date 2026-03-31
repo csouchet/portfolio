@@ -1,7 +1,8 @@
 'use client';
 
-import { Card, Text, Group, Badge, Stack } from '@mantine/core';
+import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 import { Article } from '@/types/article';
+import { BaseCard } from './BaseCard';
 
 type Props = {
   article: Article;
@@ -14,42 +15,7 @@ export function ArticleCard({ article }: Props) {
   });
 
   return (
-    <Card
-      component="a"
-      href={article.url}
-      target="_blank"
-      radius="md"
-      withBorder
-      p="lg"
-      style={theme => ({
-        textDecoration: 'none',
-        transition: 'all 180ms ease',
-
-        backgroundColor: 'var(--mantine-color-body)',
-        border: '1px solid var(--mantine-color-default-border)',
-
-        background: `
-          linear-gradient(
-            to bottom,
-            var(--mantine-color-body),
-            rgba(99,102,241,0.05)
-          )
-        `,
-
-        '@media (hover: hover)': {
-          '&:hover': {
-            transform: 'translateY(-6px)',
-            boxShadow: theme.shadows.lg,
-            borderColor: 'var(--mantine-color-brand-4)',
-          },
-        },
-
-        '&:focusVisible': {
-          outline: `2px solid var(--mantine-color-brand-5)`,
-          outlineOffset: 2,
-        },
-      })}
-    >
+    <BaseCard>
       <Stack gap="sm">
         {/* Header */}
         <Group justify="space-between">
@@ -63,7 +29,7 @@ export function ArticleCard({ article }: Props) {
         </Group>
 
         {/* Title */}
-        <Text fw={600} size="md" style={{ lineHeight: 1.4 }}>
+        <Text fw={600} size="md" lineClamp={3}>
           {article.title}
         </Text>
 
@@ -77,10 +43,33 @@ export function ArticleCard({ article }: Props) {
         </Group>
 
         {/* CTA */}
-        <Text size="sm" fw={500} c="brand.6" style={{ marginTop: '4px' }}>
+        <Anchor
+          href={article.url}
+          target="_blank"
+          size="sm"
+          fw={500}
+          c="brand.6"
+          style={{ alignSelf: 'flex-start' }}
+          styles={{
+            root: {
+              textDecoration: 'none',
+              transition: 'all 120ms ease',
+
+              '&:hover': {
+                textDecoration: 'underline',
+                color: 'var(--mantine-color-brand-7)',
+              },
+
+              '&:focusVisible': {
+                outline: '2px solid var(--mantine-color-brand-5)',
+                outlineOffset: 2,
+              },
+            },
+          }}
+        >
           Lire l’article →
-        </Text>
+        </Anchor>
       </Stack>
-    </Card>
+    </BaseCard>
   );
 }

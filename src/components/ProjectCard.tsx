@@ -1,8 +1,9 @@
 'use client';
 
-import { Card, Text, Group, Badge, Stack, Button } from '@mantine/core';
+import { Text, Group, Badge, Stack, Button } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { Project } from '@/types/project';
+import { BaseCard } from '@/components/BaseCard';
 
 type Props = {
   project: Project;
@@ -10,58 +11,19 @@ type Props = {
 
 export function ProjectCard({ project }: Props) {
   return (
-    <Card
-      component="a"
-      href={project.github}
-      target="_blank"
-      radius="md"
-      withBorder
-      p="lg"
-      style={theme => ({
-        textDecoration: 'none',
-        transition: 'all 180ms ease',
-
-        backgroundColor: 'var(--mantine-color-body)',
-        border: '1px solid var(--mantine-color-default-border)',
-
-        '@media (hover: hover)': {
-          '&:hover': {
-            transform: 'translateY(-6px)',
-            boxShadow: theme.shadows.lg,
-            borderColor: 'var(--mantine-color-brand-4)',
-
-            background: `
-              linear-gradient(
-                to bottom,
-                var(--mantine-color-body),
-                rgba(99,102,241,0.05)
-              )
-            `,
-          },
-        },
-
-        '&:focusVisible': {
-          outline: `2px solid var(--mantine-color-brand-5)`,
-          outlineOffset: 2,
-        },
-      })}
-    >
+    <BaseCard>
       <Stack gap="sm">
+        {/* Title */}
         <Text fw={600} size="lg">
           {project.title}
         </Text>
 
-        <Text
-          size="sm"
-          c="dimmed"
-          style={theme => ({
-            maxWidth: theme.other.layout.textMaxWidth,
-          })}
-          lineClamp={3}
-        >
+        {/* Description */}
+        <Text size="sm" c="dimmed" lineClamp={3}>
           {project.description}
         </Text>
 
+        {/* Stack */}
         <Group gap="xs">
           {project.stack.map(tech => (
             <Badge key={tech} variant="light" color="brand">
@@ -70,7 +32,11 @@ export function ProjectCard({ project }: Props) {
           ))}
         </Group>
 
+        {/* CTA */}
         <Button
+          component="a"
+          href={project.github}
+          target="_blank"
           variant="light"
           color="brand"
           leftSection={<IconBrandGithub size={16} />}
@@ -80,12 +46,23 @@ export function ProjectCard({ project }: Props) {
               fontWeight: 500,
               alignSelf: 'flex-start',
               backgroundColor: 'rgba(99,102,241,0.12)',
+              transition: 'all 150ms ease',
+
+              '&:hover': {
+                backgroundColor: 'rgba(99,102,241,0.2)',
+                transform: 'translateY(-1px)',
+              },
+
+              '&:focusVisible': {
+                outline: '2px solid var(--mantine-color-brand-5)',
+                outlineOffset: 2,
+              },
             },
           }}
         >
           Voir sur GitHub
         </Button>
       </Stack>
-    </Card>
+    </BaseCard>
   );
 }
