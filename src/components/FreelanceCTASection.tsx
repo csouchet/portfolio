@@ -1,14 +1,14 @@
 'use client';
 
 import { HomeSection } from './HomeSection';
-import { Text, Stack, Badge, Group, Grid, Button, Paper } from '@mantine/core';
+import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
 import Link from 'next/link';
 
 export function FreelanceCTASection() {
   return (
     <HomeSection title="Collaboration" gradientPosition="left">
       <Grid gutter="xl" align="center">
-        {/* LEFT */}
+        {/* LEFT — contenu */}
         <Grid.Col span={{ base: 12, md: 7 }}>
           <Stack gap="md">
             <Text size="md" maw="55ch">
@@ -24,11 +24,22 @@ export function FreelanceCTASection() {
           </Stack>
         </Grid.Col>
 
-        {/* RIGHT */}
+        {/* RIGHT — infos + CTA léger */}
         <Grid.Col span={{ base: 12, md: 5 }}>
-          <Stack gap="xs" align="flex-start" ml={{ md: 'auto' }}>
+          <Stack gap="sm" align="flex-start" ml={{ md: 'auto' }}>
             <Group gap="xs">
-              <Badge variant="light" color="green" radius="xl">
+              <Badge
+                variant="light"
+                color="green"
+                radius="xl"
+                size="md"
+                styles={{
+                  root: {
+                    textTransform: 'none',
+                    fontWeight: 500,
+                  },
+                }}
+              >
                 Disponible mi-novembre
               </Badge>
 
@@ -37,18 +48,26 @@ export function FreelanceCTASection() {
               </Text>
             </Group>
 
-            <Text size="sm" c="dimmed">
+            <Text size="sm" c="gray.5">
               Grenoble • Remote possible
             </Text>
 
             <Button
               component={Link}
               href="/contact"
-              variant="subtle"
+              variant="light"
               size="sm"
-              px={0}
+              radius="xl"
+              styles={{
+                root: {
+                  transition: 'transform 0.15s ease',
+                  '&:hover': {
+                    transform: 'translateY(-1px)',
+                  },
+                },
+              }}
             >
-              Accéder au contact →
+              Contacter
             </Button>
           </Stack>
         </Grid.Col>
