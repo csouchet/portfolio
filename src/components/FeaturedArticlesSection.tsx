@@ -1,6 +1,14 @@
 'use client';
 
-import { Container, Title, Text, Stack, SimpleGrid, Box } from '@mantine/core';
+import {
+  Container,
+  Title,
+  Text,
+  Stack,
+  SimpleGrid,
+  Button,
+  Box,
+} from '@mantine/core';
 import { articles } from '@/data/articles';
 import { ArticleCard } from './ArticleCard';
 
@@ -16,6 +24,11 @@ export function FeaturedArticlesSection() {
         paddingBlock: theme.other.layout.sectionSpacing,
 
         background: `
+          radial-gradient(
+            circle at 80% 0%,
+            rgba(99,102,241,0.05),
+            transparent 50%
+          ),
           linear-gradient(
             to bottom,
             transparent,
@@ -49,6 +62,18 @@ export function FeaturedArticlesSection() {
               <ArticleCard key={article.id} article={article} />
             ))}
           </SimpleGrid>
+
+          {/* CTA (🔥 cohérence avec Projects) */}
+          <Button
+            component="a"
+            href="/articles"
+            variant="subtle"
+            size="md"
+            style={{ alignSelf: 'flex-start' }}
+            rightSection="→"
+          >
+            Voir tous les articles
+          </Button>
         </Stack>
       </Container>
     </Box>

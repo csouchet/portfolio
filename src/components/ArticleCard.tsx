@@ -28,6 +28,14 @@ export function ArticleCard({ article }: Props) {
         backgroundColor: 'var(--mantine-color-body)',
         border: '1px solid var(--mantine-color-default-border)',
 
+        background: `
+          linear-gradient(
+            to bottom,
+            var(--mantine-color-body),
+            rgba(99,102,241,0.05)
+          )
+        `,
+
         '@media (hover: hover)': {
           '&:hover': {
             transform: 'translateY(-6px)',
@@ -43,6 +51,7 @@ export function ArticleCard({ article }: Props) {
       })}
     >
       <Stack gap="sm">
+        {/* Header */}
         <Group justify="space-between">
           <Badge variant="light" color="brand">
             {article.platform}
@@ -53,10 +62,12 @@ export function ArticleCard({ article }: Props) {
           </Text>
         </Group>
 
-        <Text fw={600} size="md">
+        {/* Title */}
+        <Text fw={600} size="md" style={{ lineHeight: 1.4 }}>
           {article.title}
         </Text>
 
+        {/* Tags */}
         <Group gap="xs">
           {article.tags.slice(0, 2).map(tag => (
             <Badge key={tag} variant="subtle" color="gray">
@@ -65,7 +76,8 @@ export function ArticleCard({ article }: Props) {
           ))}
         </Group>
 
-        <Text size="sm" c="dimmed">
+        {/* CTA */}
+        <Text size="sm" fw={500} c="brand.6" style={{ marginTop: '4px' }}>
           Lire l’article →
         </Text>
       </Stack>
