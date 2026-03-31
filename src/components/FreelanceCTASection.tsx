@@ -26,7 +26,17 @@ export function FreelanceCTASection() {
 
         {/* RIGHT — infos + CTA léger */}
         <Grid.Col span={{ base: 12, md: 5 }}>
-          <Stack gap="sm" align="flex-start" ml={{ md: 'auto' }}>
+          <Stack
+            gap="sm"
+            p="lg"
+            ml={{ md: 'auto' }}
+            style={{
+              border: '1px solid var(--mantine-color-dark-4)',
+              borderRadius: '16px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              backdropFilter: 'blur(6px)',
+            }}
+          >
             <Group gap="xs">
               <Badge
                 variant="light"
@@ -56,8 +66,8 @@ export function FreelanceCTASection() {
               component={Link}
               href="/contact"
               variant="light"
-              size="sm"
               radius="xl"
+              fullWidth
               styles={{
                 root: {
                   transition: 'transform 0.15s ease',
