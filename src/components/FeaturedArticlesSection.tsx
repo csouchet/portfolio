@@ -1,16 +1,9 @@
 'use client';
 
-import {
-  Container,
-  Title,
-  Text,
-  Stack,
-  SimpleGrid,
-  Button,
-  Box,
-} from '@mantine/core';
+import { SimpleGrid } from '@mantine/core';
 import { articles } from '@/data/articles';
 import { ArticleCard } from './ArticleCard';
+import { HomeSection } from './HomeSection';
 
 export function FeaturedArticlesSection() {
   const featuredArticles = articles
@@ -18,64 +11,20 @@ export function FeaturedArticlesSection() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <Box
-      component="section"
-      style={theme => ({
-        paddingBlock: theme.other.layout.sectionSpacing,
-
-        background: `
-          radial-gradient(
-            circle at 80% 0%,
-            rgba(99,102,241,0.05),
-            transparent 50%
-          ),
-          linear-gradient(
-            to bottom,
-            transparent,
-            var(--mantine-color-body)
-          )
-        `,
-
-        borderTop: `1px solid var(--mantine-color-default-border)`,
-      })}
+    <HomeSection
+      title="Articles"
+      description="Une sélection d’articles techniques autour du testing, du CI/CD et de la data."
+      cta={{
+        label: 'Voir tous les articles',
+        href: '/articles',
+      }}
+      gradientPosition="right"
     >
-      <Container>
-        <Stack gap="xl" mt="md">
-          {/* Header */}
-          <Stack gap={6}>
-            <Title order={2}>Articles</Title>
-
-            <Text
-              c="dimmed"
-              style={theme => ({
-                maxWidth: theme.other.layout.textMaxWidth,
-              })}
-            >
-              Une sélection d’articles techniques autour du testing, du CI/CD et
-              de la data.
-            </Text>
-          </Stack>
-
-          {/* Grid */}
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-            {featuredArticles.map(article => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </SimpleGrid>
-
-          {/* CTA (🔥 cohérence avec Projects) */}
-          <Button
-            component="a"
-            href="/articles"
-            variant="subtle"
-            size="md"
-            style={{ alignSelf: 'flex-start' }}
-            rightSection="→"
-          >
-            Voir tous les articles
-          </Button>
-        </Stack>
-      </Container>
-    </Box>
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+        {featuredArticles.map(article => (
+          <ArticleCard key={article.id} article={article} />
+        ))}
+      </SimpleGrid>
+    </HomeSection>
   );
 }
