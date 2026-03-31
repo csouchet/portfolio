@@ -16,16 +16,9 @@ export function BaseCard({ children, ...props }: Props) {
       {...props}
       styles={theme => ({
         root: {
-          textDecoration: 'none',
           transition: 'all 180ms ease',
-
           backgroundColor: 'var(--mantine-color-body)',
           border: '1px solid var(--mantine-color-default-border)',
-
-          // 👉 transition pour les liens enfants
-          '& a': {
-            transition: 'all 120ms ease',
-          },
 
           '@media (hover: hover)': {
             '&:hover': {
@@ -40,13 +33,6 @@ export function BaseCard({ children, ...props }: Props) {
                   rgba(99,102,241,0.05)
                 )
               `,
-
-              // 🔥 hover synchronisé
-              '& a': {
-                textDecoration: 'underline',
-                color: 'var(--mantine-color-brand-7)',
-                transform: 'translateX(2px)',
-              },
             },
           },
 

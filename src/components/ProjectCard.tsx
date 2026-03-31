@@ -42,16 +42,15 @@ export function ProjectCard({ project }: Props) {
           color="brand"
           leftSection={<IconBrandGithub size={16} />}
           mt="sm"
-          styles={{
+          styles={theme => ({
             root: {
               fontWeight: 500,
               alignSelf: 'flex-start',
-              backgroundColor: 'rgba(99,102,241,0.12)',
               transition: 'all 150ms ease',
 
               '&:hover': {
-                backgroundColor: 'rgba(99,102,241,0.2)',
-                transform: 'translateY(-1px)',
+                transform: 'translateY(-2px)',
+                boxShadow: theme.shadows.sm,
               },
 
               '&:focusVisible': {
@@ -59,7 +58,7 @@ export function ProjectCard({ project }: Props) {
                 outlineOffset: 2,
               },
             },
-          }}
+          })}
         >
           Voir sur GitHub
         </Button>

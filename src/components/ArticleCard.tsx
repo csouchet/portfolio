@@ -49,7 +49,10 @@ export function ArticleCard({ article }: Props) {
           size="sm"
           fw={500}
           c="brand.6"
-          style={{ alignSelf: 'flex-start' }}
+          style={{
+            alignSelf: 'flex-start',
+            transition: 'all 120ms ease',
+          }}
         >
           Lire l’article →
         </Anchor>
