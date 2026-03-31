@@ -8,8 +8,8 @@ export function FreelanceCTASection() {
   return (
     <HomeSection title="Collaboration" gradientPosition="left">
       <Grid gutter="xl" align="center">
-        {/* LEFT — contenu */}
-        <Grid.Col span={{ base: 12, md: 6 }}>
+        {/* LEFT */}
+        <Grid.Col span={{ base: 12, md: 7 }}>
           <Stack gap="md">
             <Text size="md" maw="55ch">
               J’interviens sur des projets où la qualité d’exécution, la clarté
@@ -24,57 +24,33 @@ export function FreelanceCTASection() {
           </Stack>
         </Grid.Col>
 
-        {/* RIGHT — encart */}
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper
-            p="xl"
-            radius="lg"
-            withBorder
-            style={{
-              background:
-                'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.02))',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-            }}
-          >
-            <Stack gap="md">
-              <Group gap="xs">
-                <Badge
-                  variant="light"
-                  color="green"
-                  radius="xl"
-                  styles={{
-                    root: {
-                      textTransform: 'none',
-                      fontWeight: 500,
-                    },
-                  }}
-                >
-                  Disponible mi-novembre
-                </Badge>
+        {/* RIGHT */}
+        <Grid.Col span={{ base: 12, md: 5 }}>
+          <Stack gap="xs" align="flex-start" ml={{ md: 'auto' }}>
+            <Group gap="xs">
+              <Badge variant="light" color="green" radius="xl">
+                Disponible mi-novembre
+              </Badge>
 
-                <Text size="sm" c="dimmed">
-                  Freelance
-                </Text>
-              </Group>
+              <Text size="sm" c="dimmed">
+                Freelance
+              </Text>
+            </Group>
 
-              <Button
-                component={Link}
-                href="/contact"
-                size="lg"
-                radius="xl"
-                styles={{
-                  root: {
-                    transition: 'transform 0.15s ease',
-                    '&:hover': {
-                      transform: 'translateY(-1px)',
-                    },
-                  },
-                }}
-              >
-                Me contacter
-              </Button>
-            </Stack>
-          </Paper>
+            <Text size="sm" c="dimmed">
+              Grenoble • Remote possible
+            </Text>
+
+            <Button
+              component={Link}
+              href="/contact"
+              variant="subtle"
+              size="sm"
+              px={0}
+            >
+              Accéder au contact →
+            </Button>
+          </Stack>
         </Grid.Col>
       </Grid>
     </HomeSection>
