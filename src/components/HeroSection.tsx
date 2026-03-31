@@ -61,7 +61,7 @@ export function HeroSection() {
             }}
           >
             Des expériences fiables, accessibles et{' '}
-            <span style={{ color: 'var(--mantine-color-blue-6)' }}>
+            <span style={{ color: 'var(--mantine-color-brand-6)' }}>
               soigneusement conçues
             </span>
           </Text>
@@ -109,7 +109,7 @@ export function HeroSection() {
                       boxShadow: '0 14px 40px rgba(79,70,229,0.45)',
                     },
                     '&:focusVisible:not(:hover)': {
-                      outline: '2px solid var(--mantine-color-blue-5)',
+                      outline: '2px solid var(--mantine-color-brand-5)',
                       outlineOffset: '2px',
                     },
                   },
