@@ -1,12 +1,14 @@
 'use client';
 
 import { HeroSection } from '@/components/HeroSection';
+import { FeaturedProjectsSection } from '@/components/FeaturedProjectsSection';
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      {/*      <ProjectsSection />
+      <FeaturedProjectsSection />
+      {/*
       <AboutSection />
       <ContactSection />*/}
     </main>
