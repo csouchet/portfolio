@@ -1,7 +1,7 @@
 'use client';
 
 import { HomeSection } from './HomeSection';
-import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
+import { Text, Stack, Badge, Group, Grid, Button, Paper } from '@mantine/core';
 import Link from 'next/link';
 
 export function FreelanceCTASection() {
@@ -28,46 +28,56 @@ export function FreelanceCTASection() {
           </Stack>
         </Grid.Col>
 
-        {/* RIGHT — CTA */}
+        {/* RIGHT — encart */}
         <Grid.Col span={{ base: 12, md: 5 }}>
-          <Stack gap="md" align="flex-start" ml={{ md: 'auto' }}>
-            <Group gap="xs">
-              <Badge
-                variant="light"
-                color="green"
+          <Paper
+            p="lg"
+            radius="md"
+            withBorder
+            style={{
+              background: 'rgba(255,255,255,0.02)',
+            }}
+          >
+            <Stack gap="md">
+              <Group gap="xs">
+                <Badge
+                  variant="light"
+                  color="green"
+                  radius="xl"
+                  styles={{
+                    root: {
+                      textTransform: 'none',
+                      fontWeight: 500,
+                    },
+                  }}
+                >
+                  Disponible mi-novembre
+                </Badge>
+
+                <Text size="sm" c="dimmed">
+                  Missions freelance
+                </Text>
+              </Group>
+
+              <Button
+                component={Link}
+                href="/contact"
+                fullWidth
+                size="md"
                 radius="xl"
                 styles={{
                   root: {
-                    textTransform: 'none',
-                    fontWeight: 500,
+                    transition: 'transform 0.15s ease',
+                    '&:hover': {
+                      transform: 'translateY(-1px)',
+                    },
                   },
                 }}
               >
-                Disponible mi-novembre
-              </Badge>
-
-              <Text size="sm" c="dimmed">
-                Missions freelance
-              </Text>
-            </Group>
-
-            <Button
-              component={Link}
-              href="/contact"
-              size="md"
-              radius="xl"
-              styles={{
-                root: {
-                  transition: 'transform 0.15s ease',
-                  '&:hover': {
-                    transform: 'translateY(-1px)',
-                  },
-                },
-              }}
-            >
-              Discuter de votre projet
-            </Button>
-          </Stack>
+                Discuter de votre projet
+              </Button>
+            </Stack>
+          </Paper>
         </Grid.Col>
       </Grid>
     </HomeSection>
