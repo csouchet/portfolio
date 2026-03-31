@@ -51,12 +51,7 @@ export function HomeSection({
           <Stack gap={6}>
             <Title order={2}>{title}</Title>
 
-            <Text
-              c="dimmed"
-              style={theme => ({
-                maxWidth: theme.other.layout.textMaxWidth,
-              })}
-            >
+            <Text size="md" c={{ light: 'gray.6', dark: 'gray.4' }} lh={1.5}>
               {description}
             </Text>
           </Stack>
