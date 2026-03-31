@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export function FreelanceCTASection() {
   return (
-    <HomeSection title="Freelance" gradientPosition="left">
+    <HomeSection title="Collaboration" gradientPosition="left">
       <Grid gutter="xl" align="center">
         {/* LEFT — contenu */}
         <Grid.Col span={{ base: 12, md: 6 }}>
@@ -71,7 +71,7 @@ export function FreelanceCTASection() {
                   },
                 }}
               >
-                Discuter
+                Me contacter
               </Button>
             </Stack>
           </Paper>
