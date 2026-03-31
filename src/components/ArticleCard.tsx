@@ -50,22 +50,6 @@ export function ArticleCard({ article }: Props) {
           fw={500}
           c="brand.6"
           style={{ alignSelf: 'flex-start' }}
-          styles={{
-            root: {
-              textDecoration: 'none',
-              transition: 'all 120ms ease',
-
-              '&:hover': {
-                textDecoration: 'underline',
-                color: 'var(--mantine-color-brand-7)',
-              },
-
-              '&:focusVisible': {
-                outline: '2px solid var(--mantine-color-brand-5)',
-                outlineOffset: 2,
-              },
-            },
-          }}
         >
           Lire l’article →
         </Anchor>

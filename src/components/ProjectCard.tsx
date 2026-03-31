@@ -3,7 +3,7 @@
 import { Text, Group, Badge, Stack, Button } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { Project } from '@/types/project';
-import { BaseCard } from '@/components/BaseCard';
+import { BaseCard } from './BaseCard';
 
 type Props = {
   project: Project;
@@ -37,6 +37,7 @@ export function ProjectCard({ project }: Props) {
           component="a"
           href={project.github}
           target="_blank"
+          rel="noopener noreferrer"
           variant="light"
           color="brand"
           leftSection={<IconBrandGithub size={16} />}
