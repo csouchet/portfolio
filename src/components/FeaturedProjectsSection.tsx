@@ -24,7 +24,7 @@ export function FeaturedProjectsSection() {
         background: `
           radial-gradient(
             circle at 20% 0%,
-            rgba(99,102,241,0.08),
+            rgba(99,102,241,0.06),
             transparent 50%
           ),
           linear-gradient(

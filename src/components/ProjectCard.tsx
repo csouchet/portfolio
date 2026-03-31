@@ -20,7 +20,9 @@ export function ProjectCard({ project }: Props) {
       style={theme => ({
         textDecoration: 'none',
         transition: 'all 180ms ease',
+
         backgroundColor: 'var(--mantine-color-body)',
+        border: '1px solid var(--mantine-color-default-border)',
 
         '@media (hover: hover)': {
           '&:hover': {
@@ -31,7 +33,7 @@ export function ProjectCard({ project }: Props) {
             background: `
               linear-gradient(
                 to bottom,
-                transparent,
+                var(--mantine-color-body),
                 rgba(99,102,241,0.05)
               )
             `,
@@ -76,6 +78,7 @@ export function ProjectCard({ project }: Props) {
           styles={{
             root: {
               fontWeight: 500,
+              alignSelf: 'flex-start',
               backgroundColor: 'rgba(99,102,241,0.12)',
             },
           }}
