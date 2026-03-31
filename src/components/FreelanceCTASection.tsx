@@ -1,7 +1,7 @@
 'use client';
 
 import { HomeSection } from './HomeSection';
-import { Text, Stack, Badge, Group, Box, Button } from '@mantine/core';
+import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
 import Link from 'next/link';
 
 export function FreelanceCTASection() {
@@ -11,66 +11,65 @@ export function FreelanceCTASection() {
       description="Je suis disponible pour de nouvelles collaborations à partir de mi-novembre."
       gradientPosition="left"
     >
-      <Box
-        pl="md"
-        style={{
-          borderLeft: '2px solid var(--mantine-color-brand-6)',
-        }}
-      >
-        <Stack gap="md">
-          <Text size="md" maw="55ch">
-            J’interviens sur des projets où la qualité d’exécution, la clarté et
-            la fiabilité ne sont pas négociables.
-          </Text>
+      <Grid gutter="xl" align="center">
+        {/* LEFT — contenu */}
+        <Grid.Col span={{ base: 12, md: 7 }}>
+          <Stack gap="md">
+            <Text size="md" maw="55ch">
+              J’interviens sur des projets où la qualité d’exécution, la clarté
+              et la fiabilité ne sont pas négociables.
+            </Text>
 
-          <Text size="md" maw="55ch">
-            Mon approche combine exigence technique et sens du détail, pour
-            construire des interfaces durables, performantes et réellement
-            utiles.
-          </Text>
+            <Text size="md" maw="55ch">
+              Mon approche combine exigence technique et sens du détail, pour
+              construire des interfaces durables, performantes et réellement
+              utiles.
+            </Text>
+          </Stack>
+        </Grid.Col>
 
-          <Group gap="xs" mt="xs">
-            <Badge
-              variant="light"
-              color="green"
+        {/* RIGHT — CTA */}
+        <Grid.Col span={{ base: 12, md: 5 }}>
+          <Stack gap="md" align="flex-start" ml={{ md: 'auto' }}>
+            <Group gap="xs">
+              <Badge
+                variant="light"
+                color="green"
+                radius="xl"
+                styles={{
+                  root: {
+                    textTransform: 'none',
+                    fontWeight: 500,
+                  },
+                }}
+              >
+                Disponible mi-novembre
+              </Badge>
+
+              <Text size="sm" c="dimmed">
+                Missions freelance
+              </Text>
+            </Group>
+
+            <Button
+              component={Link}
+              href="/contact"
+              size="md"
               radius="xl"
               styles={{
                 root: {
-                  textTransform: 'none',
-                  fontWeight: 500,
-                  letterSpacing: '0.01em',
+                  transition: 'transform 0.15s ease',
+                  '&:hover': {
+                    transform: 'translateY(-1px)',
+                  },
                 },
               }}
             >
-              Disponible mi-novembre
-            </Badge>
-
-            <Text size="sm" c="dimmed">
-              Missions freelance
-            </Text>
-          </Group>
-
-          {/* CTA principal */}
-          <Button
-            component={Link}
-            href="/contact"
-            size="md"
-            radius="xl"
-            mt="sm"
-            aria-label="Discuter de votre projet freelance"
-            styles={{
-              root: {
-                transition: 'transform 0.15s ease',
-                '&:hover': {
-                  transform: 'translateY(-1px)',
-                },
-              },
-            }}
-          >
-            Discuter de votre projet
-          </Button>
-        </Stack>
-      </Box>
+              Discuter de votre projet
+            </Button>
+          </Stack>
+        </Grid.Col>
+      </Grid>
     </HomeSection>
   );
 }
