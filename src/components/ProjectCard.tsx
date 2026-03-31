@@ -19,13 +19,22 @@ export function ProjectCard({ project }: Props) {
       p="lg"
       style={theme => ({
         textDecoration: 'none',
-        transition: 'all 150ms ease',
+        transition: 'all 180ms ease',
+        backgroundColor: 'var(--mantine-color-body)',
 
         '@media (hover: hover)': {
           '&:hover': {
-            transform: 'translateY(-4px)',
-            boxShadow: theme.shadows.md,
+            transform: 'translateY(-6px)',
+            boxShadow: theme.shadows.lg,
             borderColor: 'var(--mantine-color-brand-4)',
+
+            background: `
+              linear-gradient(
+                to bottom,
+                transparent,
+                rgba(99,102,241,0.05)
+              )
+            `,
           },
         },
 
@@ -64,6 +73,12 @@ export function ProjectCard({ project }: Props) {
           color="brand"
           leftSection={<IconBrandGithub size={16} />}
           mt="sm"
+          styles={{
+            root: {
+              fontWeight: 500,
+              backgroundColor: 'rgba(99,102,241,0.12)',
+            },
+          }}
         >
           Voir sur GitHub
         </Button>

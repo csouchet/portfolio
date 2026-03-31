@@ -22,6 +22,11 @@ export function FeaturedProjectsSection() {
         paddingBlock: theme.other.layout.sectionSpacing,
 
         background: `
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(99,102,241,0.08),
+            transparent 50%
+          ),
           linear-gradient(
             to bottom,
             transparent,
@@ -33,7 +38,7 @@ export function FeaturedProjectsSection() {
       })}
     >
       <Container>
-        <Stack gap="xl">
+        <Stack gap="xl" mt="md">
           {/* Header */}
           <Stack gap={6}>
             <Title order={2}>Projets sélectionnés</Title>
@@ -64,8 +69,9 @@ export function FeaturedProjectsSection() {
             variant="subtle"
             size="md"
             style={{ alignSelf: 'flex-start' }}
+            rightSection="→"
           >
-            Voir tous les projets →
+            Voir tous les projets
           </Button>
         </Stack>
       </Container>
