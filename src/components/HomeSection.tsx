@@ -5,10 +5,10 @@ import { ReactNode } from 'react';
 
 type Props = {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
 
-  cta: {
+  cta?: {
     label: string;
     href: string;
   };
@@ -51,25 +51,29 @@ export function HomeSection({
           <Stack gap={6}>
             <Title order={2}>{title}</Title>
 
-            <Text size="md" c={{ light: 'gray.6', dark: 'gray.4' }} lh={1.5}>
-              {description}
-            </Text>
+            {description && (
+              <Text size="md" c={{ light: 'gray.6', dark: 'gray.4' }} lh={1.5}>
+                {description}
+              </Text>
+            )}
           </Stack>
 
           {/* Content */}
           {children}
 
           {/* CTA */}
-          <Button
-            component="a"
-            href={cta.href}
-            variant="subtle"
-            size="md"
-            style={{ alignSelf: 'flex-start' }}
-            rightSection="→"
-          >
-            {cta.label}
-          </Button>
+          {cta && (
+            <Button
+              component="a"
+              href={cta.href}
+              variant="subtle"
+              size="md"
+              style={{ alignSelf: 'flex-start' }}
+              rightSection="→"
+            >
+              {cta.label}
+            </Button>
+          )}
         </Stack>
       </Container>
     </Box>
