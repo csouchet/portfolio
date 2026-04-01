@@ -1,7 +1,8 @@
 'use client';
 
-import { Card, CardProps } from '@mantine/core';
 import { ReactNode } from 'react';
+
+import { Card, CardProps } from '@mantine/core';
 
 type Props = CardProps & {
   children: ReactNode;

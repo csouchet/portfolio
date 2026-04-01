@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { Geist, Geist_Mono } from 'next/font/google';
 
 // Import styles of packages that you've installed.
@@ -10,9 +11,9 @@ import {
   mantineHtmlProps,
 } from '@mantine/core';
 
-import { theme } from '@/theme';
-import { siteConfig } from '@/config/site';
 import Header from '@/components/Header';
+import { siteConfig } from '@/config/site';
+import { theme } from '@/theme';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

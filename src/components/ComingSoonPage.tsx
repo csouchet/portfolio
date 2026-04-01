@@ -1,5 +1,6 @@
-import { Container, Title, Text, Stack, Button } from '@mantine/core';
 import Link from 'next/link';
+
+import { Container, Title, Text, Stack, Button } from '@mantine/core';
 
 type Props = {
   title?: string;

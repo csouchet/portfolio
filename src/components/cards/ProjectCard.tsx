@@ -1,10 +1,13 @@
 'use client';
 
-import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
 import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
-import { Project } from '@/types/project';
-import { BaseCard } from './BaseCard';
+
+import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
+
 import { getChildProjects } from '@/lib/projects';
+import { Project } from '@/types/project';
+
+import { BaseCard } from './BaseCard';
 
 type Props = {
   project: Project;

@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 
 import {
   Container,
@@ -16,8 +17,8 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import { siteConfig } from '@/config/site';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { siteConfig } from '@/config/site';
 
 const navLinks = [
   { label: 'Home', href: '/' },
