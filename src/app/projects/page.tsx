@@ -58,7 +58,7 @@ export default function ProjectsPage() {
                     </Group>
 
                     <Box
-                      w={48}
+                      w={44}
                       h={3}
                       style={theme => ({
                         borderRadius: 999,
@@ -78,10 +78,31 @@ export default function ProjectsPage() {
                       style={{
                         display: 'flex',
                         justifyContent: 'center',
+                        paddingTop: 8,
                       }}
                     >
-                      <Box style={{ width: '100%', maxWidth: 520 }}>
-                        <ProjectCard project={projects[0]} />
+                      <Box
+                        style={{
+                          width: '100%',
+                          maxWidth: 520,
+                          position: 'relative',
+                        }}
+                      >
+                        {/* Glow subtil derrière */}
+                        <Box
+                          style={{
+                            position: 'absolute',
+                            inset: -12,
+                            borderRadius: 20,
+                            background:
+                              'radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%)',
+                            zIndex: 0,
+                          }}
+                        />
+
+                        <Box style={{ position: 'relative', zIndex: 1 }}>
+                          <ProjectCard project={projects[0]} />
+                        </Box>
                       </Box>
                     </Box>
                   ) : (
@@ -98,7 +119,7 @@ export default function ProjectsPage() {
                       mt="lg"
                       style={{
                         height: 1,
-                        opacity: 0.06,
+                        opacity: 0.05,
                         background:
                           'linear-gradient(to right, transparent, currentColor, transparent)',
                       }}
