@@ -101,43 +101,6 @@ export const projects: Project[] = [
   },
 
   {
-    id: 'bonita-ui-builder',
-    title: 'Bonita UI Builder',
-    description:
-      'Plateforme low-code basée sur Appsmith avec architecture CI/CD avancée.',
-    stack: [
-      'Java',
-      'Spring',
-      'React',
-      'TypeScript',
-      'Junit',
-      'Cypress',
-      'Docker',
-      'GitHub Actions',
-      'Markdown',
-    ],
-    featured: true,
-    category: 'application',
-    contributions: [
-      'frontend',
-      'backend',
-      'ci-cd',
-      'testing',
-      'release',
-      'architecture',
-      'devex',
-    ],
-    highlights: [
-      'Pipelines CI/CD multi-composants avec orchestration complexe',
-      'Build conditionnel pour optimisation des temps et coûts',
-      'Docker multi-architecture (amd64 / arm64)',
-      'Automatisation complète du cycle de release (alpha → GA)',
-      'Structuration des standards et onboarding développeur',
-      'Scripts de migration pour sécuriser les upgrades',
-    ],
-  },
-
-  {
     id: 'bonita-process-insights',
     title: 'Bonita Process Insights',
     description:
@@ -181,6 +144,43 @@ export const projects: Project[] = [
       'Montée en compétence rapide sur Angular et JHipster',
       'Contribution fullstack',
       'Contribution à l’onboarding développeur',
+    ],
+  },
+
+  {
+    id: 'bonita-ui-builder',
+    title: 'Bonita UI Builder',
+    description:
+      'Plateforme low-code basée sur Appsmith avec architecture CI/CD avancée.',
+    stack: [
+      'Java',
+      'Spring',
+      'React',
+      'TypeScript',
+      'Junit',
+      'Cypress',
+      'Docker',
+      'GitHub Actions',
+      'Markdown',
+    ],
+    featured: true,
+    category: 'application',
+    contributions: [
+      'frontend',
+      'backend',
+      'ci-cd',
+      'testing',
+      'release',
+      'architecture',
+      'devex',
+    ],
+    highlights: [
+      'Pipelines CI/CD multi-composants avec orchestration complexe',
+      'Build conditionnel pour optimisation des temps et coûts',
+      'Docker multi-architecture (amd64 / arm64)',
+      'Automatisation complète du cycle de release (alpha → GA)',
+      'Structuration des standards et onboarding développeur',
+      'Scripts de migration pour sécuriser les upgrades',
     ],
   },
 

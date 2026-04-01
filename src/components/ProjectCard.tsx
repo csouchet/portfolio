@@ -89,22 +89,18 @@ export function ProjectCard({ project }: Props) {
             gradient={{ from: 'brand.5', to: 'brand.7' }}
             leftSection={<IconBrandGithub size={16} />}
             w="fit-content"
-            styles={theme => ({
-              root: {
-                fontWeight: 500,
-                transition: 'all 150ms ease',
-
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: theme.shadows.sm,
-                },
-
-                '&:focusVisible': {
-                  outline: `2px solid ${theme.colors.brand[5]}`,
-                  outlineOffset: 2,
-                },
-              },
-            })}
+            style={{
+              fontWeight: 500,
+              transition: 'all 150ms ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = 'var(--mantine-shadow-sm)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
           >
             Voir sur GitHub
           </Button>
@@ -120,57 +116,45 @@ export function ProjectCard({ project }: Props) {
                 Sous-projets
               </Text>
 
+              {/* Container léger */}
               <Box
                 p="sm"
                 style={{
-                  background: 'var(--mantine-color-default-hover)',
+                  background: 'rgba(255, 255, 255, 0.03)',
                   borderRadius: '8px',
-                  cursor: 'pointer',
-                  transition: 'all 120ms ease',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.background =
-                    'var(--mantine-color-default-border)';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.background =
-                    'var(--mantine-color-default-hover)';
-                  e.currentTarget.style.transform = 'none';
+                  border: '1px solid var(--mantine-color-dark-4)',
                 }}
               >
                 <Stack gap="xs">
                   {children.map(child => (
-                    <Stack
+                    <Box
                       key={child.id}
-                      gap={2}
+                      p="xs"
                       style={{
+                        borderRadius: '6px',
                         cursor: 'pointer',
+                        transition: 'all 120ms ease',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background =
+                          'var(--mantine-color-default-hover)';
+                        e.currentTarget.style.transform = 'translateX(4px)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.transform = 'none';
                       }}
                     >
-                      <Text
-                        size="sm"
-                        fw={500}
-                        style={{
-                          transition: 'color 120ms ease',
-                        }}
-                        styles={{
-                          root: {
-                            '@media (hover: hover)': {
-                              '&:hover': {
-                                color: 'var(--mantine-color-brand-6)',
-                              },
-                            },
-                          },
-                        }}
-                      >
-                        {child.title}
-                      </Text>
+                      <Stack gap={2}>
+                        <Text size="sm" fw={500}>
+                          {child.title}
+                        </Text>
 
-                      <Text size="xs" c="dimmed" lineClamp={2}>
-                        {child.description}
-                      </Text>
-                    </Stack>
+                        <Text size="xs" c="dimmed" lineClamp={2}>
+                          {child.description}
+                        </Text>
+                      </Stack>
+                    </Box>
                   ))}
                 </Stack>
               </Box>
