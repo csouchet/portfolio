@@ -32,7 +32,6 @@ export const projects: Project[] = [
       'SonarCloud',
     ],
     github: 'https://github.com/process-analytics/bpmn-visualization-js',
-    featured: true,
     parent: 'process-analytics',
     category: 'library',
     contributions: [
@@ -150,6 +149,7 @@ export const projects: Project[] = [
       'Optimisation des pipelines CI/CD',
       'Structuration des pratiques de développement',
     ],
+    featured: true,
   },
 
   {

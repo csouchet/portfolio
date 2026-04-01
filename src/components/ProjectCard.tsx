@@ -1,9 +1,10 @@
 'use client';
 
-import { Text, Group, Badge, Stack, Button } from '@mantine/core';
+import { Text, Group, Badge, Stack, Button, Divider } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { Project } from '@/types/project';
 import { BaseCard } from './BaseCard';
+import { getChildProjects } from '@/lib/projects';
 
 type Props = {
   project: Project;
@@ -21,13 +22,18 @@ const contributionColor: Record<string, string> = {
 };
 
 export function ProjectCard({ project }: Props) {
+  const children = getChildProjects(project.id);
+  const isParent = children.length > 0;
+
   return (
     <BaseCard>
       <Stack gap="sm">
+        {/* Title */}
         <Text fw={600} size="lg">
           {project.title}
         </Text>
 
+        {/* Description */}
         <Text size="sm" c="dimmed" lineClamp={3}>
           {project.description}
         </Text>
@@ -43,7 +49,7 @@ export function ProjectCard({ project }: Props) {
           </Stack>
         )}
 
-        {/* Contributions 🔥 */}
+        {/* Contributions */}
         {project.contributions && (
           <Group gap="xs">
             {project.contributions.map(c => (
@@ -96,6 +102,30 @@ export function ProjectCard({ project }: Props) {
           >
             Voir sur GitHub
           </Button>
+        )}
+
+        {/* Sous-projets */}
+        {isParent && (
+          <>
+            <Divider my="sm" />
+
+            <Stack gap="xs">
+              <Text size="sm" fw={500}>
+                Sous-projets
+              </Text>
+
+              {children.map(child => (
+                <Stack key={child.id} gap={2}>
+                  <Text size="sm" fw={500}>
+                    {child.title}
+                  </Text>
+                  <Text size="xs" c="dimmed" lineClamp={2}>
+                    {child.description}
+                  </Text>
+                </Stack>
+              ))}
+            </Stack>
+          </>
         )}
       </Stack>
     </BaseCard>
