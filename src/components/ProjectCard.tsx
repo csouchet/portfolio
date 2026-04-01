@@ -1,6 +1,6 @@
 'use client';
 
-import { Text, Group, Badge, Stack, Button, Divider } from '@mantine/core';
+import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { Project } from '@/types/project';
 import { BaseCard } from './BaseCard';
@@ -27,22 +27,29 @@ export function ProjectCard({ project }: Props) {
 
   return (
     <BaseCard>
-      <Stack gap="sm">
-        {/* Title */}
-        <Text fw={600} size="lg">
-          {project.title}
-        </Text>
+      <Stack gap="md">
+        {/* Header */}
+        <Stack gap={6}>
+          {project.category === 'product' && (
+            <Badge variant="light" color="red" w="fit-content">
+              Produit
+            </Badge>
+          )}
 
-        {/* Description */}
-        <Text size="sm" c="dimmed" lineClamp={3}>
-          {project.description}
-        </Text>
+          <Text fw={600} size="lg">
+            {project.title}
+          </Text>
+
+          <Text size="sm" c="dimmed" lineClamp={3}>
+            {project.description}
+          </Text>
+        </Stack>
 
         {/* Highlights */}
         {project.highlights && (
           <Stack gap={4}>
             {project.highlights.slice(0, 3).map(item => (
-              <Text key={item} size="xs" c="dimmed">
+              <Text key={item} size="sm" fw={500}>
                 • {item}
               </Text>
             ))}
@@ -60,32 +67,31 @@ export function ProjectCard({ project }: Props) {
           </Group>
         )}
 
-        {/* Stack */}
+        {/* Stack (désaccentuée) */}
         {project.stack && (
           <Group gap="xs">
             {project.stack.map(tech => (
-              <Badge key={tech} variant="light" color="brand">
+              <Badge key={tech} variant="subtle" color="gray">
                 {tech}
               </Badge>
             ))}
           </Group>
         )}
 
-        {/* GitHub */}
+        {/* CTA */}
         {project.github && (
           <Button
             component="a"
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            variant="light"
-            color="brand"
+            variant="gradient"
+            gradient={{ from: 'brand.5', to: 'brand.7' }}
             leftSection={<IconBrandGithub size={16} />}
-            mt="sm"
+            w="fit-content"
             styles={theme => ({
               root: {
                 fontWeight: 500,
-                alignSelf: 'flex-start',
                 transition: 'all 150ms ease',
 
                 '&:hover': {
@@ -94,7 +100,7 @@ export function ProjectCard({ project }: Props) {
                 },
 
                 '&:focusVisible': {
-                  outline: '2px solid var(--mantine-color-brand-5)',
+                  outline: `2px solid ${theme.colors.brand[5]}`,
                   outlineOffset: 2,
                 },
               },
@@ -107,23 +113,34 @@ export function ProjectCard({ project }: Props) {
         {/* Sous-projets */}
         {isParent && (
           <>
-            <Divider my="sm" />
+            <Divider />
 
             <Stack gap="xs">
               <Text size="sm" fw={500}>
                 Sous-projets
               </Text>
 
-              {children.map(child => (
-                <Stack key={child.id} gap={2}>
-                  <Text size="sm" fw={500}>
-                    {child.title}
-                  </Text>
-                  <Text size="xs" c="dimmed" lineClamp={2}>
-                    {child.description}
-                  </Text>
+              <Box
+                p="sm"
+                style={{
+                  background: 'var(--mantine-color-default-hover)',
+                  borderRadius: 8,
+                }}
+              >
+                <Stack gap="xs">
+                  {children.map(child => (
+                    <Stack key={child.id} gap={2}>
+                      <Text size="sm" fw={500}>
+                        {child.title}
+                      </Text>
+
+                      <Text size="xs" c="dimmed" lineClamp={2}>
+                        {child.description}
+                      </Text>
+                    </Stack>
+                  ))}
                 </Stack>
-              ))}
+              </Box>
             </Stack>
           </>
         )}
