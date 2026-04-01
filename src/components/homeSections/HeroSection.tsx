@@ -1,6 +1,7 @@
 'use client';
 
 import { Container, Title, Text, Button, Stack, Box } from '@mantine/core';
+
 import { siteConfig } from '@/config/site';
 
 export function HeroSection() {

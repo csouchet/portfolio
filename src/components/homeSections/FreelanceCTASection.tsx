@@ -1,8 +1,10 @@
 'use client';
 
-import { HomeSection } from './HomeSection';
-import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
 import Link from 'next/link';
+
+import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
+
+import { HomeSection } from './HomeSection';
 
 export function FreelanceCTASection() {
   return (

@@ -1,7 +1,8 @@
 'use client';
 
-import { Container, Title, Text, Stack, Box, Button } from '@mantine/core';
 import { ReactNode } from 'react';
+
+import { Container, Title, Text, Stack, Box, Button } from '@mantine/core';
 
 type Props = {
   title: string;

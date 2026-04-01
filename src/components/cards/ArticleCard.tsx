@@ -1,7 +1,9 @@
 'use client';
 
 import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
+
 import { Article } from '@/types/article';
+
 import { BaseCard } from './BaseCard';
 
 type Props = {
