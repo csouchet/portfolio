@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+
 import {
   Container,
   Group,
@@ -24,60 +26,74 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
+type NavItemProps = {
+  label: string;
+  href: string;
+  pathname: string;
+  onClick?: () => void;
+};
+
+function NavItem({ label, href, pathname, onClick }: NavItemProps) {
+  const [hovered, setHovered] = useState(false);
+
+  const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+  const isVisible = isActive || hovered;
+
+  return (
+    <Anchor
+      component={Link}
+      href={href}
+      underline="never"
+      onClick={onClick}
+      size="sm"
+      fw={500}
+      aria-current={isActive ? 'page' : undefined}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: 'relative',
+        padding: '4px 0',
+        color: isVisible
+          ? 'var(--mantine-color-text)'
+          : 'var(--mantine-color-dimmed)',
+        transition: 'color 0.2s ease',
+      }}
+    >
+      {label}
+
+      <Box
+        component="span"
+        style={{
+          position: 'absolute',
+          bottom: -6,
+          left: 0,
+          height: 2,
+          borderRadius: 999,
+          background: 'var(--mantine-color-blue-6)',
+          width: isVisible ? '100%' : '0%',
+          transition: 'width 0.2s ease',
+        }}
+      />
+    </Anchor>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [opened, { toggle, close }] = useDisclosure(false);
 
-  const links = navLinks.map(link => {
-    const isActive = pathname === link.href;
-
-    return (
-      <Anchor
-        key={link.label}
-        component={Link}
-        href={link.href}
-        onClick={close}
-        size="sm"
-        fw={500}
-        aria-current={isActive ? 'page' : undefined}
-        style={{
-          position: 'relative',
-          padding: '4px 0',
-          color: isActive
-            ? 'var(--mantine-color-text)'
-            : 'var(--mantine-color-dimmed)',
-        }}
-      >
-        {link.label}
-
-        {isActive && (
-          <span
-            style={{
-              position: 'absolute',
-              bottom: -6,
-              left: 0,
-              right: 0,
-              height: 2,
-              borderRadius: 999,
-              background: 'var(--mantine-color-blue-6)',
-            }}
-          />
-        )}
-      </Anchor>
-    );
-  });
-
   return (
     <Box
+      component="header"
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        backdropFilter: 'blur(12px)',
+        backdropFilter: 'blur(16px)',
         backgroundColor:
-          'light-dark(rgba(255,255,255,0.7), rgba(10,10,10,0.7))',
+          'light-dark(rgba(255,255,255,0.6), rgba(10,10,10,0.6))',
         borderBottom: '1px solid var(--mantine-color-default-border)',
-        boxShadow: '0 1px 0 rgba(0,0,0,0.05)',
       }}
     >
       {/* Top bar */}
@@ -89,19 +105,25 @@ export default function Header() {
             href="/"
             fw={700}
             size="md"
-            style={{ textDecoration: 'none' }}
+            style={{
+              textDecoration: 'none',
+              letterSpacing: '-0.02em',
+            }}
           >
             {siteConfig.name}
           </Text>
 
           {/* Desktop navigation */}
           <Group gap="xl" visibleFrom="sm">
-            {links}
+            {navLinks.map(link => (
+              <NavItem key={link.label} {...link} pathname={pathname} />
+            ))}
           </Group>
 
+          {/* Right actions */}
           <Group gap="sm">
             <ThemeToggle />
-            {/* Mobile burger */}
+
             <Burger
               opened={opened}
               onClick={toggle}
@@ -120,13 +142,24 @@ export default function Header() {
         title="Menu"
         padding="md"
         size="100%"
+        withCloseButton
+        trapFocus
+        closeOnClickOutside
+        closeOnEscape
         overlayProps={{
           opacity: 0.55,
           blur: 4,
         }}
       >
         <Stack gap="lg" mt="md">
-          {links}
+          {navLinks.map(link => (
+            <NavItem
+              key={link.label}
+              {...link}
+              pathname={pathname}
+              onClick={close}
+            />
+          ))}
         </Stack>
       </Drawer>
     </Box>
