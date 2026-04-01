@@ -1,16 +1,16 @@
 'use client';
 
 import { SimpleGrid } from '@mantine/core';
-import { projects } from '@/data/projects';
 import { ProjectCard } from './ProjectCard';
 import { HomeSection } from './HomeSection';
+import { getFeaturedParentProjects } from '@/lib/projects';
 
 export function FeaturedProjectsSection() {
-  const featuredProjects = projects.filter(p => p.featured);
+  const featuredProjects = getFeaturedParentProjects();
 
   return (
     <HomeSection
-      title="Projets"
+      title="Projets clés"
       description="Une sélection de projets sur lesquels j’ai travaillé, avec un focus sur la performance, la scalabilité et l’expérience développeur."
       cta={{
         label: 'Voir tous les projets',
