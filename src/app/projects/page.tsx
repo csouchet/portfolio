@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, SimpleGrid, Title, Box } from '@mantine/core';
+import { Stack, SimpleGrid, Title, Text, Box, Group } from '@mantine/core';
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
@@ -33,32 +33,40 @@ export default function ProjectsPage() {
     <main>
       <HomeSection
         title="Projets & Contributions"
-        description="Une sélection de projets produits, librairies et contributions techniques, avec un focus sur la qualité, l’architecture et l’expérience développeur."
+        description="Je conçois des produits, librairies et outils techniques avec une attention particulière portée à l’architecture, la qualité et l’expérience développeur."
         gradientPosition="left"
       >
-        <Stack gap="3rem">
+        <Stack gap="3.5rem">
           {orderedCategories
             .filter(category => grouped[category]?.length)
             .map(category => (
-              <Stack key={category} gap="md">
-                {/* Category header */}
-                <Stack gap={4}>
-                  <Title order={3}>
-                    {categoryLabels[category] ?? category}
-                  </Title>
+              <Stack key={category} gap="lg">
+                <Stack gap={6}>
+                  <Group align="center" gap="sm">
+                    <Title order={3}>
+                      {categoryLabels[category] ?? category}
+                    </Title>
+
+                    <Text size="sm" c="dimmed">
+                      {grouped[category].length}
+                    </Text>
+                  </Group>
 
                   <Box
-                    w={40}
-                    h={3}
-                    style={{
+                    w={48}
+                    h={4}
+                    style={theme => ({
                       borderRadius: 999,
-                      background: 'var(--mantine-color-brand-5)',
-                      opacity: 0.6,
-                    }}
+                      background: `linear-gradient(
+                        90deg,
+                        ${theme.colors.brand[5]},
+                        ${theme.colors.brand[3]}
+                      )`,
+                      opacity: 0.8,
+                    })}
                   />
                 </Stack>
 
-                {/* Projects grid */}
                 <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
                   {grouped[category].map(project => (
                     <ProjectCard key={project.id} project={project} />
