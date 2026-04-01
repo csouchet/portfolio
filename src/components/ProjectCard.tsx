@@ -1,7 +1,7 @@
 'use client';
 
 import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
-import { IconBrandGithub } from '@tabler/icons-react';
+import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
 import { Project } from '@/types/project';
 import { BaseCard } from './BaseCard';
 import { getChildProjects } from '@/lib/projects';
@@ -27,8 +27,8 @@ export function ProjectCard({ project }: Props) {
 
   return (
     <BaseCard>
-      <Stack gap="md">
-        {/* Header */}
+      <Stack gap="lg">
+        {/* ---------------- HEADER ---------------- */}
         <Stack gap={6}>
           {project.category === 'product' && (
             <Badge variant="light" color="red" w="fit-content">
@@ -45,10 +45,10 @@ export function ProjectCard({ project }: Props) {
           </Text>
         </Stack>
 
-        {/* Highlights */}
+        {/* ---------------- HIGHLIGHTS ---------------- */}
         {project.highlights && (
           <Stack gap={4}>
-            {project.highlights.slice(0, 3).map(item => (
+            {project.highlights.map(item => (
               <Text key={item} size="sm" fw={500}>
                 • {item}
               </Text>
@@ -56,7 +56,7 @@ export function ProjectCard({ project }: Props) {
           </Stack>
         )}
 
-        {/* Contributions */}
+        {/* ---------------- CONTRIBUTIONS ---------------- */}
         {project.contributions && (
           <Group gap="xs">
             {project.contributions.map(c => (
@@ -67,7 +67,7 @@ export function ProjectCard({ project }: Props) {
           </Group>
         )}
 
-        {/* Stack (désaccentuée) */}
+        {/* ---------------- STACK ---------------- */}
         {project.stack && (
           <Group gap="xs">
             {project.stack.map(tech => (
@@ -78,7 +78,7 @@ export function ProjectCard({ project }: Props) {
           </Group>
         )}
 
-        {/* CTA */}
+        {/* ---------------- CTA ---------------- */}
         {project.github && (
           <Button
             component="a"
@@ -106,7 +106,7 @@ export function ProjectCard({ project }: Props) {
           </Button>
         )}
 
-        {/* Sous-projets */}
+        {/* ---------------- SUB PROJECTS ---------------- */}
         {isParent && (
           <>
             <Divider />
@@ -116,24 +116,30 @@ export function ProjectCard({ project }: Props) {
                 Sous-projets
               </Text>
 
-              {/* Container léger */}
+              {/* Container */}
               <Box
                 p="sm"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  borderRadius: '8px',
-                  border: '1px solid var(--mantine-color-dark-4)',
+                  background:
+                    'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.03))',
+                  borderRadius: '10px',
+                  border:
+                    '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
                 }}
               >
                 <Stack gap="xs">
                   {children.map(child => (
                     <Box
                       key={child.id}
-                      p="xs"
+                      p="sm"
                       style={{
-                        borderRadius: '6px',
+                        borderRadius: '8px',
                         cursor: 'pointer',
-                        transition: 'all 120ms ease',
+                        transition: 'all 140ms ease',
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        justifyContent: 'space-between',
+                        gap: '8px',
                       }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background =
@@ -145,7 +151,8 @@ export function ProjectCard({ project }: Props) {
                         e.currentTarget.style.transform = 'none';
                       }}
                     >
-                      <Stack gap={2}>
+                      {/* Texte */}
+                      <Stack gap={2} style={{ flex: 1 }}>
                         <Text size="sm" fw={500}>
                           {child.title}
                         </Text>
@@ -154,6 +161,19 @@ export function ProjectCard({ project }: Props) {
                           {child.description}
                         </Text>
                       </Stack>
+
+                      {/* Icône navigation (future-proof) */}
+                      <Box
+                        style={{
+                          opacity: 0.4,
+                          transition: 'opacity 120ms ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        className="child-arrow"
+                      >
+                        <IconChevronRight size={16} />
+                      </Box>
                     </Box>
                   ))}
                 </Stack>

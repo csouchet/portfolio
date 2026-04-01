@@ -109,7 +109,6 @@ export const projects: Project[] = [
     contributions: ['product', 'architecture', 'devex'],
     highlights: [
       'Visualisation avancée des données métier',
-      'Optimisation des pipelines CI/CD',
       'Structuration des pratiques de développement',
     ],
     featured: true,
