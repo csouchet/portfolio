@@ -124,13 +124,46 @@ export function ProjectCard({ project }: Props) {
                 p="sm"
                 style={{
                   background: 'var(--mantine-color-default-hover)',
-                  borderRadius: 8,
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  transition: 'all 120ms ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background =
+                    'var(--mantine-color-default-border)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background =
+                    'var(--mantine-color-default-hover)';
+                  e.currentTarget.style.transform = 'none';
                 }}
               >
                 <Stack gap="xs">
                   {children.map(child => (
-                    <Stack key={child.id} gap={2}>
-                      <Text size="sm" fw={500}>
+                    <Stack
+                      key={child.id}
+                      gap={2}
+                      style={{
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Text
+                        size="sm"
+                        fw={500}
+                        style={{
+                          transition: 'color 120ms ease',
+                        }}
+                        styles={{
+                          root: {
+                            '@media (hover: hover)': {
+                              '&:hover': {
+                                color: 'var(--mantine-color-brand-6)',
+                              },
+                            },
+                          },
+                        }}
+                      >
                         {child.title}
                       </Text>
 
