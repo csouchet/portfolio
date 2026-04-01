@@ -86,6 +86,9 @@ export const theme = createTheme({
     },
 
     Anchor: {
+      defaultProps: {
+        underline: 'never',
+      },
       styles: {
         root: {
           textUnderlineOffset: '3px',
