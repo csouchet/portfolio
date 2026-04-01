@@ -31,10 +31,9 @@ export function FreelanceCTASection() {
             p="xl"
             ml={{ md: 'auto' }}
             style={{
-              border: '1px solid var(--mantine-color-dark-6)',
+              border: '1px solid var(--mantine-color-default-border)',
               borderRadius: '16px',
-              background: 'rgba(255, 255, 255, 0.01)',
-              backdropFilter: 'blur(6px)',
+              background: 'var(--mantine-color-body)',
             }}
           >
             <Group gap="xs">
@@ -42,7 +41,7 @@ export function FreelanceCTASection() {
                 variant="light"
                 color="green"
                 radius="xl"
-                size="md"
+                size="sm"
                 styles={{
                   root: {
                     textTransform: 'none',
@@ -58,20 +57,29 @@ export function FreelanceCTASection() {
               </Text>
             </Group>
 
-            <Text size="sm" c="gray.5">
+            <Text size="sm" c="dimmed">
               Grenoble • Remote possible
             </Text>
 
             <Button
               component={Link}
               href="/contact"
-              variant="light"
               radius="xl"
+              style={{
+                background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+                boxShadow: '0 10px 30px rgba(79,70,229,0.35)',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+              }}
               styles={{
                 root: {
-                  transition: 'transform 0.15s ease',
                   '&:hover': {
-                    transform: 'translateY(-1px)',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 14px 40px rgba(79,70,229,0.45)',
+                  },
+                  '&:focusVisible:not(:hover)': {
+                    outline: '2px solid var(--mantine-color-brand-5)',
+                    outlineOffset: '2px',
                   },
                 },
               }}
