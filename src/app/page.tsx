@@ -1,9 +1,9 @@
 'use client';
 
-import { HeroSection } from '@/components/HeroSection';
-import { FeaturedProjectsSection } from '@/components/FeaturedProjectsSection';
-import { FeaturedArticlesSection } from '@/components/FeaturedArticlesSection';
-import { FreelanceCTASection } from '@/components/FreelanceCTASection';
+import { HeroSection } from '@/components/homeSections/HeroSection';
+import { FeaturedProjectsSection } from '@/components/homeSections/FeaturedProjectsSection';
+import { FeaturedArticlesSection } from '@/components/homeSections/FeaturedArticlesSection';
+import { FreelanceCTASection } from '@/components/homeSections/FreelanceCTASection';
 
 export default function Home() {
   return (

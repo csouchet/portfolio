@@ -2,8 +2,8 @@
 
 import { SimpleGrid } from '@mantine/core';
 import { articles } from '@/data/articles';
-import { ArticleCard } from './ArticleCard';
-import { HomeSection } from './HomeSection';
+import { ArticleCard } from '@/components/cards/ArticleCard';
+import { HomeSection } from '@/components/homeSections/HomeSection';
 
 export function FeaturedArticlesSection() {
   const featuredArticles = articles

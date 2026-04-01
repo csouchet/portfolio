@@ -1,8 +1,8 @@
 'use client';
 
 import { SimpleGrid } from '@mantine/core';
-import { ProjectCard } from './ProjectCard';
-import { HomeSection } from './HomeSection';
+import { ProjectCard } from '@/components/cards/ProjectCard';
+import { HomeSection } from '@/components/homeSections/HomeSection';
 import { getFeaturedParentProjects } from '@/lib/projects';
 
 export function FeaturedProjectsSection() {
