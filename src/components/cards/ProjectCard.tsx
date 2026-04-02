@@ -31,15 +31,40 @@ export function ProjectCard({ project }: Props) {
   const isOpenSource = !!project.github;
 
   return (
-    <BaseCard>
+    <BaseCard
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Glow subtil (premium touch) */}
+      <Box
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background:
+            'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.08), transparent 40%)',
+          opacity: 0,
+          transition: 'opacity 200ms ease',
+        }}
+        className="card-glow"
+      />
+
       <Stack gap="md">
         {/* ---------------- HEADER ---------------- */}
         <Stack gap={6}>
           <Group justify="space-between" align="center">
-            {/* TYPE */}
+            {/* BADGES */}
             <Group gap="xs">
               {project.category === 'product' && (
-                <Badge variant="light" color="red">
+                <Badge
+                  variant="light"
+                  color="red"
+                  styles={{
+                    root: { fontWeight: 600 },
+                  }}
+                >
                   Produit
                 </Badge>
               )}
@@ -51,6 +76,7 @@ export function ProjectCard({ project }: Props) {
                   styles={{
                     root: {
                       fontWeight: 500,
+                      letterSpacing: '0.02em',
                     },
                   }}
                 >
@@ -60,15 +86,17 @@ export function ProjectCard({ project }: Props) {
             </Group>
 
             {/* COMPANY */}
-            <Text size="xs" c="dimmed">
+            <Text size="xs" c="dimmed" fw={500}>
               {project.company}
             </Text>
           </Group>
 
+          {/* TITLE */}
           <Text fw={600} size="lg">
             {project.title}
           </Text>
 
+          {/* DESCRIPTION */}
           <Text size="sm" c="dimmed" lineClamp={3}>
             {project.description}
           </Text>
@@ -120,7 +148,14 @@ export function ProjectCard({ project }: Props) {
               root: {
                 paddingInline: 0,
                 fontWeight: 500,
+                transition: 'all 150ms ease',
               },
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateX(2px)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'none';
             }}
           >
             Voir le code
