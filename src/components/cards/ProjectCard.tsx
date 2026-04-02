@@ -6,7 +6,7 @@ import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
 
 import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
 
-import { contributionColor } from '@/lib/projectColors';
+import { categoryColor, contributionColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 import { Project } from '@/types/project';
 
@@ -48,15 +48,13 @@ export function ProjectCard({ project }: Props) {
           <Group justify="space-between" align="center">
             {/* BADGES */}
             <Group gap="xs">
-              {project.category === 'product' && (
+              {project.category && (
                 <Badge
                   variant="light"
-                  color="red"
-                  styles={{
-                    root: { fontWeight: 600 },
-                  }}
+                  color={categoryColor[project.category] ?? 'gray'}
+                  styles={{ root: { fontWeight: 600 } }}
                 >
-                  Produit
+                  {project.category}
                 </Badge>
               )}
 

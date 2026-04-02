@@ -18,7 +18,7 @@ import {
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
 import { projects } from '@/data/projects';
-import { contributionColor } from '@/lib/projectColors';
+import { contributionColor, categoryColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 
 type Props = {
@@ -59,7 +59,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         gradientPosition="left"
       >
         <Stack gap="xl" maw={720}>
-          {/* BACK BUTTON */}
+          {/* BACK */}
           <Link
             href="/projects"
             style={{ textDecoration: 'none', width: 'fit-content' }}
@@ -72,13 +72,38 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* META */}
           <Group gap="xs">
             {project.category && (
-              <Badge variant="light">{project.category}</Badge>
+              <Badge
+                variant="light"
+                color={categoryColor[project.category] ?? 'gray'}
+                styles={{
+                  root: {
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                  },
+                }}
+              >
+                {project.category}
+              </Badge>
             )}
 
-            <Badge variant="subtle">{project.company}</Badge>
+            <Badge
+              variant="subtle"
+              color="gray"
+              styles={{
+                root: { fontWeight: 500 },
+              }}
+            >
+              {project.company}
+            </Badge>
 
             {project.github && (
-              <Badge color="green" variant="light">
+              <Badge
+                color="green"
+                variant="light"
+                styles={{
+                  root: { fontWeight: 600 },
+                }}
+              >
                 Open source
               </Badge>
             )}
@@ -135,7 +160,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
                 <Group gap="xs">
                   {project.stack.map(tech => (
-                    <Badge key={tech} variant="subtle">
+                    <Badge key={tech} variant="subtle" color="gray">
                       {tech}
                     </Badge>
                   ))}
@@ -157,6 +182,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     <Link
                       key={child.id}
                       href={`/projects/${child.id}`}
+                      aria-label={`Voir le sous-projet ${child.title}`}
                       style={{
                         textDecoration: 'none',
                         color: 'inherit',
@@ -193,7 +219,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* GITHUB CTA */}
+          {/* GITHUB */}
           {project.github && (
             <>
               <Divider />
