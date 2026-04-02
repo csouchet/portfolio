@@ -1,7 +1,8 @@
 'use client';
 
-import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
+import { Text, Group, Badge, Stack, Anchor, Image } from '@mantine/core';
 
+import { getArticleImage } from '@/lib/articles';
 import { Article } from '@/types/article';
 
 import { BaseCard } from './BaseCard';
@@ -20,6 +21,13 @@ export function ArticleCard({ article }: Props) {
     <BaseCard>
       <Stack gap="sm">
         {/* Header */}
+        <Image
+          src={getArticleImage(article)}
+          alt={article.title}
+          radius="md"
+          style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
+        />
+
         <Group justify="space-between">
           <Badge variant="light" color="brand">
             {article.platform}
