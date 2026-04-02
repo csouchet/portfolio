@@ -1,9 +1,12 @@
+export type ProjectCompany = 'Bonitasoft' | 'GB&Smith' | 'Personnel';
+
 export type ProjectCategory =
   | 'product'
   | 'library'
   | 'tooling'
   | 'application'
   | 'engine'
+  | 'plugin'
   | 'website';
 
 export type ProjectContribution =
@@ -14,12 +17,14 @@ export type ProjectContribution =
   | 'release'
   | 'devex'
   | 'architecture'
-  | 'product';
+  | 'product'
+  | 'packaging';
 
 export type Project = {
   id: string;
   title: string;
   description: string;
+
   stack?: string[];
   github?: string;
   featured?: boolean;
@@ -29,4 +34,6 @@ export type Project = {
 
   category?: ProjectCategory;
   contributions?: ProjectContribution[];
+
+  company: ProjectCompany;
 };

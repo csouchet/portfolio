@@ -22,27 +22,81 @@ const contributionColor: Record<string, string> = {
   devex: 'violet',
   architecture: 'pink',
   product: 'red',
+  packaging: 'gray',
 };
 
 export function ProjectCard({ project }: Props) {
   const children = getChildProjects(project.id);
   const isParent = children.length > 0;
+  const isOpenSource = !!project.github;
 
   return (
-    <BaseCard>
-      <Stack gap="lg">
+    <BaseCard
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Glow subtil (premium touch) */}
+      <Box
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background:
+            'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.08), transparent 40%)',
+          opacity: 0,
+          transition: 'opacity 200ms ease',
+        }}
+        className="card-glow"
+      />
+
+      <Stack gap="md">
         {/* ---------------- HEADER ---------------- */}
         <Stack gap={6}>
-          {project.category === 'product' && (
-            <Badge variant="light" color="red" w="fit-content">
-              Produit
-            </Badge>
-          )}
+          <Group justify="space-between" align="center">
+            {/* BADGES */}
+            <Group gap="xs">
+              {project.category === 'product' && (
+                <Badge
+                  variant="light"
+                  color="red"
+                  styles={{
+                    root: { fontWeight: 600 },
+                  }}
+                >
+                  Produit
+                </Badge>
+              )}
 
+              {isOpenSource && (
+                <Badge
+                  variant="subtle"
+                  color="green"
+                  styles={{
+                    root: {
+                      fontWeight: 500,
+                      letterSpacing: '0.02em',
+                    },
+                  }}
+                >
+                  Open source
+                </Badge>
+              )}
+            </Group>
+
+            {/* COMPANY */}
+            <Text size="xs" c="dimmed" fw={500}>
+              {project.company}
+            </Text>
+          </Group>
+
+          {/* TITLE */}
           <Text fw={600} size="lg">
             {project.title}
           </Text>
 
+          {/* DESCRIPTION */}
           <Text size="sm" c="dimmed" lineClamp={3}>
             {project.description}
           </Text>
@@ -50,10 +104,10 @@ export function ProjectCard({ project }: Props) {
 
         {/* ---------------- HIGHLIGHTS ---------------- */}
         {project.highlights && (
-          <Stack gap={4}>
+          <Stack gap={2}>
             {project.highlights.map(item => (
-              <Text key={item} size="sm" fw={500}>
-                • {item}
+              <Text key={item} size="sm" c="dimmed" style={{ lineHeight: 1.4 }}>
+                <span style={{ opacity: 0.6 }}>•</span> {item}
               </Text>
             ))}
           </Stack>
@@ -105,7 +159,7 @@ export function ProjectCard({ project }: Props) {
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            Voir sur GitHub
+            Voir le code
           </Button>
         )}
 
@@ -119,13 +173,12 @@ export function ProjectCard({ project }: Props) {
                 Sous-projets
               </Text>
 
-              {/* Container */}
               <Box
                 p="sm"
                 style={{
                   background:
                     'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.03))',
-                  borderRadius: '10px',
+                  borderRadius: 10,
                   border:
                     '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
                 }}
@@ -136,25 +189,23 @@ export function ProjectCard({ project }: Props) {
                       key={child.id}
                       p="sm"
                       style={{
-                        borderRadius: '8px',
+                        borderRadius: 8,
                         cursor: 'pointer',
-                        transition: 'all 140ms ease',
+                        transition: 'all 120ms ease',
                         display: 'flex',
-                        alignItems: 'flex-start',
                         justifyContent: 'space-between',
-                        gap: '8px',
+                        alignItems: 'center',
                       }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background =
                           'var(--mantine-color-default-hover)';
-                        e.currentTarget.style.transform = 'translateX(4px)';
+                        e.currentTarget.style.transform = 'translateX(3px)';
                       }}
                       onMouseLeave={e => {
                         e.currentTarget.style.background = 'transparent';
                         e.currentTarget.style.transform = 'none';
                       }}
                     >
-                      {/* Texte */}
                       <Stack gap={2} style={{ flex: 1 }}>
                         <Text size="sm" fw={500}>
                           {child.title}
@@ -165,18 +216,7 @@ export function ProjectCard({ project }: Props) {
                         </Text>
                       </Stack>
 
-                      {/* Icône navigation (future-proof) */}
-                      <Box
-                        style={{
-                          opacity: 0.4,
-                          transition: 'opacity 120ms ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        className="child-arrow"
-                      >
-                        <IconChevronRight size={16} />
-                      </Box>
+                      <IconChevronRight size={16} opacity={0.4} />
                     </Box>
                   ))}
                 </Stack>
