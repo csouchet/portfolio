@@ -54,7 +54,7 @@ export function ProjectCard({ project }: Props) {
                   color={categoryColor[project.category] ?? 'gray'}
                   styles={{ root: { fontWeight: 600 } }}
                 >
-                  {project.category}
+                  {project.category?.toUpperCase()}
                 </Badge>
               )}
 
@@ -76,7 +76,7 @@ export function ProjectCard({ project }: Props) {
 
             {/* COMPANY */}
             <Text size="xs" c="dimmed" fw={500}>
-              {project.company}
+              {project.company.toUpperCase()}
             </Text>
           </Group>
 

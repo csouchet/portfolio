@@ -82,7 +82,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   },
                 }}
               >
-                {project.category}
+                {project.category?.toUpperCase()}
               </Badge>
             )}
 
@@ -93,7 +93,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 root: { fontWeight: 500 },
               }}
             >
-              {project.company}
+              {project.company.toUpperCase()}
             </Badge>
 
             {project.github && (
