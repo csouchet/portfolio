@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
 
 import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
@@ -37,7 +39,7 @@ export function ProjectCard({ project }: Props) {
         overflow: 'hidden',
       }}
     >
-      {/* Glow subtil (premium touch) */}
+      {/* Glow */}
       <Box
         style={{
           position: 'absolute',
@@ -52,7 +54,7 @@ export function ProjectCard({ project }: Props) {
       />
 
       <Stack gap="md">
-        {/* ---------------- HEADER ---------------- */}
+        {/* HEADER */}
         <Stack gap={6}>
           <Group justify="space-between" align="center">
             {/* BADGES */}
@@ -93,7 +95,16 @@ export function ProjectCard({ project }: Props) {
 
           {/* TITLE */}
           <Text fw={600} size="lg">
-            {project.title}
+            <Link
+              href={`/projects/${project.id}`}
+              aria-label={`Voir le projet ${project.title}`}
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              {project.title}
+            </Link>
           </Text>
 
           {/* DESCRIPTION */}
@@ -102,7 +113,7 @@ export function ProjectCard({ project }: Props) {
           </Text>
         </Stack>
 
-        {/* ---------------- HIGHLIGHTS ---------------- */}
+        {/* HIGHLIGHTS */}
         {project.highlights && (
           <Stack gap={2}>
             {project.highlights.map(item => (
@@ -113,7 +124,7 @@ export function ProjectCard({ project }: Props) {
           </Stack>
         )}
 
-        {/* ---------------- CONTRIBUTIONS ---------------- */}
+        {/* CONTRIBUTIONS */}
         {project.contributions && (
           <Group gap="xs">
             {project.contributions.map(c => (
@@ -124,7 +135,7 @@ export function ProjectCard({ project }: Props) {
           </Group>
         )}
 
-        {/* ---------------- STACK ---------------- */}
+        {/* STACK */}
         {project.stack && (
           <Group gap="xs">
             {project.stack.map(tech => (
@@ -135,7 +146,7 @@ export function ProjectCard({ project }: Props) {
           </Group>
         )}
 
-        {/* ---------------- CTA ---------------- */}
+        {/* CTA GitHub */}
         {project.github && (
           <Button
             component="a"
@@ -163,7 +174,7 @@ export function ProjectCard({ project }: Props) {
           </Button>
         )}
 
-        {/* ---------------- SUB PROJECTS ---------------- */}
+        {/* SUBPROJECTS */}
         {isParent && (
           <>
             <Divider />
@@ -185,39 +196,47 @@ export function ProjectCard({ project }: Props) {
               >
                 <Stack gap="xs">
                   {children.map(child => (
-                    <Box
+                    <Link
                       key={child.id}
-                      p="sm"
+                      href={`/projects/${child.id}`}
+                      aria-label={`Voir le sous-projet ${child.title}`}
                       style={{
-                        borderRadius: 8,
-                        cursor: 'pointer',
-                        transition: 'all 120ms ease',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background =
-                          'var(--mantine-color-default-hover)';
-                        e.currentTarget.style.transform = 'translateX(3px)';
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.transform = 'none';
+                        textDecoration: 'none',
+                        color: 'inherit',
                       }}
                     >
-                      <Stack gap={2} style={{ flex: 1 }}>
-                        <Text size="sm" fw={500}>
-                          {child.title}
-                        </Text>
+                      <Box
+                        p="sm"
+                        style={{
+                          borderRadius: 8,
+                          transition: 'all 120ms ease',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.background =
+                            'var(--mantine-color-default-hover)';
+                          e.currentTarget.style.transform = 'translateX(3px)';
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.transform = 'none';
+                        }}
+                      >
+                        <Stack gap={2} style={{ flex: 1 }}>
+                          <Text size="sm" fw={500}>
+                            {child.title}
+                          </Text>
 
-                        <Text size="xs" c="dimmed" lineClamp={2}>
-                          {child.description}
-                        </Text>
-                      </Stack>
+                          <Text size="xs" c="dimmed" lineClamp={2}>
+                            {child.description}
+                          </Text>
+                        </Stack>
 
-                      <IconChevronRight size={16} opacity={0.4} />
-                    </Box>
+                        <IconChevronRight size={16} opacity={0.4} />
+                      </Box>
+                    </Link>
                   ))}
                 </Stack>
               </Box>
