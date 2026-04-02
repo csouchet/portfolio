@@ -6,6 +6,7 @@ import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
 
 import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
 
+import { contributionColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 import { Project } from '@/types/project';
 
@@ -13,18 +14,6 @@ import { BaseCard } from './BaseCard';
 
 type Props = {
   project: Project;
-};
-
-const contributionColor: Record<string, string> = {
-  frontend: 'blue',
-  backend: 'orange',
-  'ci-cd': 'cyan',
-  testing: 'grape',
-  release: 'lime',
-  devex: 'violet',
-  architecture: 'pink',
-  product: 'red',
-  packaging: 'gray',
 };
 
 export function ProjectCard({ project }: Props) {

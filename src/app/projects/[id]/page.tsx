@@ -18,6 +18,7 @@ import {
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
 import { projects } from '@/data/projects';
+import { contributionColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 
 type Props = {
@@ -110,7 +111,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
                 <Group gap="xs">
                   {project.contributions.map(c => (
-                    <Badge key={c} variant="light">
+                    <Badge key={c} color={contributionColor[c]} variant="light">
                       {c}
                     </Badge>
                   ))}
