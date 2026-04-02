@@ -11,6 +11,7 @@ import {
   mantineHtmlProps,
 } from '@mantine/core';
 
+import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
 import { siteConfig } from '@/config/site';
 import { theme } from '@/theme';
@@ -57,7 +58,8 @@ export default function RootLayout({
       <body>
         <MantineProvider theme={theme} defaultColorScheme="auto">
           <Header />
-          <main>{children}</main>
+          <main style={{ flex: 1 }}>{children}</main>
+          <Footer />
         </MantineProvider>
       </body>
     </html>
