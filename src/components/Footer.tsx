@@ -89,7 +89,7 @@ export function Footer() {
             </Text>
 
             <Text size="xs" c="dimmed">
-              Software Engineer · Frontend · UX
+              Ingénieure développeuse senior · Java & React · Product & UX
             </Text>
           </Stack>
 
