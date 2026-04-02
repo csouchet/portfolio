@@ -22,22 +22,48 @@ const contributionColor: Record<string, string> = {
   devex: 'violet',
   architecture: 'pink',
   product: 'red',
+  packaging: 'gray',
 };
 
 export function ProjectCard({ project }: Props) {
   const children = getChildProjects(project.id);
   const isParent = children.length > 0;
+  const isOpenSource = !!project.github;
 
   return (
     <BaseCard>
-      <Stack gap="lg">
+      <Stack gap="md">
         {/* ---------------- HEADER ---------------- */}
         <Stack gap={6}>
-          {project.category === 'product' && (
-            <Badge variant="light" color="red" w="fit-content">
-              Produit
-            </Badge>
-          )}
+          <Group justify="space-between" align="center">
+            {/* TYPE */}
+            <Group gap="xs">
+              {project.category === 'product' && (
+                <Badge variant="light" color="red">
+                  Produit
+                </Badge>
+              )}
+
+              {isOpenSource && (
+                <Badge
+                  variant="subtle"
+                  color="green"
+                  styles={{
+                    root: {
+                      fontWeight: 500,
+                    },
+                  }}
+                >
+                  Open source
+                </Badge>
+              )}
+            </Group>
+
+            {/* COMPANY */}
+            <Text size="xs" c="dimmed">
+              {project.company}
+            </Text>
+          </Group>
 
           <Text fw={600} size="lg">
             {project.title}
@@ -51,7 +77,7 @@ export function ProjectCard({ project }: Props) {
         {/* ---------------- HIGHLIGHTS ---------------- */}
         {project.highlights && (
           <Stack gap={4}>
-            {project.highlights.map(item => (
+            {project.highlights.slice(0, 3).map(item => (
               <Text key={item} size="sm" fw={500}>
                 • {item}
               </Text>
@@ -73,7 +99,7 @@ export function ProjectCard({ project }: Props) {
         {/* ---------------- STACK ---------------- */}
         {project.stack && (
           <Group gap="xs">
-            {project.stack.map(tech => (
+            {project.stack.slice(0, 6).map(tech => (
               <Badge key={tech} variant="subtle" color="gray">
                 {tech}
               </Badge>
@@ -88,24 +114,16 @@ export function ProjectCard({ project }: Props) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            variant="gradient"
-            gradient={{ from: 'brand.5', to: 'brand.7' }}
-            leftSection={<IconBrandGithub size={16} />}
-            w="fit-content"
-            style={{
-              fontWeight: 500,
-              transition: 'all 150ms ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = 'var(--mantine-shadow-sm)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = 'none';
+            variant="subtle"
+            rightSection={<IconBrandGithub size={16} />}
+            styles={{
+              root: {
+                paddingInline: 0,
+                fontWeight: 500,
+              },
             }}
           >
-            Voir sur GitHub
+            Voir le code
           </Button>
         )}
 
@@ -119,13 +137,12 @@ export function ProjectCard({ project }: Props) {
                 Sous-projets
               </Text>
 
-              {/* Container */}
               <Box
                 p="sm"
                 style={{
                   background:
                     'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.03))',
-                  borderRadius: '10px',
+                  borderRadius: 10,
                   border:
                     '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
                 }}
@@ -136,25 +153,23 @@ export function ProjectCard({ project }: Props) {
                       key={child.id}
                       p="sm"
                       style={{
-                        borderRadius: '8px',
+                        borderRadius: 8,
                         cursor: 'pointer',
-                        transition: 'all 140ms ease',
+                        transition: 'all 120ms ease',
                         display: 'flex',
-                        alignItems: 'flex-start',
                         justifyContent: 'space-between',
-                        gap: '8px',
+                        alignItems: 'center',
                       }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background =
                           'var(--mantine-color-default-hover)';
-                        e.currentTarget.style.transform = 'translateX(4px)';
+                        e.currentTarget.style.transform = 'translateX(3px)';
                       }}
                       onMouseLeave={e => {
                         e.currentTarget.style.background = 'transparent';
                         e.currentTarget.style.transform = 'none';
                       }}
                     >
-                      {/* Texte */}
                       <Stack gap={2} style={{ flex: 1 }}>
                         <Text size="sm" fw={500}>
                           {child.title}
@@ -165,18 +180,7 @@ export function ProjectCard({ project }: Props) {
                         </Text>
                       </Stack>
 
-                      {/* Icône navigation (future-proof) */}
-                      <Box
-                        style={{
-                          opacity: 0.4,
-                          transition: 'opacity 120ms ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        className="child-arrow"
-                      >
-                        <IconChevronRight size={16} />
-                      </Box>
+                      <IconChevronRight size={16} opacity={0.4} />
                     </Box>
                   ))}
                 </Stack>
