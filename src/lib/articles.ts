@@ -19,16 +19,3 @@ export function getAllTags(articles: Article[]): Tag[] {
     .sort((a, b) => b[1] - a[1])
     .map(([tag]) => tag);
 }
-
-export function getArticleImage(article: Article) {
-  if (article.image) return article.image;
-
-  switch (article.platform) {
-    case 'Medium':
-      return 'https://miro.medium.com/v2/resize:fit:1400/1*0.jpg';
-    case 'Dev.to':
-      return 'https://dev-to-uploads.s3.amazonaws.com/uploads/articles/default.png';
-    case 'Hackernoon':
-      return 'https://hackernoon.imgix.net/images/default.png';
-  }
-}

@@ -1,8 +1,8 @@
 'use client';
 
-import { Text, Group, Badge, Stack, Anchor, Image } from '@mantine/core';
+import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 
-import { getArticleImage } from '@/lib/articles';
+import { ArticleCover } from '@/components/articles/ArticleCover';
 import { Article } from '@/types/article';
 
 import { BaseCard } from './BaseCard';
@@ -20,14 +20,10 @@ export function ArticleCard({ article }: Props) {
   return (
     <BaseCard>
       <Stack gap="sm">
-        {/* Header */}
-        <Image
-          src={getArticleImage(article)}
-          alt={article.title}
-          radius="md"
-          style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
-        />
+        {/* Cover */}
+        <ArticleCover article={article} />
 
+        {/* Meta */}
         <Group justify="space-between">
           <Badge variant="light" color="brand">
             {article.platform}
@@ -56,12 +52,14 @@ export function ArticleCard({ article }: Props) {
         <Anchor
           href={article.url}
           target="_blank"
+          rel="noopener noreferrer"
           size="sm"
           fw={500}
           c="brand.6"
           style={{
-            alignSelf: 'flex-start',
-            transition: 'all 120ms ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 4,
           }}
         >
           Lire l’article →

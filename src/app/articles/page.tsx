@@ -37,23 +37,28 @@ export default function Page() {
   return (
     <Container py="xl">
       <Stack gap="xl">
+        {/* Header */}
         <Stack gap={4}>
           <Title order={1}>Articles</Title>
+
           <Text c="dimmed">
             Une sélection d’articles techniques autour du testing, du CI/CD et
             de la data.
           </Text>
         </Stack>
 
+        {/* Featured */}
         {featured && (
-          <Stack>
+          <Stack gap="sm">
             <Text size="sm" c="dimmed">
               À la une
             </Text>
+
             <ArticleCard article={featured} />
           </Stack>
         )}
 
+        {/* Filters */}
         <Stack gap="xs">
           <Text size="sm" fw={500}>
             Filtrer par sujet
@@ -79,6 +84,7 @@ export default function Page() {
           </Group>
         </Stack>
 
+        {/* List */}
         <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
           {filtered.map(article => (
             <ArticleCard key={article.id} article={article} />
