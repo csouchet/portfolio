@@ -14,28 +14,24 @@ type Props = {
 export function ArticleCard({ article }: Props) {
   const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
   });
 
   return (
     <BaseCard>
-      <Stack gap="sm">
+      <Stack gap="md">
         {/* Cover */}
         <ArticleCover article={article} />
 
         {/* Meta */}
         <Group justify="space-between">
-          <Badge variant="light" color="brand">
-            {article.platform}
-          </Badge>
-
           <Text size="xs" c="dimmed">
             {formattedDate} · {article.readingTime}
           </Text>
         </Group>
 
         {/* Title */}
-        <Text fw={600} size="md" lineClamp={3}>
+        <Text fw={600} size="lg" lh={1.3}>
           {article.title}
         </Text>
 
@@ -56,11 +52,6 @@ export function ArticleCard({ article }: Props) {
           size="sm"
           fw={500}
           c="brand.6"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 4,
-          }}
         >
           Lire l’article →
         </Anchor>
