@@ -127,7 +127,7 @@ export function ProjectCard({ project }: Props) {
         {/* ---------------- STACK ---------------- */}
         {project.stack && (
           <Group gap="xs">
-            {project.stack.slice(0, 6).map(tech => (
+            {project.stack.map(tech => (
               <Badge key={tech} variant="subtle" color="gray">
                 {tech}
               </Badge>
@@ -142,20 +142,21 @@ export function ProjectCard({ project }: Props) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            variant="subtle"
-            rightSection={<IconBrandGithub size={16} />}
-            styles={{
-              root: {
-                paddingInline: 0,
-                fontWeight: 500,
-                transition: 'all 150ms ease',
-              },
+            variant="gradient"
+            gradient={{ from: 'brand.5', to: 'brand.7' }}
+            leftSection={<IconBrandGithub size={16} />}
+            w="fit-content"
+            style={{
+              fontWeight: 500,
+              transition: 'all 150ms ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateX(2px)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = 'var(--mantine-shadow-sm)';
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           >
             Voir le code
