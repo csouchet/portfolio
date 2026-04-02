@@ -202,13 +202,7 @@ export const projects: Project[] = [
       'Plateforme d’automatisation de processus métier incluant moteur BPM, outils de migration, packaging et intégration des systèmes.',
     category: 'product',
     company: 'Bonitasoft',
-    contributions: ['architecture', 'ci-cd'],
-    highlights: [
-      'Participation au cœur de la plateforme Bonita',
-      'Outils de migration et compatibilité entre versions',
-      'Packaging multi-serveurs (Tomcat, JBoss)',
-      'Support multi-bases de données',
-    ],
+    contributions: ['ci-cd'],
   },
 
   {
@@ -310,11 +304,7 @@ export const projects: Project[] = [
     category: 'product',
     contributions: ['architecture'],
     company: 'GB&Smith',
-    highlights: [
-      'Audit des permissions utilisateurs multi-outils BI',
-      'Architecture modulaire basée sur plugins',
-      'Centralisation et gouvernance des données',
-    ],
+    highlights: ['Architecture modulaire basée sur plugins'],
   },
 
   {
@@ -386,6 +376,7 @@ export const projects: Project[] = [
     category: 'product',
     contributions: ['architecture'],
     company: 'GB&Smith',
+    highlights: ['Architecture modulaire basée sur plugins'],
   },
 
   {

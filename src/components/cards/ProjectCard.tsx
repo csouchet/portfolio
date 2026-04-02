@@ -104,10 +104,10 @@ export function ProjectCard({ project }: Props) {
 
         {/* ---------------- HIGHLIGHTS ---------------- */}
         {project.highlights && (
-          <Stack gap={4}>
-            {project.highlights.slice(0, 3).map(item => (
-              <Text key={item} size="sm" fw={500}>
-                • {item}
+          <Stack gap={2}>
+            {project.highlights.map(item => (
+              <Text key={item} size="sm" c="dimmed" style={{ lineHeight: 1.4 }}>
+                <span style={{ opacity: 0.6 }}>•</span> {item}
               </Text>
             ))}
           </Stack>
