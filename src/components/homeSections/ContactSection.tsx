@@ -6,7 +6,7 @@ import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
 
 import { HomeSection } from './HomeSection';
 
-export function FreelanceCTASection() {
+export function ContactSection() {
   return (
     <HomeSection title="Collaboration" gradientPosition="left">
       <Grid gutter="xl" align="center">

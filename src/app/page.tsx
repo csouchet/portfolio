@@ -1,8 +1,8 @@
 'use client';
 
+import { ContactSection } from '@/components/homeSections/ContactSection';
 import { FeaturedArticlesSection } from '@/components/homeSections/FeaturedArticlesSection';
 import { FeaturedProjectsSection } from '@/components/homeSections/FeaturedProjectsSection';
-import { FreelanceCTASection } from '@/components/homeSections/FreelanceCTASection';
 import { HeroSection } from '@/components/homeSections/HeroSection';
 
 export default function Home() {
@@ -11,10 +11,9 @@ export default function Home() {
       <HeroSection />
       <FeaturedProjectsSection />
       <FeaturedArticlesSection />
-      <FreelanceCTASection />
+      <ContactSection />
       {/*
-      <AboutSection />
-      <ContactSection />*/}
+      <AboutSection />*/}
     </main>
   );
 }
