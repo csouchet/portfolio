@@ -10,7 +10,6 @@ import {
   Button,
   Stack,
   Paper,
-  Title,
   Text,
   Alert,
 } from '@mantine/core';
@@ -35,11 +34,7 @@ export function ContactForm() {
     },
   });
 
-  const handleSubmit = async (values: {
-    name: string;
-    email: string;
-    message: string;
-  }) => {
+  const handleSubmit = async (values: typeof form.values) => {
     setLoading(true);
     setStatus('idle');
 
@@ -48,7 +43,7 @@ export function ContactForm() {
       console.log(values);
 
       // Replace this with the endpoint (Formspree / EmailJS / Netlify)
-      await new Promise(resolve => setTimeout(resolve, 1200));
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       setStatus('success');
       form.reset();
@@ -62,22 +57,16 @@ export function ContactForm() {
   return (
     <Paper
       withBorder
-      radius="md"
-      p="lg"
-      maw={480}
-      mx="auto"
-      component="section"
+      radius="lg"
+      p="md"
+      w="100%"
+      style={{ backdropFilter: 'blur(6px)' }}
     >
       <Stack gap="md">
-        {/* HEADER */}
-        <Stack gap={4}>
-          <Title order={2}>Envoyer un message</Title>
-          <Text size="sm" c="dimmed">
-            Une idée, une mission ou juste envie d’échanger ?
-          </Text>
-        </Stack>
+        <Text size="sm" c="dimmed">
+          Une idée, une mission ou juste envie d’échanger ensemble ?
+        </Text>
 
-        {/* FEEDBACK */}
         {status === 'success' && (
           <Alert icon={<IconCheck size={16} />} color="green" radius="md">
             Message envoyé avec succès ✨
@@ -90,13 +79,13 @@ export function ContactForm() {
           </Alert>
         )}
 
-        {/* FORM */}
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <Stack gap="sm">
             <TextInput
               label="Nom"
               placeholder="Ton nom"
               required
+              radius="md"
               {...form.getInputProps('name')}
             />
 
@@ -104,6 +93,7 @@ export function ContactForm() {
               label="Email"
               placeholder="ton@email.com"
               required
+              radius="md"
               {...form.getInputProps('email')}
             />
 
@@ -113,17 +103,20 @@ export function ContactForm() {
               minRows={4}
               autosize
               required
+              radius="md"
               {...form.getInputProps('message')}
             />
 
             <Button
               type="submit"
               loading={loading}
-              radius="md"
+              radius="xl"
               fullWidth
               mt="sm"
+              variant="gradient"
+              gradient={{ from: 'pink', to: 'grape', deg: 135 }}
             >
-              Envoyer
+              Envoyer ✨
             </Button>
           </Stack>
         </form>
