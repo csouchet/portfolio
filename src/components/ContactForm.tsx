@@ -24,6 +24,8 @@ export function ContactForm() {
       name: '',
       email: '',
       message: '',
+      company: '', // honeypot
+      formStart: Date.now(), // anti-bot timing
     },
 
     validate: {
@@ -34,19 +36,48 @@ export function ContactForm() {
     },
   });
 
+  const resetForm = () => {
+    form.setValues({
+      name: '',
+      email: '',
+      message: '',
+      company: '',
+      formStart: Date.now(),
+    });
+  };
+
   const handleSubmit = async (values: typeof form.values) => {
     setLoading(true);
     setStatus('idle');
 
     try {
-      // even in a mock, we “use” values
+      // 🛡️ Anti-spam
+
+      // honeypot rempli → bot
+      if (values.company) {
+        await new Promise(resolve => setTimeout(resolve, 300));
+        setStatus('success');
+        resetForm();
+        return;
+      }
+
+      // soumission trop rapide → bot
+      const now = Date.now();
+      if (now - values.formStart < 3000) {
+        await new Promise(resolve => setTimeout(resolve, 300));
+        setStatus('success');
+        resetForm();
+        return;
+      }
+
+      // ✅ traitement normal (à remplacer plus tard)
       console.log(values);
 
       // Replace this with the endpoint (Formspree / EmailJS / Netlify)
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       setStatus('success');
-      form.reset();
+      resetForm();
     } catch {
       setStatus('error');
     } finally {
@@ -101,6 +132,17 @@ export function ContactForm() {
 
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <Stack gap="sm">
+            {/* 🛡️ Honeypot invisible */}
+            <TextInput
+              style={{ display: 'none' }}
+              tabIndex={-1}
+              autoComplete="off"
+              {...form.getInputProps('company')}
+            />
+
+            {/* ⏱ Timestamp */}
+            <input type="hidden" value={form.values.formStart} readOnly />
+
             <TextInput
               label="Nom"
               placeholder="Ton nom"
