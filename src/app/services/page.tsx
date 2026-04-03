@@ -26,9 +26,14 @@ export default function ServicesPage() {
       >
         <Stack maw={720} gap="md">
           <Text size="lg">
-            J’interviens sur des projets techniques complexes — souvent lorsque
-            la qualité, la vitesse de livraison ou la maintenabilité deviennent
-            des enjeux critiques.
+            J’interviens sur des projets techniques complexes — lorsque la
+            qualité, la vitesse de livraison ou la maintenabilité deviennent
+            critiques.
+          </Text>
+
+          <Text fw={600} size="lg">
+            Je transforme des systèmes qui ralentissent les équipes en systèmes
+            qui les accélèrent.
           </Text>
 
           <Text>
@@ -62,8 +67,8 @@ export default function ServicesPage() {
       <HomeSection title="Quand j’interviens" gradientPosition="right">
         <Stack maw={720} gap="md">
           <Text>
-            J’interviens généralement dans des contextes où le système commence
-            à ralentir l’équipe.
+            J’interviens généralement lorsque le système commence à ralentir
+            l’équipe ou à freiner le produit.
           </Text>
 
           <Stack gap="xs">
@@ -82,8 +87,8 @@ export default function ServicesPage() {
           <BaseCard>
             <Title order={4}>Platform & CI/CD</Title>
             <Text size="sm" c="dimmed">
-              Conception de pipelines complexes, automatisation des builds,
-              tests et releases, optimisation des performances et des coûts.
+              Pipelines complexes, automatisation des builds, tests et releases,
+              optimisation des performances et des coûts.
             </Text>
           </BaseCard>
 
@@ -91,7 +96,7 @@ export default function ServicesPage() {
             <Title order={4}>Architecture & systèmes</Title>
             <Text size="sm" c="dimmed">
               Structuration de systèmes robustes et évolutifs sur des projets
-              complexes (data, workflows, plateformes).
+              complexes.
             </Text>
           </BaseCard>
 
@@ -136,33 +141,33 @@ export default function ServicesPage() {
       </HomeSection>
 
       {/* PROOF */}
-      <HomeSection title="Exemples récents" gradientPosition="left">
+      <HomeSection title="Exemple récent" gradientPosition="left">
         <Stack maw={720} gap="md">
-          <Text fw={500}>Mise en place d’une plateforme CI/CD complète</Text>
+          <Text fw={600}>
+            Mise en place d’une plateforme CI/CD complète sur un projet
+            multi-composants
+          </Text>
+
+          <Text c="dimmed">
+            Contexte : pipelines lents, releases manuelles, manque de confiance
+            dans les livraisons.
+          </Text>
 
           <Stack gap="xs">
-            <Text c="dimmed">
-              • Pipelines multi-plateformes (Linux / macOS / Windows)
-            </Text>
-            <Text c="dimmed">
-              • Tests E2E multi-navigateurs (Chromium, Firefox, Safari, Edge)
-            </Text>
-            <Text c="dimmed">
-              • Automatisation complète des releases (versioning, npm, Docker)
-            </Text>
-            <Text c="dimmed">
-              • Analyse qualité et sécurité (SonarCloud, CodeQL)
-            </Text>
+            <Text c="dimmed">• Pipelines multi-OS (Linux, macOS, Windows)</Text>
+            <Text c="dimmed">• Tests E2E multi-navigateurs</Text>
+            <Text c="dimmed">• Automatisation complète des releases</Text>
+            <Text c="dimmed">• Analyse qualité et sécurité continue</Text>
           </Stack>
 
-          <Text>
-            Résultat : des livraisons plus fiables, plus rapides et une
-            meilleure confiance dans le système.
+          <Text fw={500}>
+            Résultat : un système fiable, des livraisons fluides et une équipe
+            qui avance plus vite.
           </Text>
         </Stack>
       </HomeSection>
 
-      {/* IMPACT */}
+      {/* RESULTS */}
       <HomeSection title="Résultats" gradientPosition="right">
         <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
           <BaseCard>
@@ -188,17 +193,23 @@ export default function ServicesPage() {
         </SimpleGrid>
       </HomeSection>
 
-      {/* DIFFERENCE */}
+      {/* APPROACH */}
       <HomeSection title="Approche" gradientPosition="left">
         <Stack maw={720} gap="md">
-          <Text>
-            Je travaille à la fois sur le code, les outils et l’organisation.
+          <Text fw={500}>
+            Je travaille sur les points de levier qui débloquent réellement une
+            équipe.
           </Text>
 
           <Text c="dimmed">
-            Mon objectif n’est pas seulement de livrer, mais d’améliorer
-            durablement la capacité d’une équipe à construire et faire évoluer
-            son produit.
+            Code, CI/CD, architecture et organisation sont liés : les améliorer
+            ensemble permet un impact durable.
+          </Text>
+
+          <Text>
+            Mon objectif n’est pas d’ajouter de la complexité, mais de rendre
+            les systèmes plus simples à comprendre, à maintenir et à faire
+            évoluer.
           </Text>
         </Stack>
       </HomeSection>
@@ -207,7 +218,7 @@ export default function ServicesPage() {
       <HomeSection title="Travaillons ensemble" gradientPosition="right">
         <Stack align="center" gap="md">
           <Text ta="center" maw={500}>
-            Un contexte technique complexe ou un projet à structurer ?
+            Un système complexe à stabiliser ou un projet à structurer ?
             Discutons-en.
           </Text>
 
