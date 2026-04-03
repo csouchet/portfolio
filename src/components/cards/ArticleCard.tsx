@@ -2,6 +2,7 @@
 
 import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 
+import { ArticleCover } from '@/components/articles/ArticleCover';
 import { Article } from '@/types/article';
 
 import { BaseCard } from './BaseCard';
@@ -13,25 +14,24 @@ type Props = {
 export function ArticleCard({ article }: Props) {
   const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
   });
 
   return (
     <BaseCard>
-      <Stack gap="sm">
-        {/* Header */}
-        <Group justify="space-between">
-          <Badge variant="light" color="brand">
-            {article.platform}
-          </Badge>
+      <Stack gap="md">
+        {/* Cover */}
+        <ArticleCover article={article} />
 
+        {/* Meta */}
+        <Group justify="space-between">
           <Text size="xs" c="dimmed">
             {formattedDate} · {article.readingTime}
           </Text>
         </Group>
 
         {/* Title */}
-        <Text fw={600} size="md" lineClamp={3}>
+        <Text fw={600} size="lg" lh={1.3}>
           {article.title}
         </Text>
 
@@ -48,13 +48,10 @@ export function ArticleCard({ article }: Props) {
         <Anchor
           href={article.url}
           target="_blank"
+          rel="noopener noreferrer"
           size="sm"
           fw={500}
           c="brand.6"
-          style={{
-            alignSelf: 'flex-start',
-            transition: 'all 120ms ease',
-          }}
         >
           Lire l’article →
         </Anchor>

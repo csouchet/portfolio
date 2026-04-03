@@ -10,6 +10,7 @@ export const articles: Article[] = [
     readingTime: '8 min',
     tags: ['Testing', 'Visual Testing', 'Automation'],
     featured: true,
+    image: 'https://hackernoon.imgix.net/images/visual-regression.jpg',
   },
   {
     id: 'schema-versioning',
@@ -21,6 +22,7 @@ export const articles: Article[] = [
     readingTime: '7 min',
     tags: ['CI/CD', 'Database', 'DevOps'],
     featured: true,
+    image: 'https://hackernoon.imgix.net/images/database.jpg',
   },
   {
     id: 'superset-feedback',
@@ -30,18 +32,19 @@ export const articles: Article[] = [
     date: '2023-01-01',
     readingTime: '6 min',
     tags: ['Data', 'Analytics', 'Superset'],
-    featured: false,
+    image: 'https://miro.medium.com/max/1400/1*superset.jpg',
   },
   {
     id: 'playwright-visual-testing',
     title:
       'Automated Visual Regression Testing with TypeScript, Playwright, Jest and jest-image-snapshot',
     platform: 'Medium',
-    url: 'https://medium.com/nerd-for-tech/automated-visual-regression-testing-with-typescript-playwright-jest-and-jest-image-snapshot-86db6f3364f5',
+    url: 'https://medium.com/nerd-for-tech/automated-visual-regression-testing...',
     date: '2022-04-01',
     readingTime: '9 min',
     tags: ['Testing', 'Playwright', 'TypeScript'],
     featured: true,
+    image: 'https://miro.medium.com/max/1400/1*playwright.jpg',
   },
   {
     id: 'puppeteer-visual-testing',
@@ -53,6 +56,7 @@ export const articles: Article[] = [
     readingTime: '8 min',
     tags: ['Testing', 'Puppeteer', 'TypeScript'],
     featured: false,
+    image: 'https://miro.medium.com/max/1400/1*puppeteer.jpg',
   },
   {
     id: 'hacktoberfest-2022',
@@ -64,6 +68,7 @@ export const articles: Article[] = [
     readingTime: '4 min',
     tags: ['Open Source', 'Community'],
     featured: false,
+    image: '',
   },
   {
     id: 'bonita-day-paris',
@@ -74,6 +79,7 @@ export const articles: Article[] = [
     readingTime: '3 min',
     tags: ['Event', 'Analytics'],
     featured: false,
+    image: '',
   },
   {
     id: 'model-generation',
@@ -84,6 +90,7 @@ export const articles: Article[] = [
     readingTime: '5 min',
     tags: ['Tooling', 'BPMN'],
     featured: false,
+    image: '',
   },
   {
     id: 'webinar-1',
@@ -94,6 +101,7 @@ export const articles: Article[] = [
     readingTime: '3 min',
     tags: ['Webinar', 'Analytics'],
     featured: false,
+    image: '',
   },
   {
     id: 'webinar-2',
@@ -104,6 +112,7 @@ export const articles: Article[] = [
     readingTime: '3 min',
     tags: ['Webinar', 'Analytics'],
     featured: false,
+    image: '',
   },
   {
     id: 'news-june-2022',
@@ -114,6 +123,7 @@ export const articles: Article[] = [
     readingTime: '4 min',
     tags: ['News'],
     featured: false,
+    image: '',
   },
   {
     id: 'news-march-2022',
@@ -124,6 +134,7 @@ export const articles: Article[] = [
     readingTime: '4 min',
     tags: ['News'],
     featured: false,
+    image: '',
   },
   {
     id: 'bpmn-r',
@@ -134,6 +145,7 @@ export const articles: Article[] = [
     readingTime: '6 min',
     tags: ['BPMN', 'R', 'Visualization'],
     featured: false,
+    image: '',
   },
   {
     id: 'newsletter-2021',
@@ -144,6 +156,7 @@ export const articles: Article[] = [
     readingTime: '4 min',
     tags: ['Newsletter'],
     featured: false,
+    image: '',
   },
   {
     id: 'playwright-devto',
@@ -155,6 +168,7 @@ export const articles: Article[] = [
     readingTime: '9 min',
     tags: ['Testing', 'Playwright'],
     featured: false,
+    image: '',
   },
   {
     id: 'puppeteer-devto',
@@ -166,5 +180,6 @@ export const articles: Article[] = [
     readingTime: '8 min',
     tags: ['Testing', 'Puppeteer'],
     featured: false,
+    image: '',
   },
 ];
