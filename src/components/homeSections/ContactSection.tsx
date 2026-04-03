@@ -6,7 +6,7 @@ import { Text, Stack, Badge, Group, Grid, Button } from '@mantine/core';
 
 import { HomeSection } from './HomeSection';
 
-export function FreelanceCTASection() {
+export function ContactSection() {
   return (
     <HomeSection title="Collaboration" gradientPosition="left">
       <Grid gutter="xl" align="center">
@@ -61,6 +61,16 @@ export function FreelanceCTASection() {
 
             <Text size="sm" c="dimmed">
               Grenoble • Remote possible
+            </Text>
+
+            <Text
+              size="xs"
+              c="dimmed"
+              component="a"
+              href="/contact"
+              style={{ opacity: 0.7, textDecoration: 'none' }}
+            >
+              Disponible sur Malt, Upwork et Fiverr
             </Text>
 
             <Button

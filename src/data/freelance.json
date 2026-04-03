@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Malt",
+    "url": "https://www.malt.fr/profile/your-profile",
+    "badge": "Top Rated",
+    "rating": 4.9
+  },
+  {
+    "name": "Upwork",
+    "url": "https://www.upwork.com/freelancers/your-profile",
+    "rating": 4.8
+  },
+  {
+    "name": "Fiverr",
+    "url": "https://www.fiverr.com/your-profile"
+  }
+]
