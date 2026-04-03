@@ -3,6 +3,7 @@ type Platform = 'Medium' | 'Dev.to' | 'Hackernoon';
 export type Tag =
   | 'Testing'
   | 'Playwright'
+  | 'Puppeteer'
   | 'TypeScript'
   | 'CI/CD'
   | 'Database'

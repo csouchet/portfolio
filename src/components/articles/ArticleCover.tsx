@@ -11,6 +11,7 @@ type Props = {
 const tagGradient: Record<Tag, string> = {
   Testing: 'rgba(59,130,246,0.25)',
   Playwright: 'rgba(99,102,241,0.25)',
+  Puppeteer: 'rgba(79,70,229,0.25)',
   TypeScript: 'rgba(37,99,235,0.25)',
   'CI/CD': 'rgba(249,115,22,0.25)',
   Database: 'rgba(16,185,129,0.25)',
