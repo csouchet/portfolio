@@ -2,7 +2,9 @@
 
 import { IconExternalLink, IconStar } from '@tabler/icons-react';
 
-import { Stack, Card, Group, Text, Badge, ThemeIcon } from '@mantine/core';
+import { Stack, Group, Text, Badge, ActionIcon } from '@mantine/core';
+
+import { BaseCard } from '@/components/cards/BaseCard';
 
 type FreelanceLink = {
   name: string;
@@ -19,29 +21,7 @@ export function FreelanceLinks({ data }: Props) {
   return (
     <Stack gap="sm">
       {data.map(item => (
-        <Card
-          key={item.name}
-          padding="md"
-          radius="md"
-          withBorder
-          component="a"
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            transition: 'all 150ms ease',
-            cursor: 'pointer',
-            backgroundColor: 'var(--mantine-color-body)',
-          }}
-          styles={{
-            root: {
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: 'var(--mantine-shadow-md)',
-              },
-            },
-          }}
-        >
+        <BaseCard key={item.name}>
           <Group justify="space-between" align="center">
             {/* LEFT */}
             <Stack gap={4}>
@@ -66,11 +46,19 @@ export function FreelanceLinks({ data }: Props) {
             </Stack>
 
             {/* RIGHT */}
-            <ThemeIcon variant="light" size="lg">
+            <ActionIcon
+              component="a"
+              href={item.url}
+              target="_blank"
+              variant="light"
+              size="lg"
+              radius="xl"
+              aria-label={`Voir profil ${item.name}`}
+            >
               <IconExternalLink size={16} />
-            </ThemeIcon>
+            </ActionIcon>
           </Group>
-        </Card>
+        </BaseCard>
       ))}
     </Stack>
   );

@@ -5,7 +5,9 @@ import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import { Container, Stack, Title, Text, Group, Button } from '@mantine/core';
 
 import { BaseCard } from '@/components/cards/BaseCard';
+import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
+import freelanceData from '@/data/freelance.json';
 
 export default function ContactPage() {
   return (
@@ -21,9 +23,8 @@ export default function ContactPage() {
           </Text>
         </Stack>
 
-        {/* CONTACT CARDS */}
+        {/* DIRECT CONTACT */}
         <Stack gap="md">
-          {/* LINKEDIN */}
           <BaseCard>
             <Group justify="space-between" wrap="nowrap">
               <Group gap="sm">
@@ -42,7 +43,6 @@ export default function ContactPage() {
             </Group>
           </BaseCard>
 
-          {/* GITHUB */}
           <BaseCard>
             <Group justify="space-between" wrap="nowrap">
               <Group gap="sm">
@@ -60,6 +60,19 @@ export default function ContactPage() {
               </Button>
             </Group>
           </BaseCard>
+        </Stack>
+
+        {/* FREELANCE SECTION */}
+        <Stack gap="sm">
+          <Stack gap={4}>
+            <Title order={3}>Freelance</Title>
+
+            <Text size="sm" c="dimmed">
+              Vous pouvez également me contacter via ces plateformes.
+            </Text>
+          </Stack>
+
+          <FreelanceLinks data={freelanceData} />
         </Stack>
       </Stack>
     </Container>
