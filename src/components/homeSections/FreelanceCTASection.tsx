@@ -63,6 +63,16 @@ export function FreelanceCTASection() {
               Grenoble • Remote possible
             </Text>
 
+            <Text
+              size="xs"
+              c="dimmed"
+              component="a"
+              href="/contact"
+              style={{ opacity: 0.7, textDecoration: 'none' }}
+            >
+              Disponible sur Malt, Upwork et Fiverr
+            </Text>
+
             <Button
               component={Link}
               href="/contact"
