@@ -1,8 +1,8 @@
-'use client';
-
 import { IconExternalLink, IconStar } from '@tabler/icons-react';
 
-import { Stack, Card, Group, Text, Badge, ThemeIcon } from '@mantine/core';
+import { Stack, Group, Text, Badge, ThemeIcon } from '@mantine/core';
+
+import { BaseCard } from '@/components/cards/BaseCard';
 
 type FreelanceLink = {
   name: string;
@@ -19,28 +19,12 @@ export function FreelanceLinks({ data }: Props) {
   return (
     <Stack gap="sm">
       {data.map(item => (
-        <Card
+        <BaseCard
           key={item.name}
-          padding="md"
-          radius="md"
-          withBorder
           component="a"
           href={item.url}
           target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            transition: 'all 150ms ease',
-            cursor: 'pointer',
-            backgroundColor: 'var(--mantine-color-body)',
-          }}
-          styles={{
-            root: {
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: 'var(--mantine-shadow-md)',
-              },
-            },
-          }}
+          style={{ cursor: 'pointer' }}
         >
           <Group justify="space-between" align="center">
             {/* LEFT */}
@@ -70,7 +54,7 @@ export function FreelanceLinks({ data }: Props) {
               <IconExternalLink size={16} />
             </ThemeIcon>
           </Group>
-        </Card>
+        </BaseCard>
       ))}
     </Stack>
   );
