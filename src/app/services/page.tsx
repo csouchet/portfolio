@@ -214,6 +214,53 @@ export default function ServicesPage() {
         </Stack>
       </HomeSection>
 
+      <HomeSection title="Missions idéales" gradientPosition="left">
+        <Stack maw={720} gap="md">
+          <Text>
+            Je m’implique particulièrement dans des contextes où mon impact est
+            le plus fort.
+          </Text>
+
+          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
+            <BaseCard>
+              <Text fw={600}>Systèmes complexes</Text>
+              <Text size="sm" c="dimmed">
+                Produits avec enjeux de performance, scalabilité ou architecture
+              </Text>
+            </BaseCard>
+
+            <BaseCard>
+              <Text fw={600}>Projets à structurer</Text>
+              <Text size="sm" c="dimmed">
+                Besoin de clarifier, stabiliser ou remettre à plat un système
+                existant
+              </Text>
+            </BaseCard>
+
+            <BaseCard>
+              <Text fw={600}>CI/CD & plateforme</Text>
+              <Text size="sm" c="dimmed">
+                Industrialisation des pipelines, automatisation des tests et des
+                releases
+              </Text>
+            </BaseCard>
+
+            <BaseCard>
+              <Text fw={600}>Équipes en croissance</Text>
+              <Text size="sm" c="dimmed">
+                Besoin d’améliorer la developer experience et la vitesse de
+                livraison
+              </Text>
+            </BaseCard>
+          </SimpleGrid>
+
+          <Text c="dimmed">
+            Je privilégie les missions où je peux intervenir en profondeur et
+            avoir un impact durable.
+          </Text>
+        </Stack>
+      </HomeSection>
+
       {/* CTA */}
       <HomeSection title="Travaillons ensemble" gradientPosition="right">
         <Stack align="center" gap="md">
