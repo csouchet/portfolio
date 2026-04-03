@@ -5,7 +5,7 @@ import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import { Container, Stack, Title, Text, Group, Button } from '@mantine/core';
 
 import { BaseCard } from '@/components/cards/BaseCard';
-import { ContactForm } from '@/components/ContactForm'; // 👈 AJOUT
+import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
 import freelanceData from '@/data/freelance.json';
@@ -38,6 +38,7 @@ export default function ContactPage() {
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 variant="light"
+                radius="xl"
               >
                 Voir le profil
               </Button>
@@ -56,6 +57,7 @@ export default function ContactPage() {
                 href={siteConfig.links.github}
                 target="_blank"
                 variant="light"
+                radius="xl"
               >
                 Voir les projets
               </Button>
@@ -63,7 +65,7 @@ export default function ContactPage() {
           </BaseCard>
         </Stack>
 
-        {/* 👉 CONTACT FORM */}
+        {/* CONTACT FORM */}
         <Stack gap="sm">
           <Stack gap={4}>
             <Title order={3}>Envoyer un message</Title>

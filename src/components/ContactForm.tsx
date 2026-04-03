@@ -54,17 +54,37 @@ export function ContactForm() {
     }
   };
 
+  const inputStyles = {
+    input: {
+      transition: 'all 0.2s ease',
+      '&:focus': {
+        boxShadow: '0 0 0 1px var(--mantine-color-pink-5)',
+      },
+    },
+  };
+
   return (
     <Paper
       withBorder
       radius="lg"
       p="md"
       w="100%"
-      style={{ backdropFilter: 'blur(6px)' }}
+      style={{
+        backdropFilter: 'blur(6px)',
+        transition: 'all 0.2s ease',
+      }}
+      styles={{
+        root: {
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            borderColor: 'var(--mantine-color-pink-5)',
+          },
+        },
+      }}
     >
       <Stack gap="md">
         <Text size="sm" c="dimmed">
-          Une idée, une mission ou juste envie d’échanger ensemble ?
+          Une idée, une mission ou juste envie de discuter ?
         </Text>
 
         {status === 'success' && (
@@ -86,6 +106,7 @@ export function ContactForm() {
               placeholder="Ton nom"
               required
               radius="md"
+              styles={inputStyles}
               {...form.getInputProps('name')}
             />
 
@@ -94,6 +115,7 @@ export function ContactForm() {
               placeholder="ton@email.com"
               required
               radius="md"
+              styles={inputStyles}
               {...form.getInputProps('email')}
             />
 
@@ -104,6 +126,7 @@ export function ContactForm() {
               autosize
               required
               radius="md"
+              styles={inputStyles}
               {...form.getInputProps('message')}
             />
 
@@ -115,6 +138,9 @@ export function ContactForm() {
               mt="sm"
               variant="gradient"
               gradient={{ from: 'pink', to: 'grape', deg: 135 }}
+              style={{
+                boxShadow: '0 0 20px rgba(236, 72, 153, 0.25)',
+              }}
             >
               Envoyer ✨
             </Button>
