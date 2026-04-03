@@ -6,11 +6,10 @@ import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
 
 import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
 
+import { BaseCard } from '@/components/cards/BaseCard';
 import { categoryColor, contributionColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 import { Project } from '@/types/project';
-
-import { BaseCard } from './BaseCard';
 
 type Props = {
   project: Project;
@@ -59,17 +58,15 @@ export function ProjectCard({ project }: Props) {
               )}
 
               {isOpenSource && (
-                <Badge
-                  variant="subtle"
-                  color="green"
-                  styles={{
-                    root: {
-                      fontWeight: 500,
-                      letterSpacing: '0.02em',
-                    },
-                  }}
-                >
+                <Badge variant="subtle" color="green">
                   Open source
+                </Badge>
+              )}
+
+              {/* 👉 NEW: STAFF SIGNAL */}
+              {project.contributions?.includes('ci-cd') && (
+                <Badge color="cyan" variant="light">
+                  Platform
                 </Badge>
               )}
             </Group>
@@ -84,11 +81,7 @@ export function ProjectCard({ project }: Props) {
           <Text fw={600} size="lg">
             <Link
               href={`/projects/${project.id}`}
-              aria-label={`Voir le projet ${project.title}`}
-              style={{
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
+              style={{ textDecoration: 'none', color: 'inherit' }}
             >
               {project.title}
             </Link>
@@ -100,18 +93,26 @@ export function ProjectCard({ project }: Props) {
           </Text>
         </Stack>
 
-        {/* HIGHLIGHTS */}
+        {/* 👉 NEW: ROLE / FOCUS */}
+        {project.contributions && (
+          <Text size="sm">
+            <span style={{ opacity: 0.6 }}>Focus :</span>{' '}
+            {project.contributions.join(', ')}
+          </Text>
+        )}
+
+        {/* HIGHLIGHTS (IMPACT) */}
         {project.highlights && (
           <Stack gap={2}>
             {project.highlights.map(item => (
-              <Text key={item} size="sm" c="dimmed" style={{ lineHeight: 1.4 }}>
+              <Text key={item} size="sm" style={{ lineHeight: 1.4 }}>
                 <span style={{ opacity: 0.6 }}>•</span> {item}
               </Text>
             ))}
           </Stack>
         )}
 
-        {/* CONTRIBUTIONS */}
+        {/* CONTRIBUTIONS BADGES */}
         {project.contributions && (
           <Group gap="xs">
             {project.contributions.map(c => (
@@ -144,18 +145,6 @@ export function ProjectCard({ project }: Props) {
             gradient={{ from: 'brand.5', to: 'brand.7' }}
             leftSection={<IconBrandGithub size={16} />}
             w="fit-content"
-            style={{
-              fontWeight: 500,
-              transition: 'all 150ms ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = 'var(--mantine-shadow-sm)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
           >
             Voir le code
           </Button>
@@ -177,8 +166,6 @@ export function ProjectCard({ project }: Props) {
                   background:
                     'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.03))',
                   borderRadius: 10,
-                  border:
-                    '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
                 }}
               >
                 <Stack gap="xs">
@@ -186,29 +173,15 @@ export function ProjectCard({ project }: Props) {
                     <Link
                       key={child.id}
                       href={`/projects/${child.id}`}
-                      aria-label={`Voir le sous-projet ${child.title}`}
-                      style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                      }}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
                     >
                       <Box
                         p="sm"
                         style={{
                           borderRadius: 8,
-                          transition: 'all 120ms ease',
                           display: 'flex',
                           justifyContent: 'space-between',
                           alignItems: 'center',
-                        }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.background =
-                            'var(--mantine-color-default-hover)';
-                          e.currentTarget.style.transform = 'translateX(3px)';
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.transform = 'none';
                         }}
                       >
                         <Stack gap={2} style={{ flex: 1 }}>
