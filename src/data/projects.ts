@@ -79,7 +79,7 @@ export const projects: Project[] = [
         'Maintien d’un haut niveau de qualité sur une librairie open source',
       ],
       actions: [
-        'CI/CD multi-plateforme (Linux, macOS, Windows)',
+        'Fiabilisation des builds, tests et releases sur plusieurs environnements (Linux, macOS, Windows)',
         'Previews dynamiques pour chaque Pull Request',
         'Tests E2E multi-navigateurs (Chromium, Firefox, Safari, Edge)',
         'Analyse qualité et sécurité',
