@@ -16,6 +16,18 @@ const categoryLabels: Record<string, string> = {
   other: 'Autres',
 };
 
+const categoryDescriptions: Record<string, string> = {
+  product:
+    'Produits sur lesquels j’ai contribué à la structuration technique et produit.',
+  application:
+    'Applications métiers avec enjeux de performance et maintenabilité.',
+  library: 'Librairies techniques avec contraintes de qualité et distribution.',
+  tooling: 'Outils internes pour améliorer la productivité et la qualité.',
+  engine: 'Composants cœur nécessitant robustesse et scalabilité.',
+  website: 'Sites techniques avec enjeux SEO, performance et contenu.',
+  other: 'Autres projets.',
+};
+
 const orderedCategories = [
   'product',
   'application',
@@ -37,12 +49,11 @@ export default function ProjectsPage() {
         gradientPosition="left"
       >
         <Stack gap="3rem">
-          {/* 🔥 INTRO STAFF */}
+          {/* INTRO */}
           <Stack maw={720} gap="md">
             <Text>
-              Je travaille principalement sur des systèmes techniques complexes,
-              où la qualité, la performance et la capacité à livrer sont des
-              enjeux clés.
+              Je travaille sur des systèmes techniques complexes où la qualité,
+              la performance et la capacité à livrer sont critiques.
             </Text>
 
             <Text c="dimmed">
@@ -51,41 +62,72 @@ export default function ProjectsPage() {
             </Text>
           </Stack>
 
-          {/* 🔥 CASE STUDY (MOMENT FORT) */}
+          {/* 🔥 CASE STUDY */}
           <Box
             p="xl"
             style={theme => ({
-              borderRadius: 16,
+              borderRadius: 20,
               background:
-                'linear-gradient(135deg, rgba(99,102,241,0.06), transparent)',
+                'linear-gradient(135deg, rgba(99,102,241,0.08), transparent)',
               border: `1px solid ${theme.colors.gray[3]}`,
             })}
           >
-            <Stack maw={720} gap="md">
-              <Text fw={600}>
-                Industrialisation complète d’une plateforme CI/CD
+            <Stack maw={760} gap="lg">
+              <Text size="sm" c="dimmed" fw={500}>
+                CASE STUDY
               </Text>
+
+              <Title order={3}>
+                Industrialisation d’une plateforme CI/CD complexe
+              </Title>
 
               <Text c="dimmed">
                 Projet multi-composants avec pipelines lents, releases manuelles
                 et manque de fiabilité.
               </Text>
 
-              <Stack gap="xs">
-                <Text c="dimmed">• Pipelines multi-plateformes</Text>
-                <Text c="dimmed">• Tests E2E multi-navigateurs</Text>
-                <Text c="dimmed">• Automatisation complète des releases</Text>
-                <Text c="dimmed">• Analyse qualité et sécurité</Text>
-              </Stack>
+              <SimpleGrid cols={{ base: 1, sm: 2 }}>
+                <Stack gap={4}>
+                  <Text fw={500}>Problèmes</Text>
+                  <Text size="sm" c="dimmed">
+                    • Pipelines lents
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    • Releases manuelles
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    • Manque de confiance
+                  </Text>
+                </Stack>
 
-              <Text fw={500}>
-                Résultat : livraisons plus rapides, système fiable et équipe
-                plus efficace.
+                <Stack gap={4}>
+                  <Text fw={500}>Actions</Text>
+                  <Text size="sm" c="dimmed">
+                    • CI multi-plateformes
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    • Tests E2E
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    • Release automatisée
+                  </Text>
+                </Stack>
+              </SimpleGrid>
+
+              <Text fw={600}>
+                Résultat : système fiable, livraisons accélérées, équipe plus
+                efficace.
               </Text>
             </Stack>
           </Box>
 
-          {/* GRID PAR CATÉGORIES */}
+          {/* 🧠 PHRASE PIVOT */}
+          <Text maw={720} c="dimmed">
+            Ce type de projet est représentatif de mon travail : structurer,
+            fiabiliser et accélérer des systèmes complexes.
+          </Text>
+
+          {/* GRID */}
           <Stack gap="3.5rem">
             {orderedCategories
               .filter(category => grouped[category]?.length)
@@ -107,6 +149,10 @@ export default function ProjectsPage() {
                         </Text>
                       </Group>
 
+                      <Text size="sm" c="dimmed">
+                        {categoryDescriptions[category]}
+                      </Text>
+
                       <Box
                         w={44}
                         h={3}
@@ -125,18 +171,9 @@ export default function ProjectsPage() {
                     {/* GRID */}
                     {isSingle ? (
                       <Box
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          paddingTop: 8,
-                        }}
+                        style={{ display: 'flex', justifyContent: 'center' }}
                       >
-                        <Box
-                          style={{
-                            width: '100%',
-                            maxWidth: 520,
-                          }}
-                        >
+                        <Box style={{ width: '100%', maxWidth: 520 }}>
                           <ProjectCard project={projects[0]} />
                         </Box>
                       </Box>

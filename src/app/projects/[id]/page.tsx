@@ -52,8 +52,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         gradientPosition="left"
       >
         <Stack gap="xl" maw={720}>
-          {/* BACK */}
-          <Link href="/projects" style={{ textDecoration: 'none' }}>
+          <Link href="/projects">
             <Button variant="subtle" leftSection={<IconArrowLeft size={16} />}>
               Retour aux projets
             </Button>
@@ -62,46 +61,29 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* META */}
           <Group gap="xs">
             {project.category && (
-              <Badge
-                variant="light"
-                color={categoryColor[project.category] ?? 'gray'}
-              >
+              <Badge color={categoryColor[project.category]}>
                 {project.category.toUpperCase()}
               </Badge>
             )}
 
-            <Badge variant="subtle" color="gray">
-              {project.company.toUpperCase()}
-            </Badge>
+            <Badge variant="subtle">{project.company.toUpperCase()}</Badge>
 
-            {project.github && (
-              <Badge color="green" variant="light">
-                Open source
-              </Badge>
-            )}
-
-            {/* 👉 STAFF SIGNAL */}
-            {project.contributions?.includes('ci-cd') && (
-              <Badge color="cyan">Platform</Badge>
-            )}
+            {project.github && <Badge color="green">Open source</Badge>}
           </Group>
 
-          {/* 🧠 CONTEXTE */}
+          {/* CONTEXTE */}
           <Divider />
-
           <Stack gap="xs">
             <Title order={3}>Contexte</Title>
             <Text c="dimmed">{project.description}</Text>
           </Stack>
 
-          {/* ⚠️ PROBLÈMES */}
+          {/* PROBLÈMES */}
           {project.highlights && (
             <>
               <Divider />
-
               <Stack gap="xs">
                 <Title order={3}>Problèmes</Title>
-
                 {project.highlights.map(item => (
                   <Text key={item} c="dimmed">
                     • {item}
@@ -111,19 +93,13 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* 🔧 ACTIONS */}
+          {/* ACTIONS */}
           {project.contributions && (
             <>
               <Divider />
-
               <Stack gap="xs">
                 <Title order={3}>Actions</Title>
-
-                <Text c="dimmed">
-                  Intervention sur les aspects clés du système :
-                </Text>
-
-                <Group gap="xs">
+                <Group>
                   {project.contributions.map(c => (
                     <Badge key={c} color={contributionColor[c]}>
                       {c}
@@ -134,15 +110,13 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* 🎯 RÉSULTATS */}
+          {/* RESULT */}
           <Divider />
-
           <Stack gap="xs">
             <Title order={3}>Résultats</Title>
-
             <Text>
-              Amélioration de la fiabilité du système, des performances et de la
-              capacité de l’équipe à livrer rapidement.
+              Amélioration de la fiabilité, de la performance et de la capacité
+              à livrer rapidement.
             </Text>
           </Stack>
 
@@ -150,14 +124,12 @@ export default async function ProjectDetailPage({ params }: Props) {
           {project.stack && (
             <>
               <Divider />
-
               <Stack gap="xs">
-                <Title order={3}>Stack technique</Title>
-
-                <Group gap="xs">
-                  {project.stack.map(tech => (
-                    <Badge key={tech} variant="subtle">
-                      {tech}
+                <Title order={3}>Stack</Title>
+                <Group>
+                  {project.stack.map(s => (
+                    <Badge key={s} variant="subtle">
+                      {s}
                     </Badge>
                   ))}
                 </Group>
@@ -165,20 +137,14 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* SUBPROJECTS */}
+          {/* CHILDREN */}
           {children.length > 0 && (
             <>
               <Divider />
-
-              <Stack gap="md">
+              <Stack>
                 <Title order={3}>Sous-projets</Title>
-
                 {children.map(child => (
-                  <Link
-                    key={child.id}
-                    href={`/projects/${child.id}`}
-                    style={{ textDecoration: 'none' }}
-                  >
+                  <Link key={child.id} href={`/projects/${child.id}`}>
                     <Text fw={500}>{child.title}</Text>
                     <Text size="sm" c="dimmed">
                       {child.description}
@@ -189,17 +155,12 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* GITHUB */}
+          {/* CTA */}
           {project.github && (
             <>
               <Divider />
-
               <a href={project.github} target="_blank">
-                <Button
-                  leftSection={<IconBrandGithub size={16} />}
-                  variant="gradient"
-                  gradient={{ from: 'brand.5', to: 'brand.7' }}
-                >
+                <Button leftSection={<IconBrandGithub size={16} />}>
                   Voir le code
                 </Button>
               </a>
