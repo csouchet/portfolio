@@ -28,12 +28,11 @@ export function FreelanceLinks({ data }: Props) {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          style={theme => ({
+          style={{
             transition: 'all 150ms ease',
             cursor: 'pointer',
-            backgroundColor:
-              theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
-          })}
+            backgroundColor: 'var(--mantine-color-body)',
+          }}
           styles={{
             root: {
               '&:hover': {
