@@ -13,6 +13,7 @@ import {
   Badge,
   Button,
   Divider,
+  Box,
 } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
@@ -26,9 +27,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
+
   const project = projects.find(p => p.id === id);
 
-  if (!project) return { title: 'Projet introuvable' };
+  if (!project) {
+    return { title: 'Projet introuvable' };
+  }
 
   return {
     title: project.title,
@@ -38,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { id } = await params;
+
   const project = projects.find(p => p.id === id);
 
   if (!project) return notFound();
@@ -52,7 +57,8 @@ export default async function ProjectDetailPage({ params }: Props) {
         gradientPosition="left"
       >
         <Stack gap="xl" maw={720}>
-          <Link href="/projects">
+          {/* BACK */}
+          <Link href="/projects" style={{ textDecoration: 'none' }}>
             <Button variant="subtle" leftSection={<IconArrowLeft size={16} />}>
               Retour aux projets
             </Button>
@@ -61,29 +67,89 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* META */}
           <Group gap="xs">
             {project.category && (
-              <Badge color={categoryColor[project.category]}>
+              <Badge
+                variant="light"
+                color={categoryColor[project.category] ?? 'gray'}
+              >
                 {project.category.toUpperCase()}
               </Badge>
             )}
 
-            <Badge variant="subtle">{project.company.toUpperCase()}</Badge>
+            <Badge variant="subtle" color="gray">
+              {project.company.toUpperCase()}
+            </Badge>
 
-            {project.github && <Badge color="green">Open source</Badge>}
+            {project.github && (
+              <Badge color="green" variant="light">
+                Open source
+              </Badge>
+            )}
+
+            {project.contributions?.includes('ci-cd') && (
+              <Badge color="cyan" variant="light">
+                Platform
+              </Badge>
+            )}
           </Group>
 
           {/* CONTEXTE */}
-          <Divider />
-          <Stack gap="xs">
-            <Title order={3}>Contexte</Title>
-            <Text c="dimmed">{project.description}</Text>
-          </Stack>
+          {project.caseStudy?.context && (
+            <>
+              <Divider />
+              <Stack gap="xs">
+                <Title order={3}>Contexte</Title>
+                <Text c="dimmed">{project.caseStudy.context}</Text>
+              </Stack>
+            </>
+          )}
 
           {/* PROBLÈMES */}
-          {project.highlights && (
+          {project.caseStudy?.problems && (
             <>
               <Divider />
               <Stack gap="xs">
                 <Title order={3}>Problèmes</Title>
+                {project.caseStudy.problems.map(problem => (
+                  <Text key={problem} c="dimmed">
+                    • {problem}
+                  </Text>
+                ))}
+              </Stack>
+            </>
+          )}
+
+          {/* ACTIONS */}
+          {project.caseStudy?.actions && (
+            <>
+              <Divider />
+              <Stack gap="xs">
+                <Title order={3}>Actions</Title>
+                {project.caseStudy.actions.map(action => (
+                  <Text key={action} c="dimmed">
+                    • {action}
+                  </Text>
+                ))}
+              </Stack>
+            </>
+          )}
+
+          {/* RESULTATS */}
+          {project.caseStudy?.results && (
+            <>
+              <Divider />
+              <Stack gap="xs">
+                <Title order={3}>Résultats</Title>
+                <Text>{project.caseStudy.results}</Text>
+              </Stack>
+            </>
+          )}
+
+          {/* FALLBACK HIGHLIGHTS */}
+          {!project.caseStudy && project.highlights && (
+            <>
+              <Divider />
+              <Stack gap="xs">
+                <Title order={3}>Highlights</Title>
                 {project.highlights.map(item => (
                   <Text key={item} c="dimmed">
                     • {item}
@@ -93,43 +159,40 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* ACTIONS */}
+          {/* CONTRIBUTIONS */}
           {project.contributions && (
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>Actions</Title>
-                <Group>
+                <Title order={3}>Contributions</Title>
+
+                <Group gap="xs">
                   {project.contributions.map(c => (
-                    <Badge key={c} color={contributionColor[c]}>
+                    <Badge key={c} color={contributionColor[c]} variant="light">
                       {c}
                     </Badge>
                   ))}
                 </Group>
+
+                <Text size="sm" c="dimmed">
+                  Intervention sur les aspects clés du système : développement,
+                  architecture et qualité.
+                </Text>
               </Stack>
             </>
           )}
-
-          {/* RESULT */}
-          <Divider />
-          <Stack gap="xs">
-            <Title order={3}>Résultats</Title>
-            <Text>
-              Amélioration de la fiabilité, de la performance et de la capacité
-              à livrer rapidement.
-            </Text>
-          </Stack>
 
           {/* STACK */}
           {project.stack && (
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>Stack</Title>
-                <Group>
-                  {project.stack.map(s => (
-                    <Badge key={s} variant="subtle">
-                      {s}
+                <Title order={3}>Stack technique</Title>
+
+                <Group gap="xs">
+                  {project.stack.map(tech => (
+                    <Badge key={tech} variant="subtle" color="gray">
+                      {tech}
                     </Badge>
                   ))}
                 </Group>
@@ -137,30 +200,57 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* CHILDREN */}
+          {/* SUBPROJECTS */}
           {children.length > 0 && (
             <>
               <Divider />
-              <Stack>
+              <Stack gap="md">
                 <Title order={3}>Sous-projets</Title>
-                {children.map(child => (
-                  <Link key={child.id} href={`/projects/${child.id}`}>
-                    <Text fw={500}>{child.title}</Text>
-                    <Text size="sm" c="dimmed">
-                      {child.description}
-                    </Text>
-                  </Link>
-                ))}
+
+                <Stack gap="sm">
+                  {children.map(child => (
+                    <Link
+                      key={child.id}
+                      href={`/projects/${child.id}`}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                      }}
+                    >
+                      <Box
+                        p="sm"
+                        style={{
+                          borderRadius: 10,
+                          border:
+                            '1px solid var(--mantine-color-default-border)',
+                        }}
+                      >
+                        <Text fw={500}>{child.title}</Text>
+                        <Text size="sm" c="dimmed">
+                          {child.description}
+                        </Text>
+                      </Box>
+                    </Link>
+                  ))}
+                </Stack>
               </Stack>
             </>
           )}
 
-          {/* CTA */}
+          {/* GITHUB */}
           {project.github && (
             <>
               <Divider />
-              <a href={project.github} target="_blank">
-                <Button leftSection={<IconBrandGithub size={16} />}>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  leftSection={<IconBrandGithub size={16} />}
+                  variant="gradient"
+                  gradient={{ from: 'brand.5', to: 'brand.7' }}
+                >
                   Voir le code
                 </Button>
               </a>

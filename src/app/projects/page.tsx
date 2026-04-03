@@ -1,10 +1,23 @@
 'use client';
 
-import { Stack, SimpleGrid, Title, Text, Box, Group } from '@mantine/core';
+import Link from 'next/link';
+
+import {
+  Stack,
+  SimpleGrid,
+  Title,
+  Text,
+  Box,
+  Group,
+  Button,
+} from '@mantine/core';
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { getParentProjectsGroupedByCategory } from '@/lib/projects';
+import {
+  getParentProjectsGroupedByCategory,
+  getFeaturedCaseStudyProject,
+} from '@/lib/projects';
 
 const categoryLabels: Record<string, string> = {
   product: 'Produits',
@@ -40,6 +53,7 @@ const orderedCategories = [
 
 export default function ProjectsPage() {
   const grouped = getParentProjectsGroupedByCategory();
+  const caseStudyProject = getFeaturedCaseStudyProject();
 
   return (
     <main>
@@ -63,65 +77,67 @@ export default function ProjectsPage() {
           </Stack>
 
           {/* 🔥 CASE STUDY */}
-          <Box
-            p="xl"
-            style={theme => ({
-              borderRadius: 20,
-              background:
-                'linear-gradient(135deg, rgba(99,102,241,0.08), transparent)',
-              border: `1px solid ${theme.colors.gray[3]}`,
-            })}
-          >
-            <Stack maw={760} gap="lg">
-              <Text size="sm" c="dimmed" fw={500}>
-                CASE STUDY
-              </Text>
+          {caseStudyProject && caseStudyProject.caseStudy && (
+            <Box
+              p="xl"
+              style={theme => ({
+                borderRadius: 20,
+                background:
+                  'linear-gradient(135deg, rgba(99,102,241,0.08), transparent)',
+                border: `1px solid ${theme.colors.gray[3]}`,
+              })}
+            >
+              <Stack maw={760} gap="lg">
+                <Text size="sm" c="dimmed" fw={500}>
+                  CASE STUDY
+                </Text>
 
-              <Title order={3}>
-                Industrialisation d’une plateforme CI/CD complexe
-              </Title>
+                <Title order={3}>{caseStudyProject.title}</Title>
 
-              <Text c="dimmed">
-                Projet multi-composants avec pipelines lents, releases manuelles
-                et manque de fiabilité.
-              </Text>
+                {caseStudyProject.caseStudy.context && (
+                  <Text c="dimmed">{caseStudyProject.caseStudy.context}</Text>
+                )}
 
-              <SimpleGrid cols={{ base: 1, sm: 2 }}>
-                <Stack gap={4}>
-                  <Text fw={500}>Problèmes</Text>
-                  <Text size="sm" c="dimmed">
-                    • Pipelines lents
-                  </Text>
-                  <Text size="sm" c="dimmed">
-                    • Releases manuelles
-                  </Text>
-                  <Text size="sm" c="dimmed">
-                    • Manque de confiance
-                  </Text>
-                </Stack>
+                <SimpleGrid cols={{ base: 1, sm: 2 }}>
+                  {caseStudyProject.caseStudy.problems && (
+                    <Stack gap={4}>
+                      <Text fw={500}>Problèmes</Text>
+                      {caseStudyProject.caseStudy.problems.map(p => (
+                        <Text key={p} size="sm" c="dimmed">
+                          • {p}
+                        </Text>
+                      ))}
+                    </Stack>
+                  )}
 
-                <Stack gap={4}>
-                  <Text fw={500}>Actions</Text>
-                  <Text size="sm" c="dimmed">
-                    • CI multi-plateformes
-                  </Text>
-                  <Text size="sm" c="dimmed">
-                    • Tests E2E
-                  </Text>
-                  <Text size="sm" c="dimmed">
-                    • Release automatisée
-                  </Text>
-                </Stack>
-              </SimpleGrid>
+                  {caseStudyProject.caseStudy.actions && (
+                    <Stack gap={4}>
+                      <Text fw={500}>Actions</Text>
+                      {caseStudyProject.caseStudy.actions.map(a => (
+                        <Text key={a} size="sm" c="dimmed">
+                          • {a}
+                        </Text>
+                      ))}
+                    </Stack>
+                  )}
+                </SimpleGrid>
 
-              <Text fw={600}>
-                Résultat : système fiable, livraisons accélérées, équipe plus
-                efficace.
-              </Text>
-            </Stack>
-          </Box>
+                {caseStudyProject.caseStudy.results && (
+                  <Text fw={600}>{caseStudyProject.caseStudy.results}</Text>
+                )}
 
-          {/* 🧠 PHRASE PIVOT */}
+                <Button
+                  component={Link}
+                  href={`/projects/${caseStudyProject.id}`}
+                  variant="subtle"
+                >
+                  Voir le projet
+                </Button>
+              </Stack>
+            </Box>
+          )}
+
+          {/* PHRASE PIVOT */}
           <Text maw={720} c="dimmed">
             Ce type de projet est représentatif de mon travail : structurer,
             fiabiliser et accélérer des systèmes complexes.
