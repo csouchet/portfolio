@@ -13,22 +13,24 @@ const items = [
   {
     title: 'Platform & CI/CD',
     description:
-      'Pipelines fiables, automatisation des builds et des releases, réduction du time-to-market et sécurisation des livraisons.',
+      'Pipelines fiables, automatisation des builds et des releases.',
+    result: '→ releases rapides et fiables',
   },
   {
     title: 'Architecture & systèmes',
     description:
-      'Structuration de systèmes complexes, découplage, scalabilité et capacité à faire évoluer le produit dans le temps.',
+      'Structuration de systèmes complexes, découplage et scalabilité.',
+    result: '→ système maintenable sur le long terme',
   },
   {
     title: 'Developer Experience',
-    description:
-      'Outils, standards et workflows pour accélérer les équipes et réduire la friction au quotidien.',
+    description: 'Outils, standards et workflows pour accélérer les équipes.',
+    result: '→ gain de vitesse au quotidien',
   },
   {
     title: 'Produit & impact',
-    description:
-      'Alignement technique avec les enjeux produit, suivi des KPIs et amélioration continue de la valeur délivrée.',
+    description: 'Alignement technique avec les enjeux produit et les KPIs.',
+    result: '→ meilleure valeur délivrée',
   },
 ];
 
@@ -61,6 +63,10 @@ export function ExpertiseSection() {
 
                 <Text size="sm" c="dimmed">
                   {item.description}
+                </Text>
+
+                <Text size="xs" c="blue" fw={500}>
+                  {item.result}
                 </Text>
               </Stack>
             </Paper>

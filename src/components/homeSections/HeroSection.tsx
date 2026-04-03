@@ -34,6 +34,10 @@ export function HeroSection() {
             équipes.
           </Text>
 
+          <Text size="sm" c="dimmed">
+            15+ ans d’expérience · systèmes critiques · CI/CD avancée
+          </Text>
+
           <Group mt="md">
             <Button component={Link} href="/projects" radius="xl">
               Voir mes projets

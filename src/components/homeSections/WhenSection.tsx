@@ -13,22 +13,25 @@ const items = [
   {
     title: 'Livraisons lentes ou imprévisibles',
     description:
-      'Les délais s’allongent, les releases sont stressantes ou instables, et la vitesse de delivery devient un problème.',
+      'Les délais s’allongent, les releases deviennent stressantes et la capacité à livrer se dégrade.',
+    impact: '→ ralentit le business',
   },
   {
     title: 'Complexité technique difficile à maîtriser',
     description:
-      'Accumulation de dette technique, code difficile à maintenir ou manque de vision architecture globale.',
+      'Accumulation de dette technique, manque de vision globale, système difficile à maintenir.',
+    impact: '→ perte de maîtrise',
   },
   {
     title: 'Manque de confiance dans le code',
     description:
       'Tests insuffisants, bugs fréquents, difficulté à faire évoluer le produit sans régressions.',
+    impact: '→ freine les équipes',
   },
   {
     title: 'Architecture difficile à faire évoluer',
-    description:
-      'Le système freine les équipes au lieu de les aider : scaling complexe, dépendances fortes, rigidité.',
+    description: 'Couplage fort, rigidité, difficulté à scaler.',
+    impact: '→ limite la croissance',
   },
 ];
 
@@ -61,6 +64,10 @@ export function WhenSection() {
 
                 <Text size="sm" c="dimmed">
                   {item.description}
+                </Text>
+
+                <Text size="xs" c="red" fw={500}>
+                  {item.impact}
                 </Text>
               </Stack>
             </Paper>
