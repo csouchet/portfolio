@@ -1,236 +1,105 @@
-'use client';
-
 import Link from 'next/link';
 
-import { IconBrandGithub, IconChevronRight } from '@tabler/icons-react';
+import { Card, Text, Group, Badge, Stack, Title } from '@mantine/core';
 
-import { Text, Group, Badge, Stack, Button, Divider, Box } from '@mantine/core';
-
-import { categoryColor, contributionColor } from '@/lib/projectColors';
-import { getChildProjects } from '@/lib/projects';
 import { Project } from '@/types/project';
-
-import { BaseCard } from './BaseCard';
 
 type Props = {
   project: Project;
 };
 
+/**
+ * Transforme le texte pour le rendre plus impactant
+ */
+function toImpact(result?: string, fallback?: string) {
+  if (!result) return fallback ?? '';
+
+  return result
+    .replace(/^Mise en place d[’']une?\s/i, '')
+    .replace(/^Mise en place de\s/i, '')
+    .replace(/^Création d[’']une?\s/i, '')
+    .replace(/^Création de\s/i, '')
+    .replace(/^Construction d[’']une?\s/i, '')
+    .trim();
+}
+
+/**
+ * Améliore légèrement le wording sans toucher à la data
+ */
+function rewrite(text?: string) {
+  if (!text) return '';
+
+  return text
+    .replace(/Mise en place/g, 'Construction')
+    .replace(/Création/g, 'Conception');
+}
+
 export function ProjectCard({ project }: Props) {
-  const children = getChildProjects(project.id);
-  const isParent = children.length > 0;
-  const isOpenSource = !!project.github;
+  const impact = toImpact(project.caseStudy?.results, project.description);
+
+  const mainAction = project.caseStudy?.actions?.[0];
+
+  const scope = project.parent ? 'Sous-projet' : 'Projet principal';
 
   return (
-    <BaseCard
+    <Card
+      withBorder
+      radius="md"
+      p="lg"
+      component={Link}
+      href={`/projects/${project.id}`}
       style={{
-        position: 'relative',
-        overflow: 'hidden',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+        border: project.featured
+          ? '2px solid var(--mantine-color-blue-5)'
+          : undefined,
       }}
     >
-      {/* Glow */}
-      <Box
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          background:
-            'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.08), transparent 40%)',
-          opacity: 0,
-          transition: 'opacity 200ms ease',
-        }}
-        className="card-glow"
-      />
-
-      <Stack gap="md">
-        {/* HEADER */}
-        <Stack gap={6}>
-          <Group justify="space-between" align="center">
-            {/* BADGES */}
-            <Group gap="xs">
-              {project.category && (
-                <Badge
-                  variant="light"
-                  color={categoryColor[project.category] ?? 'gray'}
-                  styles={{ root: { fontWeight: 600 } }}
-                >
-                  {project.category?.toUpperCase()}
-                </Badge>
-              )}
-
-              {isOpenSource && (
-                <Badge
-                  variant="subtle"
-                  color="green"
-                  styles={{
-                    root: {
-                      fontWeight: 500,
-                      letterSpacing: '0.02em',
-                    },
-                  }}
-                >
-                  Open source
-                </Badge>
-              )}
-            </Group>
-
-            {/* COMPANY */}
-            <Text size="xs" c="dimmed" fw={500}>
-              {project.company.toUpperCase()}
-            </Text>
+      <Stack gap="sm">
+        {/* Header */}
+        <Group justify="space-between" align="center">
+          <Group gap={6}>
+            <Badge variant="light" color="red">
+              {project.category}
+            </Badge>
           </Group>
 
-          {/* TITLE */}
-          <Text fw={600} size="lg">
-            <Link
-              href={`/projects/${project.id}`}
-              aria-label={`Voir le projet ${project.title}`}
-              style={{
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-            >
-              {project.title}
-            </Link>
+          <Text size="xs" c="dimmed">
+            {project.company}
           </Text>
+        </Group>
 
-          {/* DESCRIPTION */}
-          <Text size="sm" c="dimmed" lineClamp={3}>
-            {project.description}
-          </Text>
-        </Stack>
+        {/* Title */}
+        <Title order={4}>{project.title}</Title>
 
-        {/* HIGHLIGHTS */}
-        {project.highlights && (
-          <Stack gap={2}>
-            {project.highlights.map(item => (
-              <Text key={item} size="sm" c="dimmed" style={{ lineHeight: 1.4 }}>
-                <span style={{ opacity: 0.6 }}>•</span> {item}
-              </Text>
-            ))}
-          </Stack>
-        )}
+        {/* Scope */}
+        <Text size="xs" c="dimmed">
+          {scope}
+        </Text>
 
-        {/* CONTRIBUTIONS */}
+        {/* 💥 Impact (clé staff) */}
+        <Text fw={500}>{impact}</Text>
+
+        {/* Description */}
+        <Text size="sm" c="dimmed">
+          {rewrite(project.description)}
+        </Text>
+
+        {/* Action principale (preuve concrète) */}
+        {mainAction && <Text size="sm">• {rewrite(mainAction)}</Text>}
+
+        {/* Contributions */}
         {project.contributions && (
-          <Group gap="xs">
+          <Group gap={6} mt="xs">
             {project.contributions.map(c => (
-              <Badge key={c} color={contributionColor[c]} variant="light">
+              <Badge key={c} size="xs" variant="light">
                 {c}
               </Badge>
             ))}
           </Group>
         )}
-
-        {/* STACK */}
-        {project.stack && (
-          <Group gap="xs">
-            {project.stack.map(tech => (
-              <Badge key={tech} variant="subtle" color="gray">
-                {tech}
-              </Badge>
-            ))}
-          </Group>
-        )}
-
-        {/* CTA GitHub */}
-        {project.github && (
-          <Button
-            component="a"
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="gradient"
-            gradient={{ from: 'brand.5', to: 'brand.7' }}
-            leftSection={<IconBrandGithub size={16} />}
-            w="fit-content"
-            style={{
-              fontWeight: 500,
-              transition: 'all 150ms ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = 'var(--mantine-shadow-sm)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            Voir le code
-          </Button>
-        )}
-
-        {/* SUBPROJECTS */}
-        {isParent && (
-          <>
-            <Divider />
-
-            <Stack gap="xs">
-              <Text size="sm" fw={500}>
-                Sous-projets
-              </Text>
-
-              <Box
-                p="sm"
-                style={{
-                  background:
-                    'light-dark(rgba(0,0,0,0.02), rgba(255,255,255,0.03))',
-                  borderRadius: 10,
-                  border:
-                    '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
-                }}
-              >
-                <Stack gap="xs">
-                  {children.map(child => (
-                    <Link
-                      key={child.id}
-                      href={`/projects/${child.id}`}
-                      aria-label={`Voir le sous-projet ${child.title}`}
-                      style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                      }}
-                    >
-                      <Box
-                        p="sm"
-                        style={{
-                          borderRadius: 8,
-                          transition: 'all 120ms ease',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                        }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.background =
-                            'var(--mantine-color-default-hover)';
-                          e.currentTarget.style.transform = 'translateX(3px)';
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.transform = 'none';
-                        }}
-                      >
-                        <Stack gap={2} style={{ flex: 1 }}>
-                          <Text size="sm" fw={500}>
-                            {child.title}
-                          </Text>
-
-                          <Text size="xs" c="dimmed" lineClamp={2}>
-                            {child.description}
-                          </Text>
-                        </Stack>
-
-                        <IconChevronRight size={16} opacity={0.4} />
-                      </Box>
-                    </Link>
-                  ))}
-                </Stack>
-              </Box>
-            </Stack>
-          </>
-        )}
       </Stack>
-    </BaseCard>
+    </Card>
   );
 }

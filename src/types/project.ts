@@ -20,6 +20,13 @@ export type ProjectContribution =
   | 'product'
   | 'packaging';
 
+export type CaseStudy = {
+  context?: string;
+  problems?: string[];
+  actions?: string[];
+  results?: string;
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -31,6 +38,8 @@ export type Project = {
   parent?: string;
 
   highlights?: string[];
+
+  caseStudy?: CaseStudy;
 
   category?: ProjectCategory;
   contributions?: ProjectContribution[];

@@ -9,6 +9,16 @@ export function getFeaturedParentProjects(): Project[] {
   return projects.filter(p => p.featured && !p.parent);
 }
 
+export function getFeaturedCaseStudyProject() {
+  const withCaseStudy = projects.filter(p => p.caseStudy && !p.parent);
+
+  const featured = withCaseStudy.find(p => p.featured);
+
+  if (featured) return featured;
+
+  return withCaseStudy[0] ?? null;
+}
+
 export function getParentProjects(): Project[] {
   return projects.filter(p => !p.parent);
 }
