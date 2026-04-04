@@ -19,14 +19,13 @@ export default function AboutPage() {
         <Stack gap={60}>
           {/* HERO */}
           <Stack gap="lg">
-            <Title order={1} style={{ lineHeight: 1.2, maxWidth: 700 }}>
-              Je travaille sur des systèmes qui deviennent trop complexes pour
-              rester simples.
+            <Title order={1} style={{ lineHeight: 1.2, maxWidth: 720 }}>
+              Construire des systèmes fiables, sans complexité inutile.
             </Title>
 
             <Text size="lg" c="dimmed" style={{ maxWidth: 600 }}>
-              Là où les équipes ralentissent, où les releases deviennent
-              fragiles, et où la complexité prend le dessus.
+              Ingénieure logiciel spécialisée en architecture, CI/CD et systèmes
+              complexes.
             </Text>
           </Stack>
 
@@ -38,19 +37,24 @@ export default function AboutPage() {
 
             <Stack gap="sm">
               <Text c="dimmed">
-                J’ai commencé par faire du backend et du frontend, en
-                travaillant sur des applications métier.
+                J’ai commencé au plus haut niveau de support technique sur des
+                applications critiques liées à la téléphonie mobile chez Orange.
               </Text>
 
               <Text c="dimmed">
-                Mais rapidement, les problèmes les plus difficiles n’étaient pas
-                dans les features. Ils étaient dans le système : architecture,
-                pipelines, qualité.
+                Je me suis ensuite spécialisée en développement backend sur des
+                applications métier, puis en développement frontend.
+              </Text>
+
+              <Text c="dimmed">
+                Rapidement, les problèmes les plus intéressants n’étaient pas
+                dans les fonctionnalités, mais dans ce qui les supporte :
+                architecture, pipelines, qualité.
               </Text>
 
               <Text fw={500}>
-                C’est là que j’ai commencé à me concentrer sur ces sujets :
-                structurer, stabiliser, rendre les systèmes fiables.
+                J’ai progressivement déplacé mon focus vers ces sujets :
+                comprendre, structurer et stabiliser les systèmes.
               </Text>
             </Stack>
           </Stack>
@@ -59,21 +63,21 @@ export default function AboutPage() {
 
           {/* AUJOURD'HUI */}
           <Stack gap="md">
-            <Title order={2}>Ce que je fais aujourd’hui</Title>
+            <Title order={2}>Aujourd’hui</Title>
 
             <Stack gap="sm">
               <Text c="dimmed">
-                J’interviens quand un système commence à poser problème.
+                J’interviens quand un système commence à freiner une équipe.
               </Text>
 
               <Text c="dimmed">
                 Pas parce qu’il ne fonctionne pas, mais parce qu’il devient
-                difficile à faire évoluer.
+                difficile à faire évoluer, à livrer ou à comprendre.
               </Text>
 
               <Text fw={500}>
-                Mon travail, c’est de remettre de la maîtrise : sur la qualité,
-                les livraisons et la capacité à avancer.
+                Mon travail consiste à remettre de la clarté, de la fiabilité et
+                de la fluidité.
               </Text>
             </Stack>
           </Stack>
@@ -88,19 +92,44 @@ export default function AboutPage() {
               <Text c="dimmed">Je ne pars jamais d’une solution.</Text>
 
               <Text c="dimmed">
-                Je commence par comprendre comment le système fonctionne
-                réellement, et où ça coince.
+                Je commence par comprendre le système tel qu’il est réellement
+                et identifier où se situent les frictions.
               </Text>
 
               <Stack gap={6}>
-                <Text>• comprendre ce qui ralentit réellement</Text>
-                <Text>• simplifier plutôt que complexifier</Text>
+                <Text>• comprendre ce qui bloque vraiment</Text>
+                <Text>• simplifier plutôt qu’ajouter</Text>
                 <Text>• fiabiliser avant d’optimiser</Text>
               </Stack>
 
               <Text fw={500}>
-                L’objectif est simple : rendre le système plus utilisable par
-                l’équipe.
+                L’objectif est simple : rendre le système plus lisible, plus
+                fiable et plus facile à faire évoluer.
+              </Text>
+            </Stack>
+          </Stack>
+
+          <Divider opacity={0.4} />
+
+          {/* PERSONAL TOUCH */}
+          <Stack gap="md">
+            <Title order={2}>Au-delà du code</Title>
+
+            <Stack gap="sm">
+              <Text c="dimmed">
+                En parallèle de mon travail d’ingénieure, je développe une
+                activité en poterie.
+              </Text>
+
+              <Text c="dimmed">
+                Travailler la matière m’a appris à observer avant d’agir, à
+                comprendre les contraintes et à chercher la simplicité plutôt
+                que la complexité.
+              </Text>
+
+              <Text fw={500}>
+                Une approche que je retrouve aussi en ingénierie : construire
+                des systèmes qui tiennent dans le temps.
               </Text>
             </Stack>
           </Stack>
