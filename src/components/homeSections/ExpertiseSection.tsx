@@ -43,7 +43,7 @@ export function ExpertiseSection() {
 
           <Text c="dimmed">
             J’interviens sur les leviers techniques qui ont un impact direct sur
-            la performance des équipes et la qualité des systèmes.
+            la capacité des équipes à livrer et à faire évoluer leur système.
           </Text>
         </Stack>
 
