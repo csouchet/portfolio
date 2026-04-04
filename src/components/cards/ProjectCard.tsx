@@ -63,12 +63,6 @@ export function ProjectCard({ project }: Props) {
             <Badge variant="light" color="red">
               {project.category}
             </Badge>
-
-            {project.featured && (
-              <Badge variant="light" color="yellow">
-                Featured
-              </Badge>
-            )}
           </Group>
 
           <Text size="xs" c="dimmed">
