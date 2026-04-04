@@ -1,10 +1,16 @@
-'use client';
-
 import Link from 'next/link';
+
+import { Metadata } from 'next';
 
 import { Stack, Text, Button } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/services',
+  },
+};
 
 export default function ServicesPage() {
   return (
@@ -25,14 +31,11 @@ export default function ServicesPage() {
             d’avancer sereinement.
           </Text>
 
-          <Button
-            component={Link}
-            href="/contact"
-            variant="gradient"
-            w="fit-content"
-          >
-            Discuter de votre contexte
-          </Button>
+          <Link href="/contact" style={{ textDecoration: 'none' }}>
+            <Button variant="gradient" w="fit-content">
+              Discuter d’un contexte technique
+            </Button>
+          </Link>
         </Stack>
       </HomeSection>
 
@@ -130,9 +133,9 @@ export default function ServicesPage() {
             parler.
           </Text>
 
-          <Button component={Link} href="/contact" variant="gradient">
-            Me contacter
-          </Button>
+          <Link href="/contact" style={{ textDecoration: 'none' }}>
+            <Button variant="gradient">Me contacter</Button>
+          </Link>
         </Stack>
       </HomeSection>
     </main>

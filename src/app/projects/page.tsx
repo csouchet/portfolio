@@ -1,6 +1,6 @@
-'use client';
-
 import Link from 'next/link';
+
+import { Metadata } from 'next';
 
 import {
   Stack,
@@ -18,6 +18,12 @@ import {
   getParentProjectsGroupedByCategory,
   getFeaturedCaseStudyProject,
 } from '@/lib/projects';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/projects',
+  },
+};
 
 const categoryLabels: Record<string, string> = {
   product: 'Produits',
@@ -80,12 +86,12 @@ export default function ProjectsPage() {
           {caseStudyProject && caseStudyProject.caseStudy && (
             <Box
               p="xl"
-              style={theme => ({
+              style={{
                 borderRadius: 20,
                 background:
                   'linear-gradient(135deg, rgba(99,102,241,0.08), transparent)',
-                border: `1px solid ${theme.colors.gray[3]}`,
-              })}
+                border: '1px solid #e5e7eb',
+              }}
             >
               <Stack maw={760} gap="lg">
                 <Text size="sm" c="dimmed" fw={500}>
@@ -126,13 +132,12 @@ export default function ProjectsPage() {
                   <Text fw={600}>{caseStudyProject.caseStudy.results}</Text>
                 )}
 
-                <Button
-                  component={Link}
+                <Link
                   href={`/projects/${caseStudyProject.id}`}
-                  variant="subtle"
+                  style={{ textDecoration: 'none' }}
                 >
-                  Voir le projet
-                </Button>
+                  <Button variant="subtle">Voir le projet</Button>
+                </Link>
               </Stack>
             </Box>
           )}
@@ -172,15 +177,12 @@ export default function ProjectsPage() {
                       <Box
                         w={44}
                         h={3}
-                        style={theme => ({
+                        style={{
                           borderRadius: 999,
-                          background: `linear-gradient(
-                            90deg,
-                            ${theme.colors.brand[5]},
-                            ${theme.colors.brand[3]}
-                          )`,
+                          background:
+                            'linear-gradient(90deg, #6366f1, #a5b4fc)',
                           opacity: 0.7,
-                        })}
+                        }}
                       />
                     </Stack>
 

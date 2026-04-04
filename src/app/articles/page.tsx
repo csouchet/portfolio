@@ -1,38 +1,22 @@
-'use client';
+import type { Metadata } from 'next';
 
-import { useMemo, useState } from 'react';
+import { Container, Stack, Title, Text } from '@mantine/core';
 
-import {
-  Container,
-  Stack,
-  Title,
-  Text,
-  SimpleGrid,
-  Chip,
-  Group,
-} from '@mantine/core';
-
-import { ArticleCard } from '@/components/cards/ArticleCard';
+import { ArticlesClient } from '@/components/articles/ArticlesClient';
 import { articles } from '@/data/articles';
-import { sortArticles, getAllTags } from '@/lib/articles';
-import { Tag } from '@/types/article';
+import { sortArticles } from '@/lib/articles';
 
-export default function Page() {
-  const sorted = useMemo(() => sortArticles(articles), []);
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/articles',
+  },
+  title: 'Articles',
+  description:
+    'Articles techniques autour du CI/CD, du testing et des systèmes.',
+};
 
-  const featured = sorted.find(a => a.featured);
-
-  const tags = useMemo(() => getAllTags(articles), []);
-
-  const [activeTag, setActiveTag] = useState<Tag | null>(null);
-
-  const filtered = useMemo(() => {
-    const base = activeTag
-      ? sorted.filter(a => a.tags.includes(activeTag))
-      : sorted;
-
-    return base.filter(a => a.id !== featured?.id);
-  }, [activeTag, sorted, featured]);
+export default function ArticlesPage() {
+  const sorted = sortArticles(articles);
 
   return (
     <Container py="xl">
@@ -42,54 +26,13 @@ export default function Page() {
           <Title order={1}>Articles</Title>
 
           <Text c="dimmed">
-            Une sélection d’articles techniques autour du testing, du CI/CD et
-            de la data.
+            Une sélection d’articles techniques autour du CI/CD, du testing et
+            des systèmes.
           </Text>
         </Stack>
 
-        {/* Featured */}
-        {featured && (
-          <Stack gap="sm">
-            <Text size="sm" c="dimmed">
-              À la une
-            </Text>
-
-            <ArticleCard article={featured} />
-          </Stack>
-        )}
-
-        {/* Filters */}
-        <Stack gap="xs">
-          <Text size="sm" fw={500}>
-            Filtrer par sujet
-          </Text>
-
-          <Group gap="xs">
-            <Chip
-              checked={activeTag === null}
-              onChange={() => setActiveTag(null)}
-            >
-              Tous
-            </Chip>
-
-            {tags.map(tag => (
-              <Chip
-                key={tag}
-                checked={activeTag === tag}
-                onChange={() => setActiveTag(tag)}
-              >
-                {tag}
-              </Chip>
-            ))}
-          </Group>
-        </Stack>
-
-        {/* List */}
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-          {filtered.map(article => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
-        </SimpleGrid>
+        {/* Client part */}
+        <ArticlesClient articles={sorted} />
       </Stack>
     </Container>
   );

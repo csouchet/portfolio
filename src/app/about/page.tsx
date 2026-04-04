@@ -1,6 +1,6 @@
-'use client';
-
 import Link from 'next/link';
+
+import { Metadata } from 'next';
 
 import {
   Container,
@@ -11,6 +11,12 @@ import {
   Button,
   Box,
 } from '@mantine/core';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -138,9 +144,9 @@ export default function AboutPage() {
           <Stack align="center" gap="md" mt={40}>
             <Text size="lg">Un système à structurer ou à stabiliser ?</Text>
 
-            <Button component={Link} href="/contact" radius="xl">
-              Discutons-en
-            </Button>
+            <Link href="/contact">
+              <Button radius="xl">Discutons-en</Button>
+            </Link>
 
             <Text size="sm" c="dimmed">
               Freelance · Remote · Grenoble
