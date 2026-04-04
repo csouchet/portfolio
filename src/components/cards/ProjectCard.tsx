@@ -42,64 +42,64 @@ export function ProjectCard({ project }: Props) {
   const scope = project.parent ? 'Sous-projet' : 'Projet principal';
 
   return (
-    <Card
-      withBorder
-      radius="md"
-      p="lg"
-      component={Link}
-      href={`/projects/${project.id}`}
-      style={{
-        cursor: 'pointer',
-        transition: 'all 0.2s ease',
-        border: project.featured
-          ? '2px solid var(--mantine-color-blue-5)'
-          : undefined,
-      }}
-    >
-      <Stack gap="sm">
-        {/* Header */}
-        <Group justify="space-between" align="center">
-          <Group gap={6}>
-            <Badge variant="light" color="red">
-              {project.category}
-            </Badge>
-          </Group>
-
-          <Text size="xs" c="dimmed">
-            {project.company}
-          </Text>
-        </Group>
-
-        {/* Title */}
-        <Title order={4}>{project.title}</Title>
-
-        {/* Scope */}
-        <Text size="xs" c="dimmed">
-          {scope}
-        </Text>
-
-        {/* 💥 Impact (clé staff) */}
-        <Text fw={500}>{impact}</Text>
-
-        {/* Description */}
-        <Text size="sm" c="dimmed">
-          {rewrite(project.description)}
-        </Text>
-
-        {/* Action principale (preuve concrète) */}
-        {mainAction && <Text size="sm">• {rewrite(mainAction)}</Text>}
-
-        {/* Contributions */}
-        {project.contributions && (
-          <Group gap={6} mt="xs">
-            {project.contributions.map(c => (
-              <Badge key={c} size="xs" variant="light">
-                {c}
+    <Link href={`/projects/${project.id}`} style={{ textDecoration: 'none' }}>
+      <Card
+        withBorder
+        radius="md"
+        p="lg"
+        style={{
+          cursor: 'pointer',
+          transition: 'all 0.2s ease',
+          border: project.featured
+            ? '2px solid var(--mantine-color-blue-5)'
+            : undefined,
+        }}
+      >
+        <Stack gap="sm">
+          {/* Header */}
+          <Group justify="space-between" align="center">
+            <Group gap={6}>
+              <Badge variant="light" color="red">
+                {project.category}
               </Badge>
-            ))}
+            </Group>
+
+            <Text size="xs" c="dimmed">
+              {project.company}
+            </Text>
           </Group>
-        )}
-      </Stack>
-    </Card>
+
+          {/* Title */}
+          <Title order={4}>{project.title}</Title>
+
+          {/* Scope */}
+          <Text size="xs" c="dimmed">
+            {scope}
+          </Text>
+
+          {/* 💥 Impact  */}
+          <Text fw={500}>{impact}</Text>
+
+          {/* Description */}
+          <Text size="sm" c="dimmed">
+            {rewrite(project.description)}
+          </Text>
+
+          {/* Action principale  */}
+          {mainAction && <Text size="sm">• {rewrite(mainAction)}</Text>}
+
+          {/* Contributions */}
+          {project.contributions && (
+            <Group gap={6} mt="xs">
+              {project.contributions.map(c => (
+                <Badge key={c} size="xs" variant="light">
+                  {c}
+                </Badge>
+              ))}
+            </Group>
+          )}
+        </Stack>
+      </Card>
+    </Link>
   );
 }

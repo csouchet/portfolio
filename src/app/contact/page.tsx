@@ -1,6 +1,5 @@
-'use client';
-
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
+import { Metadata } from 'next';
 
 import { Container, Stack, Title, Text, Group, Button } from '@mantine/core';
 
@@ -9,6 +8,12 @@ import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
 import freelanceData from '@/data/freelance.json';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/contact',
+  },
+};
 
 export default function ContactPage() {
   return (
