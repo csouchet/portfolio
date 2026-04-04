@@ -1,19 +1,25 @@
-'use client';
-
 import { ContactSection } from '@/components/homeSections/ContactSection';
+import { ExpertiseSection } from '@/components/homeSections/ExpertiseSection';
 import { FeaturedArticlesSection } from '@/components/homeSections/FeaturedArticlesSection';
 import { FeaturedProjectsSection } from '@/components/homeSections/FeaturedProjectsSection';
 import { HeroSection } from '@/components/homeSections/HeroSection';
 
-export default function Home() {
+// tes sections existantes
+import { WhenSection } from '@/components/homeSections/WhenSection';
+
+export default function HomePage() {
   return (
-    <main>
+    <>
       <HeroSection />
+
+      <WhenSection />
+      <ExpertiseSection />
+
       <FeaturedProjectsSection />
+
       <FeaturedArticlesSection />
+
       <ContactSection />
-      {/*
-      <AboutSection />*/}
-    </main>
+    </>
   );
 }

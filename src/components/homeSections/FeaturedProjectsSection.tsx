@@ -12,12 +12,11 @@ export function FeaturedProjectsSection() {
   return (
     <HomeSection
       title="Projets clés"
-      description="Une sélection de projets sur lesquels j’ai travaillé, avec un focus sur la performance, la scalabilité et l’expérience développeur."
+      description="Des systèmes que j’ai conçus ou structurés, avec un impact direct sur la fiabilité et la vitesse de delivery."
       cta={{
         label: 'Voir tous les projets',
         href: '/projects',
       }}
-      gradientPosition="left"
     >
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         {featuredProjects.map(project => (
