@@ -24,8 +24,8 @@ export default function AboutPage() {
             </Title>
 
             <Text size="lg" c="dimmed" style={{ maxWidth: 600 }}>
-              Ingénieure logiciel, spécialisée dans les systèmes complexes, la
-              CI/CD et l’architecture.
+              Ingénieure logiciel spécialisée en architecture, CI/CD et systèmes
+              complexes.
             </Text>
           </Stack>
 
@@ -37,16 +37,19 @@ export default function AboutPage() {
 
             <Stack gap="sm">
               <Text c="dimmed">
-                J’ai commencé au plus haut niveau de support technique sur les
-                applications qui géraient la téléphonie mobile chez Orange, puis
-                très vite, je me suis spécialisée commedéveloppeuse backend, sur
-                des applications métier.
+                J’ai commencé au plus haut niveau de support technique sur des
+                applications critiques liées à la téléphonie mobile chez Orange.
               </Text>
 
               <Text c="dimmed">
-                Mais rapidement, les problèmes les plus intéressants n’étaient
-                pas dans les fonctionnalités. Ils étaient dans ce qui les
-                supporte : l’architecture, les pipelines, la qualité.
+                Je me suis ensuite spécialisée en développement backend sur des
+                applications métier, puis en développement frontend.
+              </Text>
+
+              <Text c="dimmed">
+                Rapidement, les problèmes les plus intéressants n’étaient pas
+                dans les fonctionnalités, mais dans ce qui les supporte :
+                architecture, pipelines, qualité.
               </Text>
 
               <Text fw={500}>
@@ -89,14 +92,8 @@ export default function AboutPage() {
               <Text c="dimmed">Je ne pars jamais d’une solution.</Text>
 
               <Text c="dimmed">
-                Je commence par comprendre le système tel qu’il est réellement,
+                Je commence par comprendre le système tel qu’il est réellement
                 et identifier où se situent les frictions.
-              </Text>
-
-              <Text>
-                Mon travail consiste à comprendre où se situe réellement le
-                problème, puis à simplifier : architecture, pipelines,
-                organisation du code.
               </Text>
 
               <Stack gap={6}>
@@ -122,6 +119,17 @@ export default function AboutPage() {
               <Text c="dimmed">
                 En parallèle de mon travail d’ingénieure, je développe une
                 activité en poterie.
+              </Text>
+
+              <Text c="dimmed">
+                Travailler la matière m’a appris à observer avant d’agir, à
+                comprendre les contraintes et à chercher la simplicité plutôt
+                que la complexité.
+              </Text>
+
+              <Text fw={500}>
+                Une approche que je retrouve aussi en ingénierie : construire
+                des systèmes qui tiennent dans le temps.
               </Text>
             </Stack>
           </Stack>
