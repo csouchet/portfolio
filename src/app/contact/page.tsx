@@ -7,7 +7,7 @@ import { BaseCard } from '@/components/cards/BaseCard';
 import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
-import freelanceData from '@/data/freelance.json';
+import freelanceData from '@/content/shared/freelance.ts';
 
 export const metadata: Metadata = {
   alternates: {
