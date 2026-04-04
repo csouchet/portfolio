@@ -1,3 +1,4 @@
+import { ApproachSection } from '@/components/homeSections/components/homeSections/ApproachSection';
 import { ContactSection } from '@/components/homeSections/ContactSection';
 import { ExpertiseSection } from '@/components/homeSections/ExpertiseSection';
 import { FeaturedArticlesSection } from '@/components/homeSections/FeaturedArticlesSection';
@@ -13,6 +14,8 @@ export default function HomePage() {
       <WhatIDoSection />
 
       <FeaturedProjectsSection />
+
+      <ApproachSection />
 
       <ExpertiseSection />
 
