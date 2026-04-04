@@ -12,7 +12,7 @@ export function FeaturedProjectsSection() {
   return (
     <HomeSection
       title="Projets clés"
-      description="Des systèmes que j’ai conçus ou structurés, avec un impact direct sur la fiabilité et la vitesse de delivery."
+      description="Des systèmes que j’ai conçus ou restructurés, avec un impact direct sur la fiabilité, la vitesse de delivery et la capacité à évoluer."
       cta={{
         label: 'Voir tous les projets',
         href: '/projects',

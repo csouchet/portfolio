@@ -25,13 +25,13 @@ export function HeroSection() {
       <Container size="sm">
         <Stack gap="lg">
           <Title order={1} style={{ lineHeight: 1.1 }}>
-            Je transforme des systèmes complexes en plateformes fiables et
-            rapides.
+            J’interviens quand les systèmes deviennent trop complexes pour
+            évoluer sereinement.
           </Title>
 
           <Text size="lg" c="dimmed">
-            Architecture, CI/CD et developer experience pour accélérer les
-            équipes.
+            Je structure, fiabilise et simplifie pour que les équipes puissent
+            livrer vite — sans se battre contre leur propre système.
           </Text>
 
           <Text size="sm" c="dimmed">
