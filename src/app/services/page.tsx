@@ -2,17 +2,8 @@
 
 import Link from 'next/link';
 
-import {
-  Stack,
-  Title,
-  Text,
-  SimpleGrid,
-  Button,
-  Group,
-  Badge,
-} from '@mantine/core';
+import { Stack, Text, Button } from '@mantine/core';
 
-import { BaseCard } from '@/components/cards/BaseCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
 
 export default function ServicesPage() {
@@ -20,261 +11,126 @@ export default function ServicesPage() {
     <main>
       {/* HERO */}
       <HomeSection
-        title="Staff / Platform Engineer"
-        description="J’aide les équipes à construire des systèmes fiables, scalables et livrables."
-        gradientPosition="left"
+        title="Systèmes trop complexes, livraisons instables, équipe ralentie."
+        description="J’interviens pour remettre de la fiabilité, de la clarté et de la fluidité."
       >
         <Stack maw={720} gap="md">
           <Text size="lg">
-            J’interviens sur des projets techniques complexes — lorsque la
-            qualité, la vitesse de livraison ou la maintenabilité deviennent
-            critiques.
+            Quand un système devient difficile à comprendre ou à faire évoluer,
+            il finit par freiner tout le produit.
           </Text>
 
-          <Text fw={600} size="lg">
-            Je transforme des systèmes qui ralentissent les équipes en systèmes
-            qui les accélèrent.
+          <Text fw={600}>
+            Mon rôle : débloquer ces situations et permettre à l’équipe
+            d’avancer sereinement.
           </Text>
-
-          <Text>
-            Mon rôle : améliorer durablement la capacité d’une équipe à
-            construire, livrer et faire évoluer son produit.
-          </Text>
-
-          <Group gap="xs">
-            <Badge color="green" variant="light">
-              Disponible mi-novembre
-            </Badge>
-
-            <Text size="sm" c="dimmed">
-              Freelance • Remote / Grenoble
-            </Text>
-          </Group>
 
           <Button
             component={Link}
             href="/contact"
             variant="gradient"
-            gradient={{ from: 'brand.5', to: 'brand.7' }}
             w="fit-content"
           >
-            Discuter d’un contexte technique
+            Discuter de votre contexte
           </Button>
         </Stack>
       </HomeSection>
 
-      {/* CONTEXT */}
-      <HomeSection title="Quand j’interviens" gradientPosition="right">
+      {/* WHEN */}
+      <HomeSection title="Quand j’interviens">
         <Stack maw={720} gap="md">
           <Text>
-            J’interviens généralement lorsque le système commence à ralentir
-            l’équipe ou à freiner le produit.
+            J’interviens quand le système commence à devenir un frein.
           </Text>
 
           <Stack gap="xs">
-            <Text c="dimmed">• Livraisons lentes ou imprévisibles</Text>
-            <Text c="dimmed">• Complexité technique difficile à maîtriser</Text>
-            <Text c="dimmed">• Manque de confiance dans le code</Text>
-            <Text c="dimmed">• Difficulté à faire évoluer l’architecture</Text>
-            <Text c="dimmed">• Expérience développeur dégradée</Text>
+            <Text c="dimmed">
+              • Les livraisons sont lentes ou imprévisibles
+            </Text>
+            <Text c="dimmed">
+              • Le code est difficile à comprendre ou modifier
+            </Text>
+            <Text c="dimmed">• L’architecture ne tient plus</Text>
+            <Text c="dimmed">
+              • Les équipes perdent du temps sur des problèmes techniques
+            </Text>
           </Stack>
         </Stack>
       </HomeSection>
 
-      {/* EXPERTISE */}
-      <HomeSection title="Domaines d’intervention" gradientPosition="left">
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-          <BaseCard>
-            <Title order={4}>Platform & CI/CD</Title>
-            <Text size="sm" c="dimmed">
-              Pipelines complexes, automatisation des builds, tests et releases,
-              optimisation des performances et des coûts.
-            </Text>
-          </BaseCard>
-
-          <BaseCard>
-            <Title order={4}>Architecture & systèmes</Title>
-            <Text size="sm" c="dimmed">
-              Structuration de systèmes robustes et évolutifs sur des projets
-              complexes.
-            </Text>
-          </BaseCard>
-
-          <BaseCard>
-            <Title order={4}>Developer Experience</Title>
-            <Text size="sm" c="dimmed">
-              Amélioration de l’onboarding, des outils et des standards pour
-              accélérer les équipes.
-            </Text>
-          </BaseCard>
-
-          <BaseCard>
-            <Title order={4}>Produit & impact</Title>
-            <Text size="sm" c="dimmed">
-              Contribution à la roadmap, analyse des KPIs et amélioration de
-              l’adoption produit.
-            </Text>
-          </BaseCard>
-        </SimpleGrid>
-      </HomeSection>
-
-      {/* ACTION */}
-      <HomeSection
-        title="Ce que je mets en place concrètement"
-        gradientPosition="right"
-      >
+      {/* MISSIONS */}
+      <HomeSection title="Types de missions">
         <Stack maw={720} gap="md">
-          <Stack gap="xs">
-            <Text c="dimmed">
-              • Clarification de l’architecture et des responsabilités
-            </Text>
-            <Text c="dimmed">
-              • Mise en place ou refonte de pipelines CI/CD
-            </Text>
-            <Text c="dimmed">• Automatisation des tests et des releases</Text>
-            <Text c="dimmed">
-              • Réduction de la dette technique et simplification du code
-            </Text>
-            <Text c="dimmed">• Amélioration de l’expérience développeur</Text>
+          <Stack gap="md">
+            <Stack gap={4}>
+              <Text fw={500}>Construire une plateforme from scratch</Text>
+              <Text size="sm" c="dimmed">
+                Architecture, fondations techniques et mise en place des
+                pratiques de développement.
+              </Text>
+            </Stack>
+
+            <Stack gap={4}>
+              <Text fw={500}>
+                Reprendre un système devenu difficile à faire évoluer
+              </Text>
+              <Text size="sm" c="dimmed">
+                Simplification de l’architecture et réduction de la complexité.
+              </Text>
+            </Stack>
+
+            <Stack gap={4}>
+              <Text fw={500}>Fiabiliser des livraisons instables</Text>
+              <Text size="sm" c="dimmed">
+                Mise en place de pipelines robustes, automatisation des tests et
+                des releases.
+              </Text>
+            </Stack>
+
+            <Stack gap={4}>
+              <Text fw={500}>
+                Accélérer une équipe ralentie par son système
+              </Text>
+              <Text size="sm" c="dimmed">
+                Suppression des frictions techniques et amélioration de la
+                fluidité.
+              </Text>
+            </Stack>
           </Stack>
         </Stack>
       </HomeSection>
 
-      {/* PROOF */}
-      <HomeSection title="Exemple récent" gradientPosition="left">
+      {/* CASE STUDY */}
+      <HomeSection title="Exemple">
         <Stack maw={720} gap="md">
-          <Text fw={600}>
-            Mise en place d’une plateforme CI/CD complète sur un projet
-            multi-composants
-          </Text>
+          <Text fw={600}>Plateforme CI/CD sur un projet multi-composants</Text>
 
           <Text c="dimmed">
-            Contexte : pipelines lents, releases manuelles, manque de confiance
-            dans les livraisons.
+            Pipelines lents, releases manuelles, manque de confiance dans les
+            livraisons.
           </Text>
 
-          <Stack gap="xs">
-            <Text c="dimmed">• Pipelines multi-OS (Linux, macOS, Windows)</Text>
-            <Text c="dimmed">• Tests E2E multi-navigateurs</Text>
-            <Text c="dimmed">• Automatisation complète des releases</Text>
-            <Text c="dimmed">• Analyse qualité et sécurité continue</Text>
-          </Stack>
+          <Text>
+            Mise en place de pipelines multi-environnements, automatisation des
+            tests et des releases, validation continue.
+          </Text>
 
           <Text fw={500}>
-            Résultat : un système fiable, des livraisons fluides et une équipe
-            qui avance plus vite.
-          </Text>
-        </Stack>
-      </HomeSection>
-
-      {/* RESULTS */}
-      <HomeSection title="Résultats" gradientPosition="right">
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
-          <BaseCard>
-            <Text fw={600}>Systèmes plus fiables</Text>
-            <Text size="sm" c="dimmed">
-              Moins de bugs et de régressions
-            </Text>
-          </BaseCard>
-
-          <BaseCard>
-            <Text fw={600}>Livraisons accélérées</Text>
-            <Text size="sm" c="dimmed">
-              Pipelines fluides et automatisés
-            </Text>
-          </BaseCard>
-
-          <BaseCard>
-            <Text fw={600}>Équipe plus efficace</Text>
-            <Text size="sm" c="dimmed">
-              Meilleure compréhension et onboarding facilité
-            </Text>
-          </BaseCard>
-        </SimpleGrid>
-      </HomeSection>
-
-      {/* APPROACH */}
-      <HomeSection title="Approche" gradientPosition="left">
-        <Stack maw={720} gap="md">
-          <Text fw={500}>
-            Je travaille sur les points de levier qui débloquent réellement une
-            équipe.
-          </Text>
-
-          <Text c="dimmed">
-            Code, CI/CD, architecture et organisation sont liés : les améliorer
-            ensemble permet un impact durable.
-          </Text>
-
-          <Text>
-            Mon objectif n’est pas d’ajouter de la complexité, mais de rendre
-            les systèmes plus simples à comprendre, à maintenir et à faire
-            évoluer.
-          </Text>
-        </Stack>
-      </HomeSection>
-
-      <HomeSection title="Missions idéales" gradientPosition="left">
-        <Stack maw={720} gap="md">
-          <Text>
-            Je m’implique particulièrement dans des contextes où mon impact est
-            le plus fort.
-          </Text>
-
-          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-            <BaseCard>
-              <Text fw={600}>Systèmes complexes</Text>
-              <Text size="sm" c="dimmed">
-                Produits avec enjeux de performance, scalabilité ou architecture
-              </Text>
-            </BaseCard>
-
-            <BaseCard>
-              <Text fw={600}>Projets à structurer</Text>
-              <Text size="sm" c="dimmed">
-                Besoin de clarifier, stabiliser ou remettre à plat un système
-                existant
-              </Text>
-            </BaseCard>
-
-            <BaseCard>
-              <Text fw={600}>CI/CD & plateforme</Text>
-              <Text size="sm" c="dimmed">
-                Industrialisation des pipelines, automatisation des tests et des
-                releases
-              </Text>
-            </BaseCard>
-
-            <BaseCard>
-              <Text fw={600}>Équipes en croissance</Text>
-              <Text size="sm" c="dimmed">
-                Besoin d’améliorer la developer experience et la vitesse de
-                livraison
-              </Text>
-            </BaseCard>
-          </SimpleGrid>
-
-          <Text c="dimmed">
-            Je privilégie les missions où je peux intervenir en profondeur et
-            avoir un impact durable.
+            Résultat : livraisons fiables, moins de risques et une équipe qui
+            avance plus vite.
           </Text>
         </Stack>
       </HomeSection>
 
       {/* CTA */}
-      <HomeSection title="Travaillons ensemble" gradientPosition="right">
+      <HomeSection title="Travaillons ensemble">
         <Stack align="center" gap="md">
           <Text ta="center" maw={500}>
-            Un système complexe à stabiliser ou un projet à structurer ?
-            Discutons-en.
+            Si votre système commence à ralentir votre équipe, on peut en
+            parler.
           </Text>
 
-          <Button
-            component={Link}
-            href="/contact"
-            variant="gradient"
-            gradient={{ from: 'brand.5', to: 'brand.7' }}
-          >
+          <Button component={Link} href="/contact" variant="gradient">
             Me contacter
           </Button>
         </Stack>
