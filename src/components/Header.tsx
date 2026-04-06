@@ -19,8 +19,8 @@ import { useDisclosure } from '@mantine/hooks';
 
 import { LanguageSwitch } from '@/components/LanguageSwitch';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { siteConfig } from '@/config/site';
 import { commonContent } from '@/content/fr/common';
+import { siteSharedContent } from '@/content/shared/site';
 import { NAV_KEYS } from '@/types/navigation';
 
 type NavItemProps = {
@@ -114,7 +114,7 @@ export default function Header() {
               letterSpacing: '-0.02em',
             }}
           >
-            {siteConfig.name}
+            {siteSharedContent.name}
           </Text>
 
           {/* Desktop navigation */}

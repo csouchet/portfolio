@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Card, Text, Group, Badge, Stack, Title } from '@mantine/core';
 
-import { projectsPageContent } from '@/content/fr/projects';
+import { useContent } from '@/hooks/useContent';
 import { Project } from '@/types/project';
 
 type Props = {
@@ -36,7 +36,8 @@ function rewrite(text?: string) {
 }
 
 export function ProjectCard({ project }: Props) {
-  const content = projectsPageContent;
+  const { projects } = useContent();
+  const content = projects;
 
   const impact = toImpact(project.caseStudy?.results, project.description);
 

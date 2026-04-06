@@ -12,8 +12,8 @@ export function getChildProjects(parentId: string): Project[] {
   return projects.filter(p => p.parent === parentId);
 }
 
-export function getFeaturedParentProjects(): Project[] {
-  return projects.filter(p => p.featured && !p.parent);
+export function getFeaturedParentProjects(locale: Locale) {
+  return getProjects(locale).filter(p => p.featured && !p.parent);
 }
 
 export function getFeaturedCaseStudyProject() {

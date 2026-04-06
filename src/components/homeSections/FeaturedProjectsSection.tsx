@@ -1,16 +1,23 @@
 'use client';
 
+import { useParams } from 'next/navigation';
+
 import { SimpleGrid } from '@mantine/core';
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 import { getFeaturedParentProjects } from '@/lib/projects';
+import { Locale } from '@/types/i18n';
 
 export function FeaturedProjectsSection() {
-  const content = homeContent.featuredProjects;
+  const { home } = useContent();
+  const content = home.featuredProjects;
 
-  const featuredProjects = getFeaturedParentProjects();
+  const params = useParams();
+  const locale = params.locale as Locale;
+
+  const featuredProjects = getFeaturedParentProjects(locale);
 
   return (
     <HomeSection

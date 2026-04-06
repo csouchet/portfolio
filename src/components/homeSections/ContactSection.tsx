@@ -4,12 +4,13 @@ import Link from 'next/link';
 
 import { Text, Stack, Button } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 import { HomeSection } from './HomeSection';
 
 export function ContactSection() {
-  const content = homeContent.contact;
+  const { home } = useContent();
+  const content = home.contact;
 
   return (
     <HomeSection title={content.title}>

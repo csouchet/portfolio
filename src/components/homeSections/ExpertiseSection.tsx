@@ -9,10 +9,11 @@ import {
   Stack,
 } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 export function ExpertiseSection() {
-  const content = homeContent.expertise;
+  const { home } = useContent();
+  const content = home.expertise;
 
   return (
     <Container py="xl">
