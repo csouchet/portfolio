@@ -1,6 +1,9 @@
 enhancement:
   - head-branch:
       - '^feat/'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src**'
 
 bug:
   - head-branch:
@@ -27,8 +30,8 @@ component:
 content:
   - changed-files:
       - any-glob-to-any-file:
-          - 'src/**/content/**'
-          - 'src/**/data/**'
+          - 'src/content/**'
+          - 'src/data/**'
           - 'src/**/*.md'
           - 'src/**/*.json'
 
