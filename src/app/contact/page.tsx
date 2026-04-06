@@ -8,7 +8,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
 import { contactContent } from '@/content/fr/contact';
-import { freelanceLinks } from '@/content/shared/freelance';
+import { freelanceLinks } from '@/data/freelance';
 
 export const metadata: Metadata = {
   alternates: {

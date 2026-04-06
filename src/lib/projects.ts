@@ -1,4 +1,4 @@
-import { projects } from '@/content/fr/data/projects';
+import { projects } from '@/data/projects.fr';
 import { Project } from '@/types/project';
 
 export function getChildProjects(parentId: string): Project[] {

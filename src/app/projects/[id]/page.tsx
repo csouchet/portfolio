@@ -17,8 +17,8 @@ import {
 } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { projects } from '@/content/fr/data/projects';
 import { projectsPageContent } from '@/content/fr/projects';
+import { projects } from '@/data/projects.fr';
 import { contributionColor, categoryColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 

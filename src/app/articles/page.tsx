@@ -4,7 +4,7 @@ import { Container, Stack, Title, Text } from '@mantine/core';
 
 import { ArticlesClient } from '@/components/articles/ArticlesClient';
 import { articlesPageContent } from '@/content/fr/articles';
-import { articles } from '@/content/shared/articles';
+import { articles } from '@/data/articles';
 import { sortArticles } from '@/lib/articles';
 
 export const metadata: Metadata = {
