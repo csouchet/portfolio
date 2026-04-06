@@ -525,7 +525,7 @@ export const projects: Project[] = [
     github: 'https://github.com/csouchet/portfolio',
     category: 'application',
     contributions: ['frontend'],
-    company: 'Personnel',
+    company: 'Personal',
 
     caseStudy: {
       context: 'Création d’un portfolio avec objectif de positionnement staff.',

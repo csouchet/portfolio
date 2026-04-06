@@ -1,4 +1,4 @@
-export type ProjectCompany = 'Bonitasoft' | 'GB&Smith' | 'Personnel';
+export type ProjectCompany = 'Bonitasoft' | 'GB&Smith' | 'Personal';
 
 export type ProjectCategory =
   | 'product'
