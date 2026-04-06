@@ -6,14 +6,20 @@ import { Stack, Text, SimpleGrid, Chip, Group } from '@mantine/core';
 
 import { ArticleCard } from '@/components/cards/ArticleCard';
 import { getAllTags } from '@/lib/articles';
-import { Tag } from '@/types/article';
-import { Article } from '@/types/article';
+import { Article, Tag } from '@/types/article';
+
+type Labels = {
+  featured: string;
+  filter: string;
+  all: string;
+};
 
 type Props = {
   articles: Article[];
+  labels: Labels;
 };
 
-export function ArticlesClient({ articles }: Props) {
+export function ArticlesClient({ articles, labels }: Props) {
   const featured = articles.find(a => a.featured);
 
   const tags = useMemo(() => getAllTags(articles), [articles]);
@@ -34,7 +40,7 @@ export function ArticlesClient({ articles }: Props) {
       {featured && (
         <Stack gap="sm">
           <Text size="sm" c="dimmed">
-            À la une
+            {labels.featured}
           </Text>
 
           <ArticleCard article={featured} />
@@ -44,7 +50,7 @@ export function ArticlesClient({ articles }: Props) {
       {/* Filters */}
       <Stack gap="xs">
         <Text size="sm" fw={500}>
-          Filtrer par sujet
+          {labels.filter}
         </Text>
 
         <Group gap="xs">
@@ -52,7 +58,7 @@ export function ArticlesClient({ articles }: Props) {
             checked={activeTag === null}
             onChange={() => setActiveTag(null)}
           >
-            Tous
+            {labels.all}
           </Chip>
 
           {tags.map(tag => (

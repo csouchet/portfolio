@@ -15,7 +15,30 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-export function ContactForm() {
+type ContactFormContent = {
+  description: string;
+  fields: {
+    name: string;
+    email: string;
+    message: string;
+    submit: string;
+  };
+  placeholders: {
+    name: string;
+    email: string;
+    message: string;
+  };
+  feedback: {
+    success: string;
+    error: string;
+  };
+};
+
+type Props = {
+  content: ContactFormContent;
+};
+
+export function ContactForm({ content }: Props) {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -115,18 +138,18 @@ export function ContactForm() {
     >
       <Stack gap="md">
         <Text size="sm" c="dimmed">
-          Une idée, une mission ou juste envie de discuter ?
+          {content.description}
         </Text>
 
         {status === 'success' && (
           <Alert icon={<IconCheck size={16} />} color="green" radius="md">
-            Message envoyé avec succès ✨
+            {content.feedback.success}
           </Alert>
         )}
 
         {status === 'error' && (
           <Alert icon={<IconAlertCircle size={16} />} color="red" radius="md">
-            Une erreur est survenue. Réessaie.
+            {content.feedback.error}
           </Alert>
         )}
 
@@ -144,8 +167,8 @@ export function ContactForm() {
             <input type="hidden" value={form.values.formStart} readOnly />
 
             <TextInput
-              label="Nom"
-              placeholder="Ton nom"
+              label={content.fields.name}
+              placeholder={content.fields.name}
               required
               radius="md"
               styles={inputStyles}
@@ -153,8 +176,8 @@ export function ContactForm() {
             />
 
             <TextInput
-              label="Email"
-              placeholder="ton@email.com"
+              label={content.fields.email}
+              placeholder={content.fields.email}
               required
               radius="md"
               styles={inputStyles}
@@ -162,8 +185,8 @@ export function ContactForm() {
             />
 
             <Textarea
-              label="Message"
-              placeholder="Ton message..."
+              label={content.fields.message}
+              placeholder={content.fields.message}
               minRows={4}
               autosize
               required
@@ -184,7 +207,7 @@ export function ContactForm() {
                 boxShadow: '0 0 20px rgba(236, 72, 153, 0.25)',
               }}
             >
-              Envoyer ✨
+              {content.fields.submit}
             </Button>
           </Stack>
         </form>

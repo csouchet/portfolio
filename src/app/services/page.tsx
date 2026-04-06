@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { Stack, Text, Button } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
+import { servicesContent } from '@/content/fr/services';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,128 +14,81 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
+  const content = servicesContent;
+
   return (
     <main>
       {/* HERO */}
       <HomeSection
-        title="Systèmes trop complexes, livraisons instables, équipe ralentie."
-        description="J’interviens pour remettre de la fiabilité, de la clarté et de la fluidité."
+        title={content.hero.title}
+        description={content.hero.description}
       >
         <Stack maw={720} gap="md">
-          <Text size="lg">
-            Quand un système devient difficile à comprendre ou à faire évoluer,
-            il finit par freiner tout le produit.
-          </Text>
+          <Text size="lg">{content.hero.intro}</Text>
 
-          <Text fw={600}>
-            Mon rôle : débloquer ces situations et permettre à l’équipe
-            d’avancer sereinement.
-          </Text>
+          <Text fw={600}>{content.hero.positioning}</Text>
 
           <Link href="/contact" style={{ textDecoration: 'none' }}>
             <Button variant="gradient" w="fit-content">
-              Discuter d’un contexte technique
+              {content.hero.cta}
             </Button>
           </Link>
         </Stack>
       </HomeSection>
 
       {/* WHEN */}
-      <HomeSection title="Quand j’interviens">
+      <HomeSection title={content.when.title}>
         <Stack maw={720} gap="md">
-          <Text>
-            J’interviens quand le système commence à devenir un frein.
-          </Text>
+          <Text>{content.when.intro}</Text>
 
           <Stack gap="xs">
-            <Text c="dimmed">
-              • Les livraisons sont lentes ou imprévisibles
-            </Text>
-            <Text c="dimmed">
-              • Le code est difficile à comprendre ou modifier
-            </Text>
-            <Text c="dimmed">• L’architecture ne tient plus</Text>
-            <Text c="dimmed">
-              • Les équipes perdent du temps sur des problèmes techniques
-            </Text>
+            {content.when.bullets.map(item => (
+              <Text key={item} c="dimmed">
+                • {item}
+              </Text>
+            ))}
           </Stack>
         </Stack>
       </HomeSection>
 
       {/* MISSIONS */}
-      <HomeSection title="Types de missions">
+      <HomeSection title={content.missions.title}>
         <Stack maw={720} gap="md">
           <Stack gap="md">
-            <Stack gap={4}>
-              <Text fw={500}>Construire une plateforme from scratch</Text>
-              <Text size="sm" c="dimmed">
-                Architecture, fondations techniques et mise en place des
-                pratiques de développement.
-              </Text>
-            </Stack>
-
-            <Stack gap={4}>
-              <Text fw={500}>
-                Reprendre un système devenu difficile à faire évoluer
-              </Text>
-              <Text size="sm" c="dimmed">
-                Simplification de l’architecture et réduction de la complexité.
-              </Text>
-            </Stack>
-
-            <Stack gap={4}>
-              <Text fw={500}>Fiabiliser des livraisons instables</Text>
-              <Text size="sm" c="dimmed">
-                Mise en place de pipelines robustes, automatisation des tests et
-                des releases.
-              </Text>
-            </Stack>
-
-            <Stack gap={4}>
-              <Text fw={500}>
-                Accélérer une équipe ralentie par son système
-              </Text>
-              <Text size="sm" c="dimmed">
-                Suppression des frictions techniques et amélioration de la
-                fluidité.
-              </Text>
-            </Stack>
+            {content.missions.items.map(item => (
+              <Stack key={item.title} gap={4}>
+                <Text fw={500}>{item.title}</Text>
+                <Text size="sm" c="dimmed">
+                  {item.description}
+                </Text>
+              </Stack>
+            ))}
           </Stack>
         </Stack>
       </HomeSection>
 
       {/* CASE STUDY */}
-      <HomeSection title="Exemple">
+      <HomeSection title={content.caseStudy.title}>
         <Stack maw={720} gap="md">
-          <Text fw={600}>Plateforme CI/CD sur un projet multi-composants</Text>
+          <Text fw={600}>{content.caseStudy.headline}</Text>
 
-          <Text c="dimmed">
-            Pipelines lents, releases manuelles, manque de confiance dans les
-            livraisons.
-          </Text>
+          <Text c="dimmed">{content.caseStudy.context}</Text>
 
-          <Text>
-            Mise en place de pipelines multi-environnements, automatisation des
-            tests et des releases, validation continue.
-          </Text>
+          <Text>{content.caseStudy.action}</Text>
 
-          <Text fw={500}>
-            Résultat : livraisons fiables, moins de risques et une équipe qui
-            avance plus vite.
-          </Text>
+          <Text fw={500}>{content.caseStudy.result}</Text>
         </Stack>
       </HomeSection>
 
       {/* CTA */}
-      <HomeSection title="Travaillons ensemble">
+      <HomeSection title={content.cta.title}>
         <Stack align="center" gap="md">
           <Text ta="center" maw={500}>
-            Si votre système commence à ralentir votre équipe, on peut en
-            parler.
+            {content.cta.description}
           </Text>
 
           <Link href="/contact" style={{ textDecoration: 'none' }}>
-            <Button variant="gradient">Me contacter</Button>
+            <Button variant="gradient">{content.cta.button}</Button>
           </Link>
         </Stack>
       </HomeSection>

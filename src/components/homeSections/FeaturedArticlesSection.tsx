@@ -4,17 +4,20 @@ import { SimpleGrid } from '@mantine/core';
 
 import { ArticleCard } from '@/components/cards/ArticleCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { articles } from '@/data/articles';
+import { homeContent } from '@/content/fr/home';
+import { articles } from '@/content/shared/articles';
 
 export function FeaturedArticlesSection() {
+  const content = homeContent.featuredArticles;
+
   const featuredArticles = articles.filter(a => a.featured).slice(0, 3);
 
   return (
     <HomeSection
-      title="Articles"
-      description="Quelques retours d’expérience sur la qualité logicielle et les systèmes fiables."
+      title={content.title}
+      description={content.description}
       cta={{
-        label: 'Voir tous les articles',
+        label: content.cta,
         href: '/articles',
       }}
     >

@@ -17,7 +17,8 @@ import {
 } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { projects } from '@/data/projects';
+import { projects } from '@/content/fr/data/projects';
+import { projectsPageContent } from '@/content/fr/projects';
 import { contributionColor, categoryColor } from '@/lib/projectColors';
 import { getChildProjects } from '@/lib/projects';
 
@@ -46,6 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectDetailPage({ params }: Props) {
   const { id } = await params;
 
+  const content = projectsPageContent;
+
   const project = projects.find(p => p.id === id);
 
   if (!project) return notFound();
@@ -63,7 +66,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* BACK */}
           <Link href="/projects" style={{ textDecoration: 'none' }}>
             <Button variant="subtle" leftSection={<IconArrowLeft size={16} />}>
-              Retour aux projets
+              {content.hero.title}
             </Button>
           </Link>
 
@@ -111,7 +114,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>Problèmes</Title>
+                <Title order={3}>{content.caseStudy.problems}</Title>
                 {project.caseStudy.problems.map(problem => (
                   <Text key={problem} c="dimmed">
                     • {problem}
@@ -126,7 +129,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>Actions</Title>
+                <Title order={3}>{content.caseStudy.actions}</Title>
                 {project.caseStudy.actions.map(action => (
                   <Text key={action} c="dimmed">
                     • {action}
@@ -141,7 +144,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>Résultats</Title>
+                <Title order={3}>{content.caseStudy.results}</Title>
                 <Text>{project.caseStudy.results}</Text>
               </Stack>
             </>
@@ -254,7 +257,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   variant="gradient"
                   gradient={{ from: 'brand.5', to: 'brand.7' }}
                 >
-                  Voir le code
+                  {content.caseStudy.cta}
                 </Button>
               </a>
             </>

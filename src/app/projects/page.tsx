@@ -14,6 +14,7 @@ import {
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
+import { projectsPageContent } from '@/content/fr/projects';
 import {
   getParentProjectsGroupedByCategory,
   getFeaturedCaseStudyProject,
@@ -25,29 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
-const categoryLabels: Record<string, string> = {
-  product: 'Produits',
-  application: 'Applications',
-  library: 'Librairies',
-  tooling: 'Tooling',
-  engine: 'Moteur',
-  website: 'Sites',
-  other: 'Autres',
-};
+type Category =
+  | 'product'
+  | 'application'
+  | 'library'
+  | 'tooling'
+  | 'engine'
+  | 'website'
+  | 'other';
 
-const categoryDescriptions: Record<string, string> = {
-  product:
-    'Produits sur lesquels j’ai contribué à la structuration technique et produit.',
-  application:
-    'Applications métiers avec enjeux de performance et maintenabilité.',
-  library: 'Librairies techniques avec contraintes de qualité et distribution.',
-  tooling: 'Outils internes pour améliorer la productivité et la qualité.',
-  engine: 'Composants cœur nécessitant robustesse et scalabilité.',
-  website: 'Sites techniques avec enjeux SEO, performance et contenu.',
-  other: 'Autres projets.',
-};
-
-const orderedCategories = [
+const orderedCategories: Category[] = [
   'product',
   'application',
   'library',
@@ -58,28 +46,24 @@ const orderedCategories = [
 ];
 
 export default function ProjectsPage() {
+  const content = projectsPageContent;
+
   const grouped = getParentProjectsGroupedByCategory();
   const caseStudyProject = getFeaturedCaseStudyProject();
 
   return (
     <main>
       <HomeSection
-        title="Projets & Contributions"
-        description="Des systèmes complexes, conçus pour être fiables, maintenables et évolutifs."
+        title={content.hero.title}
+        description={content.hero.description}
         gradientPosition="left"
       >
         <Stack gap="3rem">
           {/* INTRO */}
           <Stack maw={720} gap="md">
-            <Text>
-              Je travaille sur des systèmes techniques complexes où la qualité,
-              la performance et la capacité à livrer sont critiques.
-            </Text>
+            <Text>{content.intro.text1}</Text>
 
-            <Text c="dimmed">
-              Ces projets illustrent mon travail sur l’architecture, la CI/CD,
-              la developer experience et la construction de produits robustes.
-            </Text>
+            <Text c="dimmed">{content.intro.text2}</Text>
           </Stack>
 
           {/* 🔥 CASE STUDY */}
@@ -95,7 +79,7 @@ export default function ProjectsPage() {
             >
               <Stack maw={760} gap="lg">
                 <Text size="sm" c="dimmed" fw={500}>
-                  CASE STUDY
+                  {content.caseStudy.label}
                 </Text>
 
                 <Title order={3}>{caseStudyProject.title}</Title>
@@ -107,7 +91,7 @@ export default function ProjectsPage() {
                 <SimpleGrid cols={{ base: 1, sm: 2 }}>
                   {caseStudyProject.caseStudy.problems && (
                     <Stack gap={4}>
-                      <Text fw={500}>Problèmes</Text>
+                      <Text fw={500}>{content.caseStudy.problems}</Text>
                       {caseStudyProject.caseStudy.problems.map(p => (
                         <Text key={p} size="sm" c="dimmed">
                           • {p}
@@ -118,7 +102,7 @@ export default function ProjectsPage() {
 
                   {caseStudyProject.caseStudy.actions && (
                     <Stack gap={4}>
-                      <Text fw={500}>Actions</Text>
+                      <Text fw={500}>{content.caseStudy.actions}</Text>
                       {caseStudyProject.caseStudy.actions.map(a => (
                         <Text key={a} size="sm" c="dimmed">
                           • {a}
@@ -136,7 +120,7 @@ export default function ProjectsPage() {
                   href={`/projects/${caseStudyProject.id}`}
                   style={{ textDecoration: 'none' }}
                 >
-                  <Button variant="subtle">Voir le projet</Button>
+                  <Button variant="subtle">{content.caseStudy.cta}</Button>
                 </Link>
               </Stack>
             </Box>
@@ -144,8 +128,7 @@ export default function ProjectsPage() {
 
           {/* PHRASE PIVOT */}
           <Text maw={720} c="dimmed">
-            Ce type de projet est représentatif de mon travail : structurer,
-            fiabiliser et accélérer des systèmes complexes.
+            {content.pivot}
           </Text>
 
           {/* GRID */}
@@ -162,7 +145,7 @@ export default function ProjectsPage() {
                     <Stack gap={4}>
                       <Group align="flex-end" gap="xs">
                         <Title order={3}>
-                          {categoryLabels[category] ?? category}
+                          {content.categories?.[category]?.label ?? category}
                         </Title>
 
                         <Text size="sm" c="dimmed">
@@ -171,7 +154,7 @@ export default function ProjectsPage() {
                       </Group>
 
                       <Text size="sm" c="dimmed">
-                        {categoryDescriptions[category]}
+                        {content.categories?.[category]?.description}
                       </Text>
 
                       <Box

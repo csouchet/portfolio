@@ -12,7 +12,11 @@ import {
   Box,
 } from '@mantine/core';
 
+import { homeContent } from '@/content/fr/home';
+
 export function HeroSection() {
+  const content = homeContent.hero;
+
   return (
     <Box
       component="section"
@@ -25,22 +29,20 @@ export function HeroSection() {
       <Container size="sm">
         <Stack gap="lg">
           <Title order={1} style={{ lineHeight: 1.1 }}>
-            J’interviens quand les systèmes deviennent trop complexes pour
-            évoluer sereinement.
+            {content.title}
           </Title>
 
           <Text size="lg" c="dimmed">
-            Je structure, fiabilise et simplifie pour que les équipes puissent
-            livrer vite — sans se battre contre leur propre système.
+            {content.description}
           </Text>
 
           <Text size="sm" c="dimmed">
-            15+ ans d’expérience · systèmes critiques · CI/CD avancée
+            {content.proof}
           </Text>
 
           <Group mt="md">
             <Button component={Link} href="/projects" radius="xl">
-              Voir mes projets
+              {content.cta.primary}
             </Button>
 
             <Button
@@ -49,12 +51,12 @@ export function HeroSection() {
               variant="subtle"
               radius="xl"
             >
-              Mon approche
+              {content.cta.secondary}
             </Button>
           </Group>
 
           <Text size="sm" c="dimmed">
-            Disponible — Freelance · Remote / Grenoble
+            {content.availability}
           </Text>
         </Stack>
       </Container>

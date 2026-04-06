@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Card, Text, Group, Badge, Stack, Title } from '@mantine/core';
 
+import { projectsPageContent } from '@/content/fr/projects';
 import { Project } from '@/types/project';
 
 type Props = {
@@ -35,11 +36,13 @@ function rewrite(text?: string) {
 }
 
 export function ProjectCard({ project }: Props) {
+  const content = projectsPageContent;
+
   const impact = toImpact(project.caseStudy?.results, project.description);
 
   const mainAction = project.caseStudy?.actions?.[0];
 
-  const scope = project.parent ? 'Sous-projet' : 'Projet principal';
+  const scope = project.parent ? content.card.subproject : content.card.main;
 
   return (
     <Link href={`/projects/${project.id}`} style={{ textDecoration: 'none' }}>
@@ -77,7 +80,7 @@ export function ProjectCard({ project }: Props) {
             {scope}
           </Text>
 
-          {/* 💥 Impact  */}
+          {/* 💥 Impact */}
           <Text fw={500}>{impact}</Text>
 
           {/* Description */}
@@ -85,7 +88,7 @@ export function ProjectCard({ project }: Props) {
             {rewrite(project.description)}
           </Text>
 
-          {/* Action principale  */}
+          {/* Action principale */}
           {mainAction && <Text size="sm">• {rewrite(mainAction)}</Text>}
 
           {/* Contributions */}

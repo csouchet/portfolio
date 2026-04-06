@@ -12,11 +12,15 @@ import {
   useComputedColorScheme,
 } from '@mantine/core';
 
+import { commonContent } from '@/content/fr/common';
+
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
 
   const computed = useComputedColorScheme('light');
   const [mounted, setMounted] = useState(false);
+
+  const content = commonContent.theme;
 
   useEffect(() => {
     // Needed to avoid SSR hydration mismatch for color scheme
@@ -38,7 +42,7 @@ export function ThemeToggle() {
   return (
     <>
       <Tooltip
-        label={isDark ? 'Mode clair' : 'Mode sombre'}
+        label={isDark ? content.light : content.dark}
         withArrow
         position="bottom"
         openDelay={150}
@@ -48,7 +52,7 @@ export function ThemeToggle() {
           variant="subtle"
           size="lg"
           radius="xl"
-          aria-label="Changer le thème"
+          aria-label={content.toggle}
           aria-pressed={isDark}
           styles={{
             root: {
@@ -74,7 +78,7 @@ export function ThemeToggle() {
       </Tooltip>
 
       <VisuallyHidden aria-live="polite">
-        {isDark ? 'Mode sombre activé' : 'Mode clair activé'}
+        {isDark ? content.darkActive : content.lightActive}
       </VisuallyHidden>
     </>
   );
