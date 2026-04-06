@@ -9,7 +9,11 @@ import { sortArticles } from '@/lib/articles';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/articles',
+    canonical: '/fr/articles',
+    languages: {
+      fr: '/fr/articles',
+      en: '/en/articles',
+    },
   },
   title: articlesPageContent.title,
   description: articlesPageContent.description,

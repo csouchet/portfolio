@@ -9,7 +9,11 @@ import { servicesContent } from '@/content/fr/services';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/services',
+    canonical: '/fr/services',
+    languages: {
+      fr: '/fr/services',
+      en: '/en/services',
+    },
   },
 };
 

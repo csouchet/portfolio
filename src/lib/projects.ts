@@ -1,5 +1,12 @@
+import { projects as en } from '@/data/projects.en';
 import { projects } from '@/data/projects.fr';
+import { projects as fr } from '@/data/projects.fr';
+import { Locale } from '@/types/i18n';
 import { Project } from '@/types/project';
+
+export function getProjects(locale: Locale) {
+  return locale === 'fr' ? fr : en;
+}
 
 export function getChildProjects(parentId: string): Project[] {
   return projects.filter(p => p.parent === parentId);

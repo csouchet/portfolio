@@ -17,6 +17,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
+import { LanguageSwitch } from '@/components/LanguageSwitch';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { siteConfig } from '@/config/site';
 import { commonContent } from '@/content/fr/common';
@@ -126,6 +127,7 @@ export default function Header() {
           {/* Right actions */}
           <Group gap="sm">
             <ThemeToggle />
+            <LanguageSwitch />
 
             <Burger
               opened={opened}

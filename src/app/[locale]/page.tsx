@@ -10,7 +10,11 @@ import { WhatIDoSection } from '@/components/homeSections/WhatIDoSection';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/',
+    canonical: '/fr/',
+    languages: {
+      fr: '/fr/',
+      en: '/en/',
+    },
   },
 };
 

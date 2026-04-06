@@ -12,10 +12,11 @@ import {
   Box,
 } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 export function HeroSection() {
-  const content = homeContent.hero;
+  const { home } = useContent();
+  const content = home.hero;
 
   return (
     <Box

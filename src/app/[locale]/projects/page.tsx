@@ -22,7 +22,11 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/projects',
+    canonical: '/fr/projects',
+    languages: {
+      fr: '/fr/projects',
+      en: '/en/projects',
+    },
   },
 };
 

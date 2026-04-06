@@ -16,7 +16,11 @@ import { aboutContent } from '@/content/fr/about';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/about',
+    canonical: '/fr/about',
+    languages: {
+      fr: '/fr/about',
+      en: '/en/about',
+    },
   },
 };
 

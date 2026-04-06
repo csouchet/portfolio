@@ -12,7 +12,11 @@ import { freelanceLinks } from '@/data/freelance';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/contact',
+    canonical: '/fr/contact',
+    languages: {
+      fr: '/fr/contact',
+      en: '/en/contact',
+    },
   },
 };
 
