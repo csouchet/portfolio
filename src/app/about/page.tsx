@@ -12,6 +12,8 @@ import {
   Box,
 } from '@mantine/core';
 
+import { aboutContent } from '@/content/fr/about';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: '/about',
@@ -19,6 +21,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const content = aboutContent;
+
   return (
     <Box>
       <Container size="md" py={80}>
@@ -26,12 +30,11 @@ export default function AboutPage() {
           {/* HERO */}
           <Stack gap="lg">
             <Title order={1} style={{ lineHeight: 1.2, maxWidth: 720 }}>
-              Construire des systèmes fiables, sans complexité inutile.
+              {content.hero.title}
             </Title>
 
             <Text size="lg" c="dimmed" style={{ maxWidth: 600 }}>
-              Ingénieure logiciel spécialisée en architecture, CI/CD et systèmes
-              complexes.
+              {content.hero.subtitle}
             </Text>
           </Stack>
 
@@ -39,29 +42,16 @@ export default function AboutPage() {
 
           {/* PARCOURS */}
           <Stack gap="md">
-            <Title order={2}>Mon parcours</Title>
+            <Title order={2}>{content.journey.title}</Title>
 
             <Stack gap="sm">
-              <Text c="dimmed">
-                J’ai commencé au plus haut niveau de support technique sur des
-                applications critiques liées à la téléphonie mobile chez Orange.
-              </Text>
+              {content.journey.paragraphs.map((p, i) => (
+                <Text key={i} c="dimmed">
+                  {p}
+                </Text>
+              ))}
 
-              <Text c="dimmed">
-                Je me suis ensuite spécialisée en développement backend sur des
-                applications métier, puis en développement frontend.
-              </Text>
-
-              <Text c="dimmed">
-                Rapidement, les problèmes les plus intéressants n’étaient pas
-                dans les fonctionnalités, mais dans ce qui les supporte :
-                architecture, pipelines, qualité.
-              </Text>
-
-              <Text fw={500}>
-                J’ai progressivement déplacé mon focus vers ces sujets :
-                comprendre, structurer et stabiliser les systèmes.
-              </Text>
+              <Text fw={500}>{content.journey.highlight}</Text>
             </Stack>
           </Stack>
 
@@ -69,22 +59,16 @@ export default function AboutPage() {
 
           {/* AUJOURD'HUI */}
           <Stack gap="md">
-            <Title order={2}>Aujourd’hui</Title>
+            <Title order={2}>{content.today.title}</Title>
 
             <Stack gap="sm">
-              <Text c="dimmed">
-                J’interviens quand un système commence à freiner une équipe.
-              </Text>
+              {content.today.paragraphs.map((p, i) => (
+                <Text key={i} c="dimmed">
+                  {p}
+                </Text>
+              ))}
 
-              <Text c="dimmed">
-                Pas parce qu’il ne fonctionne pas, mais parce qu’il devient
-                difficile à faire évoluer, à livrer ou à comprendre.
-              </Text>
-
-              <Text fw={500}>
-                Mon travail consiste à remettre de la clarté, de la fiabilité et
-                de la fluidité.
-              </Text>
+              <Text fw={500}>{content.today.highlight}</Text>
             </Stack>
           </Stack>
 
@@ -92,64 +76,48 @@ export default function AboutPage() {
 
           {/* APPROCHE */}
           <Stack gap="md">
-            <Title order={2}>Ma manière de travailler</Title>
+            <Title order={2}>{content.approach.title}</Title>
 
             <Stack gap="sm">
-              <Text c="dimmed">Je ne pars jamais d’une solution.</Text>
-
-              <Text c="dimmed">
-                Je commence par comprendre le système tel qu’il est réellement
-                et identifier où se situent les frictions.
-              </Text>
+              <Text c="dimmed">{content.approach.intro}</Text>
 
               <Stack gap={6}>
-                <Text>• comprendre ce qui bloque vraiment</Text>
-                <Text>• simplifier plutôt qu’ajouter</Text>
-                <Text>• fiabiliser avant d’optimiser</Text>
+                {content.approach.principles.map((p, i) => (
+                  <Text key={i}>• {p}</Text>
+                ))}
               </Stack>
 
-              <Text fw={500}>
-                L’objectif est simple : rendre le système plus lisible, plus
-                fiable et plus facile à faire évoluer.
-              </Text>
+              <Text fw={500}>{content.approach.highlight}</Text>
             </Stack>
           </Stack>
 
           <Divider opacity={0.4} />
 
-          {/* PERSONAL TOUCH */}
+          {/* PERSONAL */}
           <Stack gap="md">
-            <Title order={2}>Au-delà du code</Title>
+            <Title order={2}>{content.personal.title}</Title>
 
             <Stack gap="sm">
-              <Text c="dimmed">
-                En parallèle de mon travail d’ingénieure, je développe une
-                activité en poterie.
-              </Text>
+              {content.personal.paragraphs.map((p, i) => (
+                <Text key={i} c="dimmed">
+                  {p}
+                </Text>
+              ))}
 
-              <Text c="dimmed">
-                Travailler la matière m’a appris à observer avant d’agir, à
-                comprendre les contraintes et à chercher la simplicité plutôt
-                que la complexité.
-              </Text>
-
-              <Text fw={500}>
-                Une approche que je retrouve aussi en ingénierie : construire
-                des systèmes qui tiennent dans le temps.
-              </Text>
+              <Text fw={500}>{content.personal.highlight}</Text>
             </Stack>
           </Stack>
 
           {/* CTA */}
           <Stack align="center" gap="md" mt={40}>
-            <Text size="lg">Un système à structurer ou à stabiliser ?</Text>
+            <Text size="lg">{content.cta.text}</Text>
 
             <Link href="/contact">
-              <Button radius="xl">Discutons-en</Button>
+              <Button radius="xl">{content.cta.button}</Button>
             </Link>
 
             <Text size="sm" c="dimmed">
-              Freelance · Remote · Grenoble
+              {content.cta.footer}
             </Text>
           </Stack>
         </Stack>

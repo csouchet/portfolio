@@ -4,17 +4,20 @@ import { SimpleGrid } from '@mantine/core';
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
+import { homeContent } from '@/content/fr/home';
 import { getFeaturedParentProjects } from '@/lib/projects';
 
 export function FeaturedProjectsSection() {
+  const content = homeContent.featuredProjects;
+
   const featuredProjects = getFeaturedParentProjects();
 
   return (
     <HomeSection
-      title="Projets clés"
-      description="Des systèmes que j’ai conçus ou restructurés, avec un impact direct sur la fiabilité, la vitesse de delivery et la capacité à évoluer."
+      title={content.title}
+      description={content.description}
       cta={{
-        label: 'Voir tous les projets',
+        label: content.cta,
         href: '/projects',
       }}
     >

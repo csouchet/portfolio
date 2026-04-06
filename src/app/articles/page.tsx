@@ -3,19 +3,21 @@ import type { Metadata } from 'next';
 import { Container, Stack, Title, Text } from '@mantine/core';
 
 import { ArticlesClient } from '@/components/articles/ArticlesClient';
-import { articles } from '@/data/articles';
+import { articlesPageContent } from '@/content/fr/articles';
+import { articles } from '@/content/shared/articles';
 import { sortArticles } from '@/lib/articles';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: '/articles',
   },
-  title: 'Articles',
-  description:
-    'Articles techniques autour du CI/CD, du testing et des systèmes.',
+  title: articlesPageContent.title,
+  description: articlesPageContent.description,
 };
 
 export default function ArticlesPage() {
+  const content = articlesPageContent;
+
   const sorted = sortArticles(articles);
 
   return (
@@ -23,16 +25,20 @@ export default function ArticlesPage() {
       <Stack gap="xl">
         {/* Header */}
         <Stack gap={4}>
-          <Title order={1}>Articles</Title>
+          <Title order={1}>{content.title}</Title>
 
-          <Text c="dimmed">
-            Une sélection d’articles techniques autour du CI/CD, du testing et
-            des systèmes.
-          </Text>
+          <Text c="dimmed">{content.description}</Text>
         </Stack>
 
         {/* Client part */}
-        <ArticlesClient articles={sorted} />
+        <ArticlesClient
+          articles={sorted}
+          labels={{
+            featured: content.featured,
+            filter: content.filter,
+            all: content.all,
+          }}
+        />
       </Stack>
     </Container>
   );

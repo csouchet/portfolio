@@ -18,6 +18,9 @@ import {
   Box,
 } from '@mantine/core';
 
+import { commonContent } from '@/content/fr/common';
+import { siteSharedContent } from '@/content/shared/site';
+
 const links = [
   { name: 'GitHub', url: 'https://github.com/csouchet', icon: IconBrandGithub },
   {
@@ -44,6 +47,9 @@ const links = [
 ];
 
 export function Footer() {
+  const site = siteSharedContent;
+  const content = commonContent.footer;
+
   return (
     <Box
       component="footer"
@@ -53,7 +59,7 @@ export function Footer() {
         overflow: 'hidden',
       }}
     >
-      {/* Texture très subtile (cohérente avec ton style actuel) */}
+      {/* Texture */}
       <Box
         style={{
           position: 'absolute',
@@ -66,7 +72,7 @@ export function Footer() {
         }}
       />
 
-      {/* Ligne premium (comme Hero gradient) */}
+      {/* Ligne gradient */}
       <Box
         style={{
           position: 'absolute',
@@ -85,15 +91,15 @@ export function Footer() {
           {/* Signature */}
           <Stack gap={4} align="center">
             <Text size="sm" fw={600}>
-              Céline Souchet
+              {site.name}
             </Text>
 
             <Text size="xs" c="dimmed">
-              Ingénieure développeuse senior · Java & React · Product & UX
+              {content.signature}
             </Text>
           </Stack>
 
-          {/* Liens typographiques + icône reveal */}
+          {/* Links */}
           <Group justify="center" wrap="wrap">
             {links.map((link, index) => {
               const Icon = link.icon;
@@ -145,7 +151,7 @@ export function Footer() {
           <Divider w="60%" />
 
           <Text size="xs" c="dimmed" ta="center">
-            © {new Date().getFullYear()} — Tous droits réservés
+            © {new Date().getFullYear()} — {content.copyright}
           </Text>
         </Stack>
       </Container>

@@ -6,7 +6,11 @@ import { IconArrowLeft } from '@tabler/icons-react';
 
 import { Container, Stack, Title, Text, Button, Box } from '@mantine/core';
 
+import { commonContent } from '@/content/fr/common';
+
 export default function NotFound() {
+  const content = commonContent.notFound;
+
   return (
     <Container size="sm">
       <Stack
@@ -33,7 +37,7 @@ export default function NotFound() {
           gap="lg"
           style={{ position: 'relative', zIndex: 1 }}
         >
-          {/* 404 gradient */}
+          {/* Code */}
           <Title
             order={1}
             style={{
@@ -46,17 +50,17 @@ export default function NotFound() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            404
+            {content.code}
           </Title>
 
           {/* Title */}
           <Title order={2} ta="center">
-            Page not found
+            {content.title}
           </Title>
 
           {/* Description */}
           <Text c="dimmed" ta="center" maw={420}>
-            La page que vous recherchez n’existe pas ou a été déplacée.
+            {content.description}
           </Text>
 
           {/* CTA */}
@@ -77,7 +81,7 @@ export default function NotFound() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Retour à l’accueil
+              {content.cta}
             </Button>
           </Link>
         </Stack>

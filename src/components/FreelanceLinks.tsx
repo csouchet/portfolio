@@ -5,6 +5,7 @@ import { IconExternalLink, IconStar } from '@tabler/icons-react';
 import { Stack, Group, Text, Badge, ActionIcon } from '@mantine/core';
 
 import { BaseCard } from '@/components/cards/BaseCard';
+import { contactContent } from '@/content/fr/contact';
 
 type FreelanceLink = {
   name: string;
@@ -18,6 +19,8 @@ type Props = {
 };
 
 export function FreelanceLinks({ data }: Props) {
+  const content = contactContent.freelance;
+
   return (
     <Stack gap="sm">
       {data.map(item => (
@@ -53,7 +56,7 @@ export function FreelanceLinks({ data }: Props) {
               variant="light"
               size="lg"
               radius="xl"
-              aria-label={`Voir profil ${item.name}`}
+              aria-label={`${content.aria} ${item.name}`}
             >
               <IconExternalLink size={16} />
             </ActionIcon>

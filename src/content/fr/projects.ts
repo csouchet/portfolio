@@ -1,4 +1,4 @@
-export const projectsContent = {
+export const projectsPageContent = {
   hero: {
     title: 'Projets & Contributions',
     description:
@@ -22,4 +22,44 @@ export const projectsContent = {
 
   pivot:
     'Ce type de projet est représentatif de mon travail : structurer, fiabiliser et accélérer des systèmes complexes.',
+
+  categories: {
+    product: {
+      label: 'Produits',
+      description:
+        'Produits sur lesquels j’ai contribué à la structuration technique et produit.',
+    },
+    application: {
+      label: 'Applications',
+      description:
+        'Applications métiers avec enjeux de performance et maintenabilité.',
+    },
+    library: {
+      label: 'Librairies',
+      description:
+        'Librairies techniques avec contraintes de qualité et distribution.',
+    },
+    tooling: {
+      label: 'Tooling',
+      description:
+        'Outils internes pour améliorer la productivité et la qualité.',
+    },
+    engine: {
+      label: 'Moteur',
+      description: 'Composants cœur nécessitant robustesse et scalabilité.',
+    },
+    website: {
+      label: 'Sites',
+      description: 'Sites techniques avec enjeux SEO, performance et contenu.',
+    },
+    other: {
+      label: 'Autres',
+      description: 'Autres projets.',
+    },
+  },
+
+  card: {
+    main: 'Projet principal',
+    subproject: 'Sous-projet',
+  },
 };

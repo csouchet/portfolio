@@ -1,11 +1,11 @@
+import { siteContent } from '@/content/fr/site';
+import { siteSharedContent } from '@/content/shared/site';
+
 export const siteConfig = {
-  name: 'Céline Souchet',
+  name: siteSharedContent.name,
 
-  title:
-    'Ingénieure développeuse senior Java & React — Des expériences fiables, accessibles et soigneusement conçues',
-
-  description:
-    'Ingénieure développeuse senior spécialisée en Java (Spring) et React / TypeScript. Je conçois des applications fiables et maintenables, avec une attention particulière portée aux détails, à l’expérience utilisateur et à la qualité.',
+  title: siteContent.title,
+  description: siteContent.description,
 
   url: 'https://ton-site.com',
   ogImage: '/og.png',

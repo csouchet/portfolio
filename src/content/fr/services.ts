@@ -3,6 +3,10 @@ export const servicesContent = {
     title: 'Systèmes trop complexes, livraisons instables, équipe ralentie.',
     description:
       'J’interviens pour remettre de la fiabilité, de la clarté et de la fluidité.',
+    intro:
+      'Quand un système devient difficile à comprendre ou à faire évoluer, il finit par freiner tout le produit.',
+    positioning:
+      'Mon rôle : débloquer ces situations et permettre à l’équipe d’avancer sereinement.',
     cta: 'Discuter d’un contexte technique',
   },
 
@@ -45,6 +49,7 @@ export const servicesContent = {
 
   caseStudy: {
     title: 'Exemple',
+    headline: 'Plateforme CI/CD sur un projet multi-composants',
     context:
       'Pipelines lents, releases manuelles, manque de confiance dans les livraisons.',
     action:

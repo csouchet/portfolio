@@ -5,8 +5,10 @@ export const homeContent = {
     description:
       'Je structure, fiabilise et simplifie pour que les équipes puissent livrer vite — sans se battre contre leur propre système.',
     proof: '15+ ans d’expérience · systèmes critiques · CI/CD avancée',
-    ctaPrimary: 'Voir mes projets',
-    ctaSecondary: 'Mon approche',
+    cta: {
+      primary: 'Voir mes projets',
+      secondary: 'Mon approche',
+    },
     availability: 'Disponible — Freelance · Remote / Grenoble',
   },
 
@@ -116,5 +118,19 @@ export const homeContent = {
     description: 'Un système complexe à stabiliser ou un projet à structurer ?',
     cta: 'Discutons-en',
     footer: 'Freelance · Remote / Grenoble',
+  },
+
+  featuredArticles: {
+    title: 'Articles',
+    description:
+      'Quelques retours d’expérience sur la qualité logicielle et les systèmes fiables.',
+    cta: 'Voir tous les articles',
+  },
+
+  featuredProjects: {
+    title: 'Projets clés',
+    description:
+      'Des systèmes que j’ai conçus ou restructurés, avec un impact direct sur la fiabilité, la vitesse de delivery et la capacité à évoluer.',
+    cta: 'Voir tous les projets',
   },
 };

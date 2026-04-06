@@ -5,5 +5,6 @@ export const articlesPageContent = {
 
   featured: 'À la une',
   filter: 'Filtrer par sujet',
+  read: 'Lire l’article →',
   all: 'Tous',
 };

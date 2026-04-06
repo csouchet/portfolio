@@ -19,15 +19,8 @@ import { useDisclosure } from '@mantine/hooks';
 
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { siteConfig } from '@/config/site';
-
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Articles', href: '/articles' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
-];
+import { commonContent } from '@/content/fr/common';
+import { NAV_KEYS } from '@/types/navigation';
 
 type NavItemProps = {
   label: string;
@@ -40,7 +33,6 @@ function NavItem({ label, href, pathname, onClick }: NavItemProps) {
   const [hovered, setHovered] = useState(false);
 
   const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
-
   const isVisible = isActive || hovered;
 
   return (
@@ -86,6 +78,14 @@ export default function Header() {
   const pathname = usePathname();
   const [opened, { toggle, close }] = useDisclosure(false);
 
+  const content = commonContent.navigation;
+
+  const links = NAV_KEYS.map(key => ({
+    key,
+    href: key === 'home' ? '/' : `/${key}`,
+    label: content.labels[key],
+  }));
+
   return (
     <Box
       component="header"
@@ -118,8 +118,8 @@ export default function Header() {
 
           {/* Desktop navigation */}
           <Group gap="xl" visibleFrom="sm">
-            {navLinks.map(link => (
-              <NavItem key={link.label} {...link} pathname={pathname} />
+            {links.map(({ key, ...link }) => (
+              <NavItem key={key} {...link} pathname={pathname} />
             ))}
           </Group>
 
@@ -132,7 +132,7 @@ export default function Header() {
               onClick={toggle}
               hiddenFrom="sm"
               size="sm"
-              aria-label="Toggle navigation"
+              aria-label={content.toggle}
             />
           </Group>
         </Group>
@@ -142,7 +142,7 @@ export default function Header() {
       <Drawer
         opened={opened}
         onClose={close}
-        title="Menu"
+        title={content.menu}
         padding="md"
         size="100%"
         withCloseButton
@@ -155,13 +155,8 @@ export default function Header() {
         }}
       >
         <Stack gap="lg" mt="md">
-          {navLinks.map(link => (
-            <NavItem
-              key={link.label}
-              {...link}
-              pathname={pathname}
-              onClick={close}
-            />
+          {links.map(({ key, ...link }) => (
+            <NavItem key={key} {...link} pathname={pathname} onClick={close} />
           ))}
         </Stack>
       </Drawer>

@@ -3,6 +3,7 @@
 import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 
 import { ArticleCover } from '@/components/articles/ArticleCover';
+import { articlesPageContent } from '@/content/fr/articles';
 import { Article } from '@/types/article';
 
 import { BaseCard } from './BaseCard';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export function ArticleCard({ article }: Props) {
+  const content = articlesPageContent;
+
   const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
     month: 'short',
@@ -53,7 +56,7 @@ export function ArticleCard({ article }: Props) {
           fw={500}
           c="brand.6"
         >
-          Lire l’article →
+          {content.read}
         </Anchor>
       </Stack>
     </BaseCard>

@@ -7,7 +7,8 @@ import { BaseCard } from '@/components/cards/BaseCard';
 import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
 import { siteConfig } from '@/config/site';
-import freelanceData from '@/content/shared/freelance.ts';
+import { contactContent } from '@/content/fr/contact';
+import { freelanceLinks } from '@/content/shared/freelance';
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,16 +17,17 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const content = contactContent;
+
   return (
     <Container size="sm" py="xl">
       <Stack gap="2.5rem">
         {/* HEADER */}
         <Stack gap="xs">
-          <Title order={1}>Contact</Title>
+          <Title order={1}>{content.header.title}</Title>
 
           <Text c="dimmed" maw="65ch">
-            Retrouvez-moi sur LinkedIn ou GitHub pour échanger autour d’un
-            projet, d’une mission ou simplement discuter tech.
+            {content.header.description}
           </Text>
         </Stack>
 
@@ -45,7 +47,7 @@ export default function ContactPage() {
                 variant="light"
                 radius="xl"
               >
-                Voir le profil
+                <Button>{content.direct.linkedin.cta}</Button>
               </Button>
             </Group>
           </BaseCard>
@@ -64,7 +66,7 @@ export default function ContactPage() {
                 variant="light"
                 radius="xl"
               >
-                Voir les projets
+                <Button>{content.direct.github.cta}</Button>
               </Button>
             </Group>
           </BaseCard>
@@ -73,27 +75,27 @@ export default function ContactPage() {
         {/* CONTACT FORM */}
         <Stack gap="sm">
           <Stack gap={4}>
-            <Title order={3}>Envoyer un message</Title>
+            <Title order={3}>{content.form.title}</Title>
 
             <Text size="sm" c="dimmed">
-              Ou contactez-moi directement via ce formulaire.
+              {content.form.description}
             </Text>
           </Stack>
 
-          <ContactForm />
+          <ContactForm content={content.form.content} />
         </Stack>
 
         {/* FREELANCE SECTION */}
         <Stack gap="sm">
           <Stack gap={4}>
-            <Title order={3}>Freelance</Title>
+            <Title order={3}>{content.freelance.title}</Title>
 
             <Text size="sm" c="dimmed">
-              Vous pouvez également me contacter via ces plateformes.
+              {content.freelance.description}
             </Text>
           </Stack>
 
-          <FreelanceLinks data={freelanceData} />
+          <FreelanceLinks data={freelanceLinks} />
         </Stack>
       </Stack>
     </Container>
