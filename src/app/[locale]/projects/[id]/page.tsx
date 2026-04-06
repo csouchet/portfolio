@@ -17,29 +17,30 @@ import {
 } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { projectsPageContent } from '@/content/fr/projects';
-import { projects } from '@/data/projects.fr';
-import { contributionColor, categoryColor } from '@/lib/projectColors';
-import { getChildProjects } from '@/lib/projects';
+import { getContent } from '@/lib/i18n';
+import { categoryColor, contributionColor } from '@/lib/projectColors';
+import { getChildProjects, getProjects } from '@/lib/projects';
+import { Locale } from '@/types/i18n';
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: Locale; id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { locale, id } = await params;
 
+  const projects = getProjects(locale);
   const project = projects.find(p => p.id === id);
 
   if (!project) {
-    return { title: 'Projet introuvable' };
+    return { title: 'Not found' };
   }
 
   return {
     title: project.title,
     description: project.description,
     alternates: {
-      canonical: `/fr/projects/${id}`,
+      canonical: `/${locale}/projects/${id}`,
       languages: {
         fr: `/fr/projects/${id}`,
         en: `/en/projects/${id}`,
@@ -49,15 +50,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
-  const { id } = await params;
+  const { locale, id } = await params;
 
-  const content = projectsPageContent;
+  const content = getContent(locale);
+  const projectsContent = content.projects;
 
+  const projects = getProjects(locale);
   const project = projects.find(p => p.id === id);
 
   if (!project) return notFound();
 
-  const children = getChildProjects(project.id);
+  const children = getChildProjects(project.id, locale);
 
   return (
     <main>
@@ -68,9 +71,9 @@ export default async function ProjectDetailPage({ params }: Props) {
       >
         <Stack gap="xl" maw={720}>
           {/* BACK */}
-          <Link href="/projects" style={{ textDecoration: 'none' }}>
+          <Link href={`/${locale}/projects`} style={{ textDecoration: 'none' }}>
             <Button variant="subtle" leftSection={<IconArrowLeft size={16} />}>
-              {content.hero.title}
+              {projectsContent.hero.title}
             </Button>
           </Link>
 
@@ -113,12 +116,12 @@ export default async function ProjectDetailPage({ params }: Props) {
             </>
           )}
 
-          {/* PROBLÈMES */}
+          {/* CASE STUDY */}
           {project.caseStudy?.problems && (
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>{content.caseStudy.problems}</Title>
+                <Title order={3}>{projectsContent.caseStudy.problems}</Title>
                 {project.caseStudy.problems.map(problem => (
                   <Text key={problem} c="dimmed">
                     • {problem}
@@ -133,7 +136,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>{content.caseStudy.actions}</Title>
+                <Title order={3}>{projectsContent.caseStudy.actions}</Title>
                 {project.caseStudy.actions.map(action => (
                   <Text key={action} c="dimmed">
                     • {action}
@@ -148,7 +151,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <>
               <Divider />
               <Stack gap="xs">
-                <Title order={3}>{content.caseStudy.results}</Title>
+                <Title order={3}>{projectsContent.caseStudy.results}</Title>
                 <Text>{project.caseStudy.results}</Text>
               </Stack>
             </>
@@ -261,7 +264,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   variant="gradient"
                   gradient={{ from: 'brand.5', to: 'brand.7' }}
                 >
-                  {content.caseStudy.cta}
+                  {projectsContent.caseStudy.cta}
                 </Button>
               </a>
             </>

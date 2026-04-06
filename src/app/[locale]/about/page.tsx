@@ -12,7 +12,8 @@ import {
   Box,
 } from '@mantine/core';
 
-import { aboutContent } from '@/content/fr/about';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
   alternates: {
@@ -24,8 +25,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
-  const content = aboutContent;
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).about;
 
   return (
     <Box>

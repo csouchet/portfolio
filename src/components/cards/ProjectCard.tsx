@@ -2,12 +2,8 @@ import Link from 'next/link';
 
 import { Card, Text, Group, Badge, Stack, Title } from '@mantine/core';
 
-import { useContent } from '@/hooks/useContent';
+import { getContent } from '@/lib/i18n';
 import { Project } from '@/types/project';
-
-type Props = {
-  project: Project;
-};
 
 /**
  * Transforme le texte pour le rendre plus impactant
@@ -35,10 +31,12 @@ function rewrite(text?: string) {
     .replace(/Création/g, 'Conception');
 }
 
-export function ProjectCard({ project }: Props) {
-  const { projects } = useContent();
-  const content = projects;
+type Props = {
+  project: Project;
+  content: ReturnType<typeof getContent>['projects'];
+};
 
+export function ProjectCard({ project, content }: Props) {
   const impact = toImpact(project.caseStudy?.results, project.description);
 
   const mainAction = project.caseStudy?.actions?.[0];

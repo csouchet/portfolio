@@ -3,19 +3,17 @@
 import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 
 import { ArticleCover } from '@/components/articles/ArticleCover';
-import { useContent } from '@/hooks/useContent';
+import { getContent } from '@/lib/i18n';
 import { Article } from '@/types/article';
 
 import { BaseCard } from './BaseCard';
 
 type Props = {
   article: Article;
+  content: ReturnType<typeof getContent>['articles'];
 };
 
-export function ArticleCard({ article }: Props) {
-  const { articles } = useContent();
-  const content = articles;
-
+export function ArticleCard({ article, content }: Props) {
   const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
     month: 'short',

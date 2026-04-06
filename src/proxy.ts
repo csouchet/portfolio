@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { DEFAULT_LOCALE, LOCALES } from './types/i18n';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isMissingLocale = LOCALES.every(

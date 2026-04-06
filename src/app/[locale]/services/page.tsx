@@ -5,7 +5,8 @@ import { Metadata } from 'next';
 import { Stack, Text, Button } from '@mantine/core';
 
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { servicesContent } from '@/content/fr/services';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
   alternates: {
@@ -17,8 +18,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
-  const content = servicesContent;
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function ServicesPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).services;
 
   return (
     <main>

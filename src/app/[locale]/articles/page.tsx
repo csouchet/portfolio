@@ -3,26 +3,37 @@ import type { Metadata } from 'next';
 import { Container, Stack, Title, Text } from '@mantine/core';
 
 import { ArticlesClient } from '@/components/articles/ArticlesClient';
-import { articlesPageContent } from '@/content/fr/articles';
-import { articles } from '@/data/articles';
+import { articles as articlesData } from '@/data/articles';
 import { sortArticles } from '@/lib/articles';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/fr/articles',
-    languages: {
-      fr: '/fr/articles',
-      en: '/en/articles',
-    },
-  },
-  title: articlesPageContent.title,
-  description: articlesPageContent.description,
+type Props = {
+  params: Promise<{ locale: Locale }>;
 };
 
-export default function ArticlesPage() {
-  const content = articlesPageContent;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const content = getContent(locale).articles;
 
-  const sorted = sortArticles(articles);
+  return {
+    title: content.title,
+    description: content.description,
+    alternates: {
+      canonical: `/${locale}/articles`,
+      languages: {
+        fr: '/fr/articles',
+        en: '/en/articles',
+      },
+    },
+  };
+}
+
+export default async function ArticlesPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).articles;
+
+  const sorted = sortArticles(articlesData);
 
   return (
     <Container py="xl">
@@ -37,6 +48,7 @@ export default function ArticlesPage() {
         {/* Client part */}
         <ArticlesClient
           articles={sorted}
+          content={content}
           labels={{
             featured: content.featured,
             filter: content.filter,
