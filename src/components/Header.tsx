@@ -137,7 +137,7 @@ export default function Header() {
 
           {/* Right actions */}
           <Group gap="sm">
-            <ThemeToggle />ƒ
+            <ThemeToggle />
             <LanguageSwitch />
             <Burger
               opened={opened}
