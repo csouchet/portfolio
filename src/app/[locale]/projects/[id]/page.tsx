@@ -224,7 +224,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   {children.map(child => (
                     <Link
                       key={child.id}
-                      href={`/projects/${child.id}`}
+                      href={`/${locale}/projects/${child.id}`}
                       style={{
                         textDecoration: 'none',
                         color: 'inherit',

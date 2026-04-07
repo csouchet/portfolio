@@ -38,7 +38,7 @@ export default async function ServicesPage({ params }: Props) {
 
           <Text fw={600}>{content.hero.positioning}</Text>
 
-          <Link href="/contact" style={{ textDecoration: 'none' }}>
+          <Link href={`/${locale}/contact`} style={{ textDecoration: 'none' }}>
             <Button variant="gradient" w="fit-content">
               {content.hero.cta}
             </Button>
@@ -97,7 +97,7 @@ export default async function ServicesPage({ params }: Props) {
             {content.cta.description}
           </Text>
 
-          <Link href="/contact" style={{ textDecoration: 'none' }}>
+          <Link href={`/${locale}/contact`} style={{ textDecoration: 'none' }}>
             <Button variant="gradient">{content.cta.button}</Button>
           </Link>
         </Stack>

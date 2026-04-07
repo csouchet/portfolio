@@ -19,8 +19,9 @@ import { useDisclosure } from '@mantine/hooks';
 
 import { LanguageSwitch } from '@/components/LanguageSwitch';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { commonContent } from '@/content/fr/common';
 import { siteSharedContent } from '@/content/shared/site';
+import { useContent } from '@/hooks/useContent';
+import { Locale } from '@/types/i18n';
 import { NAV_KEYS } from '@/types/navigation';
 
 type NavItemProps = {
@@ -28,12 +29,16 @@ type NavItemProps = {
   href: string;
   pathname: string;
   onClick?: () => void;
+  locale: Locale;
 };
 
-function NavItem({ label, href, pathname, onClick }: NavItemProps) {
+function NavItem({ label, href, pathname, onClick, locale }: NavItemProps) {
   const [hovered, setHovered] = useState(false);
 
-  const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const isActive =
+    href === `/${locale}`
+      ? pathname === `/${locale}`
+      : pathname.startsWith(href);
   const isVisible = isActive || hovered;
 
   return (
@@ -79,11 +84,12 @@ export default function Header() {
   const pathname = usePathname();
   const [opened, { toggle, close }] = useDisclosure(false);
 
-  const content = commonContent.navigation;
+  const { common, locale } = useContent();
+  const content = common.navigation;
 
   const links = NAV_KEYS.map(key => ({
     key,
-    href: key === 'home' ? '/' : `/${key}`,
+    href: key === 'home' ? `/${locale}` : `/${locale}/${key}`,
     label: content.labels[key],
   }));
 
@@ -106,7 +112,7 @@ export default function Header() {
           {/* Logo */}
           <Text
             component={Link}
-            href="/"
+            href={`/${locale}`}
             fw={700}
             size="md"
             style={{
@@ -120,15 +126,19 @@ export default function Header() {
           {/* Desktop navigation */}
           <Group gap="xl" visibleFrom="sm">
             {links.map(({ key, ...link }) => (
-              <NavItem key={key} {...link} pathname={pathname} />
+              <NavItem
+                key={key}
+                {...link}
+                pathname={pathname}
+                locale={locale}
+              />
             ))}
           </Group>
 
           {/* Right actions */}
           <Group gap="sm">
-            <ThemeToggle />
+            <ThemeToggle />ƒ
             <LanguageSwitch />
-
             <Burger
               opened={opened}
               onClick={toggle}
@@ -158,7 +168,13 @@ export default function Header() {
       >
         <Stack gap="lg" mt="md">
           {links.map(({ key, ...link }) => (
-            <NavItem key={key} {...link} pathname={pathname} onClick={close} />
+            <NavItem
+              key={key}
+              {...link}
+              pathname={pathname}
+              onClick={close}
+              locale={locale}
+            />
           ))}
         </Stack>
       </Drawer>

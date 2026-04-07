@@ -122,7 +122,7 @@ export default async function AboutPage({ params }: Props) {
           <Stack align="center" gap="md" mt={40}>
             <Text size="lg">{content.cta.text}</Text>
 
-            <Link href="/contact">
+            <Link href={`/${locale}/contact`}>
               <Button radius="xl">{content.cta.button}</Button>
             </Link>
 

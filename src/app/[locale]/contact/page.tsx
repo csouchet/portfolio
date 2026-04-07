@@ -58,7 +58,7 @@ export default async function ContactPage({ params }: Props) {
                 variant="light"
                 radius="xl"
               >
-                <Button>{content.direct.linkedin.cta}</Button>
+                {content.direct.linkedin.cta}
               </Button>
             </Group>
           </BaseCard>
@@ -77,7 +77,7 @@ export default async function ContactPage({ params }: Props) {
                 variant="light"
                 radius="xl"
               >
-                <Button>{content.direct.github.cta}</Button>
+                {content.direct.github.cta}
               </Button>
             </Group>
           </BaseCard>

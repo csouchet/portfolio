@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Card, Text, Group, Badge, Stack, Title } from '@mantine/core';
 
 import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 import { Project } from '@/types/project';
 
 /**
@@ -34,9 +35,10 @@ function rewrite(text?: string) {
 type Props = {
   project: Project;
   content: ReturnType<typeof getContent>['projects'];
+  locale: Locale;
 };
 
-export function ProjectCard({ project, content }: Props) {
+export function ProjectCard({ project, content, locale }: Props) {
   const impact = toImpact(project.caseStudy?.results, project.description);
 
   const mainAction = project.caseStudy?.actions?.[0];
@@ -44,7 +46,10 @@ export function ProjectCard({ project, content }: Props) {
   const scope = project.parent ? content.card.subproject : content.card.main;
 
   return (
-    <Link href={`/projects/${project.id}`} style={{ textDecoration: 'none' }}>
+    <Link
+      href={`/${locale}/projects/${project.id}`}
+      style={{ textDecoration: 'none' }}
+    >
       <Card
         withBorder
         radius="md"

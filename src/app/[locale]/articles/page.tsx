@@ -54,6 +54,7 @@ export default async function ArticlesPage({ params }: Props) {
             filter: content.filter,
             all: content.all,
           }}
+          locale={locale}
         />
       </Stack>
     </Container>

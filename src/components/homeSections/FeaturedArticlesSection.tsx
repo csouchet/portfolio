@@ -8,7 +8,7 @@ import { articles as articlesData } from '@/data/articles';
 import { useContent } from '@/hooks/useContent';
 
 export function FeaturedArticlesSection() {
-  const { home, articles } = useContent();
+  const { home, articles, locale } = useContent();
   const content = home.featuredArticles;
 
   const featuredArticles = articlesData.filter(a => a.featured).slice(0, 3);
@@ -24,7 +24,12 @@ export function FeaturedArticlesSection() {
     >
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {featuredArticles.map(article => (
-          <ArticleCard key={article.id} article={article} content={articles} />
+          <ArticleCard
+            key={article.id}
+            article={article}
+            content={articles}
+            locale={locale}
+          />
         ))}
       </SimpleGrid>
     </HomeSection>

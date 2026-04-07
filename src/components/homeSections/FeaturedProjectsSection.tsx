@@ -23,7 +23,12 @@ export function FeaturedProjectsSection() {
     >
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         {featuredProjects.map(project => (
-          <ProjectCard key={project.id} project={project} content={projects} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            content={projects}
+            locale={locale}
+          />
         ))}
       </SimpleGrid>
     </HomeSection>

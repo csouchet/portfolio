@@ -127,7 +127,7 @@ export default async function ProjectsPage({ params }: Props) {
                 )}
 
                 <Link
-                  href={`/projects/${caseStudyProject.id}`}
+                  href={`/${locale}/projects/${caseStudyProject.id}`}
                   style={{ textDecoration: 'none' }}
                 >
                   <Button variant="subtle">{content.caseStudy.cta}</Button>
@@ -188,6 +188,7 @@ export default async function ProjectsPage({ params }: Props) {
                           <ProjectCard
                             project={projects[0]}
                             content={content}
+                            locale={locale}
                           />
                         </Box>
                       </Box>
@@ -198,6 +199,7 @@ export default async function ProjectsPage({ params }: Props) {
                             key={project.id}
                             project={project}
                             content={content}
+                            locale={locale}
                           />
                         ))}
                       </SimpleGrid>
