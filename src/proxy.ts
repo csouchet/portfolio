@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { DEFAULT_LOCALE, LOCALES } from './types/i18n';
 
+function isLocale(value: string): value is (typeof LOCALES)[number] {
+  return LOCALES.includes(value as (typeof LOCALES)[number]);
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -15,9 +19,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  return NextResponse.next();
+  const segment = pathname.split('/')[1];
+  const locale = isLocale(segment) ? segment : DEFAULT_LOCALE;
+
+  const response = NextResponse.next();
+  response.headers.set('x-locale', locale);
+
+  return response;
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'],
+  matcher: ['/((?!_next|api|favicon.ico|.*\\..*).*)'],
 };

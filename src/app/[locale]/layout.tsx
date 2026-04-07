@@ -2,11 +2,7 @@ import type { Metadata } from 'next';
 
 import { notFound } from 'next/navigation';
 
-import {
-  ColorSchemeScript,
-  MantineProvider,
-  mantineHtmlProps,
-} from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 
 import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
@@ -43,23 +39,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale} {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript defaultColorScheme="auto" />
-        <link rel="shortcut icon" href="/favicon.svg" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
-        />
-      </head>
-
-      <body>
-        <MantineProvider theme={theme} defaultColorScheme="auto">
-          <Header />
-          <main style={{ flex: 1 }}>{children}</main>
-          <Footer />
-        </MantineProvider>
-      </body>
-    </html>
+    <MantineProvider theme={theme} defaultColorScheme="auto">
+      <Header />
+      <main style={{ flex: 1 }}>{children}</main>
+      <Footer />
+    </MantineProvider>
   );
 }
