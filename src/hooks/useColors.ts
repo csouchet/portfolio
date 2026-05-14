@@ -1,22 +1,35 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useMemo, useCallback } from 'react';
 
 import { useMantineTheme } from '@mantine/core';
 
 import { accentColors } from '@/theme/utils/colors';
+import { ARTICLE_TAGS, Tag } from '@/types/article';
 import { ColorSchemeMapping } from '@/types/color';
 
 export function useAccentColor() {
-  return useCallback((value: string | number): string => {
-    if (typeof value === 'number') {
-      return accentColors[value % accentColors.length];
-    }
+  const orders = useMemo(
+    () => ({
+      tags: ARTICLE_TAGS as readonly string[],
+    }),
+    [],
+  );
 
-    const finalIndex = 0;
+  return useCallback(
+    (value: Tag | string | number): string => {
+      if (typeof value === 'number') {
+        return accentColors[value % accentColors.length];
+      }
 
-    return accentColors[finalIndex % accentColors.length];
-  }, []);
+      const index = orders.tags.indexOf(value);
+
+      const finalIndex = index === -1 ? 0 : index;
+
+      return accentColors[finalIndex % accentColors.length];
+    },
+    [orders],
+  );
 }
 
 /**

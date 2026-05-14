@@ -19,3 +19,10 @@ export function getAllTags(articles: Article[]): Tag[] {
     .sort((a, b) => b[1] - a[1])
     .map(([tag]) => tag);
 }
+
+export function formatDate(article: Article, locale: string): string {
+  return new Date(article.date).toLocaleDateString(
+    locale === 'fr' ? 'fr-FR' : 'en-US',
+    { year: 'numeric', month: 'long', day: 'numeric' },
+  );
+}

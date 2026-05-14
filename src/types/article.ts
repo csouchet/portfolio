@@ -1,28 +1,16 @@
 type Platform = 'Medium' | 'Dev.to' | 'Hackernoon';
 
-export type Tag =
-  | 'Testing'
-  | 'Playwright'
-  | 'Puppeteer'
-  | 'TypeScript'
-  | 'CI/CD'
-  | 'Database'
-  | 'DevOps'
-  | 'Data'
-  | 'Analytics'
-  | 'Superset'
-  | 'Open Source'
-  | 'Community'
-  | 'Event'
-  | 'Tooling'
-  | 'BPMN'
-  | 'R'
-  | 'Visualization'
-  | 'Webinar'
-  | 'Newsletter'
-  | 'News'
-  | 'Automation'
-  | 'Visual Testing';
+export const ARTICLE_TAGS = [
+  'Testing',
+  'Data & Analytics',
+  'DevOps & Infra',
+  'Open Source',
+  'Events & News',
+  'Engineering',
+  'Product & Team',
+] as const;
+
+export type Tag = (typeof ARTICLE_TAGS)[number];
 
 export type Article = {
   id: string;
@@ -33,5 +21,5 @@ export type Article = {
   readingTime: string;
   tags: Tag[];
   featured?: boolean;
-  image?: string;
+  image: string;
 };
