@@ -10,6 +10,7 @@ export const projects: Project[] = [
   {
     id: 'process-analytics',
     title: 'Process Analytics',
+    date: '2020 - 2023',
     description:
       'Écosystème d’analyse de processus regroupant plusieurs briques techniques (librairies, exemples, site, data).',
     featured: true,
@@ -25,14 +26,12 @@ export const projects: Project[] = [
     caseStudy: {
       context:
         'Création from scratch d’un écosystème d’analyse de processus composé de plusieurs briques (librairies, exemples, site, data).',
-
       problems: [
         'Absence de structure initiale',
         'Définition de l’architecture globale du système',
         'Mise en place des pratiques de développement et de collaboration',
         'Construction d’un produit cohérent à partir de plusieurs composants',
       ],
-
       actions: [
         'Conception de l’architecture globale de l’écosystème',
         'Structuration des différents composants (librairies, exemples, site)',
@@ -40,7 +39,6 @@ export const projects: Project[] = [
         'Définition des standards de développement et de contribution',
         'Contribution à la structuration produit et à la roadmap',
       ],
-
       results:
         'Mise en place d’un écosystème complet et cohérent, permettant le développement, la distribution et l’adoption des outils d’analyse de processus.',
     },
@@ -49,9 +47,9 @@ export const projects: Project[] = [
   {
     id: 'bpmn-visu-js',
     title: 'BPMN Visualization JS',
+    date: '2020 - 2023',
     description:
       'Librairie open-source de visualisation BPMN avec rendu graphique interactif.',
-    stack: ['TypeScript', 'mxGraph', 'Playwright', 'CI/CD', 'SonarCloud'],
     github: 'https://github.com/process-analytics/bpmn-visualization-js',
     parent: 'process-analytics',
     category: 'library',
@@ -93,9 +91,9 @@ export const projects: Project[] = [
   {
     id: 'bpmn-visu-examples',
     title: 'BPMN Visualization Examples',
+    date: '2020 - 2023',
     description:
       'Exemples interactifs permettant de démontrer les fonctionnalités de la librairie BPMN Visualization JS et faciliter son adoption.',
-    stack: ['TypeScript', 'HTML', 'CI/CD'],
     github: 'https://github.com/process-analytics/bpmn-visualization-examples',
     parent: 'process-analytics',
     category: 'tooling',
@@ -122,9 +120,9 @@ export const projects: Project[] = [
   {
     id: 'bpmn-visu-r',
     title: 'BPMN Visualization R',
+    date: '2021 - 2023',
     description:
       'Package R permettant la visualisation de processus BPMN dans l’écosystème data science.',
-    stack: ['R', 'Shiny', 'JavaScript'],
     github: 'https://github.com/process-analytics/bpmn-visualization-R',
     parent: 'process-analytics',
     category: 'library',
@@ -143,8 +141,8 @@ export const projects: Project[] = [
   {
     id: 'process-analytics-dev',
     title: 'Process Analytics Dev',
+    date: '2021 - 2023',
     description: 'Site vitrine du projet.',
-    stack: ['React', 'Gatsby', 'TypeScript', 'MaterialUI'],
     github: 'https://github.com/process-analytics/process-analytics.dev',
     parent: 'process-analytics',
     category: 'website',
@@ -155,6 +153,7 @@ export const projects: Project[] = [
   {
     id: 'bonita-process-insights',
     title: 'Bonita Process Insights',
+    date: '2023 - 2024',
     description:
       'Produit de data visualisation permettant d’analyser des processus métier via tableaux de bord et visualisations BPMN.',
     category: 'product',
@@ -169,19 +168,16 @@ export const projects: Project[] = [
     caseStudy: {
       context:
         'Création from scratch d’un produit composé de plusieurs applications afin de data visualisation combinant backend, frontend et visualisation BPMN.',
-
       problems: [
         'Complexité technique et fonctionnelle élevée',
         'Construction d’un système combinant data, backend et visualisation',
         'Mise en place des bases techniques et des pratiques de développement',
       ],
-
       actions: [
         'Conception de l’architecture globale du produit',
         'Mise en place des fondations backend et frontend',
         'Structuration des pratiques de développement',
       ],
-
       results:
         'Mise en place d’un produit complet et structuré, permettant la visualisation et l’analyse de processus métier.',
     },
@@ -190,9 +186,9 @@ export const projects: Project[] = [
   {
     id: 'bonita-process-insights-superset',
     title: 'Process Insights – Superset',
+    date: '2023 - 2024',
     description:
       'Custom Apache Superset avec plugin BPMN pour visualisation interactive.',
-    stack: ['React', 'Superset', 'TypeScript', 'CI/CD'],
     parent: 'bonita-process-insights',
     category: 'application',
     contributions: ['frontend', 'ci-cd', 'testing', 'devex'],
@@ -207,8 +203,8 @@ export const projects: Project[] = [
   {
     id: 'bonita-process-insights-app',
     title: 'Process Insights – Application',
+    date: '2023 - 2024',
     description: 'Application fullstack pour la gestion des données d’analyse.',
-    stack: ['Angular', 'Java', 'Spring', 'JHipster'],
     parent: 'bonita-process-insights',
     category: 'application',
     contributions: ['frontend', 'backend', 'devex'],
@@ -223,16 +219,9 @@ export const projects: Project[] = [
   {
     id: 'bonita-ui-builder',
     title: 'Bonita UI Builder',
+    date: '2024 - 2025',
     description:
       'Plateforme low-code basée sur Appsmith avec architecture CI/CD avancée.',
-    stack: [
-      'Java',
-      'Spring',
-      'React',
-      'TypeScript',
-      'Docker',
-      'GitHub Actions',
-    ],
     featured: true,
     category: 'application',
     contributions: [
@@ -254,20 +243,17 @@ export const projects: Project[] = [
     caseStudy: {
       context:
         'Construction from scratch d’une plateforme low-code basée sur Appsmith avec une architecture CI/CD avancée.',
-
       problems: [
         'Définition de l’architecture globale multi-composants',
         'Construction d’une CI/CD complète et fiable',
         'Gestion de la complexité liée à une plateforme low-code',
       ],
-
       actions: [
         'Conception de l’architecture globale',
         'Mise en place de pipelines CI/CD orchestrés',
         'Automatisation complète des builds, tests et releases',
         'Structuration des standards et des pratiques de développement',
       ],
-
       results:
         'Mise en place d’une plateforme robuste avec une chaîne de livraison industrialisée, permettant des releases fiables et fréquentes.',
     },
@@ -276,6 +262,7 @@ export const projects: Project[] = [
   {
     id: 'bonita-process-automation',
     title: 'Bonita Process Automation',
+    date: '2012 - 2015',
     description:
       'Plateforme d’automatisation de processus métier incluant moteur BPM, outils de migration, packaging et intégration des systèmes.',
     category: 'product',
@@ -286,18 +273,8 @@ export const projects: Project[] = [
   {
     id: 'bonita-engine',
     title: 'Bonita Engine',
+    date: '2012 - 2015',
     description: 'Moteur BPM open-source au cœur de la plateforme Bonita.',
-    stack: [
-      'Java',
-      'Spring',
-      'Quartz',
-      'Hibernate',
-      'MySQL',
-      'PostgreSQL',
-      'SQL Server',
-      'Oracle',
-      'JUnit',
-    ],
     github: 'https://github.com/bonitasoft/bonita-engine',
     category: 'engine',
     contributions: ['backend', 'architecture'],
@@ -308,19 +285,8 @@ export const projects: Project[] = [
   {
     id: 'bonita-migration-tool',
     title: 'Migration Tool',
+    date: '2014 - 2015',
     description: 'Outil de migration des versions Bonita.',
-    stack: [
-      'Groovy',
-      'JUnit',
-      'Mockito',
-      'MySQL',
-      'PostgreSQL',
-      'Oracle',
-      'SQL Server',
-      'Gradle',
-      'Jenkins',
-      'SonarQube',
-    ],
     github: 'https://github.com/bonitasoft/bonita-migration',
     parent: 'bonita-process-automation',
     category: 'tooling',
@@ -336,9 +302,9 @@ export const projects: Project[] = [
   {
     id: 'bonita-packaging',
     title: 'Packaging plateforme',
+    date: '2012 - 2015',
     description:
       'Distribution multi-serveurs de la plateforme Bonita Process Automation.',
-    stack: ['Maven', 'Ant', 'Jenkins', 'Tomcat', 'JBoss'],
     parent: 'bonita-process-automation',
     category: 'tooling',
     company: 'Bonitasoft',
@@ -353,9 +319,9 @@ export const projects: Project[] = [
   {
     id: 'bonita-ldap-synchronizer',
     title: 'LDAP Synchronizer',
+    date: '2013 - 2015',
     description:
       'Outil de synchronisation LDAP pour la gestion des utilisateurs et des permissions.',
-    stack: ['Java', 'LDAP', 'JUnit', 'Mockito'],
     github: 'https://github.com/bonitasoft/bonita-connector-ldap',
     parent: 'bonita-process-automation',
     category: 'application',
@@ -377,8 +343,9 @@ export const projects: Project[] = [
   {
     id: 'gbsmith-365view',
     title: '365 View',
+    date: '2016 - 2017',
     description:
-      'Plateforme de gouvernance et d’audit des permissions utilisateurs multi-outils BI.',
+      'Plateforme de gestion des permissions utilisateurs multi-outils BI.',
     category: 'product',
     contributions: ['architecture'],
     company: 'GB&Smith',
@@ -396,18 +363,8 @@ export const projects: Project[] = [
   {
     id: 'gbsmith-365view-core',
     title: '365 View Core',
-    description:
-      'Composant central gérant les permissions utilisateurs et les traitements d’audit.',
-    stack: [
-      'Java',
-      'JPA',
-      'Hibernate',
-      'Liquibase',
-      'Quartz',
-      'MySQL',
-      'JUnit',
-      'Mockito',
-    ],
+    date: '2016 - 2017',
+    description: 'Composant central gérant les permissions utilisateurs.',
     parent: 'gbsmith-365view',
     category: 'application',
     contributions: ['backend', 'architecture'],
@@ -422,9 +379,9 @@ export const projects: Project[] = [
   {
     id: 'gbsmith-365view-plugin',
     title: '365 View Plugin',
+    date: '2016 - 2017',
     description:
       'Plugin interne responsable de la gestion des données de la plateforme.',
-    stack: ['Java', 'SQL', 'PrimeFaces'],
     parent: 'gbsmith-365view',
     category: 'plugin',
     contributions: ['backend', 'frontend'],
@@ -432,11 +389,11 @@ export const projects: Project[] = [
   },
 
   {
-    id: 'gbsmith-salesforce-plugin',
+    id: 'gbsmith-365view-salesforce-plugin',
     title: 'Salesforce Plugin',
+    date: '2016 - 2017',
     description:
-      'Plugin pour l’audit des permissions utilisateurs dans Salesforce.',
-    stack: ['Java', 'Salesforce SDK', 'JSF', 'PrimeFaces'],
+      'Plugin pour la gestion des permissions utilisateurs dans Salesforce.',
     parent: 'gbsmith-365view',
     category: 'plugin',
     contributions: ['backend', 'frontend'],
@@ -444,12 +401,48 @@ export const projects: Project[] = [
   },
 
   {
-    id: 'gbsmith-cognos-plugin',
-    title: 'Cognos Plugin',
+    id: 'gbsmith-365eyes',
+    title: '365 Eyes',
+    date: '2016',
+    description:
+      'Plateforme d’audit des permissions utilisateurs de multi-outils BI.',
+    category: 'product',
+    contributions: ['architecture'],
+    company: 'GB&Smith',
+    highlights: ['Architecture modulaire basée sur plugins'],
+
+    caseStudy: {
+      context:
+        'Plateforme d’audit des permissions utilisateurs de multi-outils BI nécessitant une architecture flexible.',
+      problems: ['Multiplicité des sources', 'Complexité des permissions'],
+      actions: ['Architecture modulaire basée sur plugins'],
+      results: 'Système extensible et maintenable.',
+    },
+  },
+
+  {
+    id: 'gbsmith-365eyes-core',
+    title: '365 Eyes - Core',
+    date: '2016',
+    description:
+      "Composant central gérant l'audit des permissions utilisateurs.",
+    parent: 'gbsmith-365eyes',
+    category: 'application',
+    contributions: ['backend', 'architecture'],
+    company: 'GB&Smith',
+    highlights: [
+      'Architecture backend modulaire',
+      'Traitements batch et planification',
+      'Qualité logicielle et tests',
+    ],
+  },
+  {
+    id: 'gbsmith-365eyes-cognos-plugin',
+    title: '365 Eyes - Cognos Plugin',
+    date: '2016',
     description:
       'Plugin pour l’audit des permissions utilisateurs sur IBM Cognos.',
-    stack: ['Java', 'Cognos SDK'],
-    parent: 'gbsmith-365view',
+    parent: 'gbsmith-365eyes',
     category: 'plugin',
     contributions: ['backend'],
     company: 'GB&Smith',
@@ -458,6 +451,7 @@ export const projects: Project[] = [
   {
     id: 'gbsmith-fenix',
     title: 'Fenix',
+    date: '2017 - 2019',
     description: 'Plateforme d’audit de données BI (SAP BO, SAP BW, Tableau)',
     category: 'product',
     contributions: ['architecture'],
@@ -466,20 +460,17 @@ export const projects: Project[] = [
     caseStudy: {
       context:
         'Construction d’une plateforme d’audit de données BI permettant d’analyser des données issues de multiples sources.',
-
       problems: [
         'Conception d’un système capable de gérer des sources de données hétérogènes',
         'Définition d’une architecture extensible',
         'Gestion de la complexité des traitements de données',
       ],
-
       actions: [
         'Conception d’une architecture modulaire basée sur plugins',
         'Structuration des flux de traitement de données',
         'Mise en place des fondations techniques du produit',
         'Contribution à la définition des capacités du produit',
       ],
-
       results:
         'Création d’une plateforme robuste et extensible pour l’analyse de données BI.',
     },
@@ -488,18 +479,9 @@ export const projects: Project[] = [
   {
     id: 'gbsmith-fenix-core',
     title: 'Fenix Core',
+    date: '2017 - 2019',
     description:
       'Composant central responsable du traitement des données et de l’orchestration des plugins.',
-    stack: [
-      'Java',
-      'Spring Boot',
-      'JPA',
-      'Hibernate',
-      'Liquibase',
-      'React',
-      'TypeScript',
-      'Tomcat',
-    ],
     parent: 'gbsmith-fenix',
     category: 'application',
     contributions: ['backend', 'frontend'],
@@ -520,8 +502,8 @@ export const projects: Project[] = [
   {
     id: 'portfolio',
     title: 'Portfolio',
+    date: '2026',
     description: 'Portfolio personnel conçu comme un design system.',
-    stack: ['React', 'TypeScript', 'Mantine'],
     github: 'https://github.com/csouchet/portfolio',
     category: 'application',
     contributions: ['frontend'],
