@@ -10,7 +10,7 @@ type Props = { locale: string; labels: Record<string, string> };
 
 const navLinks: NavKey[] = [
   'projects',
-  'services',
+  'skills',
   'about',
   'articles',
   'contact',

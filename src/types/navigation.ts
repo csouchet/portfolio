@@ -3,7 +3,7 @@ export const NAV_KEYS = [
   'about',
   'projects',
   'articles',
-  'services',
+  'skills',
   'contact',
 ] as const;
 
