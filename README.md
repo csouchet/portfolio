@@ -1,38 +1,46 @@
-# Céline Souchet portfolio's
+# Céline Souchet — Portfolio & Design System
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Ce projet est le portfolio professionnel de **Céline Souchet**, Ingénieure développeuse senior Java & React. Il est conçu comme une plateforme robuste et évolutive, servant à la fois de vitrine et de démonstration d'un **Design System** complet.
 
-## Getting Started
+## 🛠 Stack Technique
 
-First, run the development server:
+- **Framework** : [Next.js 16](https://nextjs.org) (Canary) avec **React Compiler** activé.
+- **UI & Style** : [Mantine 9.x](https://mantine.dev) avec un système de thémage personnalisé (Design Tokens).
+- **Langage** : [TypeScript](https://www.typescriptlang.org/) (Strict mode).
+- **Internationalisation** : Système i18n sur-mesure (Français / Anglais).
+- **Qualité** : ESLint (Flat Config), Prettier, Husky & Lint-staged.
+- **Environnement** : Node.js 24 (configuré via `.nvmrc`).
+
+## 🎨 Design System & Architecture
+
+Le projet repose sur une séparation stricte entre la logique et la présentation :
+
+- **Design Tokens** : Centralisés dans `src/theme/tokens/` (couleurs, espacements, rayons, ombres).
+- **Variants Personnalisés** : Mantine est étendu avec des variants métier (`item`, `section`, `banner`, `summary`) pour garantir une cohérence visuelle.
+- **Composants Thématiques** : Utilisation de `WaveBackground` et `ThemedImage` pour une gestion fluide du mode clair/sombre sans duplication de code.
+- **I18n Dynamique** : Les contenus sont gérés sous forme de dicos TypeScript dans `src/content/`.
+
+## 🚀 Installation & Développement
 
 ```bash
+# Installation des dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Vérifier la qualité du code
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📂 Structure du Projet
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/` : Routes Next.js (App Router) avec préfixe de locale.
+- `src/theme/` : Cœur du Design System (Tokens & Component Overrides).
+- `src/content/` : Contenus bilingues (FR/EN).
+- `src/lib/hooks/` : Logique métier et hooks de collection (`useArticles`, `useProjects`).
+- `src/components/layout/` : Composants de structure réutilisables.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 Licence
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ce projet est sous licence [MIT](LICENSE).
