@@ -4,11 +4,18 @@ import '@mantine/core/styles.css';
 
 import React from 'react';
 
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { headers } from 'next/headers';
 
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
 import { Locale } from '@/types/i18n';
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export default async function RootLayout({
   children,
@@ -19,8 +26,8 @@ export default async function RootLayout({
   const locale = (headersList.get('x-locale') ?? 'fr') as Locale;
 
   return (
-    <html lang={locale} {...mantineHtmlProps}>
-      <head>
+    <html lang={locale} className={jakarta.variable} {...mantineHtmlProps}>
+      <head suppressHydrationWarning>
         <ColorSchemeScript defaultColorScheme="auto" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
@@ -28,7 +35,15 @@ export default async function RootLayout({
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>{children}</body>
+      <body
+        style={{
+          backgroundColor: 'var(--mantine-color-body)',
+          textRendering: 'optimizeLegibility',
+          WebkitFontSmoothing: 'antialiased',
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
