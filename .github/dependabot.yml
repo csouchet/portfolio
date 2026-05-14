@@ -1,0 +1,46 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    open-pull-requests-limit: 10
+
+    groups:
+      mantine:
+        patterns:
+          - "@mantine/*"
+          - "postcss-preset-mantine"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+          - "babel-plugin-react-compiler"
+      eslint-prettier:
+        patterns:
+          - "eslint*"
+          - "prettier*"
+          - "unused-imports*"
+      postcss:
+        patterns:
+          - "postcss"
+          - "postcss-*" 
+      infrastructure:
+        patterns:
+          - "typescript"
+          - "@types/node"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
