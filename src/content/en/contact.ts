@@ -1,51 +1,56 @@
+import { SpotlightItem } from '@/components/layout/SpotlightGrid';
+
 export const contactContent = {
-  header: {
+  hero: {
     title: 'Contact',
-    description:
-      'Find me on LinkedIn or GitHub to discuss a project, a mission, or just talk tech.',
+    subtitle:
+      "Let's talk about your project — freelance / contract / collaboration",
   },
 
-  direct: {
-    linkedin: {
-      label: 'LinkedIn',
-      cta: 'View profile',
-    },
-    github: {
-      label: 'GitHub',
-      cta: 'View projects',
-    },
+  reachMe: {
+    title: 'Find me elsewhere',
+    intro: 'You can also reach out or explore my work on these platforms:',
   },
 
   form: {
-    title: 'Send a message',
-    description: 'Or contact me directly through this form.',
-
+    title: 'Send me a message',
     content: {
-      description: 'An idea, a mission, or just want to chat?',
-
       fields: {
         name: 'Name',
         email: 'Email',
-        message: 'Message',
-        submit: 'Send ✨',
+        message: 'Your message',
+        submit: "Let's talk about your project",
       },
-
       placeholders: {
         name: 'Your name',
         email: 'your@email.com',
-        message: 'Describe your need…',
+        message: 'Tell me about your project, your needs...',
       },
-
       feedback: {
         success: 'Message sent successfully ✨',
-        error: 'Something went wrong. Try again.',
+        error: 'Something went wrong. Please try again.',
       },
+      footer: 'I usually respond within 24–48 hours.',
     },
   },
 
-  freelance: {
-    title: 'Freelance',
-    description: 'You can also reach me on these platforms.',
-    aria: 'View profile',
-  },
+  availability: 'Available for freelance work starting mid-November 2026.',
+
+  features: [
+    {
+      id: 'speed',
+      title: 'Fast response',
+      description: 'I aim to reply within 24–48 business hours.',
+    },
+    {
+      id: 'secure',
+      title: 'Clear communication',
+      description: 'An initial conversation to fully understand your needs.',
+    },
+    {
+      id: 'quality',
+      title: 'Tailored collaboration',
+      description: 'Solutions aligned with your goals.',
+    },
+  ] as SpotlightItem<'feature'>[],
 };

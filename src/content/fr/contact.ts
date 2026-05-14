@@ -1,51 +1,57 @@
+import { SpotlightItem } from '@/components/layout/SpotlightGrid';
+
 export const contactContent = {
-  header: {
+  hero: {
     title: 'Contact',
-    description:
-      'Retrouvez-moi sur LinkedIn ou GitHub pour échanger autour d’un projet...',
+    subtitle: 'Discutons de votre projet — freelance / mission / collaboration',
   },
 
-  direct: {
-    linkedin: {
-      label: 'LinkedIn',
-      cta: 'Voir le profil',
-    },
-    github: {
-      label: 'GitHub',
-      cta: 'Voir les projets',
-    },
+  reachMe: {
+    title: 'Me retrouver ailleurs',
+    intro:
+      'Vous pouvez aussi me contacter ou découvrir mon travail sur ces plateformes :',
   },
 
   form: {
-    title: 'Envoyer un message',
-    description: 'Ou contactez-moi directement via ce formulaire.',
-
+    title: 'Envoyez-moi un message',
     content: {
-      description: 'Une idée, une mission ou juste envie de discuter ?',
-
       fields: {
         name: 'Nom',
         email: 'Email',
-        message: 'Message',
-        submit: 'Envoyer ✨',
+        message: 'Votre message',
+        submit: 'Discutons de votre projet',
       },
-
       placeholders: {
-        name: 'Ton nom',
-        email: 'ton@email.com',
-        message: 'Décris ton besoin…',
+        name: 'Votre nom',
+        email: 'votre@email.com',
+        message: 'Parlez-moi de votre projet, de vos besoins...',
       },
-
       feedback: {
         success: 'Message envoyé avec succès ✨',
         error: 'Une erreur est survenue. Réessaie.',
       },
+      footer: 'Je réponds généralement sous 24 à 48h.',
     },
   },
 
-  freelance: {
-    title: 'Freelance',
-    description: 'Vous pouvez également me contacter via ces plateformes.',
-    aria: 'Voir profil',
-  },
+  availability:
+    'Disponible pour des missions freelance à partir de mi-novembre 2026.',
+
+  features: [
+    {
+      id: 'speed',
+      title: 'Réponse rapide',
+      description: "Je m'engage à vous répondre sous 24 à 48h ouvrées.",
+    },
+    {
+      id: 'secure',
+      title: 'Échange clair',
+      description: 'Un premier échange pour bien comprendre vos besoins.',
+    },
+    {
+      id: 'quality',
+      title: 'Collaboration sur mesure',
+      description: 'Des solutions adaptées à vos objectifs.',
+    },
+  ] as SpotlightItem<'feature'>[],
 };
