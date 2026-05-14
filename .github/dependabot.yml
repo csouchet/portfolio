@@ -29,10 +29,16 @@ updates:
           - "eslint*"
           - "prettier*"
           - "unused-imports*"
+        exclude-patterns:
+          - "eslint-config-next"
       postcss:
         patterns:
           - "postcss"
-          - "postcss-*" 
+          - "postcss-*"
+      nextjs:
+        patterns:
+          - "next"
+          - "eslint-config-next"
       infrastructure:
         patterns:
           - "typescript"
