@@ -1,128 +1,50 @@
 export const homeContent = {
   hero: {
-    title: 'I step in when systems become too complex to evolve smoothly.',
-    description:
-      'I structure, stabilize and simplify so teams can deliver fast — without fighting their own system.',
-    proof: '15+ years experience · critical systems · advanced CI/CD',
-    cta: {
-      primary: 'View my projects',
-      secondary: 'My approach',
-    },
-    availability: 'Available — Freelance · Remote / Grenoble',
-  },
-
-  whatIDo: {
-    title: 'How I help',
-    description:
-      'I focus on the friction points that actually slow teams down.',
-    items: [
-      {
-        problem: 'Releases become slow, stressful or unpredictable',
-        result: '→ reliable, consistent and controlled deliveries',
-      },
-      {
-        problem: 'The system is too complex to evolve safely',
-        result: '→ simpler, clearer architecture',
-      },
-      {
-        problem: 'Every change introduces bugs or uncertainty',
-        result: '→ code the team can rely on',
-      },
-      {
-        problem: 'Developers spend more time unblocking than building',
-        result: '→ a faster and smoother team',
-      },
-    ],
-  },
-
-  projects: {
-    title: 'Key projects',
-    description:
-      'Systems I designed or restructured, with direct impact on reliability, delivery speed and scalability.',
-    cta: 'View all projects',
-  },
-
-  principles: {
-    title: 'Principles',
-    description: 'The principles that guide my decisions on complex systems.',
-    intro:
-      'Most technical issues come from decisions made too quickly or for the wrong reasons.',
-    items: [
-      {
-        title: 'Don’t hide problems with tools',
-        description:
-          'A slow or fragile system is rarely a tooling issue, but a design problem.',
-      },
-      {
-        title: 'Prioritize useful simplicity',
-        description:
-          'Architecture should help the team move forward, not slow it down.',
-      },
-      {
-        title: 'Stabilize before optimizing',
-        description:
-          'Reliability and understanding come before premature performance.',
-      },
-      {
-        title: 'Understand the product before the code',
-        description:
-          'Technical decisions only make sense if they serve real usage.',
-      },
-    ],
+    title: 'I design and build <h>robust, scalable platforms.</h>',
+    subtitle: 'Fullstack Java / React — CI/CD — Platform Engineering',
+    cta: "Let's discuss your project",
   },
 
   expertise: {
-    title: 'Areas of expertise',
-    description:
-      'I focus on technical levers that directly impact delivery speed and system evolution.',
+    title: 'What I Do',
+    intro:
+      'I design, build and <b>improve complex applications</b>, <i>from scratch</i> or by modernizing existing systems.',
     items: [
-      {
-        title: 'Platform & CI/CD',
-        description: 'Reliable pipelines, automated builds and releases.',
-        result: '→ fast and reliable releases',
-      },
-      {
-        title: 'Architecture & systems',
-        description: 'Structuring complex systems, decoupling and scalability.',
-        result: '→ maintainable systems over time',
-      },
-      {
-        title: 'Developer Experience',
-        description: 'Tools, standards and workflows to accelerate teams.',
-        result: '→ daily productivity gains',
-      },
-      {
-        title: 'Product & impact',
-        description:
-          'Aligning technical decisions with product goals and KPIs.',
-        result: '→ better value delivered',
-      },
+      'Fullstack development (Java / Spring / React / TypeScript)',
+      'Architecture & system design',
+      'CI/CD & delivery automation',
+      'Refactoring & modernization',
+      'Performance & reliability',
     ],
   },
 
-  articles: {
-    title: 'Articles',
-    description: 'Insights on software quality and reliable systems.',
-    cta: 'View all articles',
+  solutions: {
+    title: 'Challenges I Solve',
+    intro:
+      'I step in when systems become hard to evolve, slow to deliver, or <b>unreliable in production.</b>',
+    items: [
+      'Every release is stressful or unpredictable',
+      'The system is a black box no one wants to touch',
+      'Your codebase lacks structure',
+      'Your team struggles to ship confidently',
+    ],
+  },
+  differentiators: {
+    title: 'Why Me',
+    intro:
+      'I combine <b>deep technical expertise</b> with a strong focus on structure, quality and delivery:',
+    items: [
+      '15+ years working on complex systems',
+      'Fullstack + CI/CD + platform mindset',
+      'Strong focus on reliability and maintainability',
+      'Autonomous and end-to-end delivery',
+      'Structured and pragmatic approach',
+    ],
   },
 
-  contact: {
-    title: 'Let’s work together',
-    description: 'A system to stabilize or a project to structure?',
-    cta: 'Let’s talk',
-    footer: 'Freelance · Remote / Grenoble',
-  },
-
-  featuredArticles: {
-    title: 'Articles',
-    description: 'Insights on software quality and reliable systems.',
-    cta: 'View all articles',
-  },
-
-  featuredProjects: {
-    title: 'Key projects',
-    description:
-      'Systems designed or restructured with strong impact on reliability and scalability.',
-    cta: 'View all projects',
+  collaboration: {
+    title: 'Available for freelance missions',
+    description: 'Short or long-term — remote or hybrid',
+    cta: "Let's discuss your project",
   },
 };

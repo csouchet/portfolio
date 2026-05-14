@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { IconSun, IconMoon } from '@tabler/icons-react';
+import { IconMoon, IconSunFilled } from '@tabler/icons-react';
 
 import {
   ActionIcon,
@@ -10,13 +10,13 @@ import {
   VisuallyHidden,
   useMantineColorScheme,
   useComputedColorScheme,
+  rem,
 } from '@mantine/core';
 
 import { useContent } from '@/hooks/useContent';
 
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
-
   const computed = useComputedColorScheme('light');
   const [mounted, setMounted] = useState(false);
 
@@ -30,15 +30,20 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
+  // Skeleton d'attente pour éviter le flash d'hydratation (SSR)
   if (!mounted) {
-    return <ActionIcon variant="subtle" size="lg" radius="xl" disabled />;
+    return (
+      <ActionIcon
+        variant="transparent"
+        size="lg"
+        color="white"
+        disabled
+        opacity={0.5}
+      />
+    );
   }
 
   const isDark = computed === 'dark';
-
-  const toggle = () => {
-    setColorScheme(isDark ? 'light' : 'dark');
-  };
 
   return (
     <>
@@ -46,35 +51,21 @@ export function ThemeToggle() {
         label={isDark ? content.light : content.dark}
         withArrow
         position="bottom"
-        openDelay={150}
+        openDelay={200}
       >
         <ActionIcon
-          onClick={toggle}
-          variant="subtle"
+          onClick={() => setColorScheme(isDark ? 'light' : 'dark')}
+          variant="transparent"
           size="lg"
-          radius="xl"
+          color="white"
           aria-label={content.toggle}
           aria-pressed={isDark}
-          styles={{
-            root: {
-              transition: 'transform 150ms ease, background-color 150ms ease',
-
-              '&:hover': {
-                backgroundColor: 'var(--mantine-color-default-hover)',
-                transform: 'scale(1.05)',
-              },
-            },
-          }}
         >
-          <span
-            style={{
-              display: 'inline-flex',
-              transition: 'transform 250ms ease',
-              transform: isDark ? 'rotate(0deg)' : 'rotate(180deg)',
-            }}
-          >
-            {isDark ? <IconSun size={18} /> : <IconMoon size={18} />}
-          </span>
+          {isDark ? (
+            <IconSunFilled size={rem(20)} stroke={1.5} />
+          ) : (
+            <IconMoon size={rem(20)} stroke={1.5} />
+          )}
         </ActionIcon>
       </Tooltip>
 

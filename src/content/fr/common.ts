@@ -24,8 +24,8 @@ export const commonContent = {
   },
 
   footer: {
-    signature: 'Ingénieure développeuse senior · Java & React · Product & UX',
-    copyright: 'Tous droits réservés',
+    signature: 'Senior Software Engineer — Fullstack & Platform',
+    copyright: 'Grenoble, France · Tous droits réservés',
   },
 
   notFound: {
