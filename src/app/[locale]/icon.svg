@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+        version="1.1"
+        id="svg1"
+        width="64"
+        height="64"
+        viewBox="0 0 63.999999 64.000001"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg">
+
+  <style>
+    .lettre-c {
+    stroke: #6a7885; /* Gris par défaut pour le mode Clair */
+    }
+
+    @media (prefers-color-scheme: dark) {
+    .lettre-c {
+    stroke: #ffffff; /* Blanc pour le mode Sombre */
+    }
+    }
+  </style>
+
+  <defs
+          id="defs1" />
+  <g
+          id="g1"
+          transform="translate(-51.969075,-33.194412)">
+
+    <path
+            id="path1"
+            style="fill:none;fill-rule:evenodd;stroke:#f37475;stroke-width:5.20077;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+            d="m 110.60543,82.626236 c -5.40613,7.259 -14.102759,11.96779 -23.910039,11.96779 -16.397024,0 -29.689442,-13.16265 -29.689442,-29.399612 0,-16.23696 13.292418,-29.399616 29.689442,-29.399616 10.007381,0 18.858329,4.902905 24.236809,12.415285" />
+
+    <path
+            id="path2"
+            class="lettre-c"
+            style="fill:none;fill-rule:evenodd;stroke-width:6.50096;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+            d="m 95.397488,73.896114 c -2.39827,2.665623 -5.88165,4.342891 -9.7584,4.342891 -7.234059,0 -13.098427,-5.840262 -13.098427,-13.044593 0,-7.204331 5.864368,-13.044593 13.098427,-13.044593 3.59434,0 6.85053,1.441796 9.21726,3.77633" />
+  </g>
+</svg>

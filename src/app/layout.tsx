@@ -1,7 +1,6 @@
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
-
 import React from 'react';
 
 import { Plus_Jakarta_Sans } from 'next/font/google';
@@ -30,7 +29,6 @@ export default async function RootLayout({
     <html lang={locale} className={jakarta.variable} {...mantineHtmlProps}>
       <head suppressHydrationWarning>
         <ColorSchemeScript defaultColorScheme="auto" />
-        <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
