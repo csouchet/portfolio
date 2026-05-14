@@ -14,15 +14,20 @@ import {
 
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HomeSection } from '@/components/homeSections/HomeSection';
-import { projectsPageContent } from '@/content/fr/projects';
+import { getContent } from '@/lib/i18n';
 import {
   getParentProjectsGroupedByCategory,
   getFeaturedCaseStudyProject,
 } from '@/lib/projects';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/projects',
+    canonical: '/fr/projects',
+    languages: {
+      fr: '/fr/projects',
+      en: '/en/projects',
+    },
   },
 };
 
@@ -45,11 +50,16 @@ const orderedCategories: Category[] = [
   'other',
 ];
 
-export default function ProjectsPage() {
-  const content = projectsPageContent;
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
 
-  const grouped = getParentProjectsGroupedByCategory();
-  const caseStudyProject = getFeaturedCaseStudyProject();
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).projects;
+
+  const grouped = getParentProjectsGroupedByCategory(locale);
+  const caseStudyProject = getFeaturedCaseStudyProject(locale);
 
   return (
     <main>
@@ -117,7 +127,7 @@ export default function ProjectsPage() {
                 )}
 
                 <Link
-                  href={`/projects/${caseStudyProject.id}`}
+                  href={`/${locale}/projects/${caseStudyProject.id}`}
                   style={{ textDecoration: 'none' }}
                 >
                   <Button variant="subtle">{content.caseStudy.cta}</Button>
@@ -175,13 +185,22 @@ export default function ProjectsPage() {
                         style={{ display: 'flex', justifyContent: 'center' }}
                       >
                         <Box style={{ width: '100%', maxWidth: 520 }}>
-                          <ProjectCard project={projects[0]} />
+                          <ProjectCard
+                            project={projects[0]}
+                            content={content}
+                            locale={locale}
+                          />
                         </Box>
                       </Box>
                     ) : (
                       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
                         {projects.map(project => (
-                          <ProjectCard key={project.id} project={project} />
+                          <ProjectCard
+                            key={project.id}
+                            project={project}
+                            content={content}
+                            locale={locale}
+                          />
                         ))}
                       </SimpleGrid>
                     )}

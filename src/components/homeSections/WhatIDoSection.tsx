@@ -2,12 +2,13 @@
 
 import { SimpleGrid, Paper, Stack, Text } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 import { HomeSection } from './HomeSection';
 
 export function WhatIDoSection() {
-  const content = homeContent.whatIDo;
+  const { home } = useContent();
+  const content = home.whatIDo;
 
   return (
     <HomeSection title={content.title} description={content.description}>

@@ -6,7 +6,9 @@ import { Stack, Text, SimpleGrid, Chip, Group } from '@mantine/core';
 
 import { ArticleCard } from '@/components/cards/ArticleCard';
 import { getAllTags } from '@/lib/articles';
+import { getContent } from '@/lib/i18n';
 import { Article, Tag } from '@/types/article';
+import { Locale } from '@/types/i18n';
 
 type Labels = {
   featured: string;
@@ -16,10 +18,12 @@ type Labels = {
 
 type Props = {
   articles: Article[];
+  content: ReturnType<typeof getContent>['articles'];
   labels: Labels;
+  locale: Locale;
 };
 
-export function ArticlesClient({ articles, labels }: Props) {
+export function ArticlesClient({ articles, content, labels, locale }: Props) {
   const featured = articles.find(a => a.featured);
 
   const tags = useMemo(() => getAllTags(articles), [articles]);
@@ -43,7 +47,7 @@ export function ArticlesClient({ articles, labels }: Props) {
             {labels.featured}
           </Text>
 
-          <ArticleCard article={featured} />
+          <ArticleCard article={featured} content={content} locale={locale} />
         </Stack>
       )}
 
@@ -76,7 +80,12 @@ export function ArticlesClient({ articles, labels }: Props) {
       {/* List */}
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         {filtered.map(article => (
-          <ArticleCard key={article.id} article={article} />
+          <ArticleCard
+            key={article.id}
+            article={article}
+            content={content}
+            locale={locale}
+          />
         ))}
       </SimpleGrid>
     </>

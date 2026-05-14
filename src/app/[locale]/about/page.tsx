@@ -12,16 +12,26 @@ import {
   Box,
 } from '@mantine/core';
 
-import { aboutContent } from '@/content/fr/about';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/about',
+    canonical: '/fr/about',
+    languages: {
+      fr: '/fr/about',
+      en: '/en/about',
+    },
   },
 };
 
-export default function AboutPage() {
-  const content = aboutContent;
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).about;
 
   return (
     <Box>
@@ -112,7 +122,7 @@ export default function AboutPage() {
           <Stack align="center" gap="md" mt={40}>
             <Text size="lg">{content.cta.text}</Text>
 
-            <Link href="/contact">
+            <Link href={`/${locale}/contact`}>
               <Button radius="xl">{content.cta.button}</Button>
             </Link>
 

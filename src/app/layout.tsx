@@ -1,51 +1,25 @@
-import type { Metadata } from 'next';
-
-import { Geist, Geist_Mono } from 'next/font/google';
-
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
-import {
-  ColorSchemeScript,
-  MantineProvider,
-  mantineHtmlProps,
-} from '@mantine/core';
 
-import { Footer } from '@/components/Footer';
-import Header from '@/components/Header';
-import { siteConfig } from '@/config/site';
-import { theme } from '@/theme';
+import React from 'react';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+import { headers } from 'next/headers';
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-};
+import { Locale } from '@/types/i18n';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const headersList = await headers();
+  const locale = (headersList.get('x-locale') ?? 'fr') as Locale;
+
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-      {...mantineHtmlProps}
-    >
+    <html lang={locale} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="auto" />
         <link rel="shortcut icon" href="/favicon.svg" />
@@ -54,14 +28,7 @@ export default function RootLayout({
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-
-      <body>
-        <MantineProvider theme={theme} defaultColorScheme="auto">
-          <Header />
-          <main style={{ flex: 1 }}>{children}</main>
-          <Footer />
-        </MantineProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

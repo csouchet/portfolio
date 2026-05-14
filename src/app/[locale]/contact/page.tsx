@@ -6,18 +6,29 @@ import { Container, Stack, Title, Text, Group, Button } from '@mantine/core';
 import { BaseCard } from '@/components/cards/BaseCard';
 import { ContactForm } from '@/components/ContactForm';
 import { FreelanceLinks } from '@/components/FreelanceLinks';
-import { siteConfig } from '@/config/site';
-import { contactContent } from '@/content/fr/contact';
-import { freelanceLinks } from '@/content/shared/freelance';
+import { getSiteConfig } from '@/config/site';
+import { freelanceLinks } from '@/data/freelance';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/contact',
+    canonical: '/fr/contact',
+    languages: {
+      fr: '/fr/contact',
+      en: '/en/contact',
+    },
   },
 };
 
-export default function ContactPage() {
-  const content = contactContent;
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).contact;
+  const siteConfig = getSiteConfig(locale);
 
   return (
     <Container size="sm" py="xl">
@@ -47,7 +58,7 @@ export default function ContactPage() {
                 variant="light"
                 radius="xl"
               >
-                <Button>{content.direct.linkedin.cta}</Button>
+                {content.direct.linkedin.cta}
               </Button>
             </Group>
           </BaseCard>
@@ -66,7 +77,7 @@ export default function ContactPage() {
                 variant="light"
                 radius="xl"
               >
-                <Button>{content.direct.github.cta}</Button>
+                {content.direct.github.cta}
               </Button>
             </Group>
           </BaseCard>

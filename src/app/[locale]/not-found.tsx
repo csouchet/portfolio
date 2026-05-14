@@ -6,10 +6,11 @@ import { IconArrowLeft } from '@tabler/icons-react';
 
 import { Container, Stack, Title, Text, Button, Box } from '@mantine/core';
 
-import { commonContent } from '@/content/fr/common';
+import { useContent } from '@/hooks/useContent';
 
 export default function NotFound() {
-  const content = commonContent.notFound;
+  const { common, locale } = useContent();
+  const content = common.notFound;
 
   return (
     <Container size="sm">
@@ -64,7 +65,7 @@ export default function NotFound() {
           </Text>
 
           {/* CTA */}
-          <Link href="/" style={{ textDecoration: 'none' }}>
+          <Link href={`/${locale}`} style={{ textDecoration: 'none' }}>
             <Button
               leftSection={<IconArrowLeft size={16} />}
               variant="gradient"

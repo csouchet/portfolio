@@ -12,7 +12,7 @@ import {
   useComputedColorScheme,
 } from '@mantine/core';
 
-import { commonContent } from '@/content/fr/common';
+import { useContent } from '@/hooks/useContent';
 
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
@@ -20,7 +20,8 @@ export function ThemeToggle() {
   const computed = useComputedColorScheme('light');
   const [mounted, setMounted] = useState(false);
 
-  const content = commonContent.theme;
+  const { common } = useContent();
+  const content = common.theme;
 
   useEffect(() => {
     // Needed to avoid SSR hydration mismatch for color scheme

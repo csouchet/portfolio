@@ -18,8 +18,8 @@ import {
   Box,
 } from '@mantine/core';
 
-import { commonContent } from '@/content/fr/common';
 import { siteSharedContent } from '@/content/shared/site';
+import { useContent } from '@/hooks/useContent';
 
 const links = [
   { name: 'GitHub', url: 'https://github.com/csouchet', icon: IconBrandGithub },
@@ -48,7 +48,8 @@ const links = [
 
 export function Footer() {
   const site = siteSharedContent;
-  const content = commonContent.footer;
+  const { common } = useContent();
+  const content = common.footer;
 
   return (
     <Box

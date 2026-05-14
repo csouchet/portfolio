@@ -2,12 +2,13 @@
 
 import { Stack, Text, Paper } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 import { HomeSection } from './HomeSection';
 
 export function PrinciplesSection() {
-  const content = homeContent.principles;
+  const { home } = useContent();
+  const content = home.principles;
 
   return (
     <HomeSection title={content.title} description={content.description}>

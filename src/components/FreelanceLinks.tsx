@@ -5,7 +5,7 @@ import { IconExternalLink, IconStar } from '@tabler/icons-react';
 import { Stack, Group, Text, Badge, ActionIcon } from '@mantine/core';
 
 import { BaseCard } from '@/components/cards/BaseCard';
-import { contactContent } from '@/content/fr/contact';
+import { useContent } from '@/hooks/useContent';
 
 type FreelanceLink = {
   name: string;
@@ -19,7 +19,8 @@ type Props = {
 };
 
 export function FreelanceLinks({ data }: Props) {
-  const content = contactContent.freelance;
+  const { contact } = useContent();
+  const content = contact.freelance;
 
   return (
     <Stack gap="sm">

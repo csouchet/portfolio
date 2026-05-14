@@ -1,19 +1,20 @@
-import { siteContent } from '@/content/fr/site';
 import { siteSharedContent } from '@/content/shared/site';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
-export const siteConfig = {
-  name: siteSharedContent.name,
+export function getSiteConfig(locale: Locale) {
+  const content = getContent(locale);
 
-  title: siteContent.title,
-  description: siteContent.description,
+  return {
+    name: siteSharedContent.name,
+    title: content.common.site.title,
+    description: content.common.site.description,
+    url: 'https://ton-site.com',
+    ogImage: '/og.png',
 
-  url: 'https://ton-site.com',
-  ogImage: '/og.png',
-
-  links: {
-    linkedin: 'https://www.linkedin.com/in/celinesouchet/',
-    github: 'https://github.com/csouchet',
-  },
-} as const;
-
-export type SiteConfig = typeof siteConfig;
+    links: {
+      linkedin: 'https://www.linkedin.com/in/celinesouchet/',
+      github: 'https://github.com/csouchet',
+    },
+  };
+}

@@ -12,10 +12,11 @@ import {
   Box,
 } from '@mantine/core';
 
-import { homeContent } from '@/content/fr/home';
+import { useContent } from '@/hooks/useContent';
 
 export function HeroSection() {
-  const content = homeContent.hero;
+  const { home, locale } = useContent();
+  const content = home.hero;
 
   return (
     <Box
@@ -41,13 +42,13 @@ export function HeroSection() {
           </Text>
 
           <Group mt="md">
-            <Button component={Link} href="/projects" radius="xl">
+            <Button component={Link} href={`/${locale}/projects`} radius="xl">
               {content.cta.primary}
             </Button>
 
             <Button
               component={Link}
-              href="/services"
+              href={`/${locale}/services`}
               variant="subtle"
               radius="xl"
             >

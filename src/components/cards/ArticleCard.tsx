@@ -3,22 +3,26 @@
 import { Text, Group, Badge, Stack, Anchor } from '@mantine/core';
 
 import { ArticleCover } from '@/components/articles/ArticleCover';
-import { articlesPageContent } from '@/content/fr/articles';
+import { getContent } from '@/lib/i18n';
 import { Article } from '@/types/article';
+import { Locale } from '@/types/i18n';
 
 import { BaseCard } from './BaseCard';
 
 type Props = {
   article: Article;
+  content: ReturnType<typeof getContent>['articles'];
+  locale: Locale;
 };
 
-export function ArticleCard({ article }: Props) {
-  const content = articlesPageContent;
-
-  const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
-    year: 'numeric',
-    month: 'short',
-  });
+export function ArticleCard({ article, content, locale }: Props) {
+  const formattedDate = new Date(article.date).toLocaleDateString(
+    locale === 'fr' ? 'fr-FR' : 'en-US',
+    {
+      year: 'numeric',
+      month: 'short',
+    },
+  );
 
   return (
     <BaseCard>
