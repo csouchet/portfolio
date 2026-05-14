@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import React from 'react';
+
 import { notFound } from 'next/navigation';
 
 import { MantineProvider } from '@mantine/core';
@@ -12,13 +14,14 @@ import { getContent } from '@/lib/i18n';
 import { theme } from '@/theme';
 import { LOCALES, Locale } from '@/types/i18n';
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
-};
+type Props = React.PropsWithChildren<{
+  params: Promise<{ locale: string }>;
+}>;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
+
   const content = getContent(locale);
 
   return {
@@ -32,9 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
 
-  if (!LOCALES.includes(locale)) {
+  if (!LOCALES.includes(rawLocale as Locale)) {
     notFound();
   }
 

@@ -8,13 +8,15 @@ import { headers } from 'next/headers';
 
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
+import { Locale } from '@/types/i18n';
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const headersList = await headers();
-  const locale = headersList.get('x-locale') ?? 'fr';
+  const locale = (headersList.get('x-locale') ?? 'fr') as Locale;
 
   return (
     <html lang={locale} {...mantineHtmlProps}>
