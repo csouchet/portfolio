@@ -10,8 +10,6 @@ import { Footer } from '@/components/footer/Footer';
 import { Navbar } from '@/components/navbar/Navbar';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteConfig } from '@/config/site';
-import { siteSharedContent } from '@/content/shared/site';
-import { getContent } from '@/lib/i18n';
 import { LOCALES, Locale } from '@/types/i18n';
 
 type Props = React.PropsWithChildren<{
@@ -22,15 +20,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
 
-  const content = getContent(locale);
+  const siteConfig = getSiteConfig(locale);
 
   return {
-    metadataBase: new URL(getSiteConfig(locale).url),
+    metadataBase: new URL(siteConfig.url),
+
     title: {
-      default: siteSharedContent.name,
-      template: `%s | ${siteSharedContent.name}`,
+      default: siteConfig.name,
+      template: `%s | ${siteConfig.name}`,
     },
-    description: content.common.site.description,
+
+    description: siteConfig.description,
+
+    openGraph: {
+      type: 'website',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      url: siteConfig.url,
+      title: siteConfig.title,
+      description: siteConfig.description,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: siteConfig.title,
+      description: siteConfig.description,
+      images: [siteConfig.ogImage],
+      creator: '@CelineS',
+    },
   };
 }
 
