@@ -4,14 +4,14 @@ import React from 'react';
 
 import { notFound } from 'next/navigation';
 
-import { MantineProvider } from '@mantine/core';
+import { Box } from '@mantine/core';
 
 import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteConfig } from '@/config/site';
 import { siteSharedContent } from '@/content/shared/site';
 import { getContent } from '@/lib/i18n';
-import { theme } from '@/theme';
 import { LOCALES, Locale } from '@/types/i18n';
 
 type Props = React.PropsWithChildren<{
@@ -42,10 +42,18 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   return (
-    <MantineProvider theme={theme} defaultColorScheme="auto">
-      <Header />
-      <main style={{ flex: 1 }}>{children}</main>
-      <Footer />
-    </MantineProvider>
+    <ThemeProvider>
+      <Box
+        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+      >
+        <Header />
+
+        <Box component="main" style={{ flexGrow: 1 }}>
+          {children}
+        </Box>
+
+        <Footer />
+      </Box>
+    </ThemeProvider>
   );
 }
