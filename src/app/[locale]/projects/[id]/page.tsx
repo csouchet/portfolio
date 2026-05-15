@@ -196,7 +196,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           )}
 
           {/* STACK */}
-          {project.stack && (
+          {/*  {project.stack && (
             <>
               <Divider />
               <Stack gap="xs">
@@ -211,7 +211,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </Group>
               </Stack>
             </>
-          )}
+          )}*/}
 
           {/* SUBPROJECTS */}
           {children.length > 0 && (

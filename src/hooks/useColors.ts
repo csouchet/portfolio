@@ -7,22 +7,38 @@ import { useMantineTheme } from '@mantine/core';
 import { accentColors } from '@/theme/utils/colors';
 import { ARTICLE_TAGS, Tag } from '@/types/article';
 import { ColorSchemeMapping } from '@/types/color';
+import {
+  PROJECT_CATEGORIES,
+  PROJECT_CONTRIBUTIONS,
+  ProjectCategory,
+  ProjectContribution,
+} from '@/types/project';
 
 export function useAccentColor() {
   const orders = useMemo(
     () => ({
+      categories: PROJECT_CATEGORIES as readonly string[],
+      contributions: PROJECT_CONTRIBUTIONS as readonly string[],
       tags: ARTICLE_TAGS as readonly string[],
     }),
     [],
   );
 
   return useCallback(
-    (value: Tag | string | number): string => {
+    (
+      value: ProjectCategory | ProjectContribution | Tag | string | number,
+    ): string => {
       if (typeof value === 'number') {
         return accentColors[value % accentColors.length];
       }
 
-      const index = orders.tags.indexOf(value);
+      let index = orders.categories.indexOf(value);
+      if (index === -1) {
+        index = orders.contributions.indexOf(value);
+      }
+      if (index === -1) {
+        index = orders.tags.indexOf(value);
+      }
 
       const finalIndex = index === -1 ? 0 : index;
 
