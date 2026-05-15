@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+      - 'netlify.toml'
       - 'next.config.ts'
       - 'package.json'
       - 'package-lock.json'
