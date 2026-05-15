@@ -24,6 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const siteConfig = getSiteConfig(locale);
 
+  const verificationId = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
   return {
     metadataBase: new URL(siteConfig.url),
 
@@ -33,6 +35,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
 
     description: siteConfig.description,
+
+    verification: verificationId
+      ? {
+          google: verificationId,
+        }
+      : undefined,
 
     openGraph: {
       type: 'website',
