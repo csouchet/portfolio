@@ -18,9 +18,9 @@ type Props = {
   content: ReturnType<typeof getContent>['contact'];
 };
 
-export function ContactClient({ content }: Props) {
-  const ENABLE_FORM = false;
+const ENABLE_FORM = true;
 
+export function ContactClient({ content }: Props) {
   const filteredSocials = socialLinks.filter(
     link => link.name === 'GitHub' || link.name === 'LinkedIn',
   );
