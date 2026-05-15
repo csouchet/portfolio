@@ -18,7 +18,7 @@ export const commonContent = {
       about: 'About',
       projects: 'Projects',
       articles: 'Articles',
-      services: 'Services',
+      skills: 'Skills',
       contact: 'Contact',
     } as Record<NavKey, string>,
   },

@@ -21,7 +21,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Header
+##### Navbar
 
 | Before | After |
 | ------ | ----- |
@@ -51,7 +51,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Service page
+##### Skills page
 
 | Before | After |
 | ------ | ----- |
@@ -77,7 +77,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Header
+##### Navbar
 
 | Before | After |
 | ------ | ----- |
@@ -107,7 +107,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Service page
+##### Skills page
 
 | Before | After |
 | ------ | ----- |
@@ -159,7 +159,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Service page
+##### Skills page
 
 | Before | After |
 | ------ | ----- |
@@ -209,7 +209,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Service page
+##### Skills page
 
 | Before | After |
 | ------ | ----- |
