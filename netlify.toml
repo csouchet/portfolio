@@ -10,12 +10,12 @@ ignore = """
     release\\.yml|\
     pre-commit|\
     img/.*|\
-    \\.nvmrc|\
-    \\.prettierrc|\
-    \\.gitignore|\
-    \\.vscode/.*|\
-    \\.github/workflows/.*|\
-    \\.husky/.*|\
+    .nvmrc|\
+    .prettierrc|\
+    .gitignore|\
+    .vscode/.*|\
+    .github/workflows/.*|\
+    .husky/.*|\
     AGENTS\\.md|\
     CLAUDE\\.md|\
     eslint\\.config\\.mjs|\
