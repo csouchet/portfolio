@@ -73,6 +73,16 @@ export function ContactForm({ title, content }: Props) {
     });
   }, [form]);
 
+  // 🛠️ For Netlify Forms
+  const encode = (data: Record<string, string | number | boolean>) => {
+    return Object.entries(data)
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+      )
+      .join('&');
+  };
+
   const handleSubmit = useCallback(
     async (values: typeof form.values) => {
       setLoading(true);
@@ -80,6 +90,7 @@ export function ContactForm({ title, content }: Props) {
 
       try {
         const now = Date.now();
+
         // 🛡️ Anti-spam logic
         if (values.company || now - values.formStart < 3000) {
           await new Promise(resolve => setTimeout(resolve, 300));
@@ -88,12 +99,27 @@ export function ContactForm({ title, content }: Props) {
           return;
         }
 
-        console.log(values);
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // 🚀 Send to Netlify Forms API
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({
+            'form-name': 'contact',
+            name: values.name,
+            email: values.email,
+            message: values.message,
+            company: values.company,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
 
         setStatus('success');
         resetForm();
-      } catch {
+      } catch (error) {
+        console.error('Submission error:', error);
         setStatus('error');
       } finally {
         setLoading(false);
@@ -105,6 +131,19 @@ export function ContactForm({ title, content }: Props) {
   return (
     <SectionCard title={title} icon={IconMail}>
       <Stack gap="md">
+        {/* 🤖 Hidden HTML form so that the Netlify bot can process the inputs during the build */}
+        <form
+          name="contact"
+          data-netlify="true"
+          data-netlify-honeypot="company"
+          hidden
+        >
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+          <input type="text" name="company" />
+        </form>
+
         {status === 'success' && (
           <Alert
             icon={<IconCheck size={rem(18)} />}
@@ -125,7 +164,11 @@ export function ContactForm({ title, content }: Props) {
           </Alert>
         )}
 
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+        <form
+          onSubmit={form.onSubmit(handleSubmit)}
+          name="contact"
+          method="POST"
+        >
           <Stack gap="md">
             {/* 🛡️ Honeypot invisible */}
             <TextInput
