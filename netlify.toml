@@ -26,3 +26,12 @@ ignore = """
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[context.production.environment]
+NEXT_PUBLIC_SITE_URL = "https://celine-souchet.netlify.app"
+
+[context.deploy-preview.environment]
+NEXT_PUBLIC_SITE_URL = "$DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+NEXT_PUBLIC_SITE_URL = "$DEPLOY_PRIME_URL"

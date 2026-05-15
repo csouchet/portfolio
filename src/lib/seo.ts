@@ -34,7 +34,8 @@ export function generateSeoMetadata({
   const cleanTitle = stripHtmlTags(title);
   const cleanDescription = stripHtmlTags(description);
 
-  const pageUrl = `${siteConfig.url}/${locale}${path}`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const pageUrl = `${siteConfig.url}/${locale}${cleanPath}`;
 
   return {
     title: cleanTitle,
@@ -43,8 +44,8 @@ export function generateSeoMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        fr: `${siteConfig.url}/fr${path}`,
-        en: `${siteConfig.url}/en${path}`,
+        fr: `${siteConfig.url}/fr${cleanPath}`,
+        en: `${siteConfig.url}/en${cleanPath}`,
       },
     },
 
