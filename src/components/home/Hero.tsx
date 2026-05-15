@@ -1,6 +1,8 @@
 'use client';
 
-import { Box, Container, Stack, Text, Title } from '@mantine/core';
+import { IconSparkles } from '@tabler/icons-react';
+
+import { Box, Container, Stack, Text, Title, Badge } from '@mantine/core';
 
 import { WaveBackground } from '@/components/layout/WaveBackground';
 import { getContent } from '@/lib/i18n';
@@ -24,6 +26,12 @@ export function Hero({ content }: Props) {
 
       <Container pos="relative" style={{ zIndex: 1 }}>
         <Stack variant="header" w={{ base: '100%', md: '55%', lg: '50%' }}>
+          {content.badge && (
+            <Badge leftSection={<IconSparkles size={16} />}>
+              {content.badge}
+            </Badge>
+          )}
+
           <Title order={1}>{parseFormattedText(content.title)}</Title>
 
           <Text>{content.subtitle}</Text>

@@ -24,7 +24,7 @@ export const commonContent = {
   },
 
   footer: {
-    signature: 'Senior Software Engineer — Fullstack & Platform',
+    signature: 'Staff Engineer — Fullstack & Platform',
     copyright: 'Grenoble, France · All rights reserved',
   },
 
