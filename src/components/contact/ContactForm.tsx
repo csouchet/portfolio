@@ -73,16 +73,6 @@ export function ContactForm({ title, content }: Props) {
     });
   }, [form]);
 
-  // 🛠️ For Netlify Forms
-  const encode = (data: Record<string, string | number | boolean>) => {
-    return Object.entries(data)
-      .map(
-        ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
-      )
-      .join('&');
-  };
-
   const handleSubmit = useCallback(
     async (values: typeof form.values) => {
       setLoading(true);
@@ -103,17 +93,20 @@ export function ContactForm({ title, content }: Props) {
         const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({
+          body: new URLSearchParams({
             'form-name': 'contact',
             name: values.name,
             email: values.email,
             message: values.message,
             company: values.company,
-          }),
+          }).toString(),
         });
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          console.error('Network response was not ok');
+          setStatus('error');
+          setLoading(false);
+          return;
         }
 
         setStatus('success');
