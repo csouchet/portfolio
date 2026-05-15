@@ -3,15 +3,16 @@ import { getContent } from '@/lib/i18n';
 import { Locale } from '@/types/i18n';
 
 const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
   if (process.env.DEPLOY_PRIME_URL) {
     return process.env.DEPLOY_PRIME_URL;
   }
   if (process.env.URL) {
     return process.env.URL;
   }
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://celine-souchet.netlify.app'
-  );
+  return 'https://celine-souchet.netlify.app';
 };
 
 export function getSiteConfig(locale: Locale) {
@@ -23,7 +24,6 @@ export function getSiteConfig(locale: Locale) {
     title: content.common.site.title,
     description: content.common.site.description,
     url: siteUrl,
-    ogImage: `${siteUrl}/og.jpeg`,
 
     links: {
       linkedin: 'https://www.linkedin.com/in/celinesouchet/',
