@@ -16,7 +16,7 @@ export function StructuredData({ locale }: Props) {
     '@type': 'Person',
     name: siteConfig.name,
     url: siteConfig.url,
-    image: new URL(siteConfig.ogImage, siteConfig.url).href,
+    image: new URL('/opengraph-image.jpg', siteConfig.url).href,
     jobTitle: home.hero.badge,
     knowsAbout: [
       'Software Architecture',
