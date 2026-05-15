@@ -8,6 +8,7 @@ import { Box } from '@mantine/core';
 
 import { Footer } from '@/components/footer/Footer';
 import { Navbar } from '@/components/navbar/Navbar';
+import { StructuredData } from '@/components/seo/StructuredData'; // <-- Nouvel import
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteConfig } from '@/config/site';
 import { LOCALES, Locale } from '@/types/i18n';
@@ -66,8 +67,12 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
+  const locale = rawLocale as Locale;
+
   return (
     <ThemeProvider>
+      <StructuredData locale={locale} />
+
       <Box
         style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
       >
