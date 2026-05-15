@@ -124,19 +124,6 @@ export function ContactForm({ title, content }: Props) {
   return (
     <SectionCard title={title} icon={IconMail}>
       <Stack gap="md">
-        {/* 🤖 Hidden HTML form so that the Netlify bot can process the inputs during the build */}
-        <form
-          name="contact"
-          data-netlify="true"
-          data-netlify-honeypot="company"
-          hidden
-        >
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-          <input type="text" name="company" />
-        </form>
-
         {status === 'success' && (
           <Alert
             icon={<IconCheck size={rem(18)} />}
