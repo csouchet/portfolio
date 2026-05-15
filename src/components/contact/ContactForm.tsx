@@ -80,6 +80,7 @@ export function ContactForm({ title, content }: Props) {
 
       try {
         const now = Date.now();
+
         // 🛡️ Anti-spam logic
         if (values.company || now - values.formStart < 3000) {
           await new Promise(resolve => setTimeout(resolve, 300));
@@ -88,12 +89,30 @@ export function ContactForm({ title, content }: Props) {
           return;
         }
 
-        console.log(values);
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // 🚀 Send to Netlify Forms API
+        const response = await fetch('/contact.html', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'contact',
+            name: values.name,
+            email: values.email,
+            message: values.message,
+            company: values.company,
+          }).toString(),
+        });
+
+        if (!response.ok) {
+          console.error('Network response was not ok');
+          setStatus('error');
+          setLoading(false);
+          return;
+        }
 
         setStatus('success');
         resetForm();
-      } catch {
+      } catch (error) {
+        console.error('Submission error:', error);
         setStatus('error');
       } finally {
         setLoading(false);
@@ -125,7 +144,11 @@ export function ContactForm({ title, content }: Props) {
           </Alert>
         )}
 
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+        <form
+          onSubmit={form.onSubmit(handleSubmit)}
+          name="contact"
+          method="POST"
+        >
           <Stack gap="md">
             {/* 🛡️ Honeypot invisible */}
             <TextInput
