@@ -67,67 +67,38 @@ export const projectsPageContent = {
     },
   },
 
-  hero: {
-    title: 'Projets & Contributions',
-    description:
-      'Des systèmes complexes, conçus pour être fiables, maintenables et évolutifs.',
-  },
+  project: {
+    caseStudy: {
+      title: 'Étude de cas',
+      contextTitle: 'Contexte',
+      problemsTitle: 'Problèmes',
+      actionsTitle: 'Actions',
+      resultsTitle: 'Résultats',
+      cta: 'Voir le projet',
+    },
 
-  intro: {
-    text1:
-      'Je travaille sur des systèmes techniques complexes où la qualité, la performance et la capacité à livrer sont critiques.',
-    text2:
-      'Ces projets illustrent mon travail sur l’architecture, la CI/CD, la developer experience et la construction de produits robustes.',
-  },
+    actions: {
+      viewGithub: 'Voir sur GitHub',
+      viewRelated: 'Voir les projets associés',
+    },
 
-  caseStudy: {
-    label: 'CASE STUDY',
-    problems: 'Problèmes',
-    actions: 'Actions',
-    results: 'Résultats',
-    cta: 'Voir le projet',
-  },
+    stacks: {
+      title: 'Stacks techniques',
+    },
 
-  pivot:
-    'Ce type de projet est représentatif de mon travail : structurer, fiabiliser et accélérer des systèmes complexes.',
+    summary: {
+      contributions: 'Contributions :',
+    },
 
-  categories: {
-    product: {
-      label: 'Produits',
-      description:
-        'Produits sur lesquels j’ai contribué à la structuration technique et produit.',
+    relatedProjects: {
+      title: 'Projets associés',
+      view: 'Voir le projet',
     },
-    application: {
-      label: 'Applications',
-      description:
-        'Applications métiers avec enjeux de performance et maintenabilité.',
-    },
-    library: {
-      label: 'Librairies',
-      description:
-        'Librairies techniques avec contraintes de qualité et distribution.',
-    },
-    tooling: {
-      label: 'Tooling',
-      description:
-        'Outils internes pour améliorer la productivité et la qualité.',
-    },
-    engine: {
-      label: 'Moteur',
-      description: 'Composants cœur nécessitant robustesse et scalabilité.',
-    },
-    website: {
-      label: 'Sites',
-      description: 'Sites techniques avec enjeux SEO, performance et contenu.',
-    },
-    other: {
-      label: 'Autres',
-      description: 'Autres projets.',
-    },
-  },
 
-  card: {
-    main: 'Projet principal',
-    subproject: 'Sous-projet',
+    navigation: {
+      previous: 'Projet précédent',
+      all: 'Tous les projets',
+      next: 'Projet suivant',
+    },
   },
 };

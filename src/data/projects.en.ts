@@ -13,6 +13,7 @@ export const projects: Project[] = [
     date: '2020 - 2023',
     description:
       'Process analytics ecosystem combining multiple technical components (libraries, examples, website, data).',
+    github: 'https://github.com/process-analytics',
     featured: true,
     category: 'product',
     contributions: ['product', 'architecture', 'devex'],
