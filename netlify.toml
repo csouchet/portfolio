@@ -1,6 +1,28 @@
 [build]
 command = "npm run build"
 publish = ".next"
+ignore = """
+    git diff --name-only $COMMIT_REF^...$COMMIT_REF | grep -qvE '^\
+    (pr-rules\\.yml|\
+    dependabot\\.yml|\
+    labeler\\.yml|\
+    pull_request_template\\.md|\
+    release\\.yml|\
+    pre-commit|\
+    img/.*|\
+    \\.nvmrc|\
+    \\.prettierrc|\
+    \\.gitignore|\
+    \\.vscode/.*|\
+    \\.github/workflows/.*|\
+    \\.husky/.*|\
+    AGENTS\\.md|\
+    CLAUDE\\.md|\
+    eslint\\.config\\.mjs|\
+    LICENSE|\
+    README\\.md|\
+    tsconfig\\.json)$' \
+  """
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
