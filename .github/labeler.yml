@@ -45,9 +45,12 @@ branding:
 seo:
   - changed-files:
       - any-glob-to-any-file:
-          - 'src/seo/**'
-          - 'public/robots.txt'
-          - 'public/sitemap.xml'
+          - 'public/robots*'
+          - 'public/sitemap*'
+          - 'src/**/seo/**'
+          - 'src/**/seo*'
+          - 'src/**/sitemap*'
+          - 'src/**/robots*'
 
 analytics:
   - changed-files:
