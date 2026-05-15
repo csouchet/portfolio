@@ -2,7 +2,8 @@
 command = "npm run build"
 publish = ".next"
 ignore = """
-    git diff --name-only $COMMIT_REF^...$COMMIT_REF | grep -qvE '^\
+  if [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ]; then exit 0; else \
+    git diff --name-only $CACHED_COMMIT_REF $COMMIT_REF | grep -qvE '^\
     (pr-rules\\.yml|\
     dependabot\\.yml|\
     labeler\\.yml|\
@@ -21,8 +22,9 @@ ignore = """
     eslint\\.config\\.mjs|\
     LICENSE|\
     README\\.md|\
-    tsconfig\\.json)$' \
-  """
+    tsconfig\\.json)$'; \
+  fi\
+"""
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
