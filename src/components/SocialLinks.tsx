@@ -22,12 +22,12 @@ export function SocialLinks({
       cols={isSingleCol ? 1 : { base: 2, sm: 3, md: 2 }}
       spacing="xl"
       verticalSpacing="xs"
+      mx={isSingleCol ? undefined : 'auto'}
       styles={
         isSingleCol
           ? undefined
           : {
               root: {
-                marginX: 'auto',
                 width: 'fit-content',
                 gridTemplateColumns: 'max-content max-content',
               },

@@ -15,43 +15,217 @@ Example: feat(ui): add hero section
 
 #### Light mode
 
+##### Home page
+
 | Before | After |
 | ------ | ----- |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
+|        |       |
+
+##### Header
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### About page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Projects page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Project detail page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Articles page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Service page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Contact page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### 404 page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
 
 #### Dark mode
 
+##### Home page
+
 | Before | After |
 | ------ | ----- |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
+|        |       |
+
+##### Header
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### About page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Projects page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Project detail page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Articles page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Service page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Contact page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### 404 page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
 
 ### Desktop
 
 #### Light mode
 
+##### Home page
+
 | Before | After |
 | ------ | ----- |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
+|        |       |
+
+##### About page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Projects page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Project detail page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Articles page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Service page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Contact page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### 404 page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
 
 #### Dark mode
 
+##### Home page
+
 | Before | After |
 | ------ | ----- |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
-| Cell   | Cell  |
+|        |       |
+
+##### About page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Projects page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Project detail page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Articles page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Service page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### Contact page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+##### 404 page
+
+| Before | After |
+| ------ | ----- |
+|        |       |
 
 ---
 
