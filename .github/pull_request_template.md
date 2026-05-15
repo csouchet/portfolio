@@ -21,7 +21,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Header
+##### Navbar
 
 | Before | After |
 | ------ | ----- |
@@ -77,7 +77,7 @@ Example: feat(ui): add hero section
 | ------ | ----- |
 |        |       |
 
-##### Header
+##### Navbar
 
 | Before | After |
 | ------ | ----- |
