@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 
 import { Box } from '@mantine/core';
 
@@ -68,6 +69,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   const locale = rawLocale as Locale;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <ThemeProvider>
@@ -84,6 +86,23 @@ export default async function LocaleLayout({ children, params }: Props) {
 
         <Footer />
       </Box>
+
+      {gaId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaId}');
+            `}
+          </Script>
+        </>
+      )}
     </ThemeProvider>
   );
 }
