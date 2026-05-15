@@ -3,19 +3,34 @@ name: Build PR
 on:
   pull_request:
     branches: [main]
-    paths:
-      - 'src/**'
-      - 'netlify.toml'
-      - 'next.config.ts'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.json'
-      - '.nvmrc'
-      - '.github/workflows/build-pr.yml'
 
 jobs:
+  check-changes:
+    runs-on: ubuntu-24.04
+    outputs:
+      should_build: ${{ steps.filter.outputs.code }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Check modified files
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            code:
+              - 'src/**'
+              - 'next.config.ts'
+              - 'package.json'
+              - 'package-lock.json'
+              - 'tsconfig.json'
+              - '.nvmrc'
+              - '.github/workflows/build-pr.yml'
+
   build:
     runs-on: ubuntu-24.04
+    needs: check-changes
+    if: needs.check-changes.outputs.should_build == 'true'
 
     steps:
       - name: Checkout repo
