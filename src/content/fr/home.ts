@@ -1,5 +1,6 @@
 export const homeContent = {
   hero: {
+    badge: 'Staff Engineer',
     title:
       'Je conçois et développe des <h>plateformes robustes</h> et évolutives.',
     subtitle: 'Fullstack Java / React — CI/CD — Platform Engineering',
