@@ -55,6 +55,7 @@ export function AboutClient({ content }: Props) {
       radius="xl"
       h={400}
       w="auto"
+      mx="auto"
       fit="contain"
       style={{
         boxShadow: 'var(--mantine-shadow-xl)',
