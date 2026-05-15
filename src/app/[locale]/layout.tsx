@@ -6,8 +6,8 @@ import { notFound } from 'next/navigation';
 
 import { Box } from '@mantine/core';
 
-import { Footer } from '@/components/Footer';
-import Header from '@/components/Header';
+import { Footer } from '@/components/footer/Footer';
+import { Navbar } from '@/components/navbar/Navbar';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteConfig } from '@/config/site';
 import { siteSharedContent } from '@/content/shared/site';
@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Box
         style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
       >
-        <Header />
+        <Navbar />
 
         <Box component="main" style={{ flexGrow: 1 }}>
           {children}

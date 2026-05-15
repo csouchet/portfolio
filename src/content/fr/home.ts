@@ -1,136 +1,51 @@
 export const homeContent = {
   hero: {
     title:
-      'J’interviens quand les systèmes deviennent trop complexes pour évoluer sereinement.',
-    description:
-      'Je structure, fiabilise et simplifie pour que les équipes puissent livrer vite — sans se battre contre leur propre système.',
-    proof: '15+ ans d’expérience · systèmes critiques · CI/CD avancée',
-    cta: {
-      primary: 'Voir mes projets',
-      secondary: 'Mon approche',
-    },
-    availability: 'Disponible — Freelance · Remote / Grenoble',
-  },
-
-  whatIDo: {
-    title: 'Comment j’aide',
-    description:
-      'Je travaille sur les points de friction qui ralentissent réellement les équipes.',
-    items: [
-      {
-        problem: 'Les releases deviennent lentes, stressantes ou imprévisibles',
-        result: '→ des livraisons fiables, régulières et maîtrisées',
-      },
-      {
-        problem: 'Le système est devenu trop complexe pour évoluer sereinement',
-        result: '→ une architecture simplifiée et plus lisible',
-      },
-      {
-        problem: 'Chaque changement introduit des bugs ou de l’incertitude',
-        result: '→ un code sur lequel l’équipe peut s’appuyer',
-      },
-      {
-        problem:
-          'Les développeurs passent leur temps à débloquer au lieu d’avancer',
-        result: '→ une équipe qui retrouve de la vitesse et de la fluidité',
-      },
-    ],
-  },
-
-  projects: {
-    title: 'Projets clés',
-    description:
-      'Des systèmes que j’ai conçus ou restructurés, avec un impact direct sur la fiabilité, la vitesse de delivery et la capacité à évoluer.',
-    cta: 'Voir tous les projets',
-  },
-
-  principles: {
-    title: 'Principes de travail',
-    description:
-      'Les choix qui guident mes décisions sur des systèmes complexes.',
-    intro:
-      'La plupart des problèmes techniques viennent de décisions prises trop vite ou pour de mauvaises raisons.',
-    items: [
-      {
-        title: 'Ne pas masquer les problèmes avec des outils',
-        description:
-          'Un système lent ou fragile est rarement un problème d’outil, mais de conception.',
-      },
-      {
-        title: 'Privilégier la simplicité utile',
-        description:
-          'Une architecture doit aider l’équipe à avancer, pas devenir une contrainte supplémentaire.',
-      },
-      {
-        title: 'Stabiliser avant d’optimiser',
-        description:
-          'La fiabilité et la compréhension du système priment sur la performance prématurée.',
-      },
-      {
-        title: 'Comprendre le produit avant le code',
-        description:
-          'Les décisions techniques n’ont de sens que si elles servent un usage réel.',
-      },
-    ],
+      'Je conçois et développe des <h>plateformes robustes</h> et évolutives.',
+    subtitle: 'Fullstack Java / React — CI/CD — Platform Engineering',
+    cta: 'Discutons de votre projet',
   },
 
   expertise: {
-    title: 'Domaines d’expertise',
-    description:
-      'J’interviens sur les leviers techniques qui ont un impact direct sur la capacité des équipes à livrer et à faire évoluer leur système.',
+    title: 'Ce que je fais',
+    intro:
+      'Je conçois, construis et <b>améliore des applications complexes</b>, <i>from scratch</i> ou en modernisant des systèmes existants.',
     items: [
-      {
-        title: 'Platform & CI/CD',
-        description:
-          'Pipelines fiables, automatisation des builds et des releases.',
-        result: '→ releases rapides et fiables',
-      },
-      {
-        title: 'Architecture & systèmes',
-        description:
-          'Structuration de systèmes complexes, découplage et scalabilité.',
-        result: '→ système maintenable sur le long terme',
-      },
-      {
-        title: 'Developer Experience',
-        description:
-          'Outils, standards et workflows pour accélérer les équipes.',
-        result: '→ gain de vitesse au quotidien',
-      },
-      {
-        title: 'Produit & impact',
-        description:
-          'Alignement technique avec les enjeux produit et les KPIs.',
-        result: '→ meilleure valeur délivrée',
-      },
+      'Développement Fullstack (Java / Spring / React / TypeScript)',
+      'Architecture & design de systèmes',
+      'CI/CD & automatisation des livraisons',
+      'Refactoring & modernisation',
+      'Performance & fiabilité',
     ],
   },
 
-  articles: {
-    title: 'Articles',
-    description:
-      'Quelques retours d’expérience sur la qualité logicielle et les systèmes fiables.',
-    cta: 'Voir tous les articles',
+  solutions: {
+    title: 'Les défis que je relève',
+    intro:
+      'J’interviens quand les systèmes deviennent difficiles à faire évoluer, lents à livrer, ou <b>instables en production.</b>',
+    items: [
+      'Chaque release est stressante ou imprévisible',
+      'Le système est une boîte noire que personne ne veut toucher',
+      'Votre base de code manque de structure',
+      'Votre équipe a du mal à livrer avec confiance',
+    ],
+  },
+  differentiators: {
+    title: 'Pourquoi moi',
+    intro:
+      'Je combine une <b>forte expertise technique</b> avec une attention particulière à la structure, la qualité et la livraison :',
+    items: [
+      '15+ ans sur des systèmes complexes',
+      'Mindset Fullstack + CI/CD + plateforme',
+      'Forte orientation fiabilité et maintenabilité',
+      'Autonomie et delivery de bout en bout',
+      'Approche structurée et pragmatique',
+    ],
   },
 
-  contact: {
-    title: 'Travaillons ensemble',
-    description: 'Un système complexe à stabiliser ou un projet à structurer ?',
-    cta: 'Discutons-en',
-    footer: 'Freelance · Remote / Grenoble',
-  },
-
-  featuredArticles: {
-    title: 'Articles',
-    description:
-      'Quelques retours d’expérience sur la qualité logicielle et les systèmes fiables.',
-    cta: 'Voir tous les articles',
-  },
-
-  featuredProjects: {
-    title: 'Projets clés',
-    description:
-      'Des systèmes que j’ai conçus ou restructurés, avec un impact direct sur la fiabilité, la vitesse de delivery et la capacité à évoluer.',
-    cta: 'Voir tous les projets',
+  collaboration: {
+    title: 'Disponible pour des missions en freelance',
+    description: 'Courte ou longue durée — remote ou hybride',
+    cta: 'Discutons de votre projet',
   },
 };

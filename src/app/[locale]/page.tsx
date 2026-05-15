@@ -1,39 +1,45 @@
 import { Metadata } from 'next';
 
-import { ContactSection } from '@/components/homeSections/ContactSection';
-import { ExpertiseSection } from '@/components/homeSections/ExpertiseSection';
-import { FeaturedArticlesSection } from '@/components/homeSections/FeaturedArticlesSection';
-import { FeaturedProjectsSection } from '@/components/homeSections/FeaturedProjectsSection';
-import { HeroSection } from '@/components/homeSections/HeroSection';
-import { PrinciplesSection } from '@/components/homeSections/PrinciplesSection';
-import { WhatIDoSection } from '@/components/homeSections/WhatIDoSection';
+import { Container, Stack } from '@mantine/core';
+
+import { ContactBanner } from '@/components/ContactBanner';
+import { Expertise } from '@/components/home/Expertise';
+import { Hero } from '@/components/home/Hero';
+import { ValueProposition } from '@/components/home/ValueProposition';
+import { getContent } from '@/lib/i18n';
+import { Locale } from '@/types/i18n';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: '/fr/',
-    languages: {
-      fr: '/fr/',
-      en: '/en/',
-    },
-  },
+  alternates: { canonical: '/' },
 };
 
-export default function HomePage() {
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  const content = getContent(locale).home;
+
   return (
     <>
-      <HeroSection />
+      <Hero content={content.hero} />
 
-      <WhatIDoSection />
+      <Container size="lg">
+        <Stack variant="page">
+          <Expertise content={content.expertise} />
+          <ValueProposition
+            solutionsContent={content.solutions}
+            differentiatorsContent={content.differentiators}
+          />
 
-      <FeaturedProjectsSection />
-
-      <PrinciplesSection />
-
-      <ExpertiseSection />
-
-      <FeaturedArticlesSection />
-
-      <ContactSection />
+          <ContactBanner
+            title={content.collaboration.title}
+            description={content.collaboration.description}
+            cta={content.collaboration.cta}
+          />
+        </Stack>
+      </Container>
     </>
   );
 }
