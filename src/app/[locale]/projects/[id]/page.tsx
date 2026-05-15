@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { ProjectDetailClient } from '@/components/projects/detail/ProjectDetailClient';
 import { getContent } from '@/lib/i18n';
 import { getProjects } from '@/lib/projects';
-import { generateSeoMetadata, stripHtmlTags } from '@/lib/seo';
+import { generateSeoMetadata } from '@/lib/seo';
 import { Locale } from '@/types/i18n';
 
 type Props = {
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return generateSeoMetadata({
-    title: stripHtmlTags(project.title),
+    title: project.title,
     description: project.description,
     locale,
     path: `/projects/${id}`,

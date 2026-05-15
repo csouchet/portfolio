@@ -10,9 +10,10 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const content = getContent(locale).contact.hero;
+  const common = getContent(locale).common;
 
   return generateSeoMetadata({
-    title: content.title,
+    title: common.navigation.labels.contact,
     description: content.subtitle,
     locale,
     path: '/contact',

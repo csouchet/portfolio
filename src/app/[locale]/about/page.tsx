@@ -1,20 +1,21 @@
-// src/app/[locale]/about/page.tsx
 import { Metadata } from 'next';
 
 import { AboutClient } from '@/components/about/AboutClient';
 import { getContent } from '@/lib/i18n';
-import { generateSeoMetadata, stripHtmlTags } from '@/lib/seo'; // <-- Ajout de stripHtmlTags
+import { generateSeoMetadata } from '@/lib/seo';
 import { Locale } from '@/types/i18n';
 
 type Props = { params: Promise<{ locale: Locale }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const content = getContent(locale).about.hero;
+
+  const content = getContent(locale).about;
+  const common = getContent(locale).common;
 
   return generateSeoMetadata({
-    title: stripHtmlTags(content.title),
-    description: content.description,
+    title: common.navigation.labels.about,
+    description: content.hero.description,
     locale,
     path: '/about',
   });
