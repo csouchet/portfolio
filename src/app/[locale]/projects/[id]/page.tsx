@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ProjectDetailClient } from '@/components/projects/detail/ProjectDetailClient';
 import { getContent } from '@/lib/i18n';
 import { getProjects } from '@/lib/projects';
+import { generateSeoMetadata } from '@/lib/seo';
 import { Locale } from '@/types/i18n';
 
 type Props = {
@@ -21,17 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Not found' };
   }
 
-  return {
+  return generateSeoMetadata({
     title: project.title,
     description: project.description,
-    alternates: {
-      canonical: `/${locale}/projects/${id}`,
-      languages: {
-        fr: `/fr/projects/${id}`,
-        en: `/en/projects/${id}`,
-      },
-    },
-  };
+    locale,
+    path: `/projects/${id}`,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: Props) {

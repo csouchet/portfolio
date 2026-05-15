@@ -9,6 +9,7 @@ import { headers } from 'next/headers';
 
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
+import { getSiteConfig } from '@/config/site';
 import { Locale } from '@/types/i18n';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -34,6 +35,7 @@ export default async function RootLayout({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
+        <title>{getSiteConfig(locale).title}</title>
       </head>
       <body
         style={{
