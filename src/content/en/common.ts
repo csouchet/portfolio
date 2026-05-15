@@ -28,14 +28,6 @@ export const commonContent = {
     copyright: 'Grenoble, France · All rights reserved',
   },
 
-  notFound: {
-    code: '404',
-    title: 'Page not found',
-    description:
-      'The page you are looking for does not exist or has been moved.',
-    cta: 'Back to home',
-  },
-
   theme: {
     light: 'Light mode',
     dark: 'Dark mode',

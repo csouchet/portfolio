@@ -28,13 +28,6 @@ export const commonContent = {
     copyright: 'Grenoble, France · Tous droits réservés',
   },
 
-  notFound: {
-    code: '404',
-    title: 'Page introuvable',
-    description: 'La page que vous recherchez n’existe pas ou a été déplacée.',
-    cta: 'Retour à l’accueil',
-  },
-
   theme: {
     light: 'Mode clair',
     dark: 'Mode sombre',
