@@ -47,8 +47,7 @@ export function PageHeader({
         {withWaves && (
           <WaveBackground
             baseImageName="waves-title-page"
-            backgroundSize="50vw auto"
-            backgroundPosition="bottom 20px right 0px"
+            bgsz={{ base: '45% auto ', sm: '50vw auto' }}
           />
         )}
 

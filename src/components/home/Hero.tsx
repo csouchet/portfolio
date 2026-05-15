@@ -17,8 +17,8 @@ export function Hero({ content }: Props) {
     <Box component="section" pos="relative" style={{ overflow: 'hidden' }}>
       <WaveBackground
         baseImageName="waves-hero"
-        backgroundSize="55vw auto"
-        backgroundPosition="bottom 20px right 0px"
+        bgsz="55vw auto"
+        bgp="bottom 20px right 0px"
         style={{ zIndex: 1 }}
       />
 
