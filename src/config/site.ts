@@ -23,7 +23,7 @@ export function getSiteConfig(locale: Locale) {
     title: content.common.site.title,
     description: content.common.site.description,
     url: siteUrl,
-    ogImage: '/og.png',
+    ogImage: '/og.jpeg',
 
     links: {
       linkedin: 'https://www.linkedin.com/in/celinesouchet/',
