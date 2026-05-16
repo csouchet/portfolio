@@ -21,7 +21,13 @@ export function NavbarLogo({ locale, name }: Props) {
       <Group gap="sm" align="center">
         <Image src="/logo-dark.svg" alt="" h={rem(45)} w="auto" />
 
-        <Text fw={700} size="lg" c="white" style={{ letterSpacing: '-0.01em' }}>
+        <Text
+          fw={700}
+          size="lg"
+          c="white"
+          style={{ letterSpacing: '-0.01em' }}
+          display={{ base: 'none', xs: 'block' }}
+        >
           {name}
         </Text>
       </Group>
