@@ -6,7 +6,6 @@ import {
   Text,
   Group,
   rem,
-  Divider,
   ThemeIcon,
   MantineColor,
 } from '@mantine/core';
@@ -19,7 +18,6 @@ export type SectionHeaderProps = {
   icon?: ElementType;
   iconColor?: MantineColor;
   withIconBackground?: boolean;
-  withDivider?: boolean;
   variant?: 'card' | 'default';
 };
 
@@ -29,7 +27,6 @@ export function SectionHeader({
   icon: Icon,
   iconColor = 'brand',
   withIconBackground = false,
-  withDivider = false,
   variant = 'default',
 }: SectionHeaderProps) {
   const renderIcon = () => {
@@ -54,26 +51,19 @@ export function SectionHeader({
 
   return (
     <Stack gap="xs">
-      <Group
-        gap="sm"
-        wrap="nowrap"
-        mb={!Icon && !withDivider ? 'md' : undefined}
-      >
+      <Group gap="sm">
         {renderIcon()}
 
         <Title
           order={2}
           variant={variant}
-          mb={Icon || withDivider ? 0 : undefined}
+          mb={0}
           style={{
-            flex: withDivider ? 0 : 1,
-            whiteSpace: 'nowrap',
+            flex: 1,
           }}
         >
           {title}
         </Title>
-
-        {withDivider && <Divider style={{ flex: 1 }} />}
       </Group>
 
       {description && (
