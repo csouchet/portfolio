@@ -67,7 +67,6 @@ export function SectionHeader({
           mb={Icon || withDivider ? 0 : undefined}
           style={{
             flex: withDivider ? 0 : 1,
-            whiteSpace: 'nowrap',
           }}
         >
           {title}
