@@ -1,4 +1,5 @@
 import { SpotlightItem } from '@/components/layout/SpotlightGrid';
+import { Experience } from '@/types/experience';
 
 export const aboutContent = {
   hero: {
@@ -41,7 +42,7 @@ export const aboutContent = {
         ],
       },
       {
-        company: 'GB&SMITH',
+        company: 'GB&Smith',
         role: 'Senior Java Developer & Tech Lead',
         period: 'Jan 2016 – May 2019',
         tasks: [
@@ -75,7 +76,7 @@ export const aboutContent = {
           'Level 3 support, bug fixing, and automation tooling (Orange)',
         ],
       },
-    ],
+    ] satisfies Experience[],
   },
 
   philosophy: {

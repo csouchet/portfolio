@@ -2,9 +2,18 @@
 
 import { IconBuildingSkyscraper } from '@tabler/icons-react';
 
-import { Timeline, Text, ThemeIcon, List, Card, rem } from '@mantine/core';
+import {
+  Timeline,
+  Text,
+  ThemeIcon,
+  List,
+  Card,
+  rem,
+  Anchor,
+} from '@mantine/core';
 
 import { Section } from '@/components/layout/Section';
+import { COMPANY_URLS } from '@/data/companies';
 import { getContent } from '@/lib/i18n';
 import { accentColors } from '@/theme/utils/colors';
 
@@ -24,6 +33,9 @@ export function AboutJourney({ content }: Props) {
         >
           {content.experiences.map((exp, index) => {
             const color = accentColors[index % accentColors.length];
+            const companyUrl = exp.company
+              ? COMPANY_URLS[exp.company]
+              : undefined;
 
             return (
               <Timeline.Item
@@ -51,7 +63,30 @@ export function AboutJourney({ content }: Props) {
                 </Text>
 
                 <Text variant="emphasis" mb="xs">
-                  {exp.company ? `${exp.company} — ${exp.role}` : exp.role}
+                  {exp.company && (
+                    <>
+                      {companyUrl ? (
+                        <Anchor
+                          href={companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          c="inherit"
+                          underline="hover"
+                          inherit
+                          style={{
+                            verticalAlign: 'baseline',
+                            display: 'inline',
+                          }}
+                        >
+                          {exp.company}
+                        </Anchor>
+                      ) : (
+                        exp.company
+                      )}
+                      {' — '}
+                    </>
+                  )}
+                  {exp.role}
                 </Text>
 
                 {exp.description && (
