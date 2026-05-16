@@ -17,8 +17,8 @@ export function TechSection({ content }: Props) {
   return (
     <Section title={content.title} icon={IconCode}>
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="lg">
-        {content.categories.map((cat, index) => (
-          <TechCard key={index} category={cat} index={index} />
+        {content.categories.map((category, index) => (
+          <TechCard key={index} category={category} index={index} />
         ))}
       </SimpleGrid>
     </Section>
