@@ -48,7 +48,7 @@ export function Navbar() {
       }}
     >
       <Container size="lg" px="md">
-        <Group justify="space-between" align="center" h={rem(72)}>
+        <Group justify="space-between" align="center" mih={rem(72)}>
           <NavbarLogo locale={locale} name={siteSharedContent.name} />
 
           <Tabs
