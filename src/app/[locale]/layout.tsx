@@ -9,7 +9,7 @@ import { Box } from '@mantine/core';
 
 import { Footer } from '@/components/footer/Footer';
 import { Navbar } from '@/components/navbar/Navbar';
-import { StructuredData } from '@/components/seo/StructuredData'; // <-- Nouvel import
+import { StructuredData } from '@/components/seo/StructuredData';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteConfig } from '@/config/site';
 import { LOCALES, Locale } from '@/types/i18n';
@@ -68,7 +68,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   const locale = rawLocale as Locale;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
+  const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
   return (
     <ThemeProvider>
@@ -86,21 +87,12 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Footer />
       </Box>
 
-      {gaId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}');
-            `}
-          </Script>
-        </>
+      {umamiWebsiteId && (
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id={umamiWebsiteId}
+          strategy="afterInteractive"
+        />
       )}
     </ThemeProvider>
   );
