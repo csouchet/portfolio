@@ -18,12 +18,18 @@ export function TechCard({ category, index }: Props) {
   const color = getAccentColor(index);
 
   return (
-    <Card variant="item">
+    <Card
+      variant="item"
+      style={{
+        display: 'grid',
+        gridRow: 'span 2',
+        gridTemplateRows: 'subgrid',
+      }}
+    >
       <Card.Section
         bg={`light-dark(var(--mantine-color-${color}Light-1), var(--mantine-color-${color}Dark-9))`}
         inheritPadding
-        pt="lg"
-        pb="md"
+        py="lg"
       >
         <Stack gap="xs">
           <Title
@@ -37,7 +43,7 @@ export function TechCard({ category, index }: Props) {
         </Stack>
       </Card.Section>
 
-      <TechGroup stack={category.skills} mt="md" />
+      <TechGroup stack={category.skills} style={{ alignSelf: 'start' }} />
     </Card>
   );
 }
