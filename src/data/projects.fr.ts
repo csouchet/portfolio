@@ -402,54 +402,6 @@ export const projects: Project[] = [
   },
 
   {
-    id: 'gbsmith-365eyes',
-    title: '365 Eyes',
-    date: '2016',
-    description:
-      'Plateforme d’audit des permissions utilisateurs de multi-outils BI.',
-    category: 'product',
-    contributions: ['architecture'],
-    company: 'GB&Smith',
-    highlights: ['Architecture modulaire basée sur plugins'],
-
-    caseStudy: {
-      context:
-        'Plateforme d’audit des permissions utilisateurs de multi-outils BI nécessitant une architecture flexible.',
-      problems: ['Multiplicité des sources', 'Complexité des permissions'],
-      actions: ['Architecture modulaire basée sur plugins'],
-      results: 'Système extensible et maintenable.',
-    },
-  },
-
-  {
-    id: 'gbsmith-365eyes-core',
-    title: '365 Eyes - Core',
-    date: '2016',
-    description:
-      "Composant central gérant l'audit des permissions utilisateurs.",
-    parent: 'gbsmith-365eyes',
-    category: 'application',
-    contributions: ['backend', 'architecture'],
-    company: 'GB&Smith',
-    highlights: [
-      'Architecture backend modulaire',
-      'Traitements batch et planification',
-      'Qualité logicielle et tests',
-    ],
-  },
-  {
-    id: 'gbsmith-365eyes-cognos-plugin',
-    title: '365 Eyes - Cognos Plugin',
-    date: '2016',
-    description:
-      'Plugin pour l’audit des permissions utilisateurs sur IBM Cognos.',
-    parent: 'gbsmith-365eyes',
-    category: 'plugin',
-    contributions: ['backend'],
-    company: 'GB&Smith',
-  },
-
-  {
     id: 'gbsmith-fenix',
     title: 'Fenix',
     date: '2017 - 2019',
