@@ -1,9 +1,10 @@
 'use client';
 
-import { IconBriefcase } from '@tabler/icons-react';
+import { IconBriefcase, IconExternalLink } from '@tabler/icons-react';
 
 import { Badge, Paper, Group, rem, Text } from '@mantine/core';
 
+import { COMPANY_URLS } from '@/data/companies';
 import { useAccentColor } from '@/hooks/useColors';
 import { getContent } from '@/lib/i18n';
 import { Project } from '@/types/project';
@@ -15,6 +16,7 @@ type Props = {
 
 export function ProjectSummaryCard({ project, content }: Props) {
   const getAccentColor = useAccentColor();
+  const companyUrl = COMPANY_URLS[project.company];
 
   return (
     <Group gap="md">
@@ -24,6 +26,18 @@ export function ProjectSummaryCard({ project, content }: Props) {
           color="brand"
           variant="light"
           leftSection={<IconBriefcase size={rem(14)} />}
+          {...(companyUrl
+            ? {
+                rightSection: <IconExternalLink size={rem(14)} />,
+                component: 'a',
+                href: companyUrl,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                style: {
+                  cursor: 'pointer',
+                },
+              }
+            : {})}
         >
           {project.company}
         </Badge>

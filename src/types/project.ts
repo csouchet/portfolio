@@ -1,4 +1,9 @@
-export type ProjectCompany = 'Bonitasoft' | 'GB&Smith' | 'Personal';
+export type ProjectCompany =
+  | 'Bonitasoft'
+  | 'GB&Smith'
+  | 'Personal'
+  | 'TAGSYS RFID'
+  | 'Astek';
 
 export const PROJECT_CATEGORIES = [
   'product',
