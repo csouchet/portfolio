@@ -10,7 +10,6 @@ export function Section({
   icon,
   iconColor,
   withIconBackground,
-  withDivider,
   children,
   ...props
 }: Props) {
@@ -22,7 +21,6 @@ export function Section({
         icon={icon}
         iconColor={iconColor}
         withIconBackground={withIconBackground}
-        withDivider={withDivider}
       />
       {children}
     </Stack>
