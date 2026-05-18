@@ -34,8 +34,15 @@ export function generateSeoMetadata({
   const cleanTitle = stripHtmlTags(title);
   const cleanDescription = stripHtmlTags(description);
 
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  const pageUrl = `${siteConfig.url}/${locale}${cleanPath}`;
+  // 🚀 Ensure path starts with a slash and safely remove any accidental trailing slash
+  let cleanPath = path.startsWith('/') ? path : `/${path}`;
+  if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
+    cleanPath = cleanPath.slice(0, -1);
+  }
+
+  // 🚀 If path is root ('/'), prevent generating '/fr/' and force '/fr'
+  const localePath = cleanPath === '/' ? '' : cleanPath;
+  const pageUrl = `${siteConfig.url}/${locale}${localePath}`;
 
   return {
     title: cleanTitle,
@@ -44,8 +51,10 @@ export function generateSeoMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        fr: `${siteConfig.url}/fr${cleanPath}`,
-        en: `${siteConfig.url}/en${cleanPath}`,
+        fr: `${siteConfig.url}/fr${localePath}`,
+        en: `${siteConfig.url}/en${localePath}`,
+        // 🚀 Add x-default pointing to your primary language (French)
+        'x-default': `${siteConfig.url}/fr${localePath}`,
       },
     },
 
