@@ -10,12 +10,21 @@ export function LanguageSwitch() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const currentLocale = pathname.split('/')[1] as Locale;
+  const pathLocale = pathname.split('/')[1] as Locale;
+  const isLocaleInUrl = LOCALES.includes(pathLocale);
+
+  const currentLocale = isLocaleInUrl ? pathLocale : 'fr';
 
   const handleLanguageChange = (newLocale: string) => {
-    const segments = pathname.split('/');
-    segments[1] = newLocale;
-    router.push(segments.join('/') || `/${newLocale}`);
+    if (isLocaleInUrl) {
+      const segments = pathname.split('/');
+      segments[1] = newLocale;
+      router.push(segments.join('/') || `/${newLocale}`);
+    } else {
+      const newPath =
+        pathname === '/' ? `/${newLocale}` : `/${newLocale}${pathname}`;
+      router.push(newPath);
+    }
   };
 
   return (

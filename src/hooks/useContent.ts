@@ -1,13 +1,22 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 
 import { getContent } from '@/lib/i18n';
-import { Locale } from '@/types/i18n';
+import { LOCALES, Locale } from '@/types/i18n';
 
 export function useContent() {
   const params = useParams();
-  const locale = (params?.locale as Locale) || 'fr';
+  const pathname = usePathname();
+
+  const paramLocale = params?.locale as string;
+
+  const pathLocale = pathname.split('/')[1];
+
+  const rawLocale = paramLocale || pathLocale;
+  const locale = (
+    LOCALES.includes(rawLocale as Locale) ? rawLocale : 'fr'
+  ) as Locale;
 
   return {
     locale,
