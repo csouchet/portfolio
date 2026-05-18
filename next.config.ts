@@ -1,8 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  // 🚀 Force URLs to NOT have a trailing slash globally
+  trailingSlash: false,
 };
 
 export default nextConfig;
