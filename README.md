@@ -1,46 +1,46 @@
 # Céline Souchet — Portfolio & Design System
 
-Ce projet est le portfolio professionnel de **Céline Souchet**, Ingénieure développeuse senior Java & React. Il est conçu comme une plateforme robuste et évolutive, servant à la fois de vitrine et de démonstration d'un **Design System** complet.
+This project is the professional portfolio of **Céline Souchet**, a Stack Java & React Engineer Developer. It is designed to serve both as a showcase and a demonstration of a comprehensive **Design System**.
 
-## 🛠 Stack Technique
+## 🛠 Tech Stack
 
-- **Framework** : [Next.js 16](https://nextjs.org) (Canary) avec **React Compiler** activé.
-- **UI & Style** : [Mantine 9.x](https://mantine.dev) avec un système de thémage personnalisé (Design Tokens).
-- **Langage** : [TypeScript](https://www.typescriptlang.org/) (Strict mode).
-- **Internationalisation** : Système i18n sur-mesure (Français / Anglais).
-- **Qualité** : ESLint (Flat Config), Prettier, Husky & Lint-staged.
-- **Environnement** : Node.js 24 (configuré via `.nvmrc`).
+- **Framework**: [Next.js 16](https://nextjs.org) (Canary) with **React Compiler** enabled.
+- **UI & Style**: [Mantine 9.x](https://mantine.dev) with a custom theming system (Design Tokens).
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict mode).
+- **Internationalization**: Custom i18n system (French / English).
+- **Quality**: ESLint (Flat Config), Prettier, Husky & Lint-staged.
+- **Environment**: Node.js 24 (configured via `.nvmrc`).
 
 ## 🎨 Design System & Architecture
 
-Le projet repose sur une séparation stricte entre la logique et la présentation :
+The project is based on a strict separation between logic and presentation:
 
-- **Design Tokens** : Centralisés dans `src/theme/tokens/` (couleurs, espacements, rayons, ombres).
-- **Variants Personnalisés** : Mantine est étendu avec des variants métier (`item`, `section`, `banner`, `summary`) pour garantir une cohérence visuelle.
-- **Composants Thématiques** : Utilisation de `WaveBackground` et `ThemedImage` pour une gestion fluide du mode clair/sombre sans duplication de code.
-- **I18n Dynamique** : Les contenus sont gérés sous forme de dicos TypeScript dans `src/content/`.
+- **Design Tokens**: Centralized in `src/theme/tokens/` (colors, spacing, shadows).
+- **Custom Variants**: Mantine is extended with business-specific variants (`item`, `section`, `banner`, `summary`) to ensure visual consistency.
+- **Themed Components**: Use of `WaveBackground` and `ThemedImage` for seamless light/dark mode management without code duplication.
+- **Dynamic i18n**: Content is managed as TypeScript dictionaries in `src/content/`.
 
-## 🚀 Installation & Développement
+## 🚀 Installation & Development
 
 ```bash
-# Installation des dépendances
+# Install dependencies
 npm install
 
-# Lancer le serveur de développement
+# Start the development server
 npm run dev
 
-# Vérifier la qualité du code
+# Check code quality
 npm run lint
 ```
 
-## 📂 Structure du Projet
+## 📂 Project Structure
 
-- `src/app/` : Routes Next.js (App Router) avec préfixe de locale.
-- `src/theme/` : Cœur du Design System (Tokens & Component Overrides).
-- `src/content/` : Contenus bilingues (FR/EN).
-- `src/lib/hooks/` : Logique métier et hooks de collection (`useArticles`, `useProjects`).
-- `src/components/layout/` : Composants de structure réutilisables.
+- `src/app/`: Next.js routes (App Router) with locale prefixes.
+- `src/theme/`: Core of the Design System (Tokens & Component Overrides).
+- `src/content/`: Bilingual content (FR/EN).
+- `src/lib/hooks/`: Business logic and collection hooks (`useArticles`, `useProjects`).
+- `src/components/layout/`: Reusable layout components.
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence [MIT](LICENSE).
+This project is licensed under the [MIT](LICENSE) license.
