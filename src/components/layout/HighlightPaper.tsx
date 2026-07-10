@@ -7,12 +7,7 @@ import { IconProps } from '@tabler/icons-react';
 import { Group, Paper, Title, rem, PaperProps } from '@mantine/core';
 
 type AccentPaperColor =
-  | 'violet'
-  | 'brand'
-  | 'sage'
-  | 'blue'
-  | 'orange'
-  | 'pink';
+  'violet' | 'brand' | 'sage' | 'blue' | 'orange' | 'pink';
 
 type Props = PaperProps & {
   title: string;

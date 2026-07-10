@@ -1,9 +1,5 @@
 export type ProjectCompany =
-  | 'Bonitasoft'
-  | 'GB&Smith'
-  | 'Personal'
-  | 'TAGSYS RFID'
-  | 'Astek';
+  'Bonitasoft' | 'GB&Smith' | 'Personal' | 'TAGSYS RFID' | 'Astek';
 
 export const PROJECT_CATEGORIES = [
   'product',
